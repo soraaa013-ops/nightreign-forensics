@@ -15,7 +15,7 @@
       <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
       <span><strong>遗物警察局</strong><small>RELIC POLICE DEPT.</small></span>
     </a>
-    <div class="case-status"><span></span> DEMO RULESET · 规则待接入</div>
+    <div class="header-tools"><nav class="tool-nav" aria-label="工具导航"><a aria-current="page" href="index.html#checker">遗物检测</a><a href="map.html">地图档案</a></nav><div class="case-status"><span></span><b id="data-stats">正在载入</b></div></div>
   </header>
 
   <main id="top">
@@ -29,10 +29,11 @@
     <section class="checker" id="checker" aria-labelledby="checker-title">
       <div class="section-heading">
         <div><p class="kicker">EVIDENCE SUBMISSION</p><h2 id="checker-title">提交检材</h2></div>
-        <p>仅支持三词条遗物。当前为交互演示，正式规则将由游戏解包数据生成。</p>
+        <p>当前接入社区解包数据，支持最新版商店三词条遗物。结论会同时核对隐藏抽取槽位与互斥组。</p>
       </div>
 
       <form id="relic-form" class="evidence-form">
+        <label class="template-field"><span><b>TYPE</b> 遗物模板</span><select id="template" required><option>规则载入中…</option></select></label>
         <div class="slots">
           <label><span><b>01</b> 第一词条</span><input list="effects" name="effect" autocomplete="off" placeholder="输入关键词搜索…" required></label>
           <label><span><b>02</b> 第二词条</span><input list="effects" name="effect" autocomplete="off" placeholder="输入关键词搜索…" required></label>
@@ -43,6 +44,7 @@
           <button class="submit" type="submit">签发检测报告 <span>↗</span></button>
           <button class="secondary" type="button" id="randomize">随机装填</button>
           <button class="secondary" type="reset">清空</button>
+          <button class="secondary" type="button" id="copy-report">复制报告链接</button>
         </div>
       </form>
 
@@ -52,8 +54,9 @@
           <p class="kicker">INSPECTION REPORT</p>
           <h3 id="report-title">等待检材</h3>
           <p id="report-summary">填入三个词条后，我们再来判断它有没有“出生证明”。</p>
+          <p class="report-probability" id="report-probability" hidden></p>
           <ol id="report-order" hidden></ol>
-          <p class="report-meta">规则集：<span id="ruleset-version">载入中</span> · 本地检测，不上传输入</p>
+          <p class="report-meta">规则集：<span id="ruleset-version">载入中</span> · <span id="report-code">WAITING_FOR_EVIDENCE</span> · 本地检测，不上传输入</p>
         </div>
       </section>
     </section>
@@ -62,7 +65,7 @@
       <p class="kicker">FIELD NOTES</p>
       <div class="briefing-grid">
         <h2>不是玄学。<br>是数据取证。</h2>
-        <div><p>合法性结论来自规则数据，而不是玩家经验投票。正式版将从解包结果生成标准化词条、生成池和排序规则。</p><p>这一版先把交互、结果模型与数据接口跑通。规则接入后，不需要重做页面。</p></div>
+        <div><p>合法性结论来自参数表：遗物模板决定三个隐藏槽位，各槽位拥有独立效果池；已出现的词条族会阻止同族效果再次出现。</p><p>当前数据是社区解包快照，并非官方服务。报告会保留规则版本；待拿到 Windows 最新导出后，可由同一流水线重建并做版本差异检查。</p></div>
       </div>
     </section>
   </main>

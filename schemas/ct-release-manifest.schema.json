@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://relic-police.local/schemas/ct-release-manifest.schema.json",
+  "title": "Verified Cheat Engine table release",
+  "type": "object",
+  "required": ["status", "gameVersion", "steamBuildId", "cheatEngineVersion", "file", "sha256", "verifiedAt", "tests"],
+  "properties": {
+    "status": { "enum": ["blocked", "testing", "verified", "retired"] },
+    "gameVersion": { "type": "string" },
+    "steamBuildId": { "type": "string" },
+    "cheatEngineVersion": { "type": "string" },
+    "file": { "type": "string", "pattern": "\\.CT$" },
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "sourceUrl": { "type": ["string", "null"], "format": "uri" },
+    "sourceCommit": { "type": ["string", "null"] },
+    "verifiedAt": { "type": "string", "format": "date-time" },
+    "tests": {
+      "type": "object",
+      "required": ["backupRestore", "createRelic", "editRelic", "clearRelic", "postWriteValidation"],
+      "additionalProperties": { "type": "boolean" }
+    }
+  }
+}

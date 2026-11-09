@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://relic-police.local/schemas/game-data.schema.json",
+  "title": "Normalized Nightreign relic data",
+  "type": "object",
+  "required": ["metadata", "stats", "templates", "effects", "pools"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["schemaVersion", "label", "status", "source", "inputChecksums"],
+      "properties": {
+        "schemaVersion": { "const": 1 },
+        "label": { "type": "string" },
+        "status": { "type": "string" },
+        "source": { "type": "string" },
+        "sourceCommit": { "type": ["string", "null"] },
+        "inputChecksums": { "type": "object", "additionalProperties": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" } }
+      }
+    },
+    "stats": { "type": "object" },
+    "templates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "color", "isDeep", "effectPools", "cursePools", "slotCount", "generation"],
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "effectPools": { "type": "array", "items": { "type": "integer" }, "maxItems": 3 },
+          "cursePools": { "type": "array", "items": { "type": "integer" }, "maxItems": 3 }
+        }
+      }
+    },
+    "effects": { "type": "object" },
+    "pools": { "type": "object" }
+  }
+}

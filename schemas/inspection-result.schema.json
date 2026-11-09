@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://relic-police.local/schemas/inspection-result.schema.json",
+  "title": "Relic inspection result",
+  "type": "object",
+  "required": ["status", "code", "title", "summary", "ruleset"],
+  "properties": {
+    "status": { "enum": ["valid", "invalid", "reorder", "unknown", "incomplete"] },
+    "code": { "type": "string" },
+    "title": { "type": "string" },
+    "summary": { "type": "string" },
+    "templateId": { "type": ["integer", "null"] },
+    "effectIds": { "type": "array", "items": { "type": "integer" }, "maxItems": 3 },
+    "orderedEffectIds": { "type": "array", "items": { "type": "integer" }, "maxItems": 3 },
+    "ruleset": { "type": "string" }
+  },
+  "additionalProperties": true
+}

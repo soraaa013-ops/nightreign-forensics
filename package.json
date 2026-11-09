@@ -5,6 +5,9 @@
   "type": "module",
   "scripts": {
     "test": "node --test",
-    "serve": "python3 -m http.server 4173"
+    "serve": "python3 -m http.server 4173",
+    "import:data": "node tools/import-game-data.mjs",
+    "validate:data": "node tools/validate-game-data.mjs data/game-data.json",
+    "diff:data": "node tools/version-diff.mjs"
   }
 }

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="遗物警察局地图档案科：通过观察信息反查黑夜君临地图 Pattern。">
+  <meta name="theme-color" content="#090b0e">
+  <title>地图档案科｜遗物警察局</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="返回遗物警察局"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span><strong>遗物警察局</strong><small>MAP ARCHIVES</small></span></a>
+    <nav class="tool-nav" aria-label="工具导航"><a href="index.html#checker">遗物检测</a><a aria-current="page" href="map.html">地图档案</a></nav>
+  </header>
+  <main class="map-main">
+    <section class="map-intro">
+      <p class="kicker">CASE NO. 002 / MAP IDENTIFICATION</p>
+      <h1>地图说不清？<br><em>带路标来认领。</em></h1>
+      <p>填写夜王、地形与出生点，再补充你看到的据点。系统会逐步排除不符合的 Pattern，并告诉你下一处最值得观察的位置。</p>
+      <div class="dataset-warning"><strong>旧档案试运行</strong><span id="map-version">正在载入地图目录…</span></div>
+    </section>
+
+    <section class="map-workbench" aria-labelledby="map-query-title">
+      <div class="section-heading"><div><p class="kicker">FIELD OBSERVATIONS</p><h2 id="map-query-title">现场笔录</h2></div><p>不知道的项目留空。少量高置信度观察比填满错误信息更有效。</p></div>
+      <form id="map-form" class="map-form">
+        <label><span>目标夜王</span><select id="nightlord"><option value="">未知 / 全部</option></select></label>
+        <label><span>地形异变</span><select id="map-type"><option value="">未知 / 全部</option></select></label>
+        <label><span>出生位置</span><select id="spawn"><option value="">未知 / 全部</option></select></label>
+        <fieldset class="observation" data-index="0"><legend>观察记录 01</legend><label><span>地图位置</span><select class="slot-key"><option value="">尚未标记</option></select></label><label><span>看到的内容</span><select class="slot-value" disabled><option value="">先选择位置</option></select></label></fieldset>
+        <fieldset class="observation" data-index="1"><legend>观察记录 02</legend><label><span>地图位置</span><select class="slot-key"><option value="">尚未标记</option></select></label><label><span>看到的内容</span><select class="slot-value" disabled><option value="">先选择位置</option></select></label></fieldset>
+      </form>
+
+      <section class="candidate-panel" aria-live="polite">
+        <div class="candidate-count"><strong id="candidate-count">—</strong><span>份候选档案</span></div>
+        <div><p class="kicker">NEXT BEST CLUE</p><h3 id="next-clue">等待基础信息</h3><p id="candidate-summary">档案载入后会自动开始筛选。</p></div>
+      </section>
+      <section id="map-result" class="map-result" hidden></section>
+    </section>
+  </main>
+  <footer><span>遗物警察局 · 地图档案科</span><span>旧数据仅供原型验证，不代表当前 DLC 完整覆盖。</span></footer>
+  <script type="module" src="src/map.js"></script>
+</body>
+</html>
