@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="遗物警察局：黑夜君临遗物词条合法性检测工具。">
+  <meta name="theme-color" content="#090b0e">
+  <title>遗物警察局｜遗物合法检测</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="遗物警察局首页">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span><strong>遗物警察局</strong><small>RELIC POLICE DEPT.</small></span>
+    </a>
+    <div class="case-status"><span></span> DEMO RULESET · 规则待接入</div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="kicker">CASE NO. 001 / RELIC INSPECTION</p>
+      <h1>遗物成分复杂？<br><em>先送检。</em></h1>
+      <p class="lede">选择三条遗物词条。遗物警察将核对生成池、互斥关系与词条顺序，并给出一份说人话的检测报告。</p>
+      <a class="scroll-cue" href="#checker">开始取证 <span>↓</span></a>
+    </section>
+
+    <section class="checker" id="checker" aria-labelledby="checker-title">
+      <div class="section-heading">
+        <div><p class="kicker">EVIDENCE SUBMISSION</p><h2 id="checker-title">提交检材</h2></div>
+        <p>仅支持三词条遗物。当前为交互演示，正式规则将由游戏解包数据生成。</p>
+      </div>
+
+      <form id="relic-form" class="evidence-form">
+        <div class="slots">
+          <label><span><b>01</b> 第一词条</span><input list="effects" name="effect" autocomplete="off" placeholder="输入关键词搜索…" required></label>
+          <label><span><b>02</b> 第二词条</span><input list="effects" name="effect" autocomplete="off" placeholder="输入关键词搜索…" required></label>
+          <label><span><b>03</b> 第三词条</span><input list="effects" name="effect" autocomplete="off" placeholder="输入关键词搜索…" required></label>
+          <datalist id="effects"></datalist>
+        </div>
+        <div class="form-actions">
+          <button class="submit" type="submit">签发检测报告 <span>↗</span></button>
+          <button class="secondary" type="button" id="randomize">随机装填</button>
+          <button class="secondary" type="reset">清空</button>
+        </div>
+      </form>
+
+      <section class="report" id="report" aria-live="polite" aria-labelledby="report-title">
+        <div class="report-stamp" id="report-stamp">待检</div>
+        <div class="report-copy">
+          <p class="kicker">INSPECTION REPORT</p>
+          <h3 id="report-title">等待检材</h3>
+          <p id="report-summary">填入三个词条后，我们再来判断它有没有“出生证明”。</p>
+          <ol id="report-order" hidden></ol>
+          <p class="report-meta">规则集：<span id="ruleset-version">载入中</span> · 本地检测，不上传输入</p>
+        </div>
+      </section>
+    </section>
+
+    <section class="briefing">
+      <p class="kicker">FIELD NOTES</p>
+      <div class="briefing-grid">
+        <h2>不是玄学。<br>是数据取证。</h2>
+        <div><p>合法性结论来自规则数据，而不是玩家经验投票。正式版将从解包结果生成标准化词条、生成池和排序规则。</p><p>这一版先把交互、结果模型与数据接口跑通。规则接入后，不需要重做页面。</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>遗物警察局 · 非官方玩家工具</span><span>谨慎截图，理性出警。</span></footer>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
