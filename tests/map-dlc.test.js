@@ -52,7 +52,7 @@ test("DLC fields have Chinese labels and real geometry; both map levels have all
       if (typeof v === "string") assert.ok(zh[v], v);
     for (const s of r.slots) {
       for (const v of Object.values(s))
-        if (v) {
+        if (typeof v === "string" && v) {
           assert.ok(zh[v], v);
           assert.doesNotMatch(zh[v], /[a-z]/i);
         }

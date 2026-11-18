@@ -20,6 +20,19 @@ export function pointObservations(state, point, observation) {
 }
 export function pointConsensus(records, point) {
   if (!records.length) return null;
+  if (point.tower) {
+    const floors = records.map(
+      (r) => r.slots.find((s) => s.key === point.key)?.floors,
+    );
+    if (
+      !floors[0] ||
+      floors[0].length !== 3 ||
+      !floors.every(
+        (f) => f?.length === 3 && f.every((v, i) => v && v === floors[0][i]),
+      )
+    )
+      return null;
+  }
   const values = records.map((record) =>
     point.spawn
       ? record.spawn === point.spawn

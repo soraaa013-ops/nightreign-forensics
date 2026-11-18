@@ -1801,14 +1801,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "大树守卫和王城骑兵"
+          "location": "西北神授塔",
+          "value": "大树守卫和王城骑兵",
+          "floors": [
+            "接肢葛瑞克",
+            "龙装大树守卫和王城骑兵",
+            "大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "神皮双人组"
+          "location": "东南神授塔",
+          "value": "神皮双人组",
+          "floors": [
+            "英雄石像鬼",
+            "贪食魔龙",
+            "神皮双人组"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4437:0.5748:地表",
@@ -2079,14 +2089,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "铃珠猎人"
+          "location": "西北神授塔",
+          "value": "铃珠猎人",
+          "floors": [
+            "王室幽魂",
+            "龙装大树守卫和王城骑兵",
+            "铃珠猎人"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "冷冽谷的舞娘"
+          "location": "东南神授塔",
+          "value": "冷冽谷的舞娘",
+          "floors": [
+            "接肢葛瑞克",
+            "黑夜骑兵",
+            "冷冽谷的舞娘"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.6932:0.5306:地下",
@@ -2357,14 +2377,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "偏地老将"
+          "location": "西北神授塔",
+          "value": "偏地老将",
+          "floors": [
+            "战场老将",
+            "神皮双人组",
+            "偏地老将"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "死亡仪式鸟"
+          "location": "东南神授塔",
+          "value": "死亡仪式鸟",
+          "floors": [
+            "黑夜骑兵",
+            "大树守卫和王城骑兵",
+            "死亡仪式鸟"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.6932:0.5306:地下",
@@ -2635,14 +2665,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "熔炉骑士和黄金河马"
+          "location": "西北神授塔",
+          "value": "熔炉骑士和黄金河马",
+          "floors": [
+            "黑夜骑兵",
+            "大熔岩土龙",
+            "熔炉骑士和黄金河马"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "神皮双人组"
+          "location": "东南神授塔",
+          "value": "神皮双人组",
+          "floors": [
+            "战场老将",
+            "腐败树灵",
+            "神皮双人组"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7732:0.6404:地下",
@@ -2913,14 +2953,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "大熔岩土龙"
+          "location": "西北神授塔",
+          "value": "大熔岩土龙",
+          "floors": [
+            "英雄石像鬼",
+            "蒙格特",
+            "大熔岩土龙"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "死亡仪式鸟"
+          "location": "东南神授塔",
+          "value": "死亡仪式鸟",
+          "floors": [
+            "战场老将",
+            "神皮双人组",
+            "死亡仪式鸟"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.6932:0.5306:地下",
@@ -4941,14 +4991,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "大熔岩土龙"
+          "location": "西北神授塔",
+          "value": "大熔岩土龙",
+          "floors": [
+            "战场老将",
+            "诺克斯龙人士兵",
+            "大熔岩土龙"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "死亡仪式鸟"
+          "location": "东南神授塔",
+          "value": "死亡仪式鸟",
+          "floors": [
+            "腐败树灵",
+            "英雄石像鬼",
+            "死亡仪式鸟"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.6999:0.6168:地下",
@@ -5219,14 +5279,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "诺克斯龙人士兵"
+          "location": "西北神授塔",
+          "value": "诺克斯龙人士兵",
+          "floors": [
+            "王室幽魂",
+            "偏地老将",
+            "诺克斯龙人士兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "龙装大树守卫和王城骑兵"
+          "location": "东南神授塔",
+          "value": "龙装大树守卫和王城骑兵",
+          "floors": [
+            "接肢葛瑞克",
+            "英雄石像鬼",
+            "龙装大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.6932:0.5306:地下",
@@ -5497,14 +5567,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "铃珠猎人"
+          "location": "西北神授塔",
+          "value": "铃珠猎人",
+          "floors": [
+            "腐败树灵",
+            "战场老将",
+            "铃珠猎人"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "冷冽谷的舞娘"
+          "location": "东南神授塔",
+          "value": "冷冽谷的舞娘",
+          "floors": [
+            "王室幽魂",
+            "英雄石像鬼",
+            "冷冽谷的舞娘"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4629:0.3466:地表",
@@ -5775,14 +5855,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "神皮双人组"
+          "location": "西北神授塔",
+          "value": "神皮双人组",
+          "floors": [
+            "王室幽魂",
+            "坠星成兽",
+            "神皮双人组"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "死亡仪式鸟"
+          "location": "东南神授塔",
+          "value": "死亡仪式鸟",
+          "floors": [
+            "腐败树灵",
+            "黑夜骑兵",
+            "死亡仪式鸟"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.2867:0.5076:地表",
@@ -6053,14 +6143,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "神皮双人组"
+          "location": "西北神授塔",
+          "value": "神皮双人组",
+          "floors": [
+            "黑夜骑兵",
+            "坠星成兽",
+            "神皮双人组"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "蒙格特"
+          "location": "东南神授塔",
+          "value": "蒙格特",
+          "floors": [
+            "接肢葛瑞克",
+            "龙装大树守卫和王城骑兵",
+            "蒙格特"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.2867:0.5076:地表",
@@ -8081,14 +8181,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "神皮双人组"
+          "location": "西北神授塔",
+          "value": "神皮双人组",
+          "floors": [
+            "战场老将",
+            "死亡仪式鸟",
+            "神皮双人组"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "大熔岩土龙"
+          "location": "东南神授塔",
+          "value": "大熔岩土龙",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "冷冽谷的舞娘",
+            "大熔岩土龙"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4516:0.5456:地表",
@@ -8359,14 +8469,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "熔炉骑士和黄金河马"
+          "location": "西北神授塔",
+          "value": "熔炉骑士和黄金河马",
+          "floors": [
+            "接肢葛瑞克",
+            "诺克斯龙人士兵",
+            "熔炉骑士和黄金河马"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "大树守卫和王城骑兵"
+          "location": "东南神授塔",
+          "value": "大树守卫和王城骑兵",
+          "floors": [
+            "黑夜骑兵",
+            "坠星成兽",
+            "大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4629:0.3466:地表",
@@ -8637,14 +8757,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "偏地老将"
+          "location": "西北神授塔",
+          "value": "偏地老将",
+          "floors": [
+            "接肢葛瑞克",
+            "龙装大树守卫和王城骑兵",
+            "偏地老将"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "坠星成兽"
+          "location": "东南神授塔",
+          "value": "坠星成兽",
+          "floors": [
+            "百足恶魔",
+            "熔炉骑士和黄金河马",
+            "坠星成兽"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4437:0.5748:地表",
@@ -8915,14 +9045,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "死亡仪式鸟"
+          "location": "西北神授塔",
+          "value": "死亡仪式鸟",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "大树守卫和王城骑兵",
+            "死亡仪式鸟"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "熔炉骑士和黄金河马"
+          "location": "东南神授塔",
+          "value": "熔炉骑士和黄金河马",
+          "floors": [
+            "黑夜骑兵",
+            "熔铁恶魔",
+            "熔炉骑士和黄金河马"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4516:0.5456:地表",
@@ -9193,14 +9333,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "坠星成兽"
+          "location": "西北神授塔",
+          "value": "坠星成兽",
+          "floors": [
+            "王室幽魂",
+            "铃珠猎人",
+            "坠星成兽"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "蒙格特"
+          "location": "东南神授塔",
+          "value": "蒙格特",
+          "floors": [
+            "腐败树灵",
+            "英雄石像鬼",
+            "蒙格特"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4516:0.5456:地表",
@@ -11221,14 +11371,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "坠星成兽"
+          "location": "西北神授塔",
+          "value": "坠星成兽",
+          "floors": [
+            "王室幽魂",
+            "亚人女王和亚人剑圣",
+            "坠星成兽"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "偏地老将"
+          "location": "东南神授塔",
+          "value": "偏地老将",
+          "floors": [
+            "黑夜骑兵",
+            "死亡仪式鸟",
+            "偏地老将"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.2448:0.5384:地表",
@@ -11499,14 +11659,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "诺克斯龙人士兵"
+          "location": "西北神授塔",
+          "value": "诺克斯龙人士兵",
+          "floors": [
+            "腐败树灵",
+            "大树守卫和王城骑兵",
+            "诺克斯龙人士兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "大熔岩土龙"
+          "location": "东南神授塔",
+          "value": "大熔岩土龙",
+          "floors": [
+            "蜘蛛公爵",
+            "接肢葛瑞克",
+            "大熔岩土龙"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4516:0.5456:地表",
@@ -11777,14 +11947,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "熔炉骑士和黄金河马"
+          "location": "西北神授塔",
+          "value": "熔炉骑士和黄金河马",
+          "floors": [
+            "黑夜骑兵",
+            "铃珠猎人",
+            "熔炉骑士和黄金河马"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "死亡仪式鸟"
+          "location": "东南神授塔",
+          "value": "死亡仪式鸟",
+          "floors": [
+            "英雄石像鬼",
+            "冷冽谷的舞娘",
+            "死亡仪式鸟"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.6999:0.6168:地下",
@@ -12055,14 +12235,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "大树守卫和王城骑兵"
+          "location": "西北神授塔",
+          "value": "大树守卫和王城骑兵",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "黑夜骑兵",
+            "大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "偏地老将"
+          "location": "东南神授塔",
+          "value": "偏地老将",
+          "floors": [
+            "贪食魔龙",
+            "蒙格特",
+            "偏地老将"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4629:0.3466:地表",
@@ -12333,14 +12523,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "偏地老将"
+          "location": "西北神授塔",
+          "value": "偏地老将",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "坠星成兽",
+            "偏地老将"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "龙装大树守卫和王城骑兵"
+          "location": "东南神授塔",
+          "value": "龙装大树守卫和王城骑兵",
+          "floors": [
+            "百足恶魔",
+            "大熔岩土龙",
+            "龙装大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4676:0.6509:地表",
@@ -14361,14 +14561,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "大树守卫和王城骑兵"
+          "location": "西北神授塔",
+          "value": "大树守卫和王城骑兵",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "战场老将",
+            "大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "铃珠猎人"
+          "location": "东南神授塔",
+          "value": "铃珠猎人",
+          "floors": [
+            "黑夜骑兵",
+            "偏地老将",
+            "铃珠猎人"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.2448:0.5384:地表",
@@ -14639,14 +14849,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "龙装大树守卫和王城骑兵"
+          "location": "西北神授塔",
+          "value": "龙装大树守卫和王城骑兵",
+          "floors": [
+            "腐败树灵",
+            "蒙格特",
+            "龙装大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "偏地老将"
+          "location": "东南神授塔",
+          "value": "偏地老将",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "英雄石像鬼",
+            "偏地老将"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4676:0.6509:地表",
@@ -14917,14 +15137,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "冷冽谷的舞娘"
+          "location": "西北神授塔",
+          "value": "冷冽谷的舞娘",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "坠星成兽",
+            "冷冽谷的舞娘"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "熔炉骑士和黄金河马"
+          "location": "东南神授塔",
+          "value": "熔炉骑士和黄金河马",
+          "floors": [
+            "黑夜骑兵",
+            "战场老将",
+            "熔炉骑士和黄金河马"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.2867:0.5076:地表",
@@ -15195,14 +15425,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "诺克斯龙人士兵"
+          "location": "西北神授塔",
+          "value": "诺克斯龙人士兵",
+          "floors": [
+            "战场老将",
+            "龙装大树守卫和王城骑兵",
+            "诺克斯龙人士兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "大熔岩土龙"
+          "location": "东南神授塔",
+          "value": "大熔岩土龙",
+          "floors": [
+            "腐败树灵",
+            "冷冽谷的舞娘",
+            "大熔岩土龙"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4516:0.5456:地表",
@@ -15473,14 +15713,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "铃珠猎人"
+          "location": "西北神授塔",
+          "value": "铃珠猎人",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "战场老将",
+            "铃珠猎人"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "龙装大树守卫和王城骑兵"
+          "location": "东南神授塔",
+          "value": "龙装大树守卫和王城骑兵",
+          "floors": [
+            "百足恶魔",
+            "神皮双人组",
+            "龙装大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.6932:0.5306:地下",
@@ -17501,14 +17751,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "蒙格特"
+          "location": "西北神授塔",
+          "value": "蒙格特",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "铃珠猎人",
+            "蒙格特"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "龙装大树守卫和王城骑兵"
+          "location": "东南神授塔",
+          "value": "龙装大树守卫和王城骑兵",
+          "floors": [
+            "熔铁恶魔",
+            "冷冽谷的舞娘",
+            "龙装大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4516:0.5456:地表",
@@ -17779,14 +18039,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "大树守卫和王城骑兵"
+          "location": "西北神授塔",
+          "value": "大树守卫和王城骑兵",
+          "floors": [
+            "黑夜骑兵",
+            "大熔岩土龙",
+            "大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "蒙格特"
+          "location": "东南神授塔",
+          "value": "蒙格特",
+          "floors": [
+            "蜘蛛公爵",
+            "诺克斯龙人士兵",
+            "蒙格特"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.2867:0.5076:地表",
@@ -18057,14 +18327,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "熔炉骑士和黄金河马"
+          "location": "西北神授塔",
+          "value": "熔炉骑士和黄金河马",
+          "floors": [
+            "战场老将",
+            "龙装大树守卫和王城骑兵",
+            "熔炉骑士和黄金河马"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "坠星成兽"
+          "location": "东南神授塔",
+          "value": "坠星成兽",
+          "floors": [
+            "接肢葛瑞克",
+            "英雄石像鬼",
+            "坠星成兽"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7732:0.6404:地下",
@@ -18335,14 +18615,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "诺克斯龙人士兵"
+          "location": "西北神授塔",
+          "value": "诺克斯龙人士兵",
+          "floors": [
+            "腐败树灵",
+            "坠星成兽",
+            "诺克斯龙人士兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "神皮双人组"
+          "location": "东南神授塔",
+          "value": "神皮双人组",
+          "floors": [
+            "百足恶魔",
+            "龙装大树守卫和王城骑兵",
+            "神皮双人组"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.3599:0.6071:地表",
@@ -18613,14 +18903,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "坠星成兽"
+          "location": "西北神授塔",
+          "value": "坠星成兽",
+          "floors": [
+            "战场老将",
+            "黑夜骑兵",
+            "坠星成兽"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "大熔岩土龙"
+          "location": "东南神授塔",
+          "value": "大熔岩土龙",
+          "floors": [
+            "王室幽魂",
+            "冷冽谷的舞娘",
+            "大熔岩土龙"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.6999:0.6168:地下",
@@ -20641,14 +20941,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "大树守卫和王城骑兵"
+          "location": "西北神授塔",
+          "value": "大树守卫和王城骑兵",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "坠星成兽",
+            "大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "大熔岩土龙"
+          "location": "东南神授塔",
+          "value": "大熔岩土龙",
+          "floors": [
+            "战场老将",
+            "诺克斯龙人士兵",
+            "大熔岩土龙"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.5924:0.4878:地表",
@@ -20919,14 +21229,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "死亡仪式鸟"
+          "location": "西北神授塔",
+          "value": "死亡仪式鸟",
+          "floors": [
+            "战场老将",
+            "大树守卫和王城骑兵",
+            "死亡仪式鸟"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "龙装大树守卫和王城骑兵"
+          "location": "东南神授塔",
+          "value": "龙装大树守卫和王城骑兵",
+          "floors": [
+            "熔铁恶魔",
+            "偏地老将",
+            "龙装大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4676:0.6509:地表",
@@ -21197,14 +21517,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "冷冽谷的舞娘"
+          "location": "西北神授塔",
+          "value": "冷冽谷的舞娘",
+          "floors": [
+            "英雄石像鬼",
+            "大熔岩土龙",
+            "冷冽谷的舞娘"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "坠星成兽"
+          "location": "东南神授塔",
+          "value": "坠星成兽",
+          "floors": [
+            "王室幽魂",
+            "战场老将",
+            "坠星成兽"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4629:0.3466:地表",
@@ -21475,14 +21805,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "蒙格特"
+          "location": "西北神授塔",
+          "value": "蒙格特",
+          "floors": [
+            "战场老将",
+            "亚人女王和亚人剑圣",
+            "蒙格特"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "铃珠猎人"
+          "location": "东南神授塔",
+          "value": "铃珠猎人",
+          "floors": [
+            "接肢葛瑞克",
+            "英雄石像鬼",
+            "铃珠猎人"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.2448:0.5384:地表",
@@ -21753,14 +22093,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "偏地老将"
+          "location": "西北神授塔",
+          "value": "偏地老将",
+          "floors": [
+            "战场老将",
+            "腐败树灵",
+            "偏地老将"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "蒙格特"
+          "location": "东南神授塔",
+          "value": "蒙格特",
+          "floors": [
+            "熔铁恶魔",
+            "诺克斯龙人士兵",
+            "蒙格特"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.2867:0.5076:地表",
@@ -23781,14 +24131,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "偏地老将"
+          "location": "西北神授塔",
+          "value": "偏地老将",
+          "floors": [
+            "英雄石像鬼",
+            "大熔岩土龙",
+            "偏地老将"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "诺克斯龙人士兵"
+          "location": "东南神授塔",
+          "value": "诺克斯龙人士兵",
+          "floors": [
+            "王室幽魂",
+            "接肢葛瑞克",
+            "诺克斯龙人士兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.5924:0.4878:地表",
@@ -24059,14 +24419,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "坠星成兽"
+          "location": "西北神授塔",
+          "value": "坠星成兽",
+          "floors": [
+            "王室幽魂",
+            "死亡仪式鸟",
+            "坠星成兽"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "蒙格特"
+          "location": "东南神授塔",
+          "value": "蒙格特",
+          "floors": [
+            "百足恶魔",
+            "黑夜骑兵",
+            "蒙格特"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.2867:0.5076:地表",
@@ -24337,14 +24707,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "冷冽谷的舞娘"
+          "location": "西北神授塔",
+          "value": "冷冽谷的舞娘",
+          "floors": [
+            "腐败树灵",
+            "蒙格特",
+            "冷冽谷的舞娘"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "大树守卫和王城骑兵"
+          "location": "东南神授塔",
+          "value": "大树守卫和王城骑兵",
+          "floors": [
+            "熔铁恶魔",
+            "铃珠猎人",
+            "大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.3599:0.6071:地表",
@@ -24615,14 +24995,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "死亡仪式鸟"
+          "location": "西北神授塔",
+          "value": "死亡仪式鸟",
+          "floors": [
+            "战场老将",
+            "接肢葛瑞克",
+            "死亡仪式鸟"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "神皮双人组"
+          "location": "东南神授塔",
+          "value": "神皮双人组",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "英雄石像鬼",
+            "神皮双人组"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.6932:0.5306:地下",
@@ -24893,14 +25283,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "熔炉骑士和黄金河马"
+          "location": "西北神授塔",
+          "value": "熔炉骑士和黄金河马",
+          "floors": [
+            "战场老将",
+            "坠星成兽",
+            "熔炉骑士和黄金河马"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "龙装大树守卫和王城骑兵"
+          "location": "东南神授塔",
+          "value": "龙装大树守卫和王城骑兵",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "王室幽魂",
+            "龙装大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.6932:0.5306:地下",
@@ -36371,14 +36771,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "熔炉骑士和黄金河马"
+          "location": "西北神授塔",
+          "value": "熔炉骑士和黄金河马",
+          "floors": [
+            "战场老将",
+            "死亡仪式鸟",
+            "熔炉骑士和黄金河马"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "大熔岩土龙"
+          "location": "东南神授塔",
+          "value": "大熔岩土龙",
+          "floors": [
+            "蜘蛛公爵",
+            "英雄石像鬼",
+            "大熔岩土龙"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4676:0.6509:地表",
@@ -36649,14 +37059,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "偏地老将"
+          "location": "西北神授塔",
+          "value": "偏地老将",
+          "floors": [
+            "王室幽魂",
+            "死亡仪式鸟",
+            "偏地老将"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "蒙格特"
+          "location": "东南神授塔",
+          "value": "蒙格特",
+          "floors": [
+            "战场老将",
+            "坠星成兽",
+            "蒙格特"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.2448:0.5384:地表",
@@ -36927,14 +37347,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "龙装大树守卫和王城骑兵"
+          "location": "西北神授塔",
+          "value": "龙装大树守卫和王城骑兵",
+          "floors": [
+            "战场老将",
+            "王室幽魂",
+            "龙装大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "诺克斯龙人士兵"
+          "location": "东南神授塔",
+          "value": "诺克斯龙人士兵",
+          "floors": [
+            "黑夜骑兵",
+            "熔炉骑士和黄金河马",
+            "诺克斯龙人士兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.2867:0.5076:地表",
@@ -37205,14 +37635,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "神皮双人组"
+          "location": "西北神授塔",
+          "value": "神皮双人组",
+          "floors": [
+            "英雄石像鬼",
+            "铃珠猎人",
+            "神皮双人组"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "蒙格特"
+          "location": "东南神授塔",
+          "value": "蒙格特",
+          "floors": [
+            "接肢葛瑞克",
+            "贪食魔龙",
+            "蒙格特"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4629:0.3466:地表",
@@ -37483,14 +37923,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "冷冽谷的舞娘"
+          "location": "西北神授塔",
+          "value": "冷冽谷的舞娘",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "铃珠猎人",
+            "冷冽谷的舞娘"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "神皮双人组"
+          "location": "东南神授塔",
+          "value": "神皮双人组",
+          "floors": [
+            "英雄石像鬼",
+            "熔铁恶魔",
+            "神皮双人组"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4437:0.5748:地表",
@@ -37761,14 +38211,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "冷冽谷的舞娘"
+          "location": "西北神授塔",
+          "value": "冷冽谷的舞娘",
+          "floors": [
+            "腐败树灵",
+            "死亡仪式鸟",
+            "冷冽谷的舞娘"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "诺克斯龙人士兵"
+          "location": "东南神授塔",
+          "value": "诺克斯龙人士兵",
+          "floors": [
+            "王室幽魂",
+            "神皮双人组",
+            "诺克斯龙人士兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.6932:0.5306:地下",
@@ -38039,14 +38499,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "冷冽谷的舞娘"
+          "location": "西北神授塔",
+          "value": "冷冽谷的舞娘",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "大熔岩土龙",
+            "冷冽谷的舞娘"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "诺克斯龙人士兵"
+          "location": "东南神授塔",
+          "value": "诺克斯龙人士兵",
+          "floors": [
+            "腐败树灵",
+            "英雄石像鬼",
+            "诺克斯龙人士兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.2448:0.5384:地表",
@@ -38317,14 +38787,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "诺克斯龙人士兵"
+          "location": "西北神授塔",
+          "value": "诺克斯龙人士兵",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "战场老将",
+            "诺克斯龙人士兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "蒙格特"
+          "location": "东南神授塔",
+          "value": "蒙格特",
+          "floors": [
+            "英雄石像鬼",
+            "腐败树灵",
+            "蒙格特"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4629:0.3466:地表",
@@ -38595,14 +39075,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "偏地老将"
+          "location": "西北神授塔",
+          "value": "偏地老将",
+          "floors": [
+            "接肢葛瑞克",
+            "大熔岩土龙",
+            "偏地老将"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "坠星成兽"
+          "location": "东南神授塔",
+          "value": "坠星成兽",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "神皮双人组",
+            "坠星成兽"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.6999:0.6168:地下",
@@ -38873,14 +39363,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "蒙格特"
+          "location": "西北神授塔",
+          "value": "蒙格特",
+          "floors": [
+            "黑夜骑兵",
+            "大熔岩土龙",
+            "蒙格特"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "龙装大树守卫和王城骑兵"
+          "location": "东南神授塔",
+          "value": "龙装大树守卫和王城骑兵",
+          "floors": [
+            "接肢葛瑞克",
+            "死亡仪式鸟",
+            "龙装大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.6999:0.6168:地下",
@@ -39151,14 +39651,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "诺克斯龙人士兵"
+          "location": "西北神授塔",
+          "value": "诺克斯龙人士兵",
+          "floors": [
+            "英雄石像鬼",
+            "蒙格特",
+            "诺克斯龙人士兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "大树守卫和王城骑兵"
+          "location": "东南神授塔",
+          "value": "大树守卫和王城骑兵",
+          "floors": [
+            "熔铁恶魔",
+            "大熔岩土龙",
+            "大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.3599:0.6071:地表",
@@ -39429,14 +39939,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "诺克斯龙人士兵"
+          "location": "西北神授塔",
+          "value": "诺克斯龙人士兵",
+          "floors": [
+            "黑夜骑兵",
+            "坠星成兽",
+            "诺克斯龙人士兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "蒙格特"
+          "location": "东南神授塔",
+          "value": "蒙格特",
+          "floors": [
+            "接肢葛瑞克",
+            "贪食魔龙",
+            "蒙格特"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4437:0.5748:地表",
@@ -39707,14 +40227,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "诺克斯龙人士兵"
+          "location": "西北神授塔",
+          "value": "诺克斯龙人士兵",
+          "floors": [
+            "接肢葛瑞克",
+            "黑夜骑兵",
+            "诺克斯龙人士兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "大树守卫和王城骑兵"
+          "location": "东南神授塔",
+          "value": "大树守卫和王城骑兵",
+          "floors": [
+            "百足恶魔",
+            "坠星成兽",
+            "大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7732:0.6404:地下",
@@ -39985,14 +40515,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "铃珠猎人"
+          "location": "西北神授塔",
+          "value": "铃珠猎人",
+          "floors": [
+            "黑夜骑兵",
+            "战场老将",
+            "铃珠猎人"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "诺克斯龙人士兵"
+          "location": "东南神授塔",
+          "value": "诺克斯龙人士兵",
+          "floors": [
+            "接肢葛瑞克",
+            "坠星成兽",
+            "诺克斯龙人士兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.2448:0.5384:地表",
@@ -40263,14 +40803,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "蒙格特"
+          "location": "西北神授塔",
+          "value": "蒙格特",
+          "floors": [
+            "接肢葛瑞克",
+            "龙装大树守卫和王城骑兵",
+            "蒙格特"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "偏地老将"
+          "location": "东南神授塔",
+          "value": "偏地老将",
+          "floors": [
+            "贪食魔龙",
+            "诺克斯龙人士兵",
+            "偏地老将"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.3599:0.6071:地表",
@@ -40541,14 +41091,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "大树守卫和王城骑兵"
+          "location": "西北神授塔",
+          "value": "大树守卫和王城骑兵",
+          "floors": [
+            "接肢葛瑞克",
+            "诺克斯龙人士兵",
+            "大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "冷冽谷的舞娘"
+          "location": "东南神授塔",
+          "value": "冷冽谷的舞娘",
+          "floors": [
+            "王室幽魂",
+            "熔铁恶魔",
+            "冷冽谷的舞娘"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.6999:0.6168:地下",
@@ -40819,14 +41379,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "诺克斯龙人士兵"
+          "location": "西北神授塔",
+          "value": "诺克斯龙人士兵",
+          "floors": [
+            "黑夜骑兵",
+            "英雄石像鬼",
+            "诺克斯龙人士兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "大熔岩土龙"
+          "location": "东南神授塔",
+          "value": "大熔岩土龙",
+          "floors": [
+            "腐败树灵",
+            "战场老将",
+            "大熔岩土龙"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4629:0.3466:地表",
@@ -41097,14 +41667,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "神皮双人组"
+          "location": "西北神授塔",
+          "value": "神皮双人组",
+          "floors": [
+            "战场老将",
+            "腐败树灵",
+            "神皮双人组"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "铃珠猎人"
+          "location": "东南神授塔",
+          "value": "铃珠猎人",
+          "floors": [
+            "王室幽魂",
+            "熔炉骑士和黄金河马",
+            "铃珠猎人"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.2867:0.5076:地表",
@@ -41375,14 +41955,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "大熔岩土龙"
+          "location": "西北神授塔",
+          "value": "大熔岩土龙",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "铃珠猎人",
+            "大熔岩土龙"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "熔炉骑士和黄金河马"
+          "location": "东南神授塔",
+          "value": "熔炉骑士和黄金河马",
+          "floors": [
+            "腐败树灵",
+            "英雄石像鬼",
+            "熔炉骑士和黄金河马"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.6932:0.5306:地下",
@@ -41653,14 +42243,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "死亡仪式鸟"
+          "location": "西北神授塔",
+          "value": "死亡仪式鸟",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "接肢葛瑞克",
+            "死亡仪式鸟"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "蒙格特"
+          "location": "东南神授塔",
+          "value": "蒙格特",
+          "floors": [
+            "熔铁恶魔",
+            "坠星成兽",
+            "蒙格特"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4516:0.5456:地表",
@@ -54341,14 +54941,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "熔炉骑士和黄金河马"
+          "location": "西北神授塔",
+          "value": "熔炉骑士和黄金河马",
+          "floors": [
+            "英雄石像鬼",
+            "蒙格特",
+            "熔炉骑士和黄金河马"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "龙装大树守卫和王城骑兵"
+          "location": "东南神授塔",
+          "value": "龙装大树守卫和王城骑兵",
+          "floors": [
+            "王室幽魂",
+            "坠星成兽",
+            "龙装大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.6932:0.5306:地下",
@@ -54619,14 +55229,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "偏地老将"
+          "location": "西北神授塔",
+          "value": "偏地老将",
+          "floors": [
+            "腐败树灵",
+            "大熔岩土龙",
+            "偏地老将"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "诺克斯龙人士兵"
+          "location": "东南神授塔",
+          "value": "诺克斯龙人士兵",
+          "floors": [
+            "战场老将",
+            "黑夜骑兵",
+            "诺克斯龙人士兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4629:0.3466:地表",
@@ -54897,14 +55517,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "铃珠猎人"
+          "location": "西北神授塔",
+          "value": "铃珠猎人",
+          "floors": [
+            "接肢葛瑞克",
+            "偏地老将",
+            "铃珠猎人"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "诺克斯龙人士兵"
+          "location": "东南神授塔",
+          "value": "诺克斯龙人士兵",
+          "floors": [
+            "黑夜骑兵",
+            "大熔岩土龙",
+            "诺克斯龙人士兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.6932:0.5306:地下",
@@ -55175,14 +55805,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "坠星成兽"
+          "location": "西北神授塔",
+          "value": "坠星成兽",
+          "floors": [
+            "接肢葛瑞克",
+            "亚人女王和亚人剑圣",
+            "坠星成兽"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "偏地老将"
+          "location": "东南神授塔",
+          "value": "偏地老将",
+          "floors": [
+            "战场老将",
+            "英雄石像鬼",
+            "偏地老将"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4516:0.5456:地表",
@@ -55453,14 +56093,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "大熔岩土龙"
+          "location": "西北神授塔",
+          "value": "大熔岩土龙",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "坠星成兽",
+            "大熔岩土龙"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "龙装大树守卫和王城骑兵"
+          "location": "东南神授塔",
+          "value": "龙装大树守卫和王城骑兵",
+          "floors": [
+            "英雄石像鬼",
+            "接肢葛瑞克",
+            "龙装大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.3599:0.6071:地表",
@@ -55731,14 +56381,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "坠星成兽"
+          "location": "西北神授塔",
+          "value": "坠星成兽",
+          "floors": [
+            "腐败树灵",
+            "王室幽魂",
+            "坠星成兽"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "偏地老将"
+          "location": "东南神授塔",
+          "value": "偏地老将",
+          "floors": [
+            "贪食魔龙",
+            "亚人女王和亚人剑圣",
+            "偏地老将"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7732:0.6404:地下",
@@ -56009,14 +56669,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "大树守卫和王城骑兵"
+          "location": "西北神授塔",
+          "value": "大树守卫和王城骑兵",
+          "floors": [
+            "战场老将",
+            "亚人女王和亚人剑圣",
+            "大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "偏地老将"
+          "location": "东南神授塔",
+          "value": "偏地老将",
+          "floors": [
+            "接肢葛瑞克",
+            "腐败树灵",
+            "偏地老将"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.6932:0.5306:地下",
@@ -56287,14 +56957,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "坠星成兽"
+          "location": "西北神授塔",
+          "value": "坠星成兽",
+          "floors": [
+            "腐败树灵",
+            "大熔岩土龙",
+            "坠星成兽"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "死亡仪式鸟"
+          "location": "东南神授塔",
+          "value": "死亡仪式鸟",
+          "floors": [
+            "蜘蛛公爵",
+            "英雄石像鬼",
+            "死亡仪式鸟"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.2448:0.5384:地表",
@@ -56565,14 +57245,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "大树守卫和王城骑兵"
+          "location": "西北神授塔",
+          "value": "大树守卫和王城骑兵",
+          "floors": [
+            "王室幽魂",
+            "腐败树灵",
+            "大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "龙装大树守卫和王城骑兵"
+          "location": "东南神授塔",
+          "value": "龙装大树守卫和王城骑兵",
+          "floors": [
+            "蜘蛛公爵",
+            "死亡仪式鸟",
+            "龙装大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4437:0.5748:地表",
@@ -56843,14 +57533,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "死亡仪式鸟"
+          "location": "西北神授塔",
+          "value": "死亡仪式鸟",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "偏地老将",
+            "死亡仪式鸟"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "蒙格特"
+          "location": "东南神授塔",
+          "value": "蒙格特",
+          "floors": [
+            "王室幽魂",
+            "神皮双人组",
+            "蒙格特"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4437:0.5748:地表",
@@ -57121,14 +57821,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "大树守卫和王城骑兵"
+          "location": "西北神授塔",
+          "value": "大树守卫和王城骑兵",
+          "floors": [
+            "腐败树灵",
+            "诺克斯龙人士兵",
+            "大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "蒙格特"
+          "location": "东南神授塔",
+          "value": "蒙格特",
+          "floors": [
+            "英雄石像鬼",
+            "百足恶魔",
+            "蒙格特"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4629:0.3466:地表",
@@ -57399,14 +58109,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "冷冽谷的舞娘"
+          "location": "西北神授塔",
+          "value": "冷冽谷的舞娘",
+          "floors": [
+            "腐败树灵",
+            "偏地老将",
+            "冷冽谷的舞娘"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "蒙格特"
+          "location": "东南神授塔",
+          "value": "蒙格特",
+          "floors": [
+            "接肢葛瑞克",
+            "大熔岩土龙",
+            "蒙格特"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.2448:0.5384:地表",
@@ -57677,14 +58397,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "龙装大树守卫和王城骑兵"
+          "location": "西北神授塔",
+          "value": "龙装大树守卫和王城骑兵",
+          "floors": [
+            "黑夜骑兵",
+            "死亡仪式鸟",
+            "龙装大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "冷冽谷的舞娘"
+          "location": "东南神授塔",
+          "value": "冷冽谷的舞娘",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "腐败树灵",
+            "冷冽谷的舞娘"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4629:0.3466:地表",
@@ -57955,14 +58685,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "大树守卫和王城骑兵"
+          "location": "西北神授塔",
+          "value": "大树守卫和王城骑兵",
+          "floors": [
+            "王室幽魂",
+            "死亡仪式鸟",
+            "大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "诺克斯龙人士兵"
+          "location": "东南神授塔",
+          "value": "诺克斯龙人士兵",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "龙装大树守卫和王城骑兵",
+            "诺克斯龙人士兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.5924:0.4878:地表",
@@ -58233,14 +58973,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "神皮双人组"
+          "location": "西北神授塔",
+          "value": "神皮双人组",
+          "floors": [
+            "亚人女王和亚人剑圣",
+            "龙装大树守卫和王城骑兵",
+            "神皮双人组"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "偏地老将"
+          "location": "东南神授塔",
+          "value": "偏地老将",
+          "floors": [
+            "王室幽魂",
+            "接肢葛瑞克",
+            "偏地老将"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.3599:0.6071:地表",
@@ -58511,14 +59261,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "大树守卫和王城骑兵"
+          "location": "西北神授塔",
+          "value": "大树守卫和王城骑兵",
+          "floors": [
+            "英雄石像鬼",
+            "神皮双人组",
+            "大树守卫和王城骑兵"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "冷冽谷的舞娘"
+          "location": "东南神授塔",
+          "value": "冷冽谷的舞娘",
+          "floors": [
+            "战场老将",
+            "铃珠猎人",
+            "冷冽谷的舞娘"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.5924:0.4878:地表",
@@ -58789,14 +59549,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "熔炉骑士和黄金河马"
+          "location": "西北神授塔",
+          "value": "熔炉骑士和黄金河马",
+          "floors": [
+            "接肢葛瑞克",
+            "蒙格特",
+            "熔炉骑士和黄金河马"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "大熔岩土龙"
+          "location": "东南神授塔",
+          "value": "大熔岩土龙",
+          "floors": [
+            "英雄石像鬼",
+            "王室幽魂",
+            "大熔岩土龙"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4516:0.5456:地表",
@@ -59067,14 +59837,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "偏地老将"
+          "location": "西北神授塔",
+          "value": "偏地老将",
+          "floors": [
+            "王室幽魂",
+            "亚人女王和亚人剑圣",
+            "偏地老将"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "死亡仪式鸟"
+          "location": "东南神授塔",
+          "value": "死亡仪式鸟",
+          "floors": [
+            "英雄石像鬼",
+            "冷冽谷的舞娘",
+            "死亡仪式鸟"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.4516:0.5456:地表",
@@ -59345,14 +60125,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "冷冽谷的舞娘"
+          "location": "西北神授塔",
+          "value": "冷冽谷的舞娘",
+          "floors": [
+            "接肢葛瑞克",
+            "腐败树灵",
+            "冷冽谷的舞娘"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "偏地老将"
+          "location": "东南神授塔",
+          "value": "偏地老将",
+          "floors": [
+            "熔铁恶魔",
+            "铃珠猎人",
+            "偏地老将"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7732:0.6404:地下",
@@ -59623,14 +60413,24 @@
         {
           "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 西地表点位 1114",
-          "value": "熔炉骑士和黄金河马"
+          "location": "西北神授塔",
+          "value": "熔炉骑士和黄金河马",
+          "floors": [
+            "战场老将",
+            "死亡仪式鸟",
+            "熔炉骑士和黄金河马"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
           "category": "Field Boss",
-          "location": "大空洞 · 东南地表点位 1111",
-          "value": "大熔岩土龙"
+          "location": "东南神授塔",
+          "value": "大熔岩土龙",
+          "floors": [
+            "百足恶魔",
+            "蒙格特",
+            "大熔岩土龙"
+          ]
         },
         {
           "key": "Great Hollow:Field Boss:0.5924:0.4878:地表",

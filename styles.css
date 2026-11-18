@@ -1887,3 +1887,55 @@ footer {
   margin-top: 6px;
   width: 100%;
 }
+.tower-floor {
+  padding: 10px 0;
+  border-top: 1px solid #cbd0c7;
+}
+.tower-floor h3 {
+  margin: 0 0 5px;
+  font-size: 13px;
+  color: #315c5e;
+}
+.tower-floor p {
+  margin: 0;
+  font-size: 15px;
+}
+.tower-floor small {
+  color: #58696b;
+  font-size: 11px;
+}
+.tower-floor summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 10px 0;
+}
+.tower-floor ul {
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.tower-record-floors {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.tower-description > p {
+  margin: 8px 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.tower-floor {
+  position: relative;
+  padding: 8px 0;
+}
+.tower-floor p {
+  font-size: 14px;
+  line-height: 1.45;
+}
+.tower-floor small {
+  position: absolute;
+  top: 8px;
+  right: 0;
+}

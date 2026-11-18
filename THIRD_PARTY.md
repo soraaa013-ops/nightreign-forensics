@@ -59,3 +59,15 @@ Catalogue counts and random first-circle behavior were cross-checked against
 New Nightlord labels follow the simplified Chinese names “安定者们” and “废弃物之王”
 ([Chinese guide](https://www.gamersky.com/handbook/202512/2054550.shtml)).
 Random crystal positions and unidentified internal components are not asserted as fixed observations.
+
+### Divine tower floors
+
+Great Hollow attachment IDs 1114–1116 identify the northwest divine tower's
+three floors; 1111–1113 identify the southeast tower's floors. They share one
+geographic anchor per tower. This grouping is documented by the pinned upstream
+[source mapping](https://github.com/xqfinxd/NightreignApp/blob/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/scripts/generate_spot_list.py).
+Floor order and example encounters were cross-checked with the
+[annotated layout 1005](https://thefifthmatt.github.io/nightreign/gladius/1005.html).
+`floors` preserves all three ordered encounters in each slot. The existing
+observation value still represents the third-floor boss, preserving saved links.
+Each floor's displayed certainty is evaluated separately across the current candidates.

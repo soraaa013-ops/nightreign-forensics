@@ -79,6 +79,16 @@ for r in patterns[320:]:
   code=str(int(v['variationId'])*10+int(v['variationType']));m=manual.get(code);s=spots.get((r['map'],r['isdlc'],v['attachId']))
   if not m or not s or not category(m) or m['visible']=='0':
    unmapped[code]+=1;continue
+  if terrain=='Great Hollow' and v['attachId'] in ['1111','1112','1113','1114','1115','1116']:
+   attach=int(v['attachId']);first=1111 if attach<=1113 else 1114;floor=attach-first
+   anchor=spots[(r['map'],r['isdlc'],str(first))];p=point(anchor,'Field Boss',terrain)
+   name=term('东南神授塔' if first==1111 else '西北神授塔');p.update(tower=True,location=name);zh[p['key']]=name+' · 第三层'
+   value=mapping.get(code) or term(m['label'])
+   slot=slots.setdefault(p['key'],dict(key=p['key'],category=p['category'],location=name,value=None,floors=[None,None,None]))
+   slot['floors'][floor]=value
+   # Preserve the existing third-floor observation key/value for saved links.
+   if floor==2:slot['value']=value
+   continue
   p=point(s,category(m),terrain)
   value=mapping.get(code) or term(m['label']+(' - '+m['sublabel'] if m['sublabel'] else ''))
   if p['key'] in slots and slots[p['key']]['value']!=value:
@@ -94,6 +104,10 @@ for r in patterns[320:]:
  record=dict(id=int(r['id']),nightlord=lords[int(r['boss'])],mapType=terrain,spawn=spawns[r['starter']],specialEvent=events.get(r['id'],term('无特殊事件')),night1Boss=bosses.get(r['bossId1'],term('未记录')),night2Boss=bosses.get(r['bossId2'],term('未记录')),extraNightBoss='、'.join(zh.get(bosses.get(r[f'extraBossId{i}'],''),bosses.get(r[f'extraBossId{i}'],'')) for i in [1,2] if r[f'extraBossId{i}']!='-1') or None,night1Circle=term('第一夜缩圈随机'),night2Circle=term(('西' if int(r['playArea2_gridXNo'])<44 else '东')+('北' if int(r['playArea2_gridZNo'])>=38 else '南')+'区域'),slots=list(slots.values()))
  if record['extraNightBoss']:term(record['extraNightBoss'])
  records.append(record)
+for record in records:
+ if record['mapType']=='Great Hollow':
+  towers=[s for s in record['slots'] if 'floors' in s]
+  assert len(towers)==2 and all(len(t['floors'])==3 and all(t['floors']) for t in towers), record['id']
 # Null slots represent absent known sites within that terrain, enabling explicit empty observations.
 allpoints=geo['points']+list(newpoints.values())
 for r in records:

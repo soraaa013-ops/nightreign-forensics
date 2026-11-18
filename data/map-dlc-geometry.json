@@ -145,25 +145,27 @@
       "id": "Great Hollow:Field Boss:0.2618:0.4306:地表",
       "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
       "category": "Field Boss",
-      "location": "大空洞 · 西地表点位 1114",
+      "location": "西北神授塔",
       "x": 0.2618098958333333,
       "y": 0.43057291666666664,
       "terrains": [
         "Great Hollow"
       ],
-      "level": "地表"
+      "level": "地表",
+      "tower": true
     },
     {
       "id": "Great Hollow:Field Boss:0.7188:0.6911:地表",
       "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
       "category": "Field Boss",
-      "location": "大空洞 · 东南地表点位 1111",
+      "location": "东南神授塔",
       "x": 0.7188216145833334,
       "y": 0.69111328125,
       "terrains": [
         "Great Hollow"
       ],
-      "level": "地表"
+      "level": "地表",
+      "tower": true
     },
     {
       "id": "Great Hollow:Field Boss:0.4437:0.5748:地表",

@@ -14,6 +14,7 @@
     "test:chinese": "python3 tests/simplified.py",
     "test:atlas": "python3 tests/atlas-browser.py",
     "test:dlc": "python3 tests/dlc-browser.py",
-    "test:zoom": "python3 tests/map-zoom-browser.py"
+    "test:zoom": "python3 tests/map-zoom-browser.py",
+    "test:towers": "python3 tests/tower-browser.py"
   }
 }

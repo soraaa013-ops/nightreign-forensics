@@ -1,4 +1,4 @@
-import { createAtlas } from "./map-atlas.js?v=spatial-2";
+import { createAtlas } from "./map-atlas.js?v=towers-1";
 import { recommendObservation } from "./map-filter.js";
 import { queryMaps, matchesObservation, facetCounts } from "./map-query.js";
 import { matchesSearch } from "./search.js";
@@ -96,6 +96,16 @@ function renderRecord(record) {
         node("small", zh(slot.location)),
         node("span", zh(slot.value)),
       );
+      if (slot.floors) {
+        item.querySelector("span").textContent = "神授塔 · 三层强敌";
+        const floors = node("ol", "", "tower-record-floors");
+        slot.floors.forEach((boss, i) =>
+          floors.append(
+            node("li", `第${["一", "二", "三"][i]}层：${zh(boss)}`),
+          ),
+        );
+        item.append(floors);
+      }
       list.append(item);
     }
     group.append(list);
@@ -534,7 +544,7 @@ async function init() {
     [mapData, dictionary] = await Promise.all([
       Promise.all([
         loadJson("data/map-data.json"),
-        loadJson("data/map-dlc.json"),
+        loadJson("data/map-dlc.json?v=towers-1"),
       ]).then(([base, dlc]) => {
         const records = [...base.records, ...dlc.records];
         return {
@@ -552,7 +562,7 @@ async function init() {
           ),
         };
       }),
-      loadJson("data/zh-CN.json"),
+      loadJson("data/zh-CN.json?v=towers-1"),
     ]);
     $("#base-filters").open = false;
     $("#location-details").open = false;

@@ -1,9 +1,10 @@
+import { towerFloors } from "./map-tower.js?v=towers-1";
 import { queryMaps } from "./map-query.js";
 import {
   pointInLayer,
   pointObservations,
   pointConsensus,
-} from "./map-spatial.js";
+} from "./map-spatial.js?v=towers-1";
 import {
   detailLevel,
   layoutMarkers,
@@ -21,7 +22,7 @@ export async function createAtlas({ data, zh, getState, change }) {
     editor = $("atlas-editor");
   const [geometry, extension] = await Promise.all([
     loadJson("data/map-geometry.json"),
-    loadJson("data/map-dlc-geometry.json"),
+    loadJson("data/map-dlc-geometry.json?v=towers-1"),
   ]);
   geometry.points.push(...extension.points);
   Object.assign(geometry.layouts, extension.layouts);
@@ -95,7 +96,11 @@ export async function createAtlas({ data, zh, getState, change }) {
     return b;
   };
   const label = (point) => {
-    const type = point.spawn ? "出生位置" : zh(point.category),
+    const type = point.tower
+        ? "三层强敌"
+        : point.spawn
+          ? "出生位置"
+          : zh(point.category),
       place = zh(point.location);
     return type === place ? place : `${type} · ${place}`;
   };
@@ -404,6 +409,52 @@ export async function createAtlas({ data, zh, getState, change }) {
     header.append(btn("关闭", close));
     const content = [header];
     const known = pointConsensus(records, point);
+    if (point.tower && !editing) {
+      const facts = el("div", null, "point-description tower-description");
+      facts.append(el("p", "逐层挑战，三层共用这一个地图点位。"));
+      for (const floor of towerFloors(records, point.key)) {
+        const row = el("section", null, "tower-floor");
+        row.append(el("h3", `第${["一", "二", "三"][floor.floor - 1]}层`));
+        if (floor.certain)
+          row.append(el("p", zh(floor.values[0])), el("small", "当前候选一致"));
+        else if (!floor.values.length)
+          row.append(el("p", "暂无匹配档案，请先调整筛选条件。"));
+        else {
+          const choices = el("details");
+          choices.append(
+            el("summary", `尚未确定 · 查看 ${floor.values.length} 种候选`),
+          );
+          const list = el("ul");
+          floor.values
+            .map(zh)
+            .sort((a, b) => a.localeCompare(b, "zh-CN"))
+            .forEach((v) => list.append(el("li", v)));
+          choices.append(list);
+          row.append(choices);
+        }
+        facts.append(row);
+      }
+      facts.append(
+        btn(
+          "记录第三层强敌",
+          () => {
+            editing = true;
+            renderEditor();
+          },
+          "point-edit",
+        ),
+      );
+      editor.replaceChildren(header, facts);
+      return;
+    }
+    if (point.tower)
+      content.push(
+        el(
+          "p",
+          "这里记录第三层强敌；第一、第二层信息会随候选同步更新。",
+          "atlas-current",
+        ),
+      );
     if (known && !editing) {
       const facts = el("div", null, "point-description");
       facts.append(
@@ -732,9 +783,11 @@ export async function createAtlas({ data, zh, getState, change }) {
         empty: "空",
       }[content?.split(" - ")[0]];
       const b = btn(
-        point.spawn
-          ? "出"
-          : glyph ||
+        point.tower
+          ? "塔"
+          : point.spawn
+            ? "出"
+            : glyph ||
               (point.category === "Evergaol"
                 ? "牢"
                 : point.category.includes("Boss")
@@ -762,8 +815,13 @@ export async function createAtlas({ data, zh, getState, change }) {
           ),
         ),
       ];
-      const detail =
-        observed(point) || common
+      const detail = point.tower
+        ? towerFloors(records, point.key)
+            .map(
+              (f) => `${f.floor}层：${f.certain ? zh(f.values[0]) : "待确定"}`,
+            )
+            .join("；")
+        : observed(point) || common
           ? pointName(point)
           : point.spawn
             ? "候选出生位置"
