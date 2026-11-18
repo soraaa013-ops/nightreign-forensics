@@ -1,10 +1,16 @@
 import { queryMaps } from "./map-query.js";
 import {
-  nearestPoints,
   pointInLayer,
   pointObservations,
   pointConsensus,
 } from "./map-spatial.js";
+import {
+  detailLevel,
+  layoutMarkers,
+  layoutLabels,
+  focusZoom,
+} from "./map-layout.js?v=spatial-2";
+import { readDraft, writeDraft } from "./draft.js";
 import { loadJson } from "./locale.js";
 
 export async function createAtlas({ data, zh, getState, change }) {
@@ -25,6 +31,37 @@ export async function createAtlas({ data, zh, getState, change }) {
     underground = !underground;
     terrain = "";
     rebuild();
+  });
+  const preferences = readDraft("nightreign-atlas-view-v1") || {};
+  const detailControl = $("atlas-detail"),
+    autozoomControl = $("atlas-autozoom");
+  detailControl.value = ["auto", "none", "names", "details"].includes(
+    preferences.detail,
+  )
+    ? preferences.detail
+    : "auto";
+  autozoomControl.checked = preferences.autozoom !== false;
+  const cameraHistory = [],
+    focused = new Set();
+  const savePreferences = () => {
+    writeDraft("nightreign-atlas-view-v1", {
+      detail: detailControl.value,
+      autozoom: autozoomControl.checked,
+    });
+    draw();
+  };
+  detailControl.addEventListener("change", savePreferences);
+  autozoomControl.addEventListener("change", savePreferences);
+  $("atlas-layer-menu").addEventListener("toggle", () => draw());
+  $("atlas-back").addEventListener("click", () => {
+    const previous = cameraHistory.pop();
+    if (previous) {
+      zoom = previous.zoom;
+      pan = previous.pan;
+      focused.clear();
+      close(false);
+      draw();
+    }
   });
   let zoom = 1,
     pan = { x: 0, y: 0 },
@@ -86,8 +123,45 @@ export async function createAtlas({ data, zh, getState, change }) {
       y: (viewport.clientHeight - size) / 2 + pan.y,
     };
   }
-  function activateGroup(group) {
+  function activateGroup(group, keyboard = false) {
     const point = group.points[0];
+    const neighbors = groups.filter(
+      (g) =>
+        g.points[0].id !== point.id &&
+        Math.hypot(g.x - point.x, g.y - point.y) * size <
+          (viewport.clientWidth < 760 ? 60 : 42),
+    );
+    if (
+      !keyboard &&
+      autozoomControl.checked &&
+      neighbors.length &&
+      !focused.has(point.id) &&
+      zoom < 12
+    ) {
+      cameraHistory.push({ zoom, pan: { ...pan } });
+      if (cameraHistory.length > 8) cameraHistory.shift();
+      focused.clear();
+      [point, ...neighbors.map((g) => g.points[0])].forEach((p) =>
+        focused.add(p.id),
+      );
+      zoom = focusZoom(
+        point,
+        groups.map((g) => g.points[0]),
+        Math.min(viewport.clientWidth, viewport.clientHeight),
+        zoom,
+      );
+      const nextSize =
+        Math.min(viewport.clientWidth, viewport.clientHeight) * zoom;
+      pan = { x: (0.5 - point.x) * nextSize, y: (0.5 - point.y) * nextSize };
+      close(false);
+      draw();
+      $("atlas-status").textContent =
+        "已放大目标附近，点位分别显示。点击所需点位查看或标记。";
+      groups
+        .find((g) => g.points[0].id === point.id)
+        ?.button.focus({ preventScroll: true });
+      if (!pointConsensus(records, point)) return;
+    }
     if (
       layerMode === "spawn" &&
       !observed(point) &&
@@ -102,39 +176,150 @@ export async function createAtlas({ data, zh, getState, change }) {
     tiles.style.width = `${size}px`;
     tiles.style.height = `${size}px`;
     tiles.style.transform = `translate(${origin.x}px,${origin.y}px)`;
-    const key = `${size}:${layerMode}:${revision}`;
+    $("atlas-back").hidden = !cameraHistory.length;
+    const width = viewport.clientWidth,
+      height = viewport.clientHeight;
+    const level = detailLevel(size, detailControl.value);
+    const diameter =
+      size >= 800 ? (width < 760 ? 44 : 32) : width < 760 ? 24 : 28;
+    viewport.dataset.detail = String(level);
+    viewport.dataset.zoom = String(zoom);
+    $("atlas-scale").textContent =
+      level === 2
+        ? "近看 · 内容与状态"
+        : level === 1
+          ? "区域 · 点位名称"
+          : "全图 · 密集处点击放大";
+    const bounds = viewport.getBoundingClientRect();
+    const obstacles = [
+      document.querySelector(".atlas-controls"),
+      $("atlas-layer-menu"),
+      $("atlas-depth"),
+      $("atlas-back"),
+      $("atlas-undo"),
+      $("atlas-scale"),
+    ]
+      .filter((n) => n && !n.hidden && !n.disabled)
+      .map((n) => {
+        const r = n.getBoundingClientRect();
+        return {
+          x: r.x - bounds.x,
+          y: r.y - bounds.y,
+          width: r.width,
+          height: r.height,
+        };
+      });
+    const key = JSON.stringify([
+      size,
+      origin.x,
+      origin.y,
+      width,
+      height,
+      layerMode,
+      revision,
+      level,
+      obstacles,
+    ]);
     if (layoutKey !== key) {
       layoutKey = key;
       groups = points
         .filter((p) => pointInLayer(p, layerMode))
-        .map((point) => ({ x: point.x, y: point.y, points: [point] }));
-      for (const [index, group] of groups.entries()) {
-        const b = buttons.find((x) => x.point.id === group.points[0].id).b;
+        .map((point) => ({
+          id: point.id,
+          x: point.x,
+          y: point.y,
+          points: [point],
+          button: buttons.find((x) => x.point.id === point.id).b,
+        }));
+      const placements = layoutMarkers(
+        groups.map((g) => ({
+          id: g.id,
+          x: origin.x + g.x * size,
+          y: origin.y + g.y * size,
+        })),
+        width,
+        height,
+        diameter,
+        obstacles,
+      );
+      const byId = new Map(placements.map((p) => [p.id, p]));
+      const leaders = [];
+      for (const [index, g] of groups.entries()) {
+        const b = g.button,
+          p = byId.get(g.id);
         b.dataset.group = String(index);
-        b.dataset.members = JSON.stringify([group.points[0].id]);
-        group.button = b;
+        b.dataset.members = JSON.stringify([g.id]);
+        b.hidden = !p;
+        if (!p) continue;
+        g.screenX = p.screenX;
+        g.screenY = p.screenY;
+        b.style.left = `${p.screenX}px`;
+        b.style.top = `${p.screenY}px`;
+        b.style.width =
+          b.style.height =
+          b.style.minWidth =
+          b.style.minHeight =
+            `${diameter}px`;
+        if (Math.hypot(p.screenX - p.x, p.screenY - p.y) > 3) {
+          const line = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "path",
+          );
+          line.setAttribute("d", `M${p.x},${p.y}L${p.screenX},${p.screenY}`);
+          leaders.push(line);
+          const dot = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "circle",
+          );
+          dot.setAttribute("cx", p.x);
+          dot.setAttribute("cy", p.y);
+          dot.setAttribute("r", 2);
+          leaders.push(dot);
+        }
       }
       layer.replaceChildren(...groups.map((g) => g.button));
-    }
-    for (const group of groups) {
-      const x = origin.x + group.x * size,
-        y = origin.y + group.y * size,
-        b = group.button;
-      b.style.left = `${x}px`;
-      b.style.top = `${y}px`;
-      b.hidden =
-        x < 22 ||
-        y < 22 ||
-        x > viewport.clientWidth - 22 ||
-        y > viewport.clientHeight - 22;
-      b.classList.toggle("hovered", hover === group);
-      b.classList.toggle(
-        "active",
-        group.points.some((p) => p.id === active?.id),
+      $("atlas-leaders").replaceChildren(...leaders);
+      const labelWidth = width < 760 ? 140 : 168;
+      const labels = level
+        ? layoutLabels(
+            placements,
+            width,
+            height,
+            new Map(
+              placements.map((p) => [
+                p.id,
+                { width: labelWidth, height: level === 2 ? 68 : 38 },
+              ]),
+            ),
+            obstacles,
+          )
+        : [];
+      $("atlas-labels").replaceChildren(
+        ...labels.map((box) => {
+          const point = points.find((p) => p.id === box.id),
+            n = el("div", null, "atlas-map-label");
+          n.dataset.for = point.id;
+          n.style.left = `${box.x}px`;
+          n.style.top = `${box.y}px`;
+          n.style.width = `${box.width}px`;
+          n.style.height = `${box.height}px`;
+          n.append(
+            el("strong", point.spawn ? zh(point.spawn) : zh(point.location)),
+          );
+          if (level === 2)
+            n.append(
+              el("span", buttons.find((b) => b.point.id === point.id).detail),
+            );
+          return n;
+        }),
       );
     }
+    for (const group of groups) {
+      group.button.classList.toggle("hovered", hover?.id === group.id);
+      group.button.classList.toggle("active", group.id === active?.id);
+    }
     $("atlas-out").disabled = zoom <= 1;
-    $("atlas-in").disabled = zoom >= 5;
+    $("atlas-in").disabled = zoom >= 12;
   }
   function zoomTo(
     next,
@@ -144,7 +329,8 @@ export async function createAtlas({ data, zh, getState, change }) {
     measure();
     const x = (cx - origin.x) / size,
       y = (cy - origin.y) / size;
-    zoom = Math.max(1, Math.min(5, next));
+    if (next < zoom) focused.clear();
+    zoom = Math.max(1, Math.min(12, next));
     const newSize =
       Math.min(viewport.clientWidth, viewport.clientHeight) * zoom;
     pan = {
@@ -480,6 +666,8 @@ export async function createAtlas({ data, zh, getState, change }) {
       terrain = displayTerrain;
       zoom = 1;
       pan = { x: 0, y: 0 };
+      cameraHistory.length = 0;
+      focused.clear();
       const generation = ++imageGeneration;
       $("atlas-loading").hidden = false;
       $("atlas-loading").textContent = "正在载入底图…";
@@ -554,7 +742,7 @@ export async function createAtlas({ data, zh, getState, change }) {
                   : point.category === "Castle"
                     ? "城"
                     : "点"),
-        () => activateGroup({ x: point.x, y: point.y, points: [point] }),
+        () => activateGroup({ x: point.x, y: point.y, points: [point] }, true),
         "atlas-point",
       );
       b.dataset.point = point.id;
@@ -565,7 +753,24 @@ export async function createAtlas({ data, zh, getState, change }) {
         "inferred",
         !observed(point) && !!pointConsensus(records, point),
       );
-      return { point, b };
+      const possibilities = [
+        ...new Set(
+          records.flatMap((r) =>
+            r.slots
+              .filter((s) => s.key === point.key && s.value)
+              .map((s) => zh(s.value.split(" - ")[0])),
+          ),
+        ),
+      ];
+      const detail =
+        observed(point) || common
+          ? pointName(point)
+          : point.spawn
+            ? "候选出生位置"
+            : possibilities.length
+              ? `候选：${possibilities.slice(0, 2).join(" / ")}${possibilities.length > 2 ? "…" : ""}`
+              : "待观察";
+      return { point, b, detail };
     });
     revision++;
     $("atlas-count").textContent =
@@ -597,13 +802,15 @@ export async function createAtlas({ data, zh, getState, change }) {
   function nearEvent(event) {
     measure();
     const p = local(event);
-    return nearestPoints(
-      groups.filter((group) => !group.button.hidden),
-      (p.x - origin.x) / size,
-      (p.y - origin.y) / size,
-      size,
-      event.pointerType === "touch" ? 36 : 28,
-    );
+    return groups
+      .filter((g) => !g.button.hidden)
+      .map((g) => ({
+        group: g,
+        distance: Math.hypot(g.screenX - p.x, g.screenY - p.y),
+      }))
+      .filter((g) => g.distance <= (event.pointerType === "touch" ? 36 : 28))
+      .sort((a, b) => a.distance - b.distance)
+      .map((g) => g.group);
   }
   // Pointer-up handles mouse and touch selection once. Mobile browsers also emit
   // a synthetic click, which must not reopen the marker after a quick mark.
@@ -739,6 +946,8 @@ export async function createAtlas({ data, zh, getState, change }) {
   $("atlas-in").onclick = () => zoomTo(zoom * 1.4);
   $("atlas-out").onclick = () => zoomTo(zoom / 1.4);
   $("atlas-fit").onclick = () => {
+    cameraHistory.length = 0;
+    focused.clear();
     zoom = 1;
     pan = { x: 0, y: 0 };
     draw();

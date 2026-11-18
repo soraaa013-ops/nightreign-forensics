@@ -26,11 +26,9 @@ def choose(page,key):
   group=next(g for g in groups if key in g['points']);target=page.locator('[data-group="'+group['id']+'"]')
   if group['hidden']:page.locator('#atlas-fit').click();continue
   target.click()
-  if len(group['points'])==1:return
-  if page.locator('.atlas-group-choices').count():
-   text=('出生位置' if point.get('spawn') else zh[point['category']])+' · '+zh[point['location']]
-   page.locator('.atlas-group-choices').get_by_role('button',name=text,exact=True).click();return
- raise AssertionError('Could not reach point through public cluster UI: '+key)
+  if page.locator('#atlas-editor').is_visible() or (point.get('spawn') and state(page).get('spawn')==point['spawn']):return
+ raise AssertionError('Could not reach independent point after focus: '+key)
+
 def close(page):
  if page.locator('#atlas-editor').is_visible():page.locator('#atlas-editor').get_by_role('button',name='关闭',exact=True).click()
 def no_overlap(page):

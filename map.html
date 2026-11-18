@@ -9,7 +9,7 @@
     />
     <meta name="theme-color" content="#192226" />
     <title>地图档案科｜遗物警察局</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=spatial-2" />
   </head>
   <body class="map-page">
     <a class="skip-link" href="#atlas-viewport">跳到工具</a>
@@ -55,6 +55,10 @@
               −</button
             ><button type="button" id="atlas-fit">全图</button>
           </div>
+          <button type="button" id="atlas-back" class="atlas-back" hidden>
+            返回放大前
+          </button>
+          <span id="atlas-scale" class="atlas-scale" aria-hidden="true"></span>
           <button type="button" id="atlas-undo" class="map-undo" disabled>
             撤销
           </button>
@@ -68,7 +72,9 @@
               地表 · 切换地下
             </button>
             <div id="atlas-tiles" aria-hidden="true"></div>
+            <svg id="atlas-leaders" aria-hidden="true"></svg>
             <div id="atlas-points"></div>
+            <div id="atlas-labels" aria-hidden="true"></div>
             <div id="atlas-toast" role="status" hidden></div>
             <p id="atlas-loading" role="status">正在载入地图…</p>
           </div>
@@ -190,10 +196,30 @@
             </form>
           </div>
         </section>
+        <details class="map-guide" id="atlas-display-settings">
+          <summary>地图显示</summary>
+          <label for="atlas-detail">点位文字</label>
+          <select id="atlas-detail">
+            <option value="auto">自动 · 随放大显示更多</option>
+            <option value="none">只显示点位</option>
+            <option value="names">显示名称</option>
+            <option value="details">显示详细内容</option>
+          </select>
+          <label class="atlas-setting-check"
+            ><input
+              id="atlas-autozoom"
+              type="checkbox"
+              checked
+            />点击密集位置时自动放大</label
+          >
+          <p>
+            所有点位独立保留。文字会避让；放大后能看到更多。细线连接的是点位的实际位置。
+          </p>
+        </details>
         <details class="map-guide">
           <summary>地图标记说明</summary>
           <p>
-            金色代表你已确认，蓝色代表候选档案一致。点位直接显示，点击时吸附最近位置。已确定的位置点击查看描述，修改时再进入编辑。
+            金色代表你已确认，蓝色代表候选档案一致。点位独立显示，密集处点击放大。放大后逐步显示名称与内容。已确定的位置点击查看描述，修改时再进入编辑。
           </p>
         </details>
         <details class="data-notes">
@@ -243,6 +269,6 @@
       <span>遗物警察局 · 地图档案科</span
       ><span>本体与见弃空洞者 · 520 份布局。</span>
     </footer>
-    <script type="module" src="src/map.js"></script>
+    <script type="module" src="src/map.js?v=spatial-2"></script>
   </body>
 </html>

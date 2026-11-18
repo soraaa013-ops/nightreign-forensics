@@ -13,6 +13,7 @@
     "test:a11y": "python3 tests/accessibility.py",
     "test:chinese": "python3 tests/simplified.py",
     "test:atlas": "python3 tests/atlas-browser.py",
-    "test:dlc": "python3 tests/dlc-browser.py"
+    "test:dlc": "python3 tests/dlc-browser.py",
+    "test:zoom": "python3 tests/map-zoom-browser.py"
   }
 }
