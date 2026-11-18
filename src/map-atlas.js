@@ -1,6 +1,8 @@
 import { queryMaps } from "./map-query.js";
 import {
   nearestPoints,
+  clusterPoints,
+  pointInLayer,
   pointObservations,
   pointConsensus,
 } from "./map-spatial.js";
@@ -16,11 +18,14 @@ export async function createAtlas({ data, zh, getState, change }) {
   let zoom = 1,
     pan = { x: 0, y: 0 },
     active = null,
-    neighbors = [],
     terrain = "",
     points = [],
     records = [],
-    lastFocus = null;
+    lastFocus = null,
+    layerMode = "base",
+    groups = [],
+    layoutKey = "",
+    revision = 0;
   let size = 1,
     origin = { x: 0, y: 0 },
     buttons = [],
@@ -66,20 +71,100 @@ export async function createAtlas({ data, zh, getState, change }) {
       y: (viewport.clientHeight - size) / 2 + pan.y,
     };
   }
+  function activateGroup(group) {
+    if (group.points.length === 1) {
+      const point = group.points[0];
+      if (layerMode === "spawn" && !observed(point)) {
+        active = point;
+        apply({ ...getState(), spawn: point.spawn }, "已标记出生位置");
+      } else open(point);
+      return;
+    }
+    if (zoom < 5) {
+      close(false);
+      const span =
+        Math.max(...group.points.map((p) => p.x)) -
+        Math.min(...group.points.map((p) => p.x));
+      const height =
+        Math.max(...group.points.map((p) => p.y)) -
+        Math.min(...group.points.map((p) => p.y));
+      zoom = Math.min(
+        5,
+        Math.max(zoom * 1.8, 0.7 / Math.max(span, height, 0.01)),
+      );
+      size = Math.min(viewport.clientWidth, viewport.clientHeight) * zoom;
+      pan = { x: (0.5 - group.x) * size, y: (0.5 - group.y) * size };
+      draw();
+      viewport.focus({ preventScroll: true });
+      $("atlas-status").textContent = "已展开这片区域，点选要标记的位置。";
+    } else {
+      active = null;
+      editor.hidden = false;
+      const head = el("div", null, "atlas-editor-head");
+      head.append(
+        el("h2", "选择这附近的位置"),
+        btn("关闭", () => close()),
+      );
+      head.firstChild.id = "atlas-point-title";
+      const choices = el("div", null, "atlas-group-choices");
+      group.points.forEach((point) =>
+        choices.append(btn(label(point), () => open(point))),
+      );
+      editor.replaceChildren(head, choices);
+      editor.querySelector("button")?.focus({ preventScroll: true });
+    }
+  }
   function draw() {
     measure();
     tiles.style.width = `${size}px`;
     tiles.style.height = `${size}px`;
     tiles.style.transform = `translate(${origin.x}px,${origin.y}px)`;
-    for (const { point, b } of buttons) {
-      const x = origin.x + point.x * size,
-        y = origin.y + point.y * size;
+    const key = `${size}:${layerMode}:${revision}`;
+    if (layoutKey !== key) {
+      layoutKey = key;
+      groups = clusterPoints(
+        points.filter((p) => pointInLayer(p, layerMode)),
+        size,
+        48,
+      );
+      for (const [index, group] of groups.entries()) {
+        let b;
+        if (group.points.length === 1)
+          b = buttons.find((x) => x.point.id === group.points[0].id).b;
+        else {
+          b = btn("", () => activateGroup(group), "atlas-point atlas-cluster");
+          b.append(
+            el("strong", String(group.points.length)),
+            el("small", "处"),
+          );
+          b.setAttribute(
+            "aria-label",
+            `${group.points.length} 处邻近位置，点击展开`,
+          );
+          b.classList.toggle("observed", group.points.some(observed));
+        }
+        b.dataset.group = String(index);
+        b.dataset.members = JSON.stringify(group.points.map((p) => p.id));
+        group.button = b;
+      }
+      layer.replaceChildren(...groups.map((g) => g.button));
+    }
+    for (const group of groups) {
+      const x = origin.x + group.x * size,
+        y = origin.y + group.y * size,
+        b = group.button;
       b.style.left = `${x}px`;
       b.style.top = `${y}px`;
       b.hidden =
-        x < 0 || y < 0 || x > viewport.clientWidth || y > viewport.clientHeight;
-      b.classList.toggle("hovered", hover?.id === point.id);
-      b.classList.toggle("active", active?.id === point.id);
+        x < 22 ||
+        y < 22 ||
+        x > viewport.clientWidth - 22 ||
+        y > viewport.clientHeight - 22;
+      b.classList.toggle("hovered", hover === group);
+      b.classList.toggle(
+        "active",
+        group.points.some((p) => p.id === active?.id),
+      );
     }
     $("atlas-out").disabled = zoom <= 1;
     $("atlas-in").disabled = zoom >= 5;
@@ -101,32 +186,58 @@ export async function createAtlas({ data, zh, getState, change }) {
     };
     draw();
   }
-  function close() {
+  function close(restoreFocus = true) {
     editor.hidden = true;
     active = null;
     draw();
     const focusTarget = buttons.find(
       (x) => x.point.id === lastFocus?.dataset.point,
     )?.b;
-    focusTarget?.focus({ preventScroll: true });
+    if (restoreFocus)
+      (focusTarget?.isConnected ? focusTarget : viewport).focus({
+        preventScroll: true,
+      });
   }
   function apply(next, message) {
+    const marked = active;
+    active = null;
     change(next);
-    editor
-      .querySelector('.atlas-option[aria-pressed="true"], .atlas-spawn')
-      ?.focus({ preventScroll: true });
-    $("atlas-status").textContent = records.length
-      ? `${message}，剩余 ${records.length} 份候选。`
-      : "这条标记与已有条件不匹配，或不在当前档案中。请修改标记或撤销上一步。";
+    const text = records.length
+      ? `${message} · 剩余 ${records.length} 份`
+      : "没有匹配档案，请修改本次标记或撤销。";
+    $("atlas-status").textContent = text;
+    if (records.length) {
+      close(false);
+      const toast = $("atlas-toast");
+      toast.hidden = false;
+      toast.replaceChildren(
+        el("span", text),
+        btn("撤销", () => {
+          document.getElementById("undo-map").click();
+          toast.hidden = true;
+        }),
+      );
+      if (marked)
+        toast.append(
+          btn(marked.spawn ? "修改" : "补充详情", () => {
+            toast.hidden = true;
+            open(marked);
+          }),
+        );
+      viewport.focus({ preventScroll: true });
+    } else {
+      active = marked;
+      renderEditor();
+      draw();
+      editor.querySelector("button")?.focus({ preventScroll: true });
+    }
   }
-  function open(point, near = [point], focus = true) {
+  function open(point, focus = true) {
     active = point;
-    neighbors = near;
     lastFocus = buttons.find((x) => x.point.id === point.id)?.b;
+    $("atlas-toast").hidden = true;
     renderEditor();
     draw();
-    if (focus && window.matchMedia("(max-width:800px)").matches)
-      viewport.scrollIntoView({ block: "start", behavior: "auto" });
     if (focus) editor.querySelector("button")?.focus({ preventScroll: true });
   }
   function renderEditor() {
@@ -138,18 +249,9 @@ export async function createAtlas({ data, zh, getState, change }) {
     header.firstChild.id = "atlas-point-title";
     header.append(btn("关闭", close));
     const content = [header];
-    if (neighbors.length > 1) {
-      const choices = el("div", null, "atlas-neighbors");
-      choices.append(el("p", "附近有多个位置，可以切换："));
-      neighbors.forEach((p) => {
-        const b = btn(label(p), () => open(p, neighbors, false));
-        b.setAttribute("aria-pressed", String(p.id === point.id));
-        choices.append(b);
-      });
-      content.push(choices);
-    }
     const current = el("p", pointName(point), "atlas-current");
-    content.push(current);
+    if (observed(point) || pointConsensus(records, point))
+      content.push(current);
     if (point.spawn) {
       const next = { ...getState(), spawn: point.spawn };
       const count = queryMaps(data.records, next).length;
@@ -186,6 +288,20 @@ export async function createAtlas({ data, zh, getState, change }) {
           values.filter((v) => v.includes(" - ")).map((v) => v.split(" - ")[0]),
         ),
       ];
+      const rest = queryMaps(
+        data.records,
+        pointObservations(getState(), point, null),
+      );
+      const exactCounts = new Map(),
+        typeCounts = new Map();
+      for (const record of rest) {
+        const value =
+          record.slots.find((slot) => slot.key === point.key)?.value || "empty";
+        exactCounts.set(value, (exactCounts.get(value) || 0) + 1);
+        const type = value.split(" - ")[0];
+        typeCounts.set(type, (typeCounts.get(type) || 0) + 1);
+      }
+      const selected = getState().observations.find((o) => o.key === point.key);
       const makeOption = (value, match = "exact") => {
         const observation = {
           key: point.key,
@@ -194,7 +310,8 @@ export async function createAtlas({ data, zh, getState, change }) {
           ...(match === "type" ? { match } : {}),
         };
         const next = pointObservations(getState(), point, observation);
-        const count = queryMaps(data.records, next).length;
+        const count =
+          (match === "type" ? typeCounts : exactCounts).get(value) || 0;
         const title = value === "empty" ? "确认此处为空" : zh(value);
         const b = btn(
           "",
@@ -203,7 +320,7 @@ export async function createAtlas({ data, zh, getState, change }) {
         );
         b.append(
           el("span", title),
-          el("small", count ? `${count} 份候选` : "无匹配 · 可标记后纠错"),
+          el("small", count ? `${count} 份候选` : "无匹配"),
         );
         b.dataset.value = value;
         b.dataset.match = match;
@@ -220,23 +337,46 @@ export async function createAtlas({ data, zh, getState, change }) {
       };
       if (types.length) {
         const group = el("div", null, "atlas-type-options");
-        group.append(el("h3", "只知道建筑类型？先标记即可"));
-        types.forEach((type) => group.append(makeOption(type, "type")));
-        content.push(group);
+        group.setAttribute("aria-label", "快捷标记建筑类型");
+        types
+          .sort((a, b) => (typeCounts.get(b) || 0) - (typeCounts.get(a) || 0))
+          .forEach((type) => group.append(makeOption(type, "type")));
+        if (selected) {
+          const correction = el("details", null, "atlas-change-type");
+          correction.append(el("summary", "修改建筑类型"), group);
+          content.push(correction);
+        } else content.push(group);
       }
       const search = el("input");
       search.type = "search";
       search.placeholder = "筛选这里的敌人或内容";
       search.setAttribute("aria-label", "搜索这个点位的内容");
+      const details = el("details", null, "atlas-exact");
+      details.open = false;
+      details.append(
+        el(
+          "summary",
+          types.length && !selected ? "具体敌人 / 更多内容" : "更多敌人 / 搜索",
+        ),
+      );
       const list = el("div", null, "atlas-options");
       const fill = () => {
         const q = search.value.trim();
-        const filtered = values.filter((v) =>
-          (v === "empty" ? "确认此处为空" : zh(v)).includes(q),
-        );
+        const filtered = values
+          .filter(
+            (v) =>
+              !selected ||
+              selected.match !== "type" ||
+              v.split(" - ")[0] === selected.value,
+          )
+          .filter((v) => (v === "empty" ? "确认此处为空" : zh(v)).includes(q));
         list.replaceChildren(
           ...filtered
-            .sort((a, b) => zh(a).localeCompare(zh(b), "zh-CN"))
+            .sort(
+              (a, b) =>
+                (exactCounts.get(b) || 0) - (exactCounts.get(a) || 0) ||
+                zh(a).localeCompare(zh(b), "zh-CN"),
+            )
             .map((v) => makeOption(v)),
         );
         if (!filtered.length)
@@ -244,7 +384,22 @@ export async function createAtlas({ data, zh, getState, change }) {
       };
       search.oninput = fill;
       fill();
-      content.push(el("h3", "知道具体内容时"), search, list);
+      if (!types.length || selected) {
+        const quick = el("div", null, "atlas-quick-exact");
+        values
+          .filter(
+            (v) =>
+              !selected ||
+              selected.match !== "type" ||
+              v.split(" - ")[0] === selected.value,
+          )
+          .sort((a, b) => (exactCounts.get(b) || 0) - (exactCounts.get(a) || 0))
+          .slice(0, 6)
+          .forEach((v) => quick.append(makeOption(v)));
+        content.splice(1, 0, quick);
+      }
+      details.append(search, list);
+      content.push(details);
       if (observed(point))
         content.push(
           btn("移除此处标记", () =>
@@ -264,10 +419,11 @@ export async function createAtlas({ data, zh, getState, change }) {
       document.getElementById("undo-map").click(),
     );
     undo.disabled = document.getElementById("undo-map").disabled;
-    content.push(undo);
+    if (!records.length) content.push(undo);
     editor.replaceChildren(...content);
   }
   function rebuild() {
+    $("atlas-toast").hidden = true;
     const state = getState();
     records = queryMaps(data.records, state);
     const inferredTerrains = [...new Set(records.map((r) => r.mapType))];
@@ -339,7 +495,7 @@ export async function createAtlas({ data, zh, getState, change }) {
                   : point.category === "Castle"
                     ? "城"
                     : "点"),
-        () => open(point, nearAt(point)),
+        () => activateGroup({ x: point.x, y: point.y, points: [point] }),
         "atlas-point",
       );
       b.dataset.point = point.id;
@@ -352,7 +508,7 @@ export async function createAtlas({ data, zh, getState, change }) {
       );
       return { point, b };
     });
-    layer.replaceChildren(...buttons.map((x) => x.b));
+    revision++;
     $("atlas-count").textContent =
       records.length === 1
         ? `已锁定 #${records[0].id} · 点击点位查看内容`
@@ -367,7 +523,6 @@ export async function createAtlas({ data, zh, getState, change }) {
       const found = points.find((p) => p.id === active.id);
       if (found) {
         active = found;
-        neighbors = nearAt(active);
         renderEditor();
       } else {
         active = null;
@@ -375,10 +530,6 @@ export async function createAtlas({ data, zh, getState, change }) {
       }
     }
     draw();
-  }
-  function nearAt(point) {
-    measure();
-    return nearestPoints(points, point.x, point.y, size, 32);
   }
   function local(event) {
     const r = viewport.getBoundingClientRect();
@@ -388,13 +539,25 @@ export async function createAtlas({ data, zh, getState, change }) {
     measure();
     const p = local(event);
     return nearestPoints(
-      points,
+      groups.filter((group) => !group.button.hidden),
       (p.x - origin.x) / size,
       (p.y - origin.y) / size,
       size,
       event.pointerType === "touch" ? 36 : 28,
     );
   }
+  // Pointer-up handles mouse and touch selection once. Mobile browsers also emit
+  // a synthetic click, which must not reopen the marker after a quick mark.
+  viewport.addEventListener(
+    "click",
+    (event) => {
+      if (event.detail > 0 && event.target.closest(".atlas-point")) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }
+    },
+    true,
+  );
   viewport.addEventListener("pointerdown", (event) => {
     if (event.target.closest("button:not(.atlas-point)")) return;
     const p = local(event);
@@ -404,7 +567,7 @@ export async function createAtlas({ data, zh, getState, change }) {
       start: p,
       pan: { ...pan },
       moved: false,
-      startId: event.target.closest(".atlas-point")?.dataset.point,
+      startGroup: event.target.closest(".atlas-point")?.dataset.group,
     };
     if (pointers.size === 2) {
       const [a, b] = [...pointers.values()];
@@ -420,8 +583,10 @@ export async function createAtlas({ data, zh, getState, change }) {
     const p = local(event);
     if (!pointers.has(event.pointerId)) {
       const near = nearEvent(event);
-      hover = near[0] || null;
-      draw();
+      if (hover !== near[0]) {
+        hover = near[0] || null;
+        draw();
+      }
       return;
     }
     pointers.set(event.pointerId, p);
@@ -458,7 +623,11 @@ export async function createAtlas({ data, zh, getState, change }) {
     if (click) {
       const near = nearEvent(event);
       if (near.length)
-        open(points.find((p) => p.id === gesture.startId) || near[0], near);
+        activateGroup(
+          gesture.startGroup !== undefined
+            ? groups[Number(gesture.startGroup)]
+            : near[0],
+        );
       else
         $("atlas-status").textContent =
           "附近没有可标记点位。请放大地图，点击圆点附近。";
@@ -520,6 +689,36 @@ export async function createAtlas({ data, zh, getState, change }) {
     pan = { x: 0, y: 0 };
     draw();
   };
+  for (const [mode, text] of [
+    ["base", "据点"],
+    ["spawn", "出生"],
+    ["boss", "敌人"],
+    ["gaol", "监牢"],
+    ["all", "全部"],
+  ]) {
+    const b = btn(
+      text,
+      () => {
+        layerMode = mode;
+        close(false);
+        $("atlas-toast").hidden = true;
+        updateLayers();
+        draw();
+        $("atlas-status").textContent =
+          mode === "spawn"
+            ? "出生模式：点一下位置即标记，可随时撤销。"
+            : "点选位置，再选择内容；数字点可点击展开。";
+      },
+      "atlas-layer",
+    );
+    b.dataset.layer = mode;
+    $("atlas-layers").append(b);
+  }
+  function updateLayers() {
+    for (const b of $("atlas-layers").children)
+      b.setAttribute("aria-pressed", String(b.dataset.layer === layerMode));
+  }
+  updateLayers();
   new ResizeObserver(draw).observe(viewport);
   rebuild();
   return {
@@ -527,10 +726,12 @@ export async function createAtlas({ data, zh, getState, change }) {
     focusPoint(key) {
       const p = points.find((p) => p.key === key);
       if (p) {
+        layerMode = "all";
+        updateLayers();
         pan = { x: 0, y: 0 };
         zoom = 1;
         draw();
-        open(p, nearAt(p));
+        open(p);
         viewport.scrollIntoView({ block: "center", behavior: "auto" });
         return true;
       }

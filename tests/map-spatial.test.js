@@ -108,3 +108,37 @@ test("all five terrain tile sets match the imported source checksums", async () 
     );
   }
 });
+
+test("screen clusters preserve every point and never overlap across mobile sizes, zooms and layers", async () => {
+  const { clusterPoints, pointInLayer } = await import("../src/map-spatial.js");
+  for (const terrain of Object.keys(geo.layouts))
+    for (const width of [292, 362, 740, 680])
+      for (const zoom of [1, 1.4, 2.5, 5])
+        for (const layer of ["base", "spawn", "boss", "gaol", "all"]) {
+          const points = geo.points.filter(
+            (p) => p.terrains.includes(terrain) && pointInLayer(p, layer),
+          );
+          const groups = clusterPoints(points, width * zoom);
+          assert.deepEqual(
+            groups.flatMap((g) => g.points.map((p) => p.id)).sort(),
+            points.map((p) => p.id).sort(),
+          );
+          for (let i = 0; i < groups.length; i++)
+            for (let j = i + 1; j < groups.length; j++) {
+              assert.ok(
+                Math.abs(groups[i].x - groups[j].x) * width * zoom >= 48 ||
+                  Math.abs(groups[i].y - groups[j].y) * width * zoom >= 48,
+              );
+            }
+        }
+});
+test("layers distinguish spawns, bases, enemies and evergaols without losing special terrain points", async () => {
+  const { pointInLayer } = await import("../src/map-spatial.js");
+  for (const p of geo.points)
+    assert.equal(
+      ["base", "spawn", "boss", "gaol"].filter((layer) =>
+        pointInLayer(p, layer),
+      ).length,
+      1,
+    );
+});

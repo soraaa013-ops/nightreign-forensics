@@ -42,7 +42,7 @@
       <section class="atlas" aria-label="交互地图">
         <div class="atlas-toolbar">
           <div>
-            <strong>从你所在的位置开始</strong>
+            <strong>点位置，选内容，继续下一处</strong>
             <p id="atlas-hint">点击附近的圆点，标记出生位置、据点或敌人。</p>
           </div>
           <div class="atlas-controls">
@@ -68,6 +68,7 @@
           </div>
         </div>
         <div id="atlas-facets"></div>
+        <div id="atlas-layers" role="group" aria-label="显示哪类点位"></div>
         <div class="atlas-body">
           <div
             id="atlas-viewport"
@@ -77,6 +78,7 @@
           >
             <div id="atlas-tiles" aria-hidden="true"></div>
             <div id="atlas-points"></div>
+            <div id="atlas-toast" role="status" hidden></div>
             <p id="atlas-loading" role="status">正在载入地图…</p>
           </div>
           <section
@@ -92,7 +94,7 @@
           ><strong id="atlas-count" role="status"></strong>
         </div>
         <p id="atlas-status" role="status" class="input-help">
-          拖动平移，滚轮或按钮缩放。空白处不会自动标记。
+          数字表示附近有多处位置，点击放大。标记完成后可继续点下一处。
         </p>
       </section>
       <section
