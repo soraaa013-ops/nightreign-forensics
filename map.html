@@ -31,115 +31,126 @@
         ><a aria-current="page" href="map.html">地图档案</a>
       </nav>
     </header>
-    <main class="map-main">
-      <section class="map-intro">
-        <p class="kicker">地图档案 / 线索反查</p>
-        <h1>看到什么，<em>就搜什么。</em></h1>
-        <p>
-          夜王、地形、出生点都可以跳过。搜索看到的敌人或据点，逐条添加线索，即时查看剩余地图。
-        </p>
-        <div class="dataset-warning">
-          <strong>旧档案试运行</strong
-          ><span id="map-version">正在载入地图目录…</span>
+    <main class="tool-main map-main">
+      <div class="page-heading">
+        <div>
+          <p class="kicker">黑夜君临 · 地图工具</p>
+          <h1>地图反查</h1>
         </div>
-      </section>
-
-      <section class="map-workbench" aria-labelledby="map-query-title">
-        <div class="section-heading">
-          <div>
-            <p class="kicker">记录观察 · 缩小范围</p>
-            <h2 id="map-query-title">筛选地图</h2>
-          </div>
-          <p>不知道的项目留空。少量高置信度观察比填满错误信息更有效。</p>
-        </div>
-        <section class="candidate-panel" aria-live="polite">
-          <div class="candidate-count">
-            <strong id="candidate-count">—</strong><span>份候选档案</span>
-          </div>
-          <div>
-            <p class="kicker">下一条线索</p>
-            <h3 id="next-clue">等待基础信息</h3>
-            <p id="candidate-summary">档案载入后会自动开始筛选。</p>
-            <button class="clue-action" id="use-clue" type="button" hidden>
-              记录这处线索
-            </button>
-          </div>
-        </section>
-        <form id="map-form" class="map-form" aria-busy="true">
-          <details class="base-filters" id="base-filters">
-            <summary>已知夜王、地形或出生点？（可选）</summary>
-            <div class="base-filter-fields">
+        <p>搜敌人或据点 → 添加线索 → 缩小候选范围</p>
+      </div>
+      <section
+        class="map-workbench"
+        aria-label="地图筛选工作台"
+        id="map-query-title"
+      >
+        <div class="map-input-column">
+          <form id="map-form" aria-busy="true">
+            <section class="clue-builder" aria-labelledby="clue-title">
+              <h2 id="clue-title">搜索你看到的内容</h2>
               <label
-                ><span>目标夜王</span
-                ><select id="nightlord">
-                  <option value="">未知 / 全部</option>
-                </select></label
-              >
-              <label
-                ><span>地形异变</span
-                ><select id="map-type">
-                  <option value="">未知 / 全部</option>
-                </select></label
-              >
-              <label
-                ><span>出生位置</span
-                ><select id="spawn">
-                  <option value="">未知 / 全部</option>
-                </select></label
-              >
-            </div>
-          </details>
-          <section class="active-filters" aria-label="已选条件">
-            <h3>已选条件</h3>
-            <div id="filter-chips"></div>
-            <p id="filter-empty" class="input-help">
-              还没有条件。可以只选夜王，也可以直接添加线索。
-            </p>
-          </section>
-          <section class="clue-builder" aria-labelledby="clue-title">
-            <h3 id="clue-title">添加你看到的线索</h3>
-            <p class="input-help">
-              先搜敌人或据点，再按需要选位置。不知道位置也能筛选；点击结果即可添加。
-            </p>
-            <label
-              ><span>搜索敌人或据点</span
-              ><input
-                id="clue-search"
-                type="search"
-                placeholder="例如：魔像、教堂、失乡骑士"
-                autocomplete="off"
-            /></label>
-            <details id="location-details">
-              <summary>指定地点类型或位置（可选）</summary>
-              <div class="clue-filters">
+                ><span>搜索敌人或据点</span
+                ><input
+                  id="clue-search"
+                  type="search"
+                  placeholder="例如：魔像、教堂、失乡骑士"
+                  autocomplete="off"
+              /></label>
+              <div
+                id="quick-clues"
+                class="quick-searches"
+                aria-label="常用搜索"
+              ></div>
+              <details id="location-details">
+                <summary>指定地点类型或位置（可选）</summary>
+                <div class="clue-filters">
+                  <label
+                    ><span>地点类型（可选）</span
+                    ><select id="clue-category">
+                      <option value="">全部类型</option>
+                    </select></label
+                  ><label
+                    ><span>具体位置（可选）</span
+                    ><select id="clue-location">
+                      <option value="">不知道位置</option>
+                    </select></label
+                  >
+                </div>
+              </details>
+              <p id="clue-count" role="status"></p>
+              <div id="clue-results" class="clue-results"></div>
+              <button id="more-clues" type="button" class="secondary" hidden>
+                显示更多线索
+              </button>
+            </section>
+            <details class="base-filters" id="base-filters">
+              <summary>已知夜王、地形或出生点？（可选）</summary>
+              <div class="base-filter-fields">
                 <label
-                  ><span>地点类型（可选）</span
-                  ><select id="clue-category">
-                    <option value="">全部类型</option>
+                  ><span>目标夜王</span
+                  ><select id="nightlord">
+                    <option value="">未知 / 全部</option>
                   </select></label
-                ><label
-                  ><span>具体位置（可选）</span
-                  ><select id="clue-location">
-                    <option value="">不知道位置</option>
+                >
+                <label
+                  ><span>地形异变</span
+                  ><select id="map-type">
+                    <option value="">未知 / 全部</option>
+                  </select></label
+                >
+                <label
+                  ><span>出生位置</span
+                  ><select id="spawn">
+                    <option value="">未知 / 全部</option>
                   </select></label
                 >
               </div>
             </details>
-            <p id="clue-count" role="status"></p>
-            <div id="clue-results" class="clue-results"></div>
-            <button id="more-clues" type="button" class="secondary" hidden>
-              显示更多线索
-            </button>
+            <section class="active-filters" aria-label="已选条件">
+              <h3>已选条件</h3>
+              <div id="filter-chips"></div>
+              <p id="filter-empty" class="input-help">
+                还没有条件。可以只选夜王，也可以直接添加线索。
+              </p>
+            </section>
+            <div class="form-actions">
+              <button class="secondary" type="button" id="undo-map" disabled>
+                撤销上一步</button
+              ><button class="secondary" type="reset">清空全部条件</button
+              ><button class="secondary" type="button" id="share-map">
+                分享筛选
+              </button>
+            </div>
+            <p id="map-feedback" class="selection-feedback" role="status"></p>
+          </form>
+          <button class="retry" id="retry" hidden>重新加载地图</button>
+        </div>
+        <aside id="map-output" class="map-output" aria-label="地图筛选结果">
+          <section class="candidate-panel" aria-live="polite">
+            <div class="candidate-count">
+              <strong id="candidate-count">—</strong><span>份候选档案</span>
+            </div>
+            <div>
+              <p class="kicker">下一条线索</p>
+              <h3 id="next-clue">等待基础信息</h3>
+              <p id="candidate-summary">档案载入后会自动开始筛选。</p>
+              <button class="clue-action" id="use-clue" type="button" hidden>
+                记录这处线索
+              </button>
+            </div>
           </section>
-          <div class="form-actions">
-            <button class="secondary" type="reset">清空全部条件</button>
-          </div>
-        </form>
-        <button class="retry" id="retry" hidden>重新加载地图</button>
-
-        <section id="candidate-list" aria-label="候选地图"></section>
-        <section id="map-result" class="map-result" hidden></section>
+          <section id="map-result" class="map-result" hidden></section>
+          <section id="candidate-list" aria-label="候选地图"></section>
+        </aside>
       </section>
+      <details class="data-notes">
+        <summary>地图数据范围</summary>
+        <p id="map-version">正在载入地图目录…</p>
+        <p>随机事件以实际游戏为准。不确定的观察可以撤销，不必填满所有条件。</p>
+      </details>
+      <a id="map-result-link" class="mobile-result-link" href="#map-output"
+        >正在载入地图…</a
+      >
     </main>
     <footer>
       <span>遗物警察局 · 地图档案科</span

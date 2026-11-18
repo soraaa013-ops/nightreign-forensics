@@ -1,6 +1,8 @@
 import { recommendObservation } from "./map-filter.js";
 import { queryMaps, matchesObservation, facetCounts } from "./map-query.js";
 import { matchesSearch } from "./search.js";
+import { readDraft, writeDraft } from "./draft.js";
+import { validateMapState } from "./map-state.js";
 import { loadJson } from "./locale.js";
 const $ = (selector) => document.querySelector(selector);
 const form = $("#map-form"),
@@ -23,7 +25,9 @@ let mapData,
   candidates = [],
   clueLimit = 6,
   candidateLimit = 6,
-  previewId = null;
+  previewId = null,
+  previousState = null;
+const undoStack = [];
 const zh = (value) => (value ? (dictionary.map[value] ?? value) : "未记录");
 const state = () => ({
   nightlord: nightlord.value,
@@ -45,7 +49,11 @@ function node(tag, text, className) {
 }
 function renderRecord(record) {
   resultPanel.hidden = false;
-  const heading = node("p", "已识别地图布局", "kicker");
+  const heading = node(
+    "p",
+    candidates.length === 1 ? "已锁定地图布局" : "候选地图预览",
+    "kicker",
+  );
   const head = node("div", "", "record-head");
   for (const [label, value] of [
     ["档案编号", `#${record.id}`],
@@ -69,14 +77,27 @@ function renderRecord(record) {
     item.append(node("b", label), document.createTextNode(value));
     events.append(item);
   }
-  const points = node("div", "", "poi-list");
+  const points = node("div", "", "record-locations");
+  const groups = new Map();
   for (const slot of record.slots.filter((slot) => slot.value)) {
-    const item = node("article");
-    item.append(
-      node("small", `${zh(slot.category)} · ${zh(slot.location)}`),
-      node("span", zh(slot.value)),
-    );
-    points.append(item);
+    if (!groups.has(slot.category)) groups.set(slot.category, []);
+    groups.get(slot.category).push(slot);
+  }
+  for (const [category, slots] of groups) {
+    const group = node("details", "", "location-group");
+    group.open = groups.keys().next().value === category;
+    group.append(node("summary", `${zh(category)} · ${slots.length} 处`));
+    const list = node("div", "", "poi-list");
+    for (const slot of slots) {
+      const item = node("article");
+      item.append(
+        node("small", zh(slot.location)),
+        node("span", zh(slot.value)),
+      );
+      list.append(item);
+    }
+    group.append(list);
+    points.append(group);
   }
   resultPanel.replaceChildren(heading, head, events, points);
 }
@@ -125,9 +146,18 @@ function renderClues() {
         matchesObservation(record, { key, category, value }),
       ).length,
     }));
+  const usefulness = (option) =>
+    option.count > 0 && option.count < candidates.length
+      ? 0
+      : option.count > 0
+        ? 1
+        : 2;
   options.sort(
     (a, b) =>
-      b.count - a.count || zh(a.value).localeCompare(zh(b.value), "zh-CN"),
+      usefulness(a) - usefulness(b) ||
+      Math.abs(a.count - candidates.length / 2) -
+        Math.abs(b.count - candidates.length / 2) ||
+      zh(a.value).localeCompare(zh(b.value), "zh-CN"),
   );
   $("#clue-count").textContent =
     `${options.length} 种观察结果 · 数字表示添加后剩余地图数`;
@@ -144,17 +174,29 @@ function renderClues() {
         () => {
           selected.push({ key, category, value });
           clueSearch.value = "";
-          clueCategory.value = "";
           clueLocation.value = "";
           refreshLocations();
           clueLimit = 6;
           update();
+          $("#map-feedback").textContent =
+            `已添加“${value === "empty" ? "此处为空" : zh(value)}”，剩余 ${candidates.length} 张地图。`;
+          clueSearch.focus({ preventScroll: true });
         },
         "clue-option",
       );
       b.append(
         node("span", value === "empty" ? "此处为空" : zh(value)),
-        node("small", exists ? "已添加" : `${count} 份地图`),
+        node(
+          "small",
+          exists
+            ? "已添加"
+            : count === candidates.length
+              ? `不缩小范围 · ${count} 张`
+              : count === 0
+                ? "与当前条件冲突"
+                : `缩小至 ${count} 张`,
+          count > 0 && count < candidates.length ? "useful" : "",
+        ),
       );
       b.disabled = exists || count === 0;
       b.title = count === 0 ? "与当前条件不匹配，请先移除不确定的条件" : "";
@@ -266,9 +308,38 @@ function renderCandidates() {
       );
   }
 }
-function update() {
+function update(recordHistory = true) {
+  const current = state();
+  if (
+    recordHistory &&
+    previousState &&
+    JSON.stringify(previousState) !== JSON.stringify(current)
+  )
+    undoStack.push(previousState);
+  if (undoStack.length > 30) undoStack.shift();
+  previousState = structuredClone(current);
+  writeDraft("nightreign-map", current);
+  $("#undo-map").disabled = !undoStack.length;
+  const hasConditions =
+    current.nightlord ||
+    current.mapType ||
+    current.spawn ||
+    current.observations.length;
+  history.replaceState(
+    null,
+    "",
+    location.pathname +
+      (hasConditions
+        ? "?" + new URLSearchParams({ q: JSON.stringify(current) })
+        : ""),
+  );
   candidates = queryMaps(mapData.records, state());
   candidateCount.textContent = candidates.length;
+  $("#map-result-link").textContent =
+    `剩余 ${candidates.length} 张地图 · 查看结果`;
+  $("#map-feedback").textContent = hasConditions
+    ? `已应用 ${selected.length + [nightlord, mapType, spawn].filter((select) => select.value).length} 个条件，剩余 ${candidates.length} 张地图。`
+    : "搜索后点击一条结果，即可添加线索。";
   refreshFacets();
   renderChips();
   renderClues();
@@ -358,6 +429,57 @@ clueButton.addEventListener("click", () => {
   renderClues();
   clueSearch.focus();
 });
+function restoreState(saved) {
+  nightlord.value = saved.nightlord;
+  mapType.value = saved.mapType;
+  spawn.value = saved.spawn;
+  selected = structuredClone(saved.observations);
+  previewId = null;
+}
+$("#undo-map").addEventListener("click", () => {
+  const previous = undoStack.pop();
+  if (previous) {
+    restoreState(previous);
+    update(false);
+  }
+});
+$("#share-map").addEventListener("click", async () => {
+  const url = location.href;
+  try {
+    await navigator.clipboard.writeText(url);
+    $("#map-feedback").textContent =
+      "筛选链接已复制，队友打开即可看到相同条件。";
+  } catch {
+    const field = node("input");
+    field.readOnly = true;
+    field.value = url;
+    field.setAttribute("aria-label", "地图筛选链接");
+    $("#map-feedback").textContent = "请手动复制筛选链接。";
+    $("#map-feedback").append(field);
+    field.focus();
+    field.select();
+  }
+});
+for (const term of ["教堂", "魔像", "失乡骑士", "封印监牢"]) {
+  $("#quick-clues").append(
+    button(
+      term,
+      () => {
+        if (term === "封印监牢") {
+          clueCategory.value = "Evergaol";
+          clueLocation.value = "";
+          clueSearch.value = "";
+          $("#location-details").open = true;
+          refreshLocations();
+        } else clueSearch.value = term;
+        clueLimit = 6;
+        renderClues();
+        clueSearch.focus();
+      },
+      "quick-search",
+    ),
+  );
+}
 async function init() {
   form
     .querySelectorAll("select,button,input")
@@ -369,8 +491,8 @@ async function init() {
       loadJson("data/map-data.json"),
       loadJson("data/zh-CN.json"),
     ]);
-    $("#base-filters").open = matchMedia("(min-width: 761px)").matches;
-    $("#location-details").open = matchMedia("(min-width: 761px)").matches;
+    $("#base-filters").open = false;
+    $("#location-details").open = false;
     $("#map-version").textContent =
       `基础游戏 · ${mapData.records.length} 份地图布局，未覆盖全部扩展内容。`;
     const categories = [
@@ -388,7 +510,23 @@ async function init() {
     form
       .querySelectorAll("select,button,input")
       .forEach((element) => (element.disabled = false));
-    update();
+    const params = new URLSearchParams(location.search);
+    let saved = null,
+      invalidLink = false;
+    if (params.has("q")) {
+      try {
+        saved = validateMapState(JSON.parse(params.get("q")), mapData);
+        invalidLink = !saved;
+      } catch {
+        invalidLink = true;
+      }
+    } else saved = validateMapState(readDraft("nightreign-map"), mapData);
+    refreshFacets();
+    if (saved) restoreState(saved);
+    update(false);
+    if (invalidLink)
+      $("#map-feedback").textContent =
+        "筛选链接无效，已展示全部地图。请重新添加条件。";
   } catch {
     nextClue.textContent = "地图档案加载失败";
     candidateSummary.textContent = "请检查网络连接后点击“重新加载地图”。";

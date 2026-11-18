@@ -25,10 +25,14 @@ export function normalizeSearch(value) {
 export function matchesSearch(text, query) {
   const target = normalizeSearch(text);
   return query
+    .replace(
+      /(追踪者|追迹者|守护者|铁之眼|女爵|无赖|复仇者|隐士|执行者|学者|送葬者|大招|绝招|技艺|战技)/g,
+      " $1 ",
+    )
     .replaceAll("回血", "恢复 血量")
     .replaceAll("回蓝", "恢复 专注值")
     .trim()
-    .split(/\s+/u)
+    .split(/[\s，,、；;]+/u)
     .filter(Boolean)
     .every((token) => target.includes(normalizeSearch(token)));
 }

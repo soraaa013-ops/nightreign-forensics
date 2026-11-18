@@ -106,3 +106,11 @@ test("role and effect category are independent, so role healing is not hidden", 
     ),
   );
 });
+
+test("natural Chinese role and action queries do not require manually inserted spaces", () => {
+  assert.ok(matchesSearch("【追踪者】发动绝招时，能燃起火焰", "追踪者大招"));
+  assert.ok(
+    matchesSearch("【守护者】发动绝招时，能缓慢恢复血量", "守护者回血"),
+  );
+  assert.ok(!matchesSearch("【女爵】提升攻击力", "守护者回血"));
+});

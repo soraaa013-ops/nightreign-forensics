@@ -37,138 +37,154 @@
       </div>
     </header>
 
-    <main id="top">
-      <section class="hero">
-        <p class="kicker">遗物档案 / 词条核验</p>
-        <h1>查遗物，<em>从选词条开始。</em></h1>
-        <p class="lede">
-          选择遗物颜色，再按游戏中的顺序添加词条。支持按角色、效果类型浏览，也可以用“回血”“大招”等关键词查找。
-        </p>
-        <a class="scroll-cue" href="#checker">开始取证 <span>↓</span></a>
-      </section>
-
-      <section class="checker" id="checker" aria-labelledby="checker-title">
-        <div class="section-heading">
-          <div>
-            <p class="kicker">选择模板 · 录入词条</p>
-            <h2 id="checker-title">选择遗物词条</h2>
-          </div>
-          <p>
-            选齐三条即可看到合法性和概率。当前为社区快照，结论仅对应此规则版本。
-          </p>
+    <main id="top" class="tool-main">
+      <div class="page-heading">
+        <div>
+          <p class="kicker">黑夜君临 · 遗物工具</p>
+          <h1>遗物检测</h1>
         </div>
-
-        <form id="relic-form" class="evidence-form" aria-busy="true">
+        <p>选颜色 → 连续添加三条词条 → 自动出报告</p>
+      </div>
+      <section class="relic-workspace" id="checker" aria-label="遗物检测工作台">
+        <div class="relic-search-column">
           <label class="template-field"
-            ><span>遗物模板</span
-            ><select id="template" required>
+            ><span>遗物颜色</span
+            ><select id="template" form="relic-form" required disabled>
               <option>规则载入中…</option>
             </select></label
           >
-          <div class="slots" id="selected-effects" aria-label="已选词条"></div>
-          <p class="form-hint" id="effect-hint">
-            按游戏中的显示顺序选择三条词条。选齐后自动检测，可随时替换、移除或调整顺序。
-          </p>
-          <p id="form-error" class="form-hint" role="alert"></p>
-          <div class="form-actions">
-            <button class="submit" type="submit">
-              重新检测 <span>↗</span>
-            </button>
-            <button class="secondary" type="button" id="randomize">
-              填入示例
-            </button>
-            <button class="secondary" type="reset">清空</button>
-            <button class="secondary" type="button" id="copy-report" disabled>
-              复制报告链接
-            </button>
-          </div>
-        </form>
-        <p class="status-message" id="action-status" role="status"></p>
-        <button class="retry" id="retry" hidden>重新加载规则</button>
-
-        <section
-          class="report"
-          id="report"
-          aria-live="polite"
-          aria-labelledby="report-title"
-        >
-          <div class="report-stamp" id="report-stamp">待检</div>
-          <div class="report-copy">
-            <p class="kicker">检测报告</p>
-            <h3 id="report-title">等待检材</h3>
-            <p id="report-summary">点击空位添加词条，选齐三条后自动检测。</p>
-            <p class="report-probability" id="report-probability" hidden></p>
-            <ol id="report-order" hidden></ol>
-            <p class="report-meta">
-              规则集：<span id="ruleset-version">载入中</span> ·
-              <span id="report-code">等待检材</span> · 本地检测，不上传输入
+          <section id="effect-picker" aria-labelledby="picker-title">
+            <div class="picker-header">
+              <div>
+                <p class="kicker" id="picker-step">选择词条</p>
+                <h2 id="picker-title">搜索并添加词条</h2>
+              </div>
+              <a class="secondary" href="#selected-panel">查看已选</a>
+            </div>
+            <label class="picker-search"
+              ><span>搜索词条</span
+              ><input
+                type="search"
+                id="effect-query"
+                placeholder="例如：回血、追踪者 大招、出击 火焰"
+                autocomplete="off"
+            /></label>
+            <div class="picker-filters">
+              <label
+                ><span>效果类型</span
+                ><select id="effect-category">
+                  <option value="">全部类型</option>
+                </select></label
+              ><label
+                ><span>角色</span
+                ><select id="effect-character">
+                  <option value="">全部角色</option>
+                </select></label
+              ><button
+                type="button"
+                class="secondary"
+                id="reset-effect-filters"
+              >
+                清除筛选
+              </button>
+            </div>
+            <label class="toggle-field"
+              ><input
+                type="checkbox"
+                id="include-unsupported"
+              />同时查看当前模板无法抽取的词条</label
+            >
+            <div
+              id="slot-tabs"
+              class="slot-tabs"
+              role="group"
+              aria-label="选择要填写的词条位置"
+            ></div>
+            <p id="selection-feedback" class="selection-feedback" role="status">
+              点击词条填入第一条，随后可以继续选择。
             </p>
-          </div>
-        </section>
-      </section>
-
-      <section class="briefing">
-        <p class="kicker">规则与数据范围</p>
-        <div class="briefing-grid">
-          <h2>不是玄学。<br />是数据取证。</h2>
-          <div>
-            <p>
-              合法性结论来自参数表：遗物模板决定三个隐藏槽位，各槽位拥有独立效果池；已出现的词条族会阻止同族效果再次出现。
-            </p>
-            <p>
-              当前数据是社区解包快照，并非官方服务或最新版本保证。报告保留规则版本；深夜诅咒配对暂未开放。
-            </p>
-          </div>
+            <p id="effect-count" role="status"></p>
+            <div id="effect-results" class="effect-results"></div>
+            <button type="button" id="more-effects" class="secondary" hidden>
+              显示更多词条
+            </button>
+          </section>
         </div>
+        <aside
+          id="selected-panel"
+          class="selected-panel"
+          aria-label="已选遗物与报告"
+        >
+          <form id="relic-form" aria-busy="true">
+            <div class="panel-heading">
+              <h2 id="checker-title">已选词条</h2>
+              <button
+                type="button"
+                id="undo-relic"
+                class="text-button"
+                disabled
+              >
+                撤销上一步
+              </button>
+            </div>
+            <div
+              class="slots"
+              id="selected-effects"
+              aria-label="已选词条"
+            ></div>
+            <p class="form-hint" id="effect-hint">
+              点击词条可替换，也可移除或调整顺序。
+            </p>
+            <p id="form-error" role="alert"></p>
+            <div class="form-actions">
+              <button class="secondary" type="button" id="randomize">
+                填入示例</button
+              ><button class="secondary" type="reset">清空</button
+              ><button class="secondary" type="submit">重新检测</button>
+            </div>
+          </form>
+          <p class="status-message" id="action-status" role="status"></p>
+          <button class="retry" id="retry" hidden>重新加载规则</button>
+          <section
+            class="report"
+            id="report"
+            aria-live="polite"
+            aria-labelledby="report-title"
+          >
+            <div class="report-stamp" id="report-stamp">待检</div>
+            <div class="report-copy">
+              <p class="kicker">检测报告</p>
+              <h3 id="report-title">等待检材</h3>
+              <p id="report-summary">点击空位添加词条，选齐三条后自动检测。</p>
+              <p class="report-probability" id="report-probability" hidden></p>
+              <ol id="report-order" hidden></ol>
+              <p class="report-meta">
+                规则集：<span id="ruleset-version">载入中</span> ·
+                <span id="report-code">等待检材</span> · 本地检测，不上传输入
+              </p>
+            </div>
+          </section>
+          <button class="submit" type="button" id="copy-report" disabled>
+            复制报告链接
+          </button>
+        </aside>
       </section>
+      <details class="data-notes">
+        <summary>数据范围与检测规则</summary>
+        <p>
+          社区规则快照，非官方服务或最新版本保证。检测词条池、隐藏槽位、互斥组和显示顺序；深夜诅咒配对暂未开放。输入仅用于本地计算。
+        </p>
+      </details>
+      <a
+        id="relic-result-link"
+        class="mobile-result-link"
+        href="#selected-panel"
+        >已选 0 / 3 条 · 查看已选</a
+      >
     </main>
-
     <footer>
       <span>遗物警察局 · 非官方玩家工具</span><span>谨慎截图，理性出警。</span>
     </footer>
-    <dialog id="effect-picker" aria-labelledby="picker-title">
-      <div class="picker-header">
-        <div>
-          <p class="kicker" id="picker-step">选择词条</p>
-          <h2 id="picker-title">词条库</h2>
-        </div>
-        <button type="button" id="close-picker" class="secondary">关闭</button>
-      </div>
-      <label class="picker-search"
-        ><span>搜索词条</span
-        ><input
-          type="search"
-          id="effect-query"
-          placeholder="例如：回血、追踪者 大招、出击 火焰"
-          autocomplete="off"
-      /></label>
-      <div class="picker-filters">
-        <label
-          ><span>效果类型</span
-          ><select id="effect-category">
-            <option value="">全部类型</option>
-          </select></label
-        ><label
-          ><span>角色</span
-          ><select id="effect-character">
-            <option value="">全部角色</option>
-          </select></label
-        ><button type="button" class="secondary" id="reset-effect-filters">
-          清除筛选
-        </button>
-      </div>
-      <label class="toggle-field"
-        ><input
-          type="checkbox"
-          id="include-unsupported"
-        />同时查看当前模板无法抽取的词条</label
-      >
-      <p class="input-help">
-        空格分隔多个关键词；“回血”“生命值”“血量”均可检索。默认显示当前模板词条；找不到时可勾选上方选项查看其他词条。
-      </p>
-      <p id="effect-count" role="status"></p>
-      <div id="effect-results" class="effect-results"></div>
-    </dialog>
     <script type="module" src="src/app.js"></script>
   </body>
 </html>

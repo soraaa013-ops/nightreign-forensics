@@ -1,4 +1,5 @@
 import { inspectRelic, listTemplateEffects } from "./check.js";
+import { readDraft, writeDraft } from "./draft.js";
 import { loadJson, localizeRelics } from "./locale.js";
 import { searchEffects, effectCategories } from "./search.js";
 const $ = (selector) => document.querySelector(selector);
@@ -12,7 +13,10 @@ let gameData,
   selected = [null, null, null],
   available = new Set(),
   activeSlot = 0,
-  lastResult;
+  lastResult,
+  resultLimit = 40,
+  lastSnapshot = null;
+const undoStack = [];
 const query = $("#effect-query"),
   category = $("#effect-category"),
   character = $("#effect-character");
@@ -37,20 +41,28 @@ function refreshPool() {
 }
 function openPicker(index) {
   activeSlot = index;
-  query.value = "";
-  category.value = "";
-  character.value = "";
-  $("#include-unsupported").checked = false;
-  $("#picker-step").textContent =
-    `第 ${index + 1} 条 · ${selected[index] ? "替换词条" : "添加词条"}`;
+  renderSlots();
   renderResults();
-  picker.showModal();
   query.focus();
+}
+function snapshot() {
+  return { template: templateSelect.value, selected: [...selected] };
+}
+function restore(snapshot) {
+  templateSelect.value = snapshot.template;
+  selected = [...snapshot.selected];
+  activeSlot = selected.findIndex((id) => !id);
+  refreshPool();
 }
 function renderSlots() {
   $("#selected-effects").replaceChildren(
     ...selected.map((id, index) => {
-      const card = node("div", "", `effect-slot ${id ? "is-selected" : ""}`);
+      const card = node(
+        "div",
+        "",
+        `effect-slot ${id ? "is-selected" : ""} ${index === activeSlot ? "is-active" : ""}`,
+      );
+      card.dataset.slotIndex = String(index);
       card.append(node("span", `第 ${index + 1} 条`, "slot-number"));
       const choose = button(
         id ? gameData.effects[id].name : "＋ 选择词条",
@@ -98,6 +110,7 @@ function renderSlots() {
             "移除",
             () => {
               selected[index] = null;
+              activeSlot = index;
               changed();
             },
             "text-button",
@@ -108,9 +121,24 @@ function renderSlots() {
       return card;
     }),
   );
+  $("#slot-tabs").replaceChildren(
+    ...selected.map((id, index) => {
+      const tab = button(
+        `第 ${index + 1} 条${id ? " · 已选" : ""}`,
+        () => openPicker(index),
+        "slot-tab",
+      );
+      tab.setAttribute("aria-pressed", String(activeSlot === index));
+      tab.disabled = !gameData;
+      return tab;
+    }),
+  );
+  $("#relic-result-link").textContent =
+    `已选 ${selected.filter(Boolean).length} / 3 条 · ${selected.every(Boolean) ? "查看检测结果" : "查看已选"}`;
   form.querySelector("button[type=submit]").disabled = !selected.every(Boolean);
 }
 function renderResults() {
+  if (!gameData) return;
   const effects = searchEffects(
     Object.values(gameData.effects).filter(
       (effect) => $("#include-unsupported").checked || available.has(effect.id),
@@ -128,22 +156,29 @@ function renderResults() {
       a.id - b.id,
   );
   $("#effect-count").textContent =
-    `找到 ${effects.length} 条词条 · 点击即可填入第 ${activeSlot + 1} 条`;
+    `共 ${effects.length} 条匹配，已显示 ${Math.min(resultLimit, effects.length)} 条`;
   const duplicates = new Map();
   for (const effect of effects)
     duplicates.set(effect.name, (duplicates.get(effect.name) || 0) + 1);
   $("#effect-results").replaceChildren(
-    ...effects.map((effect) => {
+    ...effects.slice(0, resultLimit).map((effect) => {
       const b = button(
         "",
         () => {
+          if (activeSlot < 0) return;
+          const filledSlot = activeSlot;
           selected[activeSlot] = effect.id;
-          picker.close();
+          activeSlot = selected.findIndex((id) => !id);
           changed();
+          $("#selection-feedback").textContent =
+            `第 ${filledSlot + 1} 条已添加。${activeSlot < 0 ? "已选齐，检测结果已更新。" : `继续选择第 ${activeSlot + 1} 条；筛选条件已保留。`}`;
+          query.focus({ preventScroll: true });
         },
         "effect-option",
       );
       b.dataset.effectId = String(effect.id);
+      b.disabled = activeSlot < 0;
+      b.setAttribute("aria-pressed", String(selected.includes(effect.id)));
       b.append(node("span", effect.name));
       const notes = [];
       if (!available.has(effect.id)) notes.push("当前模板无法抽取");
@@ -165,6 +200,7 @@ function renderResults() {
       return b;
     }),
   );
+  $("#more-effects").hidden = effects.length <= resultLimit;
   if (!effects.length)
     $("#effect-results").append(
       node(
@@ -221,8 +257,31 @@ function render(result) {
     result.status,
   );
 }
-function changed() {
+function changed(recordHistory = true) {
+  const previousFocusSlot =
+    document.activeElement?.closest(".effect-slot")?.dataset.slotIndex;
+  const current = snapshot();
+  if (
+    recordHistory &&
+    lastSnapshot &&
+    JSON.stringify(lastSnapshot) !== JSON.stringify(current)
+  )
+    undoStack.push(lastSnapshot);
+  if (undoStack.length > 20) undoStack.shift();
+  lastSnapshot = current;
+  writeDraft("nightreign-relic", current);
+  $("#undo-relic").disabled = !undoStack.length;
   renderSlots();
+  renderResults();
+  if (previousFocusSlot !== undefined)
+    $("#selected-effects")
+      .children[Number(previousFocusSlot)]?.querySelector(".choose-effect")
+      ?.focus({ preventScroll: true });
+  $("#selection-feedback").textContent =
+    activeSlot < 0
+      ? "已选齐三条。要替换，请先点击上方对应位置。"
+      : `下一次选择填入第 ${activeSlot + 1} 条。`;
+
   feedback.replaceChildren();
   if (selected.every(Boolean)) {
     const result = inspectRelic(
@@ -253,10 +312,10 @@ $("#report-order").after(
 $("#report-order").nextElementSibling.id = "apply-order";
 $("#apply-order").hidden = true;
 for (const control of [query, category, character, $("#include-unsupported")])
-  control.addEventListener(
-    control === query ? "input" : "change",
-    renderResults,
-  );
+  control.addEventListener(control === query ? "input" : "change", () => {
+    resultLimit = 40;
+    renderResults();
+  });
 $("#reset-effect-filters").addEventListener("click", () => {
   query.value = "";
   category.value = "";
@@ -265,14 +324,17 @@ $("#reset-effect-filters").addEventListener("click", () => {
   renderResults();
   query.focus();
 });
-$("#close-picker").addEventListener("click", () => picker.close());
-picker.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && !event.isComposing) {
-    event.preventDefault();
-    picker.close();
+$("#more-effects").addEventListener("click", () => {
+  resultLimit += 40;
+  renderResults();
+});
+$("#undo-relic").addEventListener("click", () => {
+  const previous = undoStack.pop();
+  if (previous) {
+    restore(previous);
+    changed(false);
   }
 });
-// Native dialog provides focus containment and focus restoration.
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   if (selected.every(Boolean)) changed();
@@ -280,6 +342,7 @@ form.addEventListener("submit", (event) => {
 form.addEventListener("reset", () =>
   setTimeout(() => {
     selected = [null, null, null];
+    activeSlot = 0;
     refreshPool();
     changed();
   }, 0),
@@ -305,6 +368,7 @@ $("#randomize").addEventListener("click", () => {
     chosen.push(effect.id);
     if (effect.familyId) families.add(effect.familyId);
   }
+  activeSlot = -1;
   selected = chosen.sort(
     (a, b) =>
       gameData.effects[a].overrideBaseEffectId -
@@ -331,6 +395,10 @@ copyButton.addEventListener("click", async () => {
 });
 async function init() {
   form.setAttribute("aria-busy", "true");
+  templateSelect.disabled = true;
+  picker
+    .querySelectorAll("input,select,button")
+    .forEach((el) => (el.disabled = true));
   form
     .querySelectorAll("button,select")
     .forEach((element) => (element.disabled = true));
@@ -374,6 +442,10 @@ async function init() {
     form
       .querySelectorAll("button,select")
       .forEach((element) => (element.disabled = false));
+    templateSelect.disabled = false;
+    picker
+      .querySelectorAll("input,select,button")
+      .forEach((el) => (el.disabled = false));
     refreshPool();
     const params = new URLSearchParams(location.search);
     const ids = (params.get("effects") || "").split(",");
@@ -386,16 +458,27 @@ async function init() {
         templateSelect.value = params.get("template");
         refreshPool();
         selected = ids.map(Number);
-        changed();
+        activeSlot = -1;
+        changed(false);
       } else {
         waiting();
         renderSlots();
         feedback.textContent = "报告链接不完整或不受当前规则支持，请重新选择。";
       }
     } else {
-      waiting();
-      renderSlots();
+      const draft = readDraft("nightreign-relic");
+      if (
+        draft &&
+        templates.some((t) => String(t.id) === draft.template) &&
+        Array.isArray(draft.selected) &&
+        draft.selected.length === 3 &&
+        draft.selected.every((id) => id === null || gameData.effects[id])
+      )
+        restore(draft);
+      changed(false);
     }
+    renderResults();
+    lastSnapshot = snapshot();
   } catch {
     gameData = null;
     $("#data-stats").textContent = "数据未就绪";
