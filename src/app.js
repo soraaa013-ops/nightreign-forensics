@@ -1,286 +1,415 @@
 import { inspectRelic, listTemplateEffects } from "./check.js";
 import { loadJson, localizeRelics } from "./locale.js";
-import { createEffectSearch } from "./effect-search.js";
-
-const form = document.querySelector("#relic-form");
-const templateSelect = document.querySelector("#template");
-const inputs = [...form.querySelectorAll('input[name="effect"]')];
-const report = document.querySelector("#report");
-const stamp = document.querySelector("#report-stamp");
-const title = document.querySelector("#report-title");
-const summary = document.querySelector("#report-summary");
-const order = document.querySelector("#report-order");
-const rulesetVersion = document.querySelector("#ruleset-version");
-const copyButton = document.querySelector("#copy-report");
-const feedback = document.querySelector("#action-status");
-const retry = document.querySelector("#retry");
+import { searchEffects, effectCategories } from "./search.js";
+const $ = (selector) => document.querySelector(selector);
+const form = $("#relic-form"),
+  templateSelect = $("#template"),
+  picker = $("#effect-picker");
+const report = $("#report"),
+  feedback = $("#action-status"),
+  copyButton = $("#copy-report");
 let gameData,
-  availableEffects = [];
-const effectValue = (effect) => `${effect.name} · #${effect.id}`;
+  selected = [null, null, null],
+  available = new Set(),
+  activeSlot = 0,
+  lastResult;
+const query = $("#effect-query"),
+  category = $("#effect-category"),
+  character = $("#effect-character");
+function node(tag, text, className) {
+  const element = document.createElement(tag);
+  if (text) element.textContent = text;
+  if (className) element.className = className;
+  return element;
+}
+function button(text, action, className = "secondary") {
+  const b = node("button", text, className);
+  b.type = "button";
+  b.addEventListener("click", action);
+  return b;
+}
 const currentTemplate = () =>
-  gameData?.templates.find(
-    (template) => template.id === Number(templateSelect.value),
+  gameData?.templates.find((item) => item.id === Number(templateSelect.value));
+function refreshPool() {
+  available = new Set(
+    listTemplateEffects(currentTemplate(), gameData).map((item) => item.id),
   );
-const searches = inputs.map((input, index) =>
-  createEffectSearch(input, index, () => availableEffects, markDirty),
-);
-const formError = document.querySelector("#form-error");
-const previews = inputs.map((input, index) => {
-  const preview = document.createElement("small");
-  preview.id = `effect-preview-${index}`;
-  preview.className = "input-help";
-  preview.hidden = true;
-  input.parentElement.append(preview);
-  return preview;
-});
-function syncPreviews() {
-  inputs.forEach((input, index) => {
-    const id = input.value.match(/#(\d+)$/)?.[1];
-    const effect = gameData?.effects[id];
-    previews[index].textContent = effect?.name || "";
-    previews[index].hidden = !effect;
-  });
 }
-const codeLabels = {
-  VERIFIED: "核验通过",
-  DUPLICATE_EFFECT: "词条重复",
-  DUPLICATE_EFFECT_FAMILY: "互斥冲突",
-  EFFECT_NOT_IN_TEMPLATE_POOL: "词条池不匹配",
-  DISPLAY_ORDER_MISMATCH: "需要调序",
-  EFFECT_NOT_FOUND: "词条未收录",
-  EFFECT_COUNT_MISMATCH: "词条未填全",
-  TEMPLATE_NOT_FOUND: "模板未收录",
-  RULESET_LOAD_FAILED: "规则加载失败",
-};
-function setLoading(loading) {
-  form.setAttribute("aria-busy", String(loading));
-  form.querySelectorAll("button, input, select").forEach((element) => {
-    element.disabled = loading;
-  });
-  copyButton.disabled = true;
+function openPicker(index) {
+  activeSlot = index;
+  query.value = "";
+  category.value = "";
+  character.value = "";
+  $("#include-unsupported").checked = false;
+  $("#picker-step").textContent =
+    `第 ${index + 1} 条 · ${selected[index] ? "替换词条" : "添加词条"}`;
+  renderResults();
+  picker.showModal();
+  query.focus();
 }
-function populateEffects() {
-  availableEffects = listTemplateEffects(currentTemplate(), gameData);
-  searches.forEach((search) => search.close());
-  inputs.forEach((input) => input.setCustomValidity(""));
+function renderSlots() {
+  $("#selected-effects").replaceChildren(
+    ...selected.map((id, index) => {
+      const card = node("div", "", `effect-slot ${id ? "is-selected" : ""}`);
+      card.append(node("span", `第 ${index + 1} 条`, "slot-number"));
+      const choose = button(
+        id ? gameData.effects[id].name : "＋ 选择词条",
+        () => openPicker(index),
+        "choose-effect",
+      );
+      choose.setAttribute(
+        "aria-label",
+        `${id ? "替换" : "选择"}第${index + 1}条词条${id ? "：" + gameData.effects[id].name : ""}`,
+      );
+      choose.disabled = !gameData;
+      card.append(choose);
+      if (id) {
+        const actions = node("div", "", "slot-actions");
+        if (index > 0)
+          actions.append(
+            button(
+              "上移",
+              () => {
+                [selected[index - 1], selected[index]] = [
+                  selected[index],
+                  selected[index - 1],
+                ];
+                changed();
+              },
+              "text-button",
+            ),
+          );
+        if (index < 2)
+          actions.append(
+            button(
+              "下移",
+              () => {
+                [selected[index + 1], selected[index]] = [
+                  selected[index],
+                  selected[index + 1],
+                ];
+                changed();
+              },
+              "text-button",
+            ),
+          );
+        actions.append(
+          button(
+            "移除",
+            () => {
+              selected[index] = null;
+              changed();
+            },
+            "text-button",
+          ),
+        );
+        card.append(actions);
+      }
+      return card;
+    }),
+  );
+  form.querySelector("button[type=submit]").disabled = !selected.every(Boolean);
 }
-function waiting(
-  message = "选择三条词条后签发报告，也可以先随机装填一组示例。",
-) {
+function renderResults() {
+  const effects = searchEffects(
+    Object.values(gameData.effects).filter(
+      (effect) => $("#include-unsupported").checked || available.has(effect.id),
+    ),
+    {
+      query: query.value,
+      category: category.value,
+      character: character.value,
+    },
+  );
+  effects.sort(
+    (a, b) =>
+      Number(available.has(b.id)) - Number(available.has(a.id)) ||
+      a.name.localeCompare(b.name, "zh-CN") ||
+      a.id - b.id,
+  );
+  $("#effect-count").textContent =
+    `找到 ${effects.length} 条词条 · 点击即可填入第 ${activeSlot + 1} 条`;
+  const duplicates = new Map();
+  for (const effect of effects)
+    duplicates.set(effect.name, (duplicates.get(effect.name) || 0) + 1);
+  $("#effect-results").replaceChildren(
+    ...effects.map((effect) => {
+      const b = button(
+        "",
+        () => {
+          selected[activeSlot] = effect.id;
+          picker.close();
+          changed();
+        },
+        "effect-option",
+      );
+      b.dataset.effectId = String(effect.id);
+      b.append(node("span", effect.name));
+      const notes = [];
+      if (!available.has(effect.id)) notes.push("当前模板无法抽取");
+      if (selected.some((id, i) => i !== activeSlot && id === effect.id))
+        notes.push("已选过，重复会判为无效");
+      else if (
+        effect.familyId &&
+        selected.some(
+          (id, i) =>
+            i !== activeSlot &&
+            gameData.effects[id]?.familyId === effect.familyId,
+        )
+      )
+        notes.push("与已选词条互斥");
+      if (duplicates.get(effect.name) > 1)
+        notes.push(`同名词条 · 编号 ${effect.id}`);
+      if (notes.length)
+        b.append(node("small", notes.join(" · "), "input-help"));
+      return b;
+    }),
+  );
+  if (!effects.length)
+    $("#effect-results").append(
+      node(
+        "p",
+        "没有找到匹配词条。试试更短的关键词，或点击“清除筛选”查看全部。",
+        "empty-state",
+      ),
+    );
+}
+function waiting() {
+  lastResult = null;
   report.className = "report";
-  stamp.textContent = "待检";
-  title.textContent = "等待检材";
-  summary.textContent = message;
-  order.hidden = true;
-  document.querySelector("#report-probability").hidden = true;
-  document.querySelector("#report-code").textContent = "等待检材";
+  $("#report-stamp").textContent = "待检";
+  $("#report-title").textContent =
+    `已选 ${selected.filter(Boolean).length} / 3 条`;
+  $("#report-summary").textContent = "点击空位添加词条，选齐三条后自动检测。";
+  $("#report-order").hidden = true;
+  $("#report-probability").hidden = true;
+  $("#report-code").textContent = "等待选择";
   copyButton.disabled = true;
-}
-function markDirty() {
-  syncPreviews();
-  formError.textContent = "";
-  waiting("输入已更新，请重新签发检测报告。");
-  feedback.replaceChildren();
-  history.replaceState(null, "", location.pathname);
+  $("#apply-order").hidden = true;
 }
 function render(result) {
+  lastResult = result;
   report.className = `report ${result.status}`;
-  stamp.textContent = {
+  $("#report-stamp").textContent = {
     valid: "合法",
-    invalid: "驳回",
+    invalid: "无效",
     reorder: "调序",
     unknown: "待核",
-    incomplete: "缺件",
+    incomplete: "未选齐",
   }[result.status];
-  title.textContent = result.title;
-  summary.textContent = result.summary;
-  const probability = document.querySelector("#report-probability");
-  probability.hidden = !(result.probability > 0);
-  if (!probability.hidden)
-    probability.textContent = `该模板单次精确出货概率约 ${(result.probability * 100).toPrecision(4)}%（约 ${Math.round(1 / result.probability).toLocaleString("zh-CN")} 次中出现 1 次）`;
-  order.replaceChildren();
-  for (const id of result.orderedEffectIds || []) {
-    const li = document.createElement("li");
-    li.textContent = effectValue(gameData.effects[id]);
-    order.append(li);
-  }
-  order.hidden = !order.children.length;
-  document.querySelector("#report-code").textContent =
-    codeLabels[result.code] || "等待核验";
+  $("#report-title").textContent = result.title;
+  $("#report-summary").textContent = result.summary;
+  const p = $("#report-probability");
+  p.hidden = !(result.probability > 0);
+  if (!p.hidden)
+    p.textContent = `精确出货概率约 ${(result.probability * 100).toPrecision(4)}%（约 ${Math.round(1 / result.probability).toLocaleString("zh-CN")} 次中出现 1 次）`;
+  $("#report-order").replaceChildren(
+    ...(result.orderedEffectIds || []).map((id) =>
+      node("li", gameData.effects[id].name),
+    ),
+  );
+  $("#report-order").hidden = !result.orderedEffectIds?.length;
+  $("#report-code").textContent = {
+    valid: "核验通过",
+    invalid: "未通过核验",
+    reorder: "可一键调整顺序",
+    unknown: "需要核对",
+    incomplete: "尚未选齐",
+  }[result.status];
+  $("#apply-order").hidden = result.status !== "reorder";
   copyButton.disabled = !["valid", "reorder", "invalid"].includes(
     result.status,
   );
 }
-function inspect() {
-  return inspectRelic(
-    {
-      templateId: currentTemplate()?.id,
-      effectIds: inputs.map((input) =>
-        Number(input.value.match(/#(\d+)$/)?.[1]),
-      ),
+function changed() {
+  renderSlots();
+  feedback.replaceChildren();
+  if (selected.every(Boolean)) {
+    const result = inspectRelic(
+      { templateId: currentTemplate().id, effectIds: selected },
+      gameData,
+    );
+    render(result);
+    history.replaceState(
+      null,
+      "",
+      `${location.pathname}?${new URLSearchParams({ template: templateSelect.value, effects: selected.join(",") })}`,
+    );
+  } else {
+    waiting();
+    history.replaceState(null, "", location.pathname);
+  }
+}
+$("#report-order").after(
+  button(
+    "按游戏顺序排列",
+    () => {
+      selected = [...lastResult.orderedEffectIds];
+      changed();
     },
-    gameData,
+    "secondary",
+  ),
+);
+$("#report-order").nextElementSibling.id = "apply-order";
+$("#apply-order").hidden = true;
+for (const control of [query, category, character, $("#include-unsupported")])
+  control.addEventListener(
+    control === query ? "input" : "change",
+    renderResults,
   );
-}
-function submitReport() {
-  syncPreviews();
-  formError.textContent = "";
-  searches.forEach((search) => search.close());
-  const result = inspect();
-  render(result);
-  if (!copyButton.disabled) {
-    const params = new URLSearchParams({
-      template: String(result.templateId),
-      effects: result.effectIds.join(","),
-    });
-    history.replaceState(null, "", `${location.pathname}?${params}`);
-  }
-}
-async function init() {
-  setLoading(true);
-  retry.hidden = true;
-  try {
-    const [raw, dictionary] = await Promise.all([
-      loadJson("data/game-data.json"),
-      loadJson("data/zh-CN.json"),
-    ]);
-    gameData = localizeRelics(raw, dictionary);
-    rulesetVersion.textContent = gameData.metadata.label;
-    document.querySelector("#data-stats").textContent =
-      `${gameData.stats.effects} 条效果 · 本地检测`;
-    const latestGrand = gameData.templates.filter(
-      (template) =>
-        template.generation === "1.0.3-dlc" && template.slotCount === 3,
-    );
-    const representatives = latestGrand.filter(
-      (template, index, all) =>
-        all.findIndex((candidate) => candidate.color === template.color) ===
-        index,
-    );
-    templateSelect.replaceChildren(
-      ...representatives.map(
-        (template) =>
-          new Option(`${template.colorName} · ${template.name}`, template.id),
-      ),
-    );
-    populateEffects();
-    setLoading(false);
-    const params = new URLSearchParams(location.search);
-    if (params.has("template") || params.has("effects")) {
-      const sharedTemplate = Number(params.get("template"));
-      const ids = (params.get("effects") || "").split(",");
-      if (
-        representatives.some((template) => template.id === sharedTemplate) &&
-        ids.length === 3 &&
-        ids.every((id) => /^\d+$/.test(id) && gameData.effects[id])
-      ) {
-        templateSelect.value = String(sharedTemplate);
-        populateEffects();
-        ids.forEach((id, index) => {
-          inputs[index].value = effectValue(gameData.effects[id]);
-        });
-        submitReport();
-      } else
-        feedback.textContent =
-          "报告链接不完整或不受当前规则支持，请重新选择模板与词条。";
-    }
-  } catch {
-    document.querySelector("#data-stats").textContent = "数据未就绪";
-    rulesetVersion.textContent = "加载失败";
-    form.setAttribute("aria-busy", "false");
-    render({
-      status: "unknown",
-      code: "RULESET_LOAD_FAILED",
-      title: "规则档案未能载入",
-      summary: "请检查网络连接后点击“重新加载规则”。",
-    });
-    retry.hidden = false;
-  }
-}
-templateSelect.addEventListener("change", () => {
-  populateEffects();
-  markDirty();
+$("#reset-effect-filters").addEventListener("click", () => {
+  query.value = "";
+  category.value = "";
+  character.value = "";
+  $("#include-unsupported").checked = false;
+  renderResults();
+  query.focus();
 });
-inputs.forEach((input) => input.addEventListener("input", markDirty));
+$("#close-picker").addEventListener("click", () => picker.close());
+picker.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !event.isComposing) {
+    event.preventDefault();
+    picker.close();
+  }
+});
+// Native dialog provides focus containment and focus restoration.
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  if (!gameData) return;
-  for (const input of inputs) {
-    const exact = availableEffects.filter(
-      (effect) => effect.name === input.value.trim(),
-    );
-    if (exact.length === 1) input.value = effectValue(exact[0]);
-    if (!/^.+ · #\d+$/.test(input.value)) {
-      input.setCustomValidity("请从搜索候选中选择完整词条。");
-      formError.textContent = "请从搜索候选中选择完整词条，再签发报告。";
-      input.reportValidity();
-      return;
-    }
-  }
-  submitReport();
+  if (selected.every(Boolean)) changed();
 });
 form.addEventListener("reset", () =>
   setTimeout(() => {
-    if (!gameData) return;
-    populateEffects();
-    syncPreviews();
-    formError.textContent = "";
-    waiting();
-    feedback.replaceChildren();
-    history.replaceState(null, "", location.pathname);
-    inputs[0].focus();
+    selected = [null, null, null];
+    refreshPool();
+    changed();
   }, 0),
 );
-document.querySelector("#randomize").addEventListener("click", () => {
-  if (!gameData) return;
+templateSelect.addEventListener("change", () => {
+  refreshPool();
+  changed();
+});
+$("#randomize").addEventListener("click", () => {
   const chosen = [],
-    usedFamilies = new Set();
-  for (const poolId of currentTemplate().effectPools) {
-    const candidates = gameData.pools[poolId]
-      .map(({ effectId }) => gameData.effects[effectId])
+    families = new Set();
+  for (const pool of currentTemplate().effectPools) {
+    const candidates = gameData.pools[pool]
+      .map((entry) => gameData.effects[entry.effectId])
       .filter(
         (effect) =>
           effect &&
           !chosen.includes(effect.id) &&
-          (!effect.familyId || !usedFamilies.has(effect.familyId)),
+          (!effect.familyId || !families.has(effect.familyId)),
       );
     const effect = candidates[Math.floor(Math.random() * candidates.length)];
-    if (!effect) {
-      feedback.textContent = "此模板暂时无法生成示例，请手动选择词条。";
-      return;
-    }
+    if (!effect) return;
     chosen.push(effect.id);
-    if (effect.familyId) usedFamilies.add(effect.familyId);
+    if (effect.familyId) families.add(effect.familyId);
   }
-  chosen.sort(
+  selected = chosen.sort(
     (a, b) =>
       gameData.effects[a].overrideBaseEffectId -
         gameData.effects[b].overrideBaseEffectId || a - b,
   );
-  chosen.forEach((id, index) => {
-    inputs[index].value = effectValue(gameData.effects[id]);
-    inputs[index].setCustomValidity("");
-  });
-  feedback.textContent =
-    "已填入一组合法示例。随机装填用于演示，不模拟游戏抽取权重。";
-  submitReport();
+  changed();
+  feedback.textContent = "已填入合法示例。示例不模拟游戏抽取权重。";
 });
 copyButton.addEventListener("click", async () => {
   const url = location.href;
   try {
     await navigator.clipboard.writeText(url);
-    feedback.textContent = "报告链接已复制，可以发送给队友。";
+    feedback.textContent = "报告链接已复制。";
   } catch {
-    feedback.textContent = "浏览器未允许自动复制，请手动复制下方链接。";
-    const field = document.createElement("input");
+    feedback.textContent = "浏览器未允许自动复制，请复制下方链接。";
+    const field = node("input");
     field.readOnly = true;
     field.value = url;
-    field.className = "share-link";
     field.setAttribute("aria-label", "报告链接");
     feedback.append(field);
     field.focus();
     field.select();
   }
 });
-retry.addEventListener("click", init);
+async function init() {
+  form.setAttribute("aria-busy", "true");
+  form
+    .querySelectorAll("button,select")
+    .forEach((element) => (element.disabled = true));
+  $("#retry").hidden = true;
+  try {
+    const [raw, dictionary] = await Promise.all([
+      loadJson("data/game-data.json"),
+      loadJson("data/zh-CN.json"),
+    ]);
+    gameData = localizeRelics(raw, dictionary);
+    const templates = gameData.templates
+      .filter((item) => item.generation === "1.0.3-dlc" && item.slotCount === 3)
+      .filter(
+        (item, i, all) =>
+          all.findIndex((other) => other.color === item.color) === i,
+      );
+    templateSelect.replaceChildren(
+      ...templates.map(
+        (item) => new Option(`${item.colorName} · ${item.name}`, item.id),
+      ),
+    );
+    category.replaceChildren(
+      new Option("全部类型", ""),
+      ...[
+        ...new Set(Object.values(gameData.effects).flatMap(effectCategories)),
+      ].map((value) => new Option(value, value)),
+    );
+    character.replaceChildren(
+      new Option("全部角色", ""),
+      ...[
+        ...new Set(
+          Object.values(gameData.effects)
+            .map((effect) => effect.name.match(/【(.+?)】/)?.[1])
+            .filter(Boolean),
+        ),
+      ].map((value) => new Option(value, value)),
+    );
+    $("#ruleset-version").textContent = gameData.metadata.label;
+    $("#data-stats").textContent =
+      `${gameData.stats.effects} 条效果 · 简体中文`;
+    form
+      .querySelectorAll("button,select")
+      .forEach((element) => (element.disabled = false));
+    refreshPool();
+    const params = new URLSearchParams(location.search);
+    const ids = (params.get("effects") || "").split(",");
+    if (params.has("template") || params.has("effects")) {
+      if (
+        templates.some((item) => item.id === Number(params.get("template"))) &&
+        ids.length === 3 &&
+        ids.every((id) => /^\d+$/.test(id) && gameData.effects[id])
+      ) {
+        templateSelect.value = params.get("template");
+        refreshPool();
+        selected = ids.map(Number);
+        changed();
+      } else {
+        waiting();
+        renderSlots();
+        feedback.textContent = "报告链接不完整或不受当前规则支持，请重新选择。";
+      }
+    } else {
+      waiting();
+      renderSlots();
+    }
+  } catch {
+    gameData = null;
+    $("#data-stats").textContent = "数据未就绪";
+    $("#ruleset-version").textContent = "加载失败";
+    render({
+      status: "unknown",
+      title: "规则档案未能载入",
+      summary: "请检查网络连接后点击“重新加载规则”。",
+    });
+    $("#retry").hidden = false;
+  } finally {
+    form.setAttribute("aria-busy", "false");
+  }
+}
+$("#retry").addEventListener("click", init);
+renderSlots();
 init();

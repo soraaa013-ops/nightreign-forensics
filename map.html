@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="遗物警察局地图档案科：通过观察信息反查黑夜君临地图 地图布局。"
+      content="遗物警察局地图档案科：通过观察信息反查黑夜君临地图布局。"
     />
     <meta name="theme-color" content="#090b0e" />
     <title>地图档案科｜遗物警察局</title>
@@ -34,10 +34,9 @@
     <main class="map-main">
       <section class="map-intro">
         <p class="kicker">地图档案 / 线索反查</p>
-        <h1>地图说不清？<br /><em>带路标来认领。</em></h1>
+        <h1>看到什么，<em>就搜什么。</em></h1>
         <p>
-          填写夜王、地形与出生点，再补充你看到的据点。系统会逐步排除不符合的
-          地图布局，并告诉你下一处最值得观察的位置。
+          夜王、地形、出生点都可以跳过。搜索看到的敌人或据点，逐条添加线索，即时查看剩余地图。
         </p>
         <div class="dataset-warning">
           <strong>旧档案试运行</strong
@@ -49,63 +48,10 @@
         <div class="section-heading">
           <div>
             <p class="kicker">记录观察 · 缩小范围</p>
-            <h2 id="map-query-title">现场笔录</h2>
+            <h2 id="map-query-title">筛选地图</h2>
           </div>
           <p>不知道的项目留空。少量高置信度观察比填满错误信息更有效。</p>
         </div>
-        <form id="map-form" class="map-form" aria-busy="true">
-          <label
-            ><span>目标夜王</span
-            ><select id="nightlord">
-              <option value="">未知 / 全部</option>
-            </select></label
-          >
-          <label
-            ><span>地形异变</span
-            ><select id="map-type">
-              <option value="">未知 / 全部</option>
-            </select></label
-          >
-          <label
-            ><span>出生位置</span
-            ><select id="spawn">
-              <option value="">未知 / 全部</option>
-            </select></label
-          >
-          <fieldset class="observation" data-index="0">
-            <legend>观察记录 01</legend>
-            <label
-              ><span>地图位置</span
-              ><select class="slot-key">
-                <option value="">尚未标记</option>
-              </select></label
-            ><label
-              ><span>看到的内容</span
-              ><select class="slot-value" disabled>
-                <option value="">先选择位置</option>
-              </select></label
-            >
-          </fieldset>
-          <fieldset class="observation" data-index="1">
-            <legend>观察记录 02</legend>
-            <label
-              ><span>地图位置</span
-              ><select class="slot-key">
-                <option value="">尚未标记</option>
-              </select></label
-            ><label
-              ><span>看到的内容</span
-              ><select class="slot-value" disabled>
-                <option value="">先选择位置</option>
-              </select></label
-            >
-          </fieldset>
-          <div class="form-actions">
-            <button class="secondary" type="reset">清空全部条件</button>
-          </div>
-        </form>
-        <button class="retry" id="retry" hidden>重新加载地图</button>
-
         <section class="candidate-panel" aria-live="polite">
           <div class="candidate-count">
             <strong id="candidate-count">—</strong><span>份候选档案</span>
@@ -119,12 +65,85 @@
             </button>
           </div>
         </section>
+        <form id="map-form" class="map-form" aria-busy="true">
+          <details class="base-filters" id="base-filters">
+            <summary>已知夜王、地形或出生点？（可选）</summary>
+            <div class="base-filter-fields">
+              <label
+                ><span>目标夜王</span
+                ><select id="nightlord">
+                  <option value="">未知 / 全部</option>
+                </select></label
+              >
+              <label
+                ><span>地形异变</span
+                ><select id="map-type">
+                  <option value="">未知 / 全部</option>
+                </select></label
+              >
+              <label
+                ><span>出生位置</span
+                ><select id="spawn">
+                  <option value="">未知 / 全部</option>
+                </select></label
+              >
+            </div>
+          </details>
+          <section class="active-filters" aria-label="已选条件">
+            <h3>已选条件</h3>
+            <div id="filter-chips"></div>
+            <p id="filter-empty" class="input-help">
+              还没有条件。可以只选夜王，也可以直接添加线索。
+            </p>
+          </section>
+          <section class="clue-builder" aria-labelledby="clue-title">
+            <h3 id="clue-title">添加你看到的线索</h3>
+            <p class="input-help">
+              先搜敌人或据点，再按需要选位置。不知道位置也能筛选；点击结果即可添加。
+            </p>
+            <label
+              ><span>搜索敌人或据点</span
+              ><input
+                id="clue-search"
+                type="search"
+                placeholder="例如：魔像、教堂、失乡骑士"
+                autocomplete="off"
+            /></label>
+            <details id="location-details">
+              <summary>指定地点类型或位置（可选）</summary>
+              <div class="clue-filters">
+                <label
+                  ><span>地点类型（可选）</span
+                  ><select id="clue-category">
+                    <option value="">全部类型</option>
+                  </select></label
+                ><label
+                  ><span>具体位置（可选）</span
+                  ><select id="clue-location">
+                    <option value="">不知道位置</option>
+                  </select></label
+                >
+              </div>
+            </details>
+            <p id="clue-count" role="status"></p>
+            <div id="clue-results" class="clue-results"></div>
+            <button id="more-clues" type="button" class="secondary" hidden>
+              显示更多线索
+            </button>
+          </section>
+          <div class="form-actions">
+            <button class="secondary" type="reset">清空全部条件</button>
+          </div>
+        </form>
+        <button class="retry" id="retry" hidden>重新加载地图</button>
+
+        <section id="candidate-list" aria-label="候选地图"></section>
         <section id="map-result" class="map-result" hidden></section>
       </section>
     </main>
     <footer>
       <span>遗物警察局 · 地图档案科</span
-      ><span>旧数据仅供原型验证，不代表当前 扩展内容 完整覆盖。</span>
+      ><span>旧档案未覆盖全部扩展内容。</span>
     </footer>
     <script type="module" src="src/map.js"></script>
   </body>

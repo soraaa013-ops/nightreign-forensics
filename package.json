@@ -10,6 +10,7 @@
     "validate:data": "node tools/validate-game-data.mjs data/game-data.json",
     "diff:data": "node tools/version-diff.mjs",
     "test:browser": "python3 tests/browser.py",
-    "test:a11y": "python3 tests/accessibility.py"
+    "test:a11y": "python3 tests/accessibility.py",
+    "test:chinese": "python3 tests/simplified.py"
   }
 }

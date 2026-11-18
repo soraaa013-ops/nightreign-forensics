@@ -40,9 +40,9 @@
     <main id="top">
       <section class="hero">
         <p class="kicker">遗物档案 / 词条核验</p>
-        <h1>遗物成分复杂？<br /><em>先送检。</em></h1>
+        <h1>查遗物，<em>从选词条开始。</em></h1>
         <p class="lede">
-          选择三条遗物词条。遗物警察将核对生成池、互斥关系与词条顺序，并给出一份说人话的检测报告。
+          选择遗物颜色，再按游戏中的顺序添加词条。支持按角色、效果类型浏览，也可以用“回血”“大招”等关键词查找。
         </p>
         <a class="scroll-cue" href="#checker">开始取证 <span>↓</span></a>
       </section>
@@ -51,10 +51,10 @@
         <div class="section-heading">
           <div>
             <p class="kicker">选择模板 · 录入词条</p>
-            <h2 id="checker-title">提交检材</h2>
+            <h2 id="checker-title">选择遗物词条</h2>
           </div>
           <p>
-            按游戏内顺序选择三条词条，支持关键词搜索。当前使用社区快照，检测结果仅对应此规则版本。
+            选齐三条即可看到合法性和概率。当前为社区快照，结论仅对应此规则版本。
           </p>
         </div>
 
@@ -65,42 +65,17 @@
               <option>规则载入中…</option>
             </select></label
           >
-          <div class="slots">
-            <label
-              ><span><b>01</b> 第一词条</span
-              ><input
-                name="effect"
-                autocomplete="off"
-                placeholder="输入关键词搜索…"
-                required
-            /></label>
-            <label
-              ><span><b>02</b> 第二词条</span
-              ><input
-                name="effect"
-                autocomplete="off"
-                placeholder="输入关键词搜索…"
-                required
-            /></label>
-            <label
-              ><span><b>03</b> 第三词条</span
-              ><input
-                name="effect"
-                autocomplete="off"
-                placeholder="输入关键词搜索…"
-                required
-            /></label>
-          </div>
+          <div class="slots" id="selected-effects" aria-label="已选词条"></div>
           <p class="form-hint" id="effect-hint">
-            三个词条均为必填。输入中文关键词，从候选中选择；可用方向键与回车操作。
+            按游戏中的显示顺序选择三条词条。选齐后自动检测，可随时替换、移除或调整顺序。
           </p>
           <p id="form-error" class="form-hint" role="alert"></p>
           <div class="form-actions">
             <button class="submit" type="submit">
-              签发检测报告 <span>↗</span>
+              重新检测 <span>↗</span>
             </button>
             <button class="secondary" type="button" id="randomize">
-              随机装填
+              填入示例
             </button>
             <button class="secondary" type="reset">清空</button>
             <button class="secondary" type="button" id="copy-report" disabled>
@@ -121,9 +96,7 @@
           <div class="report-copy">
             <p class="kicker">检测报告</p>
             <h3 id="report-title">等待检材</h3>
-            <p id="report-summary">
-              选择三条词条后签发报告，也可以先随机装填一组示例。
-            </p>
+            <p id="report-summary">点击空位添加词条，选齐三条后自动检测。</p>
             <p class="report-probability" id="report-probability" hidden></p>
             <ol id="report-order" hidden></ol>
             <p class="report-meta">
@@ -153,6 +126,49 @@
     <footer>
       <span>遗物警察局 · 非官方玩家工具</span><span>谨慎截图，理性出警。</span>
     </footer>
+    <dialog id="effect-picker" aria-labelledby="picker-title">
+      <div class="picker-header">
+        <div>
+          <p class="kicker" id="picker-step">选择词条</p>
+          <h2 id="picker-title">词条库</h2>
+        </div>
+        <button type="button" id="close-picker" class="secondary">关闭</button>
+      </div>
+      <label class="picker-search"
+        ><span>搜索词条</span
+        ><input
+          type="search"
+          id="effect-query"
+          placeholder="例如：回血、追踪者 大招、出击 火焰"
+          autocomplete="off"
+      /></label>
+      <div class="picker-filters">
+        <label
+          ><span>效果类型</span
+          ><select id="effect-category">
+            <option value="">全部类型</option>
+          </select></label
+        ><label
+          ><span>角色</span
+          ><select id="effect-character">
+            <option value="">全部角色</option>
+          </select></label
+        ><button type="button" class="secondary" id="reset-effect-filters">
+          清除筛选
+        </button>
+      </div>
+      <label class="toggle-field"
+        ><input
+          type="checkbox"
+          id="include-unsupported"
+        />同时查看当前模板无法抽取的词条</label
+      >
+      <p class="input-help">
+        空格分隔多个关键词；“回血”“生命值”“血量”均可检索。默认显示当前模板词条；找不到时可勾选上方选项查看其他词条。
+      </p>
+      <p id="effect-count" role="status"></p>
+      <div id="effect-results" class="effect-results"></div>
+    </dialog>
     <script type="module" src="src/app.js"></script>
   </body>
 </html>

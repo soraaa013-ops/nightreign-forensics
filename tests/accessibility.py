@@ -13,7 +13,7 @@ with sync_playwright() as p:
   for state in ['initial','active']:
    if state=='active':
     if not path:
-     page.get_by_role('button',name='随机装填').click();page.locator('input[name=effect]').first.fill('生命')
+     page.get_by_role('button',name='填入示例').click();page.locator('.choose-effect').first.click();page.locator('#effect-query').fill('回血')
     else:page.locator('#use-clue').click()
    page.add_script_tag(path=AXE)
    result=page.evaluate("async () => (await axe.run(document, {runOnly: {type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}})).violations")
