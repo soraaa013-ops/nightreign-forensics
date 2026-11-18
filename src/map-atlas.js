@@ -1,7 +1,6 @@
 import { queryMaps } from "./map-query.js";
 import {
   nearestPoints,
-  clusterPoints,
   pointInLayer,
   pointObservations,
   pointConsensus,
@@ -14,7 +13,19 @@ export async function createAtlas({ data, zh, getState, change }) {
     tiles = $("atlas-tiles"),
     layer = $("atlas-points"),
     editor = $("atlas-editor");
-  const geometry = await loadJson("data/map-geometry.json");
+  const [geometry, extension] = await Promise.all([
+    loadJson("data/map-geometry.json"),
+    loadJson("data/map-dlc-geometry.json"),
+  ]);
+  geometry.points.push(...extension.points);
+  Object.assign(geometry.layouts, extension.layouts);
+  let underground = false;
+  const depthButton = $("atlas-depth");
+  depthButton.addEventListener("click", () => {
+    underground = !underground;
+    terrain = "";
+    rebuild();
+  });
   let zoom = 1,
     pan = { x: 0, y: 0 },
     active = null,
@@ -22,10 +33,11 @@ export async function createAtlas({ data, zh, getState, change }) {
     points = [],
     records = [],
     lastFocus = null,
-    layerMode = "base",
+    layerMode = "all",
     groups = [],
     layoutKey = "",
-    revision = 0;
+    revision = 0,
+    editing = false;
   let size = 1,
     origin = { x: 0, y: 0 },
     buttons = [],
@@ -45,8 +57,11 @@ export async function createAtlas({ data, zh, getState, change }) {
     b.onclick = fn;
     return b;
   };
-  const label = (point) =>
-    `${point.spawn ? "出生位置" : zh(point.category)} · ${zh(point.location)}`;
+  const label = (point) => {
+    const type = point.spawn ? "出生位置" : zh(point.category),
+      place = zh(point.location);
+    return type === place ? place : `${type} · ${place}`;
+  };
   const observed = (point) =>
     point.spawn
       ? getState().spawn === point.spawn
@@ -61,7 +76,7 @@ export async function createAtlas({ data, zh, getState, change }) {
         : `已确认：${observation.value === "empty" ? "此处为空" : zh(observation.value)}`;
     const common = pointConsensus(records, point);
     return common
-      ? `推测：${common === "spawn" ? "出生位置" : zh(common)}`
+      ? `推测：${common === "spawn" ? "出生位置" : common === "empty" ? "此处为空" : zh(common)}`
       : "待观察";
   };
   function measure() {
@@ -72,47 +87,15 @@ export async function createAtlas({ data, zh, getState, change }) {
     };
   }
   function activateGroup(group) {
-    if (group.points.length === 1) {
-      const point = group.points[0];
-      if (layerMode === "spawn" && !observed(point)) {
-        active = point;
-        apply({ ...getState(), spawn: point.spawn }, "已标记出生位置");
-      } else open(point);
-      return;
-    }
-    if (zoom < 5) {
-      close(false);
-      const span =
-        Math.max(...group.points.map((p) => p.x)) -
-        Math.min(...group.points.map((p) => p.x));
-      const height =
-        Math.max(...group.points.map((p) => p.y)) -
-        Math.min(...group.points.map((p) => p.y));
-      zoom = Math.min(
-        5,
-        Math.max(zoom * 1.8, 0.7 / Math.max(span, height, 0.01)),
-      );
-      size = Math.min(viewport.clientWidth, viewport.clientHeight) * zoom;
-      pan = { x: (0.5 - group.x) * size, y: (0.5 - group.y) * size };
-      draw();
-      viewport.focus({ preventScroll: true });
-      $("atlas-status").textContent = "已展开这片区域，点选要标记的位置。";
-    } else {
-      active = null;
-      editor.hidden = false;
-      const head = el("div", null, "atlas-editor-head");
-      head.append(
-        el("h2", "选择这附近的位置"),
-        btn("关闭", () => close()),
-      );
-      head.firstChild.id = "atlas-point-title";
-      const choices = el("div", null, "atlas-group-choices");
-      group.points.forEach((point) =>
-        choices.append(btn(label(point), () => open(point))),
-      );
-      editor.replaceChildren(head, choices);
-      editor.querySelector("button")?.focus({ preventScroll: true });
-    }
+    const point = group.points[0];
+    if (
+      layerMode === "spawn" &&
+      !observed(point) &&
+      !pointConsensus(records, point)
+    ) {
+      active = point;
+      apply({ ...getState(), spawn: point.spawn }, "已标记出生位置");
+    } else open(point);
   }
   function draw() {
     measure();
@@ -122,29 +105,13 @@ export async function createAtlas({ data, zh, getState, change }) {
     const key = `${size}:${layerMode}:${revision}`;
     if (layoutKey !== key) {
       layoutKey = key;
-      groups = clusterPoints(
-        points.filter((p) => pointInLayer(p, layerMode)),
-        size,
-        48,
-      );
+      groups = points
+        .filter((p) => pointInLayer(p, layerMode))
+        .map((point) => ({ x: point.x, y: point.y, points: [point] }));
       for (const [index, group] of groups.entries()) {
-        let b;
-        if (group.points.length === 1)
-          b = buttons.find((x) => x.point.id === group.points[0].id).b;
-        else {
-          b = btn("", () => activateGroup(group), "atlas-point atlas-cluster");
-          b.append(
-            el("strong", String(group.points.length)),
-            el("small", "处"),
-          );
-          b.setAttribute(
-            "aria-label",
-            `${group.points.length} 处邻近位置，点击展开`,
-          );
-          b.classList.toggle("observed", group.points.some(observed));
-        }
+        const b = buttons.find((x) => x.point.id === group.points[0].id).b;
         b.dataset.group = String(index);
-        b.dataset.members = JSON.stringify(group.points.map((p) => p.id));
+        b.dataset.members = JSON.stringify([group.points[0].id]);
         group.button = b;
       }
       layer.replaceChildren(...groups.map((g) => g.button));
@@ -234,6 +201,7 @@ export async function createAtlas({ data, zh, getState, change }) {
   }
   function open(point, focus = true) {
     active = point;
+    editing = false;
     lastFocus = buttons.find((x) => x.point.id === point.id)?.b;
     $("atlas-toast").hidden = true;
     renderEditor();
@@ -249,6 +217,61 @@ export async function createAtlas({ data, zh, getState, change }) {
     header.firstChild.id = "atlas-point-title";
     header.append(btn("关闭", close));
     const content = [header];
+    const known = pointConsensus(records, point);
+    if (known && !editing) {
+      const facts = el("div", null, "point-description");
+      facts.append(
+        el(
+          "p",
+          (
+            point.spawn
+              ? getState().spawn === point.spawn
+              : getState().observations.some(
+                  (o) =>
+                    o.key === point.key &&
+                    o.match !== "type" &&
+                    o.value === known,
+                )
+          )
+            ? "你已确认"
+            : "候选档案一致",
+          "point-certainty",
+        ),
+        el(
+          "h3",
+          known === "spawn"
+            ? "出生位置"
+            : known === "empty"
+              ? "此处为空"
+              : zh(known),
+        ),
+      );
+      const description =
+        known === "spawn"
+          ? "当前候选均从这个位置出生。"
+          : known === "empty"
+            ? "当前候选在此处均未记录据点或敌人。"
+            : `当前 ${records.length} 份候选在这个位置的内容一致。`;
+      facts.append(
+        el("p", description),
+        el("p", `位置：${zh(point.location)}`, "point-location"),
+      );
+      if (known !== "spawn" && zh(point.category) !== zh(point.location))
+        facts.append(el("p", `类型：${zh(point.category)}`, "point-location"));
+      facts.append(
+        btn(
+          "修改这处信息",
+          () => {
+            editing = true;
+            renderEditor();
+          },
+          "point-edit",
+        ),
+      );
+      editor.replaceChildren(header, facts);
+      return;
+    }
+
     const current = el("p", pointName(point), "atlas-current");
     if (observed(point) || pointConsensus(records, point))
       content.push(current);
@@ -269,8 +292,8 @@ export async function createAtlas({ data, zh, getState, change }) {
           ),
         );
     } else {
-      // Keep all known values available, including conflicting ones, so a mistaken clue can be corrected.
-      const values = [
+      // Normal selection follows current evidence. Explicit editing excludes only this point’s old observation.
+      let values = [
         ...new Set(
           data.records
             .filter(
@@ -283,24 +306,29 @@ export async function createAtlas({ data, zh, getState, change }) {
             ),
         ),
       ];
-      const types = [
+      let types = [
         ...new Set(
           values.filter((v) => v.includes(" - ")).map((v) => v.split(" - ")[0]),
         ),
       ];
-      const rest = queryMaps(
-        data.records,
-        pointObservations(getState(), point, null),
-      );
+      const rest = editing
+        ? queryMaps(data.records, pointObservations(getState(), point, null))
+        : records;
       const exactCounts = new Map(),
         typeCounts = new Map();
       for (const record of rest) {
-        const value =
-          record.slots.find((slot) => slot.key === point.key)?.value || "empty";
+        const slot = record.slots.find((slot) => slot.key === point.key);
+        if (!slot) continue;
+        const value = slot.value || "empty";
         exactCounts.set(value, (exactCounts.get(value) || 0) + 1);
         const type = value.split(" - ")[0];
         typeCounts.set(type, (typeCounts.get(type) || 0) + 1);
       }
+      values = values.filter((value) => (exactCounts.get(value) || 0) > 0);
+      types = types.filter(
+        (type) =>
+          (typeCounts.get(type) || 0) > 0 && typeCounts.get(type) < rest.length,
+      );
       const selected = getState().observations.find((o) => o.key === point.key);
       const makeOption = (value, match = "exact") => {
         const observation = {
@@ -365,6 +393,7 @@ export async function createAtlas({ data, zh, getState, change }) {
         const filtered = values
           .filter(
             (v) =>
+              editing ||
               !selected ||
               selected.match !== "type" ||
               v.split(" - ")[0] === selected.value,
@@ -389,6 +418,7 @@ export async function createAtlas({ data, zh, getState, change }) {
         values
           .filter(
             (v) =>
+              editing ||
               !selected ||
               selected.match !== "type" ||
               v.split(" - ")[0] === selected.value,
@@ -400,6 +430,17 @@ export async function createAtlas({ data, zh, getState, change }) {
       }
       details.append(search, list);
       content.push(details);
+      if (selected && !editing)
+        content.push(
+          btn(
+            "修改这处信息",
+            () => {
+              editing = true;
+              renderEditor();
+            },
+            "point-edit",
+          ),
+        );
       if (observed(point))
         content.push(
           btn("移除此处标记", () =>
@@ -430,6 +471,11 @@ export async function createAtlas({ data, zh, getState, change }) {
     const displayTerrain =
       state.mapType ||
       (inferredTerrains.length === 1 ? inferredTerrains[0] : "Default");
+    depthButton.hidden = displayTerrain !== "Great Hollow";
+    depthButton.textContent = underground
+      ? "地下 · 切换地表"
+      : "地表 · 切换地下";
+    depthButton.setAttribute("aria-pressed", String(underground));
     if (displayTerrain !== terrain) {
       terrain = displayTerrain;
       zoom = 1;
@@ -461,12 +507,25 @@ export async function createAtlas({ data, zh, getState, change }) {
               }),
             );
           };
-          img.src = `assets/maps/${geometry.layouts[terrain]}/${col}-${5 - row}.webp`;
+          img.src = `assets/maps/${terrain === "Great Hollow" && underground ? "great_hollow_under" : geometry.layouts[terrain]}/${col}-${5 - row}.webp`;
           images.push(img);
         }
       tiles.replaceChildren(...images);
     }
-    points = geometry.points.filter((p) => p.terrains.includes(displayTerrain));
+    points = geometry.points.filter(
+      (p) =>
+        p.terrains.includes(displayTerrain) &&
+        (!p.spawn || !state.spawn || p.spawn === state.spawn) &&
+        (displayTerrain !== "Great Hollow" ||
+          (p.level === "地下") === underground) &&
+        (!records.length ||
+          observed(p) ||
+          (p.spawn
+            ? records.some((r) => r.spawn === p.spawn)
+            : records.some((r) =>
+                r.slots.some((slot) => slot.key === p.key && slot.value),
+              ))),
+    );
     buttons = points.map((point) => {
       const common = pointConsensus(records, point);
       const content =
@@ -511,7 +570,7 @@ export async function createAtlas({ data, zh, getState, change }) {
     revision++;
     $("atlas-count").textContent =
       records.length === 1
-        ? `已锁定 #${records[0].id} · 点击点位查看内容`
+        ? `已确定 · #${records[0].id}`
         : `${records.length} 份候选`;
     $("atlas-undo").disabled = document.getElementById("undo-map").disabled;
     $("atlas-hint").textContent = state.mapType
@@ -622,12 +681,7 @@ export async function createAtlas({ data, zh, getState, change }) {
     pointers.delete(event.pointerId);
     if (click) {
       const near = nearEvent(event);
-      if (near.length)
-        activateGroup(
-          gesture.startGroup !== undefined
-            ? groups[Number(gesture.startGroup)]
-            : near[0],
-        );
+      if (near.length) activateGroup(near[0]);
       else
         $("atlas-status").textContent =
           "附近没有可标记点位。请放大地图，点击圆点附近。";
@@ -703,11 +757,12 @@ export async function createAtlas({ data, zh, getState, change }) {
         close(false);
         $("atlas-toast").hidden = true;
         updateLayers();
+        $("atlas-layer-menu").open = false;
         draw();
         $("atlas-status").textContent =
           mode === "spawn"
             ? "出生模式：点一下位置即标记，可随时撤销。"
-            : "点选位置，再选择内容；数字点可点击展开。";
+            : "点选位置查看或标记，自动吸附最近点位。";
       },
       "atlas-layer",
     );
@@ -715,6 +770,14 @@ export async function createAtlas({ data, zh, getState, change }) {
     $("atlas-layers").append(b);
   }
   function updateLayers() {
+    const names = {
+      base: "据点",
+      spawn: "出生",
+      boss: "敌人",
+      gaol: "监牢",
+      all: "全部点位",
+    };
+    $("atlas-layer-name").textContent = names[layerMode];
     for (const b of $("atlas-layers").children)
       b.setAttribute("aria-pressed", String(b.dataset.layer === layerMode));
   }

@@ -25,7 +25,9 @@ export function pointConsensus(records, point) {
       ? record.spawn === point.spawn
         ? "spawn"
         : null
-      : record.slots.find((slot) => slot.key === point.key)?.value || null,
+      : record.slots.some((slot) => slot.key === point.key)
+        ? record.slots.find((slot) => slot.key === point.key).value || "empty"
+        : null,
   );
   return values[0] && values.every((value) => value === values[0])
     ? values[0]

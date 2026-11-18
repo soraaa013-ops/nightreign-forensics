@@ -7,11 +7,11 @@
       name="description"
       content="遗物警察局地图档案科：通过观察信息反查黑夜君临地图布局。"
     />
-    <meta name="theme-color" content="#090b0e" />
+    <meta name="theme-color" content="#192226" />
     <title>地图档案科｜遗物警察局</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="map-page">
     <a class="skip-link" href="#atlas-viewport">跳到工具</a>
     <noscript
       ><p>
@@ -32,50 +32,41 @@
       </nav>
     </header>
     <main class="tool-main map-main">
-      <div class="page-heading">
-        <div>
-          <p class="kicker">黑夜君临 · 地图工具</p>
-          <h1>地图反查</h1>
-        </div>
-        <p>在地图上点选位置，标记你看到的内容。</p>
-      </div>
       <section class="atlas" aria-label="交互地图">
         <div class="atlas-toolbar">
           <div>
-            <strong>点位置，选内容，继续下一处</strong>
-            <p id="atlas-hint">点击附近的圆点，标记出生位置、据点或敌人。</p>
+            <h1>地图档案</h1>
+            <span id="atlas-count" role="status">正在载入</span>
           </div>
-          <div class="atlas-controls">
-            <button type="button" class="secondary" id="atlas-undo" disabled>
-              撤销</button
-            ><button
-              type="button"
-              class="secondary"
-              id="atlas-out"
-              aria-label="缩小地图"
-            >
-              −</button
-            ><button
-              type="button"
-              class="secondary"
-              id="atlas-in"
-              aria-label="放大地图"
-            >
-              ＋</button
-            ><button type="button" class="secondary" id="atlas-fit">
-              全图
-            </button>
+          <div class="map-top-actions">
+            <button id="open-map-settings" type="button">
+              筛选<span id="filter-total"></span></button
+            ><button id="open-map-results" type="button">查看档案</button>
           </div>
         </div>
-        <div id="atlas-facets"></div>
-        <div id="atlas-layers" role="group" aria-label="显示哪类点位"></div>
         <div class="atlas-body">
+          <details id="atlas-layer-menu">
+            <summary id="atlas-layer-name">据点</summary>
+            <div id="atlas-layers" role="group" aria-label="显示哪类点位"></div>
+          </details>
+          <div class="atlas-controls">
+            <button type="button" id="atlas-in" aria-label="放大地图">＋</button
+            ><button type="button" id="atlas-out" aria-label="缩小地图">
+              −</button
+            ><button type="button" id="atlas-fit">全图</button>
+          </div>
+          <button type="button" id="atlas-undo" class="map-undo" disabled>
+            撤销
+          </button>
           <div
             id="atlas-viewport"
             tabindex="0"
             role="region"
             aria-label="可拖动和缩放的地图；方向键移动，加减键缩放，点位可通过制表键选择"
           >
+            <button type="button" id="atlas-depth" class="atlas-depth" hidden>
+              地表 · 切换地下
+            </button>
             <div id="atlas-tiles" aria-hidden="true"></div>
             <div id="atlas-points"></div>
             <div id="atlas-toast" role="status" hidden></div>
@@ -87,104 +78,145 @@
             hidden
           ></section>
         </div>
-        <div class="atlas-legend">
-          <span><i class="observed"></i>你已确认</span
-          ><span><i class="inferred"></i>候选共同推测</span
-          ><span><i></i>待观察</span
-          ><strong id="atlas-count" role="status"></strong>
-        </div>
-        <p id="atlas-status" role="status" class="input-help">
-          数字表示附近有多处位置，点击放大。标记完成后可继续点下一处。
-        </p>
+        <p id="atlas-hint" class="sr-only"></p>
+        <p id="atlas-status" role="status" class="sr-only"></p>
       </section>
-      <section
-        class="map-workbench"
-        aria-label="地图筛选工作台"
-        id="map-query-title"
+      <dialog
+        id="map-settings"
+        class="map-drawer"
+        aria-labelledby="settings-title"
       >
-        <div class="map-input-column">
-          <form id="map-form" aria-busy="true">
-            <details id="text-search" class="clue-builder">
-              <summary>文字检索辅助 · 不确定地图位置时使用</summary>
-              <section aria-labelledby="clue-title">
-                <h2 id="clue-title">搜索你看到的内容</h2>
-                <label
-                  ><span>搜索敌人或据点</span
-                  ><input
-                    id="clue-search"
-                    type="search"
-                    placeholder="例如：魔像、教堂、失乡骑士"
-                    autocomplete="off"
-                /></label>
-                <div
-                  id="quick-clues"
-                  class="quick-searches"
-                  aria-label="常用搜索"
-                ></div>
-                <details id="location-details">
-                  <summary>指定地点类型或位置（可选）</summary>
-                  <div class="clue-filters">
-                    <label
-                      ><span>地点类型（可选）</span
-                      ><select id="clue-category">
-                        <option value="">全部类型</option>
-                      </select></label
-                    ><label
-                      ><span>具体位置（可选）</span
-                      ><select id="clue-location">
-                        <option value="">不知道位置</option>
-                      </select></label
-                    >
-                  </div>
-                </details>
-                <p id="clue-count" role="status"></p>
-                <div id="clue-results" class="clue-results"></div>
-                <button id="more-clues" type="button" class="secondary" hidden>
-                  显示更多线索
-                </button>
+        <div class="drawer-heading">
+          <div>
+            <p>按你已知的信息筛选</p>
+            <h2 id="settings-title">筛选与标记</h2>
+          </div>
+          <button type="button" data-close-drawer="map-settings">
+            返回地图
+          </button>
+        </div>
+        <div id="atlas-facets"></div>
+        <section
+          class="map-workbench"
+          aria-label="地图筛选工作台"
+          id="map-query-title"
+        >
+          <div class="map-input-column">
+            <form id="map-form" aria-busy="true">
+              <details id="text-search" class="clue-builder">
+                <summary>按敌人或据点搜索</summary>
+                <section aria-labelledby="clue-title">
+                  <h2 id="clue-title">搜索你看到的内容</h2>
+                  <label
+                    ><span>搜索敌人或据点</span
+                    ><input
+                      id="clue-search"
+                      type="search"
+                      placeholder="例如：魔像、教堂、失乡骑士"
+                      autocomplete="off"
+                  /></label>
+                  <div
+                    id="quick-clues"
+                    class="quick-searches"
+                    aria-label="常用搜索"
+                  ></div>
+                  <details id="location-details">
+                    <summary>指定地点类型或位置（可选）</summary>
+                    <div class="clue-filters">
+                      <label
+                        ><span>地点类型（可选）</span
+                        ><select id="clue-category">
+                          <option value="">全部类型</option>
+                        </select></label
+                      ><label
+                        ><span>具体位置（可选）</span
+                        ><select id="clue-location">
+                          <option value="">不知道位置</option>
+                        </select></label
+                      >
+                    </div>
+                  </details>
+                  <p id="clue-count" role="status"></p>
+                  <div id="clue-results" class="clue-results"></div>
+                  <button
+                    id="more-clues"
+                    type="button"
+                    class="secondary"
+                    hidden
+                  >
+                    显示更多线索
+                  </button>
+                </section>
+              </details>
+              <details class="base-filters" id="base-filters">
+                <summary>出生位置</summary>
+                <div class="base-filter-fields">
+                  <label
+                    ><span>目标夜王</span
+                    ><select id="nightlord">
+                      <option value="">未知 / 全部</option>
+                    </select></label
+                  >
+                  <label
+                    ><span>地形异变</span
+                    ><select id="map-type">
+                      <option value="">未知 / 全部</option>
+                    </select></label
+                  >
+                  <label
+                    ><span>出生位置</span
+                    ><select id="spawn">
+                      <option value="">未知 / 全部</option>
+                    </select></label
+                  >
+                </div>
+              </details>
+              <section class="active-filters" aria-label="已选条件">
+                <h3>已选条件</h3>
+                <div id="filter-chips"></div>
+                <p id="filter-empty" class="input-help">
+                  还没有标记。点击地图上的位置即可开始。
+                </p>
               </section>
-            </details>
-            <details class="base-filters" id="base-filters">
-              <summary>按名称选择出生点（可选）</summary>
-              <div class="base-filter-fields">
-                <label
-                  ><span>目标夜王</span
-                  ><select id="nightlord">
-                    <option value="">未知 / 全部</option>
-                  </select></label
-                >
-                <label
-                  ><span>地形异变</span
-                  ><select id="map-type">
-                    <option value="">未知 / 全部</option>
-                  </select></label
-                >
-                <label
-                  ><span>出生位置</span
-                  ><select id="spawn">
-                    <option value="">未知 / 全部</option>
-                  </select></label
-                >
+              <div class="form-actions">
+                <button class="secondary" type="button" id="undo-map" disabled>
+                  撤销上一步</button
+                ><button class="secondary" type="reset">清空全部条件</button
+                ><button class="secondary" type="button" id="share-map">
+                  分享筛选
+                </button>
               </div>
-            </details>
-            <section class="active-filters" aria-label="已选条件">
-              <h3>已选条件</h3>
-              <div id="filter-chips"></div>
-              <p id="filter-empty" class="input-help">
-                还没有标记。点击地图上的位置即可开始。
-              </p>
-            </section>
-            <div class="form-actions">
-              <button class="secondary" type="button" id="undo-map" disabled>
-                撤销上一步</button
-              ><button class="secondary" type="reset">清空全部条件</button
-              ><button class="secondary" type="button" id="share-map">
-                分享筛选
-              </button>
-            </div>
-            <p id="map-feedback" class="selection-feedback" role="status"></p>
-          </form>
-          <button class="retry" id="retry" hidden>重新加载地图</button>
+              <p id="map-feedback" class="selection-feedback" role="status"></p>
+            </form>
+          </div>
+        </section>
+        <details class="map-guide">
+          <summary>地图标记说明</summary>
+          <p>
+            金色代表你已确认，蓝色代表候选档案一致。点位直接显示，点击时吸附最近位置。已确定的位置点击查看描述，修改时再进入编辑。
+          </p>
+        </details>
+        <details class="data-notes">
+          <summary>地图数据范围</summary>
+          <p id="map-version">正在载入地图目录…</p>
+          <p>
+            随机事件以实际游戏为准。不确定的观察可以撤销，不必填满所有条件。
+          </p>
+        </details>
+      </dialog>
+      <dialog
+        id="map-results-dialog"
+        class="map-drawer"
+        aria-labelledby="results-title"
+      >
+        <div class="drawer-heading">
+          <div>
+            <p>根据当前线索持续更新</p>
+            <h2 id="results-title">候选档案</h2>
+          </div>
+          <button type="button" data-close-drawer="map-results-dialog">
+            返回地图
+          </button>
         </div>
         <aside id="map-output" class="map-output" aria-label="地图筛选结果">
           <section class="candidate-panel" aria-live="polite">
@@ -203,19 +235,13 @@
           <section id="map-result" class="map-result" hidden></section>
           <section id="candidate-list" aria-label="候选地图"></section>
         </aside>
-      </section>
-      <details class="data-notes">
-        <summary>地图数据范围</summary>
-        <p id="map-version">正在载入地图目录…</p>
-        <p>随机事件以实际游戏为准。不确定的观察可以撤销，不必填满所有条件。</p>
-      </details>
-      <a id="map-result-link" class="mobile-result-link" href="#map-output"
-        >正在载入地图…</a
-      >
+      </dialog>
+      <a id="map-result-link" href="#map-output" hidden>查看档案</a>
     </main>
+    <button class="retry" id="retry" hidden>重新加载地图</button>
     <footer>
       <span>遗物警察局 · 地图档案科</span
-      ><span>旧档案未覆盖全部扩展内容。</span>
+      ><span>本体与见弃空洞者 · 520 份布局。</span>
     </footer>
     <script type="module" src="src/map.js"></script>
   </body>

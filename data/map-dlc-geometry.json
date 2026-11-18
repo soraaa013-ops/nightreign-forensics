@@ -1,0 +1,949 @@
+{
+  "layouts": {
+    "Great Hollow": "great_hollow"
+  },
+  "points": [
+    {
+      "id": "spawn-13000",
+      "spawn": "大空洞 · 西南出生点",
+      "location": "大空洞 · 西南出生点",
+      "x": 0.268515625,
+      "y": 0.6925911458333334,
+      "terrains": [
+        "Great Hollow"
+      ]
+    },
+    {
+      "id": "spawn-13002",
+      "spawn": "大空洞 · 东北出生点",
+      "location": "大空洞 · 东北出生点",
+      "x": 0.7305533854166667,
+      "y": 0.29999999999999993,
+      "terrains": [
+        "Great Hollow"
+      ]
+    },
+    {
+      "id": "spawn-13001",
+      "spawn": "大空洞 · 南出生点",
+      "location": "大空洞 · 南出生点",
+      "x": 0.45490885416666665,
+      "y": 0.7920377604166666,
+      "terrains": [
+        "Great Hollow"
+      ]
+    },
+    {
+      "id": "Default:Castle:0.4531:0.5417:地表",
+      "key": "Default:Castle:0.4531:0.5417:地表",
+      "category": "Castle",
+      "location": "无特异地形 · 中部地表点位 2190",
+      "x": 0.45307291666666666,
+      "y": 0.5417447916666667,
+      "terrains": [
+        "Default"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Default:Minor Base:0.3840:0.6560:地表",
+      "key": "Default:Minor Base:0.3840:0.6560:地表",
+      "category": "Minor Base",
+      "location": "无特异地形 · 西南地表点位 2712",
+      "x": 0.38396484375,
+      "y": 0.6559505208333334,
+      "terrains": [
+        "Default"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Default:Minor Base:0.6504:0.7543:地表",
+      "key": "Default:Minor Base:0.6504:0.7543:地表",
+      "category": "Minor Base",
+      "location": "无特异地形 · 东南地表点位 2714",
+      "x": 0.65041015625,
+      "y": 0.7543098958333333,
+      "terrains": [
+        "Default"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Default:Minor Base:0.2825:0.2788:地表",
+      "key": "Default:Minor Base:0.2825:0.2788:地表",
+      "category": "Minor Base",
+      "location": "无特异地形 · 西北地表点位 2711",
+      "x": 0.28251953125,
+      "y": 0.27881510416666666,
+      "terrains": [
+        "Default"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Major Base:0.4536:0.7571:地下",
+      "key": "Great Hollow:Major Base:0.4536:0.7571:地下",
+      "category": "Major Base",
+      "location": "大空洞 · 南地下点位 1107",
+      "x": 0.45360677083333334,
+      "y": 0.75708984375,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地下"
+    },
+    {
+      "id": "Great Hollow:Major Base:0.7016:0.6970:地下",
+      "key": "Great Hollow:Major Base:0.7016:0.6970:地下",
+      "category": "Major Base",
+      "location": "大空洞 · 东南地下点位 1110",
+      "x": 0.701640625,
+      "y": 0.6969856770833334,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地下"
+    },
+    {
+      "id": "Great Hollow:Major Base:0.7743:0.4114:地表",
+      "key": "Great Hollow:Major Base:0.7743:0.4114:地表",
+      "category": "Major Base",
+      "location": "大空洞 · 东地表点位 1108",
+      "x": 0.7743294270833333,
+      "y": 0.41141276041666663,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Major Base:0.2567:0.5777:地表",
+      "key": "Great Hollow:Major Base:0.2567:0.5777:地表",
+      "category": "Major Base",
+      "location": "大空洞 · 西地表点位 1109",
+      "x": 0.2566731770833333,
+      "y": 0.5776888020833333,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Major Base:0.3481:0.3097:地表",
+      "key": "Great Hollow:Major Base:0.3481:0.3097:地表",
+      "category": "Major Base",
+      "location": "大空洞 · 西北地表点位 1142",
+      "x": 0.3480924479166667,
+      "y": 0.30966145833333325,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.2618:0.4306:地表",
+      "key": "Great Hollow:Field Boss:0.2618:0.4306:地表",
+      "category": "Field Boss",
+      "location": "大空洞 · 西地表点位 1114",
+      "x": 0.2618098958333333,
+      "y": 0.43057291666666664,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.7188:0.6911:地表",
+      "key": "Great Hollow:Field Boss:0.7188:0.6911:地表",
+      "category": "Field Boss",
+      "location": "大空洞 · 东南地表点位 1111",
+      "x": 0.7188216145833334,
+      "y": 0.69111328125,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.4437:0.5748:地表",
+      "key": "Great Hollow:Field Boss:0.4437:0.5748:地表",
+      "category": "Field Boss",
+      "location": "大空洞 · 中部地表点位 1162",
+      "x": 0.44367838541666665,
+      "y": 0.5748372395833334,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.2867:0.5076:地表",
+      "key": "Great Hollow:Field Boss:0.2867:0.5076:地表",
+      "category": "Field Boss",
+      "location": "大空洞 · 西地表点位 1155",
+      "x": 0.28667317708333334,
+      "y": 0.5076171875,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.6932:0.5306:地下",
+      "key": "Great Hollow:Field Boss:0.6932:0.5306:地下",
+      "category": "Field Boss",
+      "location": "大空洞 · 东地下点位 1164",
+      "x": 0.6931770833333334,
+      "y": 0.5306184895833332,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地下"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.5924:0.4878:地表",
+      "key": "Great Hollow:Field Boss:0.5924:0.4878:地表",
+      "category": "Field Boss",
+      "location": "大空洞 · 中部地表点位 1158",
+      "x": 0.5923893229166667,
+      "y": 0.48779296875,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.7732:0.6404:地下",
+      "key": "Great Hollow:Field Boss:0.7732:0.6404:地下",
+      "category": "Field Boss",
+      "location": "大空洞 · 东南地下点位 1160",
+      "x": 0.7732291666666667,
+      "y": 0.6404296875,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地下"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.3599:0.6071:地表",
+      "key": "Great Hollow:Field Boss:0.3599:0.6071:地表",
+      "category": "Field Boss",
+      "location": "大空洞 · 西南地表点位 1156",
+      "x": 0.35992838541666666,
+      "y": 0.6070572916666668,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.4676:0.6509:地表",
+      "key": "Great Hollow:Field Boss:0.4676:0.6509:地表",
+      "category": "Field Boss",
+      "location": "大空洞 · 南地表点位 1161",
+      "x": 0.46755859375,
+      "y": 0.6509049479166666,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.4516:0.5456:地表",
+      "key": "Great Hollow:Field Boss:0.4516:0.5456:地表",
+      "category": "Field Boss",
+      "location": "大空洞 · 中部地表点位 1163",
+      "x": 0.4515690104166667,
+      "y": 0.5456380208333333,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.6999:0.6168:地下",
+      "key": "Great Hollow:Field Boss:0.6999:0.6168:地下",
+      "category": "Field Boss",
+      "location": "大空洞 · 东南地下点位 1159",
+      "x": 0.6998567708333333,
+      "y": 0.6167903645833333,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地下"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.4629:0.3466:地表",
+      "key": "Great Hollow:Field Boss:0.4629:0.3466:地表",
+      "category": "Field Boss",
+      "location": "大空洞 · 北地表点位 1157",
+      "x": 0.4629036458333333,
+      "y": 0.3466276041666666,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.2448:0.5384:地表",
+      "key": "Great Hollow:Field Boss:0.2448:0.5384:地表",
+      "category": "Field Boss",
+      "location": "大空洞 · 西地表点位 1165",
+      "x": 0.24475911458333333,
+      "y": 0.5384309895833332,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Minor Base:0.3620:0.7695:地表",
+      "key": "Great Hollow:Minor Base:0.3620:0.7695:地表",
+      "category": "Minor Base",
+      "location": "大空洞 · 西南地表点位 1150",
+      "x": 0.3619791666666667,
+      "y": 0.76953125,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Minor Base:0.7682:0.5768:地下",
+      "key": "Great Hollow:Minor Base:0.7682:0.5768:地下",
+      "category": "Minor Base",
+      "location": "大空洞 · 东地下点位 1153",
+      "x": 0.7682291666666666,
+      "y": 0.5768229166666667,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地下"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.3310:0.2806:地下",
+      "key": "Great Hollow:Field Boss:0.3310:0.2806:地下",
+      "category": "Field Boss",
+      "location": "大空洞 · 西北地下点位 1103",
+      "x": 0.33097005208333335,
+      "y": 0.28061848958333335,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地下"
+    },
+    {
+      "id": "Great Hollow:Major Base:0.6414:0.6522:地表",
+      "key": "Great Hollow:Major Base:0.6414:0.6522:地表",
+      "category": "Major Base",
+      "location": "大空洞 · 东南地表点位 1136",
+      "x": 0.6414127604166667,
+      "y": 0.6521940104166666,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Minor Base:0.6142:0.5076:地表",
+      "key": "Great Hollow:Minor Base:0.6142:0.5076:地表",
+      "category": "Minor Base",
+      "location": "大空洞 · 东地表点位 1152",
+      "x": 0.61421875,
+      "y": 0.5076106770833333,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Minor Base:0.3542:0.5221:地表",
+      "key": "Great Hollow:Minor Base:0.3542:0.5221:地表",
+      "category": "Minor Base",
+      "location": "大空洞 · 西地表点位 1151",
+      "x": 0.3541666666666667,
+      "y": 0.5221354166666667,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Minor Base:0.4142:0.4457:地表",
+      "key": "Great Hollow:Minor Base:0.4142:0.4457:地表",
+      "category": "Minor Base",
+      "location": "大空洞 · 中部地表点位 1210",
+      "x": 0.4141861979166667,
+      "y": 0.4457161458333333,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.4489:0.7021:地下",
+      "key": "Great Hollow:Field Boss:0.4489:0.7021:地下",
+      "category": "Field Boss",
+      "location": "大空洞 · 南地下点位 关联3",
+      "x": 0.4488932291666667,
+      "y": 0.7021484375,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地下"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.4318:0.6953:地下",
+      "key": "Great Hollow:Field Boss:0.4318:0.6953:地下",
+      "category": "Field Boss",
+      "location": "大空洞 · 南地下点位 关联4",
+      "x": 0.4318033854166667,
+      "y": 0.6952669270833334,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地下"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.7812:0.4004:地表",
+      "key": "Great Hollow:Field Boss:0.7812:0.4004:地表",
+      "category": "Field Boss",
+      "location": "大空洞 · 东地表点位 关联7",
+      "x": 0.7812239583333334,
+      "y": 0.40036458333333336,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.7243:0.4252:地表",
+      "key": "Great Hollow:Field Boss:0.7243:0.4252:地表",
+      "category": "Field Boss",
+      "location": "大空洞 · 东地表点位 关联8",
+      "x": 0.724296875,
+      "y": 0.4252278645833333,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.2644:0.6017:地表",
+      "key": "Great Hollow:Field Boss:0.2644:0.6017:地表",
+      "category": "Field Boss",
+      "location": "大空洞 · 西南地表点位 关联11",
+      "x": 0.26435546875,
+      "y": 0.6016731770833335,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.2534:0.5952:地表",
+      "key": "Great Hollow:Field Boss:0.2534:0.5952:地表",
+      "category": "Field Boss",
+      "location": "大空洞 · 西地表点位 关联12",
+      "x": 0.25335286458333334,
+      "y": 0.5951888020833334,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.7336:0.7351:地下",
+      "key": "Great Hollow:Field Boss:0.7336:0.7351:地下",
+      "category": "Field Boss",
+      "location": "大空洞 · 东南地下点位 关联15",
+      "x": 0.73357421875,
+      "y": 0.7350651041666667,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地下"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.7802:0.7516:地下",
+      "key": "Great Hollow:Field Boss:0.7802:0.7516:地下",
+      "category": "Field Boss",
+      "location": "大空洞 · 东南地下点位 关联16",
+      "x": 0.7801692708333333,
+      "y": 0.7515950520833333,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地下"
+    },
+    {
+      "id": "Great Hollow:Minor Base:0.5662:0.7029:地下",
+      "key": "Great Hollow:Minor Base:0.5662:0.7029:地下",
+      "category": "Minor Base",
+      "location": "大空洞 · 南地下点位 1211",
+      "x": 0.56619140625,
+      "y": 0.7028971354166667,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地下"
+    },
+    {
+      "id": "Great Hollow:Field Boss:0.4840:0.7629:地下",
+      "key": "Great Hollow:Field Boss:0.4840:0.7629:地下",
+      "category": "Field Boss",
+      "location": "大空洞 · 南地下点位 关联1",
+      "x": 0.4840494791666667,
+      "y": 0.762890625,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地下"
+    },
+    {
+      "id": "Great Hollow:Minor Base:0.6253:0.7231:地下",
+      "key": "Great Hollow:Minor Base:0.6253:0.7231:地下",
+      "category": "Minor Base",
+      "location": "大空洞 · 东南地下点位 1174",
+      "x": 0.6253385416666667,
+      "y": 0.7230729166666667,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地下"
+    },
+    {
+      "id": "Great Hollow:Minor Base:0.5585:0.5134:地表",
+      "key": "Great Hollow:Minor Base:0.5585:0.5134:地表",
+      "category": "Minor Base",
+      "location": "大空洞 · 中部地表点位 1212",
+      "x": 0.558515625,
+      "y": 0.5133723958333334,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Default:Minor Base:0.4108:0.4320:地表",
+      "key": "Default:Minor Base:0.4108:0.4320:地表",
+      "category": "Minor Base",
+      "location": "无特异地形 · 中部地表点位 2713",
+      "x": 0.41083984375,
+      "y": 0.43195312500000005,
+      "terrains": [
+        "Default"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Minor Base:0.7300:0.4599:地表",
+      "key": "Great Hollow:Minor Base:0.7300:0.4599:地表",
+      "category": "Minor Base",
+      "location": "大空洞 · 东地表点位 1176",
+      "x": 0.7300065104166666,
+      "y": 0.4598893229166666,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Minor Base:0.7057:0.5766:地下",
+      "key": "Great Hollow:Minor Base:0.7057:0.5766:地下",
+      "category": "Minor Base",
+      "location": "大空洞 · 东地下点位 1213",
+      "x": 0.7057486979166666,
+      "y": 0.576640625,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地下"
+    },
+    {
+      "id": "Great Hollow:Minor Base:0.4311:0.5484:地表",
+      "key": "Great Hollow:Minor Base:0.4311:0.5484:地表",
+      "category": "Minor Base",
+      "location": "大空洞 · 中部地表点位 1172",
+      "x": 0.4311067708333333,
+      "y": 0.5484244791666666,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Minor Base:0.3977:0.3918:地表",
+      "key": "Great Hollow:Minor Base:0.3977:0.3918:地表",
+      "category": "Minor Base",
+      "location": "大空洞 · 西北地表点位 1173",
+      "x": 0.39773437500000003,
+      "y": 0.39181640625,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Default:Minor Base:0.7788:0.2643:地表",
+      "key": "Default:Minor Base:0.7788:0.2643:地表",
+      "category": "Minor Base",
+      "location": "无特异地形 · 东北地表点位 2718",
+      "x": 0.7788346354166666,
+      "y": 0.26433593749999995,
+      "terrains": [
+        "Default"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Minor Base:0.3124:0.6196:地表",
+      "key": "Great Hollow:Minor Base:0.3124:0.6196:地表",
+      "category": "Minor Base",
+      "location": "大空洞 · 西南地表点位 1170",
+      "x": 0.31237630208333333,
+      "y": 0.6195963541666667,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Default:Minor Base:0.5182:0.5857:地表",
+      "key": "Default:Minor Base:0.5182:0.5857:地表",
+      "category": "Minor Base",
+      "location": "无特异地形 · 中部地表点位 2716",
+      "x": 0.5181770833333333,
+      "y": 0.5857161458333333,
+      "terrains": [
+        "Default"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Default:Minor Base:0.5405:0.7674:地表",
+      "key": "Default:Minor Base:0.5405:0.7674:地表",
+      "category": "Minor Base",
+      "location": "无特异地形 · 南地表点位 2715",
+      "x": 0.5404752604166666,
+      "y": 0.7674479166666667,
+      "terrains": [
+        "Default"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Default:Minor Base:0.2868:0.7035:地表",
+      "key": "Default:Minor Base:0.2868:0.7035:地表",
+      "category": "Minor Base",
+      "location": "无特异地形 · 西南地表点位 2710",
+      "x": 0.2868424479166667,
+      "y": 0.70349609375,
+      "terrains": [
+        "Default"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Mountaintop:Castle:0.4531:0.5417:地表",
+      "key": "Mountaintop:Castle:0.4531:0.5417:地表",
+      "category": "Castle",
+      "location": "山顶 · 中部地表点位 2190",
+      "x": 0.45307291666666666,
+      "y": 0.5417447916666667,
+      "terrains": [
+        "Mountaintop"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Mountaintop:Minor Base:0.5182:0.5857:地表",
+      "key": "Mountaintop:Minor Base:0.5182:0.5857:地表",
+      "category": "Minor Base",
+      "location": "山顶 · 中部地表点位 2716",
+      "x": 0.5181770833333333,
+      "y": 0.5857161458333333,
+      "terrains": [
+        "Mountaintop"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Mountaintop:Minor Base:0.3840:0.6560:地表",
+      "key": "Mountaintop:Minor Base:0.3840:0.6560:地表",
+      "category": "Minor Base",
+      "location": "山顶 · 西南地表点位 2712",
+      "x": 0.38396484375,
+      "y": 0.6559505208333334,
+      "terrains": [
+        "Mountaintop"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Mountaintop:Minor Base:0.2868:0.7035:地表",
+      "key": "Mountaintop:Minor Base:0.2868:0.7035:地表",
+      "category": "Minor Base",
+      "location": "山顶 · 西南地表点位 2710",
+      "x": 0.2868424479166667,
+      "y": 0.70349609375,
+      "terrains": [
+        "Mountaintop"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Crater:Castle:0.4531:0.5417:地表",
+      "key": "Crater:Castle:0.4531:0.5417:地表",
+      "category": "Castle",
+      "location": "火山口 · 中部地表点位 2190",
+      "x": 0.45307291666666666,
+      "y": 0.5417447916666667,
+      "terrains": [
+        "Crater"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Crater:Minor Base:0.5405:0.7674:地表",
+      "key": "Crater:Minor Base:0.5405:0.7674:地表",
+      "category": "Minor Base",
+      "location": "火山口 · 南地表点位 2715",
+      "x": 0.5404752604166666,
+      "y": 0.7674479166666667,
+      "terrains": [
+        "Crater"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Crater:Minor Base:0.6504:0.7543:地表",
+      "key": "Crater:Minor Base:0.6504:0.7543:地表",
+      "category": "Minor Base",
+      "location": "火山口 · 东南地表点位 2714",
+      "x": 0.65041015625,
+      "y": 0.7543098958333333,
+      "terrains": [
+        "Crater"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Rotted Woods:Castle:0.4531:0.5417:地表",
+      "key": "Rotted Woods:Castle:0.4531:0.5417:地表",
+      "category": "Castle",
+      "location": "腐败森林 · 中部地表点位 2190",
+      "x": 0.45307291666666666,
+      "y": 0.5417447916666667,
+      "terrains": [
+        "Rotted Woods"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Rotted Woods:Minor Base:0.6764:0.6052:地表",
+      "key": "Rotted Woods:Minor Base:0.6764:0.6052:地表",
+      "category": "Minor Base",
+      "location": "腐败森林 · 东南地表点位 2321",
+      "x": 0.6764388020833333,
+      "y": 0.60521484375,
+      "terrains": [
+        "Rotted Woods"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Rotted Woods:Minor Base:0.5745:0.5649:地表",
+      "key": "Rotted Woods:Minor Base:0.5745:0.5649:地表",
+      "category": "Minor Base",
+      "location": "腐败森林 · 中部地表点位 2317",
+      "x": 0.5744921875,
+      "y": 0.5648502604166667,
+      "terrains": [
+        "Rotted Woods"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Rotted Woods:Minor Base:0.6308:0.5574:地表",
+      "key": "Rotted Woods:Minor Base:0.6308:0.5574:地表",
+      "category": "Minor Base",
+      "location": "腐败森林 · 东地表点位 2316",
+      "x": 0.63083984375,
+      "y": 0.5573697916666667,
+      "terrains": [
+        "Rotted Woods"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Rotted Woods:Minor Base:0.2868:0.7035:地表",
+      "key": "Rotted Woods:Minor Base:0.2868:0.7035:地表",
+      "category": "Minor Base",
+      "location": "腐败森林 · 西南地表点位 2710",
+      "x": 0.2868424479166667,
+      "y": 0.70349609375,
+      "terrains": [
+        "Rotted Woods"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Rotted Woods:Minor Base:0.6057:0.6217:地表",
+      "key": "Rotted Woods:Minor Base:0.6057:0.6217:地表",
+      "category": "Minor Base",
+      "location": "腐败森林 · 东南地表点位 2309",
+      "x": 0.60568359375,
+      "y": 0.6217252604166668,
+      "terrains": [
+        "Rotted Woods"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Rotted Woods:Minor Base:0.7822:0.5532:地表",
+      "key": "Rotted Woods:Minor Base:0.7822:0.5532:地表",
+      "category": "Minor Base",
+      "location": "腐败森林 · 东地表点位 2319",
+      "x": 0.7822265625,
+      "y": 0.553203125,
+      "terrains": [
+        "Rotted Woods"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Rotted Woods:Minor Base:0.3840:0.6560:地表",
+      "key": "Rotted Woods:Minor Base:0.3840:0.6560:地表",
+      "category": "Minor Base",
+      "location": "腐败森林 · 西南地表点位 2712",
+      "x": 0.38396484375,
+      "y": 0.6559505208333334,
+      "terrains": [
+        "Rotted Woods"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Rotted Woods:Minor Base:0.7235:0.6377:地表",
+      "key": "Rotted Woods:Minor Base:0.7235:0.6377:地表",
+      "category": "Minor Base",
+      "location": "腐败森林 · 东南地表点位 2318",
+      "x": 0.72345703125,
+      "y": 0.6377018229166667,
+      "terrains": [
+        "Rotted Woods"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Rotted Woods:Minor Base:0.2825:0.2788:地表",
+      "key": "Rotted Woods:Minor Base:0.2825:0.2788:地表",
+      "category": "Minor Base",
+      "location": "腐败森林 · 西北地表点位 2711",
+      "x": 0.28251953125,
+      "y": 0.27881510416666666,
+      "terrains": [
+        "Rotted Woods"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Great Hollow:Minor Base:0.7340:0.6011:地下",
+      "key": "Great Hollow:Minor Base:0.7340:0.6011:地下",
+      "category": "Minor Base",
+      "location": "大空洞 · 东南地下点位 1175",
+      "x": 0.7339648437499999,
+      "y": 0.60107421875,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地下"
+    },
+    {
+      "id": "Great Hollow:Minor Base:0.3570:0.7331:地表",
+      "key": "Great Hollow:Minor Base:0.3570:0.7331:地表",
+      "category": "Minor Base",
+      "location": "大空洞 · 西南地表点位 1171",
+      "x": 0.3569856770833333,
+      "y": 0.7330924479166667,
+      "terrains": [
+        "Great Hollow"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Noklateo:Minor Base:0.6504:0.7543:地表",
+      "key": "Noklateo:Minor Base:0.6504:0.7543:地表",
+      "category": "Minor Base",
+      "location": "“隐城”诺克拉缇欧 · 东南地表点位 2714",
+      "x": 0.65041015625,
+      "y": 0.7543098958333333,
+      "terrains": [
+        "Noklateo"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Noklateo:Minor Base:0.7788:0.2643:地表",
+      "key": "Noklateo:Minor Base:0.7788:0.2643:地表",
+      "category": "Minor Base",
+      "location": "“隐城”诺克拉缇欧 · 东北地表点位 2718",
+      "x": 0.7788346354166666,
+      "y": 0.26433593749999995,
+      "terrains": [
+        "Noklateo"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Mountaintop:Minor Base:0.7788:0.2643:地表",
+      "key": "Mountaintop:Minor Base:0.7788:0.2643:地表",
+      "category": "Minor Base",
+      "location": "山顶 · 东北地表点位 2718",
+      "x": 0.7788346354166666,
+      "y": 0.26433593749999995,
+      "terrains": [
+        "Mountaintop"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Crater:Minor Base:0.5182:0.5857:地表",
+      "key": "Crater:Minor Base:0.5182:0.5857:地表",
+      "category": "Minor Base",
+      "location": "火山口 · 中部地表点位 2716",
+      "x": 0.5181770833333333,
+      "y": 0.5857161458333333,
+      "terrains": [
+        "Crater"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Rotted Woods:Minor Base:0.7666:0.6001:地表",
+      "key": "Rotted Woods:Minor Base:0.7666:0.6001:地表",
+      "category": "Minor Base",
+      "location": "腐败森林 · 东南地表点位 2320",
+      "x": 0.7666080729166667,
+      "y": 0.60005859375,
+      "terrains": [
+        "Rotted Woods"
+      ],
+      "level": "地表"
+    },
+    {
+      "id": "Noklateo:Minor Base:0.2825:0.2788:地表",
+      "key": "Noklateo:Minor Base:0.2825:0.2788:地表",
+      "category": "Minor Base",
+      "location": "“隐城”诺克拉缇欧 · 西北地表点位 2711",
+      "x": 0.28251953125,
+      "y": 0.27881510416666666,
+      "terrains": [
+        "Noklateo"
+      ],
+      "level": "地表"
+    }
+  ]
+}

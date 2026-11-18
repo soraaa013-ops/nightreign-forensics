@@ -17,8 +17,7 @@ owners.
 The base-game map pattern prototype transforms the pattern catalogue published
 by [`NikVince/nightreign-map-router`](https://github.com/NikVince/nightreign-map-router),
 licensed under the MIT License. That catalogue credits thefifthmatt as its early
-data source. It covers 320 base-game layouts and is intentionally labelled as an
-older, incomplete snapshot rather than current DLC coverage.
+data source. It supplies the original 320 base-game layouts. The DLC extension below is stored separately.
 
 
 ### Interactive map assets
@@ -37,3 +36,26 @@ checksums. Normalized point coordinates use `(x - 507) / 1690, y / 1690` from th
 upstream coordinate alignment guide. The tile grid uses source indices
 `(column, 5 - row)`, following the upstream MapCanvas renderer; images themselves
 are not rotated. These assets add spatial interaction, not new layout records.
+
+## The Forsaken Hollows map facts
+
+`data/map-dlc.json`, `data/map-dlc-geometry.json`, and `data/sources/nightreign-dlc/`
+transform public factual parameter CSVs from [xqfinxd/NightreignApp](https://github.com/xqfinxd/NightreignApp/tree/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/datas), pinned to `80ea5b3d7492acb15512cac05d6c91dba9f6c82a`.
+No application implementation code from that repository is incorporated.
+The extension includes patterns 1000–1199 (80 Great Hollow, 120 other terrains),
+combined with the unchanged original base catalogue. Original base IDs remain 1–320.
+Shared values are aligned using overlapping base-game facts and nearby coordinates;
+new sites use the game grid coordinate system with 256-unit tiles.
+
+The 36 surface tiles and underground overlays in `assets/maps/great_hollow*`
+come from the same commit's `nightreign/assets/textures/4/MENU_MapTile_L0_*`.
+They are losslessly encoded as WebP; underground tiles composite the B1 overlay
+onto the corresponding surface tile. They are game imagery owned by FromSoftware
+and Bandai Namco, not project-created artwork or covered by the base router's MIT notice.
+Source and generated asset hashes are retained in `data/map-dlc-provenance.json`.
+
+Catalogue counts and random first-circle behavior were cross-checked against
+[thefifthmatt's layout catalogue](https://thefifthmatt.github.io/nightreign/).
+New Nightlord labels follow the simplified Chinese names “安定者们” and “废弃物之王”
+([Chinese guide](https://www.gamersky.com/handbook/202512/2054550.shtml)).
+Random crystal positions and unidentified internal components are not asserted as fixed observations.

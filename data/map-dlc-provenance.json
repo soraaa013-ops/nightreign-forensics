@@ -1,0 +1,541 @@
+{
+  "source": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/",
+  "commit": "80ea5b3d7492acb15512cac05d6c91dba9f6c82a",
+  "files": [
+    {
+      "source": "textures/4/MENU_MapTile_L0_00_00.png",
+      "sha256": "0cb75c2acfa1cc840960ceae26f271ea38a8d254293817b9e76035ead95e6cf6"
+    },
+    {
+      "path": "assets/maps/great_hollow/0-0.webp",
+      "sha256": "f4dc7223b6e219f9ac61839802e876c98ad7f1728a93c6f8cfe17633f508dece"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/0-0.webp",
+      "sha256": "f4dc7223b6e219f9ac61839802e876c98ad7f1728a93c6f8cfe17633f508dece"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_00_01.png",
+      "sha256": "e7f5b8cda2ba1d1e052c9ae8b3a5d33df038f4288be924fab0982d5541ab0027"
+    },
+    {
+      "path": "assets/maps/great_hollow/0-1.webp",
+      "sha256": "d663bcf621b8b673f6b47d66d7049e27c233224ca98e37e2240ea1783a9e6c7a"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/0-1.webp",
+      "sha256": "d663bcf621b8b673f6b47d66d7049e27c233224ca98e37e2240ea1783a9e6c7a"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_00_02.png",
+      "sha256": "c0ff92e494ece80c3e7ddb3d70cb860f048926b10576d1cb6e7d650a87537997"
+    },
+    {
+      "path": "assets/maps/great_hollow/0-2.webp",
+      "sha256": "512235c856308b85ec9fbd82dc5557b1aa323b0771135f63004c2c959b17d559"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/0-2.webp",
+      "sha256": "512235c856308b85ec9fbd82dc5557b1aa323b0771135f63004c2c959b17d559"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_00_03.png",
+      "sha256": "af0c605f1e563065c0f002bcbaeec98af80b375d780f9a293cbbb862c02bedb6"
+    },
+    {
+      "path": "assets/maps/great_hollow/0-3.webp",
+      "sha256": "2abc04a324e5678dddaefbf8a8a6d99528d6f71a102399abbc82e460195f31fc"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/0-3.webp",
+      "sha256": "2abc04a324e5678dddaefbf8a8a6d99528d6f71a102399abbc82e460195f31fc"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_00_04.png",
+      "sha256": "9e27b10d35c0d093119231a9a30ba1684cda0644e6c9d8552d89664876077905"
+    },
+    {
+      "path": "assets/maps/great_hollow/0-4.webp",
+      "sha256": "caad2924e79623eed3fe29f84f9025be17ef825c8a44ad6c2618d1e2c4bd57ba"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/0-4.webp",
+      "sha256": "caad2924e79623eed3fe29f84f9025be17ef825c8a44ad6c2618d1e2c4bd57ba"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_00_05.png",
+      "sha256": "3cd129ebab1145418638e8e5e4184d5790ee75673f8e3d30faa16c783f44dc6b"
+    },
+    {
+      "path": "assets/maps/great_hollow/0-5.webp",
+      "sha256": "8fff75670dd0dc6dfb5055bec46ecce114612fde9bb8a8ffa94792e947272b1d"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/0-5.webp",
+      "sha256": "8fff75670dd0dc6dfb5055bec46ecce114612fde9bb8a8ffa94792e947272b1d"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_01_00.png",
+      "sha256": "e9733ad82f4d40ccbf5152ed56445f83c1f59800824e8f117063d255f1ee3128"
+    },
+    {
+      "path": "assets/maps/great_hollow/1-0.webp",
+      "sha256": "de2778054365aed1f4442fa2ca1ef48fdc4ff15886c442dcb66175947867dca7"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/1-0.webp",
+      "sha256": "de2778054365aed1f4442fa2ca1ef48fdc4ff15886c442dcb66175947867dca7"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_01_01.png",
+      "sha256": "4c7d562bfa9a09e54ad4cec9d241f6ef70fc23ec7ceab7f2369fc77b518e0ceb"
+    },
+    {
+      "path": "assets/maps/great_hollow/1-1.webp",
+      "sha256": "18fe8ae89fe20df112c93bbe393f936c2359243a2e6197a99a63c7e75e37ceef"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/1-1.webp",
+      "sha256": "18fe8ae89fe20df112c93bbe393f936c2359243a2e6197a99a63c7e75e37ceef"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_01_02.png",
+      "sha256": "ee3617f73c677c536df6af86c8831b21b66864b1331fc7237ddb036bb2599875"
+    },
+    {
+      "path": "assets/maps/great_hollow/1-2.webp",
+      "sha256": "459235d6a16ddfbdd2d1fd2967dfd4c84f14c71e86e782247a2eee9482812770"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/1-2.webp",
+      "sha256": "459235d6a16ddfbdd2d1fd2967dfd4c84f14c71e86e782247a2eee9482812770"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_01_03.png",
+      "sha256": "9f3ea4ce590fbc3bf63aa2e62c8d5a10fd32f4061cdcbb5d873537262e289a26"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_01_03_B1.png",
+      "sha256": "d846395f3d587dc8c2a8d1eddd0b33d7ab6e5120cdcb07df594a7678003ac43f"
+    },
+    {
+      "path": "assets/maps/great_hollow/1-3.webp",
+      "sha256": "ef9c17010fadec82f99a218e1ac895b9ecd1b61d397302e1b6131f3d95c23bf2"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/1-3.webp",
+      "sha256": "1ec733410eaaaa23091dba4ee581b31c3c55c4252dba87be10121fa2e0ca5e4c"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_01_04.png",
+      "sha256": "e6e0b7c93c7fa9029de30e178f9ad0894632c965424d91b4a0b6afe910dd427e"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_01_04_B1.png",
+      "sha256": "03a2c6ae6a4a62da3ddf9b15f9de4cf9af639a21210fde6ed075502977f79832"
+    },
+    {
+      "path": "assets/maps/great_hollow/1-4.webp",
+      "sha256": "21ed97a6ddd1e4956c4df70c79a43ca99f02da29fa9e9345019ac60d51762715"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/1-4.webp",
+      "sha256": "fc222df4bc600befd22e4f917f7a81535b6fd64492f0adaf998fa4627ab5992e"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_01_05.png",
+      "sha256": "21adfa333f2f098cf0167df5c9e2dc6e71c126d35ff8fbb27c3cbf1dd8d21143"
+    },
+    {
+      "path": "assets/maps/great_hollow/1-5.webp",
+      "sha256": "7a84cdf7ba6e203cc47eaf42340ea179f7ba9219082975f9db3566880fb69b21"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/1-5.webp",
+      "sha256": "7a84cdf7ba6e203cc47eaf42340ea179f7ba9219082975f9db3566880fb69b21"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_02_00.png",
+      "sha256": "b158b8d1230f432e39c93b69e9fc9f359e2ccde72435c86b1b4312f5f9befef2"
+    },
+    {
+      "path": "assets/maps/great_hollow/2-0.webp",
+      "sha256": "3e7bcee5a5a33c3b5c1ace26a70c2db80728a3a4abb9f6b20bd71405fa6cb661"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/2-0.webp",
+      "sha256": "3e7bcee5a5a33c3b5c1ace26a70c2db80728a3a4abb9f6b20bd71405fa6cb661"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_02_01.png",
+      "sha256": "bef1198fe073e4f2d212e07f07b2851e099a9e07e40fa066cb735470f71a3520"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_02_01_B1.png",
+      "sha256": "5ed5f38f1282eaee3e0562f094e2e59a89a4e57bf01890baced2047c0d8726eb"
+    },
+    {
+      "path": "assets/maps/great_hollow/2-1.webp",
+      "sha256": "df404a16dd88ae2e9558991379d8c6fe6133a5b0585d0bcc68bf7e43788a8507"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/2-1.webp",
+      "sha256": "97fd10f1a543f2aec5f800dc76e201aa5cc1007b24c4593266b88ce6e7ae19f2"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_02_02.png",
+      "sha256": "18354dfe46f57d7fb6f1da97a933a5e4f1bbe0653d28aa2f062a5b69e8956db7"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_02_02_B1.png",
+      "sha256": "77333cb827094c294c6505bf9db33b21620c283bff347e1c847481d2db2fbe9e"
+    },
+    {
+      "path": "assets/maps/great_hollow/2-2.webp",
+      "sha256": "58be60ae45561eb7cc5274866c59e620d71788a41046f86509b238394f366811"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/2-2.webp",
+      "sha256": "92937e0b51fe9cdc36d47d34b4e6194be145c00bfc6c49b79af578f698c28f8d"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_02_03.png",
+      "sha256": "a7676f5d592a92bd9e5f8fb95678aaa4482e60501ac120602ebe3d5a7026d71e"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_02_03_B1.png",
+      "sha256": "effa1c5d21eecf044918177fc9186e483f2ce558b6b2cc6a95a2af193f9996f9"
+    },
+    {
+      "path": "assets/maps/great_hollow/2-3.webp",
+      "sha256": "cfeb756ec23f49daea28667ebedd683ca0c570ee40be2f11bcab6647ad28f07a"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/2-3.webp",
+      "sha256": "636ac89fbfa71afec824de747b24042486d929c9c3d2c174656f6be62b7472e8"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_02_04.png",
+      "sha256": "4d0ce0e4c4bfc941446db9f71fafa8c33b26a806fe663abc295a42d098db44f0"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_02_04_B1.png",
+      "sha256": "5c9c0d069edc72c1f132137a24627c1db87ce7f5a5c9063bc396402497c9a1ee"
+    },
+    {
+      "path": "assets/maps/great_hollow/2-4.webp",
+      "sha256": "d47d899114e35ac50259164b446bac2fb42ea14ba17585b6df9af8bb878b632d"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/2-4.webp",
+      "sha256": "5bc54f151a43ad4b4ba8d4f4ffbe6fd4da9bf7ea13c9911be543fa50ca74eedc"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_02_05.png",
+      "sha256": "d8179fd4c04b52e8e46e4423133c0b0f7e683abe4a1485197b9c90319b349cd5"
+    },
+    {
+      "path": "assets/maps/great_hollow/2-5.webp",
+      "sha256": "c77a923326f3844c0529bf60f1f1e367d30004c81e0d60f9be09ba5db978cf30"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/2-5.webp",
+      "sha256": "c77a923326f3844c0529bf60f1f1e367d30004c81e0d60f9be09ba5db978cf30"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_03_00.png",
+      "sha256": "ffdc774054b67c8418c6057f94b60364b2d15854e44c60660c7219ebf42e5ed5"
+    },
+    {
+      "path": "assets/maps/great_hollow/3-0.webp",
+      "sha256": "60997b7cd1597b470e275acf0fd7db70aae6e8c58834c23d222e91c5856f7785"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/3-0.webp",
+      "sha256": "60997b7cd1597b470e275acf0fd7db70aae6e8c58834c23d222e91c5856f7785"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_03_01.png",
+      "sha256": "9b46ca4173d9b55efcd89bc80a2c72005fe795b5bdf1825e3003286d785171e1"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_03_01_B1.png",
+      "sha256": "7d54467933a1b5523c0612a662e1a0f6bcf0ead0ddec1f880c6c1cf11f11e25f"
+    },
+    {
+      "path": "assets/maps/great_hollow/3-1.webp",
+      "sha256": "f12d02b06142c86d3105a69914b370e980d0c19caf20025915bdfccf9619f595"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/3-1.webp",
+      "sha256": "6f9f544b8dc7ed455690be0b8e169b6fe90cb304730ac80b2f6b41841577e7dc"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_03_02.png",
+      "sha256": "e3edca302271746a727b36c56b024b66257d5be8c4cf990f7f9b4f92bcf8df26"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_03_02_B1.png",
+      "sha256": "438be95b6281e03d34379ddd5a035b9fef91e6d5dc8f0ff16500a7697a9c876a"
+    },
+    {
+      "path": "assets/maps/great_hollow/3-2.webp",
+      "sha256": "fb3f673687cd117095677f9dfefdc10fc5fdfae1b2b1452cfb4ab1ea915961b9"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/3-2.webp",
+      "sha256": "b93fd6492e53da05713a344466c63b89f6c8293b0d16c4a73930c2ceb064799f"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_03_03.png",
+      "sha256": "a0dd2515557c816ae8a49c7833a4479b90ace1096433cb3436176c6e67380844"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_03_03_B1.png",
+      "sha256": "a7abe991fd5ad188efda6e0d256d3d00b9f148b6f59e17a953d6e67815182d37"
+    },
+    {
+      "path": "assets/maps/great_hollow/3-3.webp",
+      "sha256": "1c5acc7f6b794144c88c5ca32c809c81229a3d000c52ddcc524d8ef784899443"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/3-3.webp",
+      "sha256": "6f65617e468088d4c67c31f909195a9c590c54040bccef16bf706af74a48a5d5"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_03_04.png",
+      "sha256": "a2485dfac0d80dea3638dfd55e5a732c0c9585bc48bd68298f5ae6e5e84854a4"
+    },
+    {
+      "path": "assets/maps/great_hollow/3-4.webp",
+      "sha256": "18951534e59c9d610b662ac6e883268afc6d436c45269327b3125f94ef10a642"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/3-4.webp",
+      "sha256": "18951534e59c9d610b662ac6e883268afc6d436c45269327b3125f94ef10a642"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_03_05.png",
+      "sha256": "43f704e572311a4ed3c6a853554523a6a6cf5bf5deb8a45f5eb31dadb61280d8"
+    },
+    {
+      "path": "assets/maps/great_hollow/3-5.webp",
+      "sha256": "9ba7a7611418bcd39df5ffb5010b5de6d28099bddf2134ec2f9bb8add65126d9"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/3-5.webp",
+      "sha256": "9ba7a7611418bcd39df5ffb5010b5de6d28099bddf2134ec2f9bb8add65126d9"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_04_00.png",
+      "sha256": "2682e0043c2eb31692f3859e7c2c3d59286af84107f6ad010d98a1bb74d7ea11"
+    },
+    {
+      "path": "assets/maps/great_hollow/4-0.webp",
+      "sha256": "24a6db7a3a026f5a6a9c3738327510517b193381e1c29ba6c1fcfcbcb07e3060"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/4-0.webp",
+      "sha256": "24a6db7a3a026f5a6a9c3738327510517b193381e1c29ba6c1fcfcbcb07e3060"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_04_01.png",
+      "sha256": "939adea829c4c8d2b3d82327ef0b721feff787c440037c8f5f5ac48104b0f302"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_04_01_B1.png",
+      "sha256": "d19d3f36cc4eadc0a557125babb379171d4e2251bd1d0e41905663fd05131b6d"
+    },
+    {
+      "path": "assets/maps/great_hollow/4-1.webp",
+      "sha256": "122993c2b1213d3326326d66f2e4488b5b1a0d89c2f15dafc039803c09c9cb80"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/4-1.webp",
+      "sha256": "258bb4b2bf9155f119d1fcd1c92d5bc7577bb25ab068008858217936eeafd65b"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_04_02.png",
+      "sha256": "c16646f009359a49473efd1bfbe08d6765158a59d21e2d74b4261ce616d9f9a5"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_04_02_B1.png",
+      "sha256": "f1890409928c1ef2daa1052003fcc49e0020e921ee9c10fdbe86a8fb3a104232"
+    },
+    {
+      "path": "assets/maps/great_hollow/4-2.webp",
+      "sha256": "c3c002e7234f989f4b90b17d24b0df0250727378983ba3a5be1d543b02f2c275"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/4-2.webp",
+      "sha256": "142eb7b9fc4a9decf6d0fb365e03c3cf0a448b440818b55363728d7350f154ac"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_04_03.png",
+      "sha256": "8dfa6ba75f62d9b73f280ca50137bec4c3046daed42925c1de637e571b287872"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_04_03_B1.png",
+      "sha256": "acc3273c990ad5a1fda384860e5eee762992ade5ac316b139bd43ec25eea9bb2"
+    },
+    {
+      "path": "assets/maps/great_hollow/4-3.webp",
+      "sha256": "258a072ccdb4fc212119f0ae4c7ebb8dae722b1e36e0374035dd143ed1eab2cf"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/4-3.webp",
+      "sha256": "dddf337c920a53fcd08aaf7adf2fa12e8a32bbb2c6dadd7906406597bced3321"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_04_04.png",
+      "sha256": "046b5c539c45c8bc623322858040ba75f05c89f3b94963d7689f1aeae80e29a1"
+    },
+    {
+      "path": "assets/maps/great_hollow/4-4.webp",
+      "sha256": "6d077d71248190f914ec0bbea3704db5595145c016a0c8d1870d5e800a6e89b3"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/4-4.webp",
+      "sha256": "6d077d71248190f914ec0bbea3704db5595145c016a0c8d1870d5e800a6e89b3"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_04_05.png",
+      "sha256": "cdba67e0f8c44b78b237e9d3c8479e7ccef47423af2337545e9b0dbaf747207c"
+    },
+    {
+      "path": "assets/maps/great_hollow/4-5.webp",
+      "sha256": "e48f2eaada1a9aa3b3f0f79dd5f554210deb079938e6af9563bf3487254c740c"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/4-5.webp",
+      "sha256": "e48f2eaada1a9aa3b3f0f79dd5f554210deb079938e6af9563bf3487254c740c"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_05_00.png",
+      "sha256": "35dfa700878c8a2e27ef023d54237891efc78bb3fd87e8f341cee992be55f0e8"
+    },
+    {
+      "path": "assets/maps/great_hollow/5-0.webp",
+      "sha256": "e4da70fbb65543fd85b6e957fabae959a6e1ffc5d7fd39f5f85c072d230a7eb0"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/5-0.webp",
+      "sha256": "e4da70fbb65543fd85b6e957fabae959a6e1ffc5d7fd39f5f85c072d230a7eb0"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_05_01.png",
+      "sha256": "c193c3347e1b7583ed14f2eced07aa282fb09759773dbb77b1906c6ed16f9e2b"
+    },
+    {
+      "path": "assets/maps/great_hollow/5-1.webp",
+      "sha256": "0c5dc9e61533bb96b14f7de8cd45ac50b15f0f47a70b8147b785dba98e1de8dd"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/5-1.webp",
+      "sha256": "0c5dc9e61533bb96b14f7de8cd45ac50b15f0f47a70b8147b785dba98e1de8dd"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_05_02.png",
+      "sha256": "51d438deae2c536ca61de050770aa945048f2bd26857cec2cb6f95f22ab1f163"
+    },
+    {
+      "path": "assets/maps/great_hollow/5-2.webp",
+      "sha256": "2b4fb30a011edd02b7e38c45651a4f0a9658a1acf20bb457fdf33dcd05fdda6e"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/5-2.webp",
+      "sha256": "2b4fb30a011edd02b7e38c45651a4f0a9658a1acf20bb457fdf33dcd05fdda6e"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_05_03.png",
+      "sha256": "c778c066ec15ca37a013e92ddd80ce058c56308057a5b699cb75303e2641501e"
+    },
+    {
+      "path": "assets/maps/great_hollow/5-3.webp",
+      "sha256": "276eb37e0716928d75f0310d33fc61b7f233cf5f01ce500d4eb1d6deae8583fc"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/5-3.webp",
+      "sha256": "276eb37e0716928d75f0310d33fc61b7f233cf5f01ce500d4eb1d6deae8583fc"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_05_04.png",
+      "sha256": "408a70cfcc0b34fd37f73c2e546e3b944459b577f40b4008b4a367d8964281f4"
+    },
+    {
+      "path": "assets/maps/great_hollow/5-4.webp",
+      "sha256": "d7548ea8a9d12877b3f45755de2dc2215ab904879cee167b88ec6fb084ae9c39"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/5-4.webp",
+      "sha256": "d7548ea8a9d12877b3f45755de2dc2215ab904879cee167b88ec6fb084ae9c39"
+    },
+    {
+      "source": "textures/4/MENU_MapTile_L0_05_05.png",
+      "sha256": "04ba6a3c63890ef13c0008752dd3461cdd41fad07f58a0adc1fc8ddbfbcc16f4"
+    },
+    {
+      "path": "assets/maps/great_hollow/5-5.webp",
+      "sha256": "73e78007117f45be61fb75229057d25f11f33a4ed3116513badb2f0471f04457"
+    },
+    {
+      "path": "assets/maps/great_hollow_under/5-5.webp",
+      "sha256": "73e78007117f45be61fb75229057d25f11f33a4ed3116513badb2f0471f04457"
+    },
+    {
+      "source": "datas/autogen_pattern_list.csv",
+      "sha256": "82a6f829faff9ac8d490f899505362f43a7a454b1ff3224068b6b3b4dae32113",
+      "path": "data/sources/nightreign-dlc/autogen_pattern_list.csv"
+    },
+    {
+      "source": "datas/autogen_spot_list.csv",
+      "sha256": "fb4a176428eb0f5a93421761ac4d2869d24443190585aa4058a683556d71414b",
+      "path": "data/sources/nightreign-dlc/autogen_spot_list.csv"
+    },
+    {
+      "source": "datas/autogen_starter_distribution.csv",
+      "sha256": "0b9e2646ecbe69b88019ddcaf3c99740db4e70f23766cb1627d7df7a9c6bcdd5",
+      "path": "data/sources/nightreign-dlc/autogen_starter_distribution.csv"
+    },
+    {
+      "source": "datas/autogen_starter_list.csv",
+      "sha256": "fcafc01104c460df7d0d6f72d81f2dd5086c2e9fac4c2070158a4ae3f2849680",
+      "path": "data/sources/nightreign-dlc/autogen_starter_list.csv"
+    },
+    {
+      "source": "datas/autogen_variation_list.csv",
+      "sha256": "6c958e0cf9f3e5af468ae3cfa8aea9dc850c94f1b821e38deb0983fa244b701c",
+      "path": "data/sources/nightreign-dlc/autogen_variation_list.csv"
+    },
+    {
+      "source": "datas/manual_events.csv",
+      "sha256": "deef65727e7dd74d3b2f25d42a3c8407fea87021530e07f4fde3f2dc51ca2684",
+      "path": "data/sources/nightreign-dlc/manual_events.csv"
+    },
+    {
+      "source": "datas/manual_great_hollow_binding_spots.csv",
+      "sha256": "dfa2a735aa575303ea0299fe12d9151d1b78386eacd29371f02a5a8bf2510945",
+      "path": "data/sources/nightreign-dlc/manual_great_hollow_binding_spots.csv"
+    },
+    {
+      "source": "datas/manual_grids.csv",
+      "sha256": "f00552005dc942a2eaa1815d08022372026f2c409a1a95c297e1f56766c85167",
+      "path": "data/sources/nightreign-dlc/manual_grids.csv"
+    },
+    {
+      "source": "datas/manual_maps.csv",
+      "sha256": "40c2dd961fdbfc1d9100ca6b2047cf85c2ab6d70e58dc84a49da811ef01ad3c8",
+      "path": "data/sources/nightreign-dlc/manual_maps.csv"
+    },
+    {
+      "source": "datas/manual_nightlords.csv",
+      "sha256": "7021301a8eb5df8be0b22344f97f80fbf2c04ea060b75c3959f9eb2f3fd3ae8f",
+      "path": "data/sources/nightreign-dlc/manual_nightlords.csv"
+    },
+    {
+      "source": "datas/manual_variations.csv",
+      "sha256": "6a70584d6077ee03a01b0c46da7f137f4ab090c034537a9efcf924b9c3d5380e",
+      "path": "data/sources/nightreign-dlc/manual_variations.csv"
+    }
+  ]
+}

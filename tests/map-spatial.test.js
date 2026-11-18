@@ -142,3 +142,27 @@ test("layers distinguish spawns, bases, enemies and evergaols without losing spe
       1,
     );
 });
+
+test("a unanimous empty location is a resolved fact, distinct from no candidates", () => {
+  const p = { key: "x" };
+  assert.equal(
+    pointConsensus(
+      [
+        { slots: [{ key: "x", value: null }] },
+        { slots: [{ key: "x", value: null }] },
+      ],
+      p,
+    ),
+    "empty",
+  );
+  assert.equal(pointConsensus([], p), null);
+});
+
+test("missing DLC site data is unknown, not a confirmed empty site", () => {
+  assert.equal(
+    pointConsensus([{ slots: [] }, { slots: [{ key: "dlc", value: null }] }], {
+      key: "dlc",
+    }),
+    null,
+  );
+});

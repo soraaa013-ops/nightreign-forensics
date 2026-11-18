@@ -105,7 +105,7 @@ function renderRecord(record) {
 }
 function refreshLocations() {
   const current = clueLocation.value;
-  const slots = mapData.records
+  const slots = queryMaps(mapData.records, state())
     .flatMap((record) => record.slots)
     .filter(
       (slot) => !clueCategory.value || slot.category === clueCategory.value,
@@ -147,7 +147,18 @@ function renderClues() {
       count: candidates.filter((record) =>
         matchesObservation(record, { key, category, value }),
       ).length,
-    }));
+    }))
+    .filter(
+      (option) =>
+        option.count > 0 &&
+        option.count < candidates.length &&
+        !selected.some(
+          (item) =>
+            item.key === key &&
+            item.category === category &&
+            item.value === option.value,
+        ),
+    );
   const usefulness = (option) =>
     option.count > 0 && option.count < candidates.length
       ? 0
@@ -209,7 +220,7 @@ function renderClues() {
     $("#clue-results").append(
       node(
         "p",
-        "没有找到。请换个关键词，或将地点类型、具体位置设为不限。",
+        "当前没有能进一步缩小范围的结果。可以更换关键词、查看已确定的位置，或修改已有条件。",
         "empty-state",
       ),
     );
@@ -248,6 +259,8 @@ function renderChips() {
   });
   $("#filter-chips").replaceChildren(...chips);
   $("#filter-empty").hidden = chips.length > 0;
+  $(".active-filters").hidden = chips.length === 0;
+  $("#map-form .form-actions").hidden = chips.length === 0 && !undoStack.length;
 }
 function refreshFacets() {
   for (const [select, key, values] of [
@@ -259,14 +272,13 @@ function refreshFacets() {
       counts = facetCounts(mapData.records, state(), key, values);
     select.replaceChildren(
       new Option("不限 / 不知道", ""),
-      ...values.map((value) => {
-        const option = new Option(
-          `${zh(value)}（${counts.get(value)}）`,
-          value,
-        );
-        option.disabled = !counts.get(value) && value !== current;
-        return option;
-      }),
+      ...values
+        .filter((value) => counts.get(value) > 0 || value === current)
+        .map((value) => {
+          const option = new Option(zh(value), value);
+          option.disabled = !counts.get(value) && value !== current;
+          return option;
+        }),
     );
     select.value = current;
   }
@@ -337,13 +349,35 @@ function update(recordHistory = true) {
   );
   candidates = queryMaps(mapData.records, state());
   candidateCount.textContent = candidates.length;
+  const conditionCount =
+    selected.length +
+    [nightlord, mapType, spawn].filter((select) => select.value).length;
+  $("#filter-total").textContent = conditionCount ? String(conditionCount) : "";
+  $("#open-map-results").textContent =
+    candidates.length === 1 ? "已锁定档案" : "查看档案";
   $("#map-result-link").textContent =
     `剩余 ${candidates.length} 张地图 · 查看结果`;
   $("#map-feedback").textContent = hasConditions
     ? `已应用 ${selected.length + [nightlord, mapType, spawn].filter((select) => select.value).length} 个条件，剩余 ${candidates.length} 张地图。`
     : "点击地图位置，标记你看到的内容。";
   refreshFacets();
+  const previousCategory = clueCategory.value;
+  const availableCategories = [
+    ...new Set(
+      candidates.flatMap((record) =>
+        record.slots.filter((slot) => slot.value).map((slot) => slot.category),
+      ),
+    ),
+  ];
+  if (previousCategory && !availableCategories.includes(previousCategory))
+    availableCategories.push(previousCategory);
+  clueCategory.replaceChildren(
+    new Option("全部类型", ""),
+    ...availableCategories.map((value) => new Option(zh(value), value)),
+  );
+  clueCategory.value = previousCategory;
   renderChips();
+  refreshLocations();
   renderClues();
   renderCandidates();
   atlas?.refresh();
@@ -355,7 +389,7 @@ function update(recordHistory = true) {
   if (!candidates.length) {
     nextClue.textContent = "没有匹配地图";
     candidateSummary.textContent =
-      "点击“已选条件”中的 × 撤销不确定的条件。线索可能冲突，也可能不在这份旧档案中。";
+      "点击“已选条件”中的 × 撤销不确定的条件。线索可能冲突，也可能未被当前档案记录。";
     resultPanel.hidden = true;
   } else if (candidates.length === 1) {
     nextClue.textContent = `已锁定地图布局 #${candidates[0].id}`;
@@ -420,7 +454,12 @@ form.addEventListener("reset", () =>
 );
 clueButton.addEventListener("click", () => {
   if (!recommendation) return;
-  if (atlas?.focusPoint(recommendation.key)) return;
+  if (atlas?.focusPoint(recommendation.key)) {
+    $("#map-results-dialog").close();
+    return;
+  }
+  $("#map-results-dialog").close();
+  $("#map-settings").showModal();
   $("#text-search").open = true;
   $("#location-details").open = true;
   const slot = mapData.records
@@ -493,13 +532,32 @@ async function init() {
   retry.hidden = true;
   try {
     [mapData, dictionary] = await Promise.all([
-      loadJson("data/map-data.json"),
+      Promise.all([
+        loadJson("data/map-data.json"),
+        loadJson("data/map-dlc.json"),
+      ]).then(([base, dlc]) => {
+        const records = [...base.records, ...dlc.records];
+        return {
+          ...base,
+          records,
+          facets: Object.fromEntries(
+            [
+              ["nightlords", "nightlord"],
+              ["mapTypes", "mapType"],
+              ["spawns", "spawn"],
+            ].map(([plural, key]) => [
+              plural,
+              [...new Set(records.map((r) => r[key]))],
+            ]),
+          ),
+        };
+      }),
       loadJson("data/zh-CN.json"),
     ]);
     $("#base-filters").open = false;
     $("#location-details").open = false;
     $("#map-version").textContent =
-      `基础游戏 · ${mapData.records.length} 份地图布局，未覆盖全部扩展内容。`;
+      `本体与“见弃空洞者” · ${mapData.records.length} 份布局，含 200 份扩展布局与大空洞。第一夜缩圈随机；未识别的内部组件不作为筛选线索。`;
     const categories = [
       ...new Set(
         mapData.records.flatMap((record) =>
@@ -552,13 +610,22 @@ async function init() {
           button("重试交互地图", loadAtlas),
         );
         $("#text-search").open = true;
+        $("#map-settings").showModal();
       }
     };
     await loadAtlas();
-    if (invalidLink)
-      $("#map-feedback").textContent =
-        "筛选链接无效，已展示全部地图。请重新添加条件。";
+    if (invalidLink) {
+      const message = "筛选链接无效，已展示全部地图。请重新添加条件。";
+      $("#map-feedback").textContent = message;
+      $("#atlas-toast").hidden = false;
+      $("#atlas-toast").replaceChildren(
+        node("span", message),
+        button("关闭", () => ($("#atlas-toast").hidden = true)),
+      );
+    }
   } catch {
+    $("#atlas-loading").hidden = false;
+    $("#atlas-loading").textContent = "地图档案加载失败，请重新加载。";
     nextClue.textContent = "地图档案加载失败";
     candidateSummary.textContent = "请检查网络连接后点击“重新加载地图”。";
     $("#map-version").textContent = "地图数据未就绪";
@@ -569,3 +636,31 @@ async function init() {
 }
 retry.addEventListener("click", init);
 init();
+
+for (const [buttonId, dialogId] of [
+  ["open-map-settings", "map-settings"],
+  ["open-map-results", "map-results-dialog"],
+]) {
+  document
+    .getElementById(buttonId)
+    .addEventListener("click", () =>
+      document.getElementById(dialogId).showModal(),
+    );
+}
+for (const button of document.querySelectorAll("[data-close-drawer]"))
+  button.addEventListener("click", () =>
+    document.getElementById(button.dataset.closeDrawer).close(),
+  );
+for (const dialog of document.querySelectorAll(".map-drawer"))
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) {
+      const r = dialog.getBoundingClientRect();
+      if (
+        event.clientX < r.left ||
+        event.clientX > r.right ||
+        event.clientY < r.top ||
+        event.clientY > r.bottom
+      )
+        dialog.close();
+    }
+  });
