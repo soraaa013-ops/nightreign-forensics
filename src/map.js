@@ -1,3 +1,4 @@
+import { createAtlas } from "./map-atlas.js";
 import { recommendObservation } from "./map-filter.js";
 import { queryMaps, matchesObservation, facetCounts } from "./map-query.js";
 import { matchesSearch } from "./search.js";
@@ -18,6 +19,7 @@ const candidateCount = $("#candidate-count"),
 const clueSearch = $("#clue-search"),
   clueCategory = $("#clue-category"),
   clueLocation = $("#clue-location");
+let atlas;
 let mapData,
   dictionary,
   recommendation,
@@ -339,11 +341,12 @@ function update(recordHistory = true) {
     `剩余 ${candidates.length} 张地图 · 查看结果`;
   $("#map-feedback").textContent = hasConditions
     ? `已应用 ${selected.length + [nightlord, mapType, spawn].filter((select) => select.value).length} 个条件，剩余 ${candidates.length} 张地图。`
-    : "搜索后点击一条结果，即可添加线索。";
+    : "点击地图位置，标记你看到的内容。";
   refreshFacets();
   renderChips();
   renderClues();
   renderCandidates();
+  atlas?.refresh();
   recommendation = recommendObservation(
     candidates,
     selected.filter((item) => item.key).map((item) => item.key),
@@ -417,6 +420,8 @@ form.addEventListener("reset", () =>
 );
 clueButton.addEventListener("click", () => {
   if (!recommendation) return;
+  if (atlas?.focusPoint(recommendation.key)) return;
+  $("#text-search").open = true;
   $("#location-details").open = true;
   const slot = mapData.records
     .flatMap((record) => record.slots)
@@ -524,6 +529,32 @@ async function init() {
     refreshFacets();
     if (saved) restoreState(saved);
     update(false);
+    for (const select of [nightlord, mapType]) {
+      select.setAttribute("form", "map-form");
+      $("#atlas-facets").append(select.closest("label"));
+      select.disabled = false;
+    }
+    const loadAtlas = async () => {
+      try {
+        atlas = await createAtlas({
+          data: mapData,
+          zh,
+          getState: state,
+          change(next) {
+            restoreState(next);
+            update();
+          },
+        });
+      } catch {
+        $("#atlas-loading").hidden = false;
+        $("#atlas-loading").replaceChildren(
+          node("span", "交互地图加载失败，文字筛选仍可使用。"),
+          button("重试交互地图", loadAtlas),
+        );
+        $("#text-search").open = true;
+      }
+    };
+    await loadAtlas();
     if (invalidLink)
       $("#map-feedback").textContent =
         "筛选链接无效，已展示全部地图。请重新添加条件。";

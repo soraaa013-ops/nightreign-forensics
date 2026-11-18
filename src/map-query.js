@@ -1,9 +1,14 @@
-export function matchesObservation(record, { key = "", category = "", value }) {
+export function matchesObservation(
+  record,
+  { key = "", category = "", value, match = "exact" },
+) {
   return record.slots.some(
     (slot) =>
       (!key || slot.key === key) &&
       (!category || slot.category === category) &&
-      (slot.value || "empty") === value,
+      (match === "type"
+        ? slot.value?.split(" - ")[0] === value
+        : (slot.value || "empty") === value),
   );
 }
 export function queryMaps(

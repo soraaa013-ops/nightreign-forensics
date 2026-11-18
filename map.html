@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#map-query-title">跳到工具</a>
+    <a class="skip-link" href="#atlas-viewport">跳到工具</a>
     <noscript
       ><p>
         此工具需要启用浏览器的脚本功能才能进行本地检测与地图筛选。
@@ -37,8 +37,64 @@
           <p class="kicker">黑夜君临 · 地图工具</p>
           <h1>地图反查</h1>
         </div>
-        <p>搜敌人或据点 → 添加线索 → 缩小候选范围</p>
+        <p>在地图上点选位置，标记你看到的内容。</p>
       </div>
+      <section class="atlas" aria-label="交互地图">
+        <div class="atlas-toolbar">
+          <div>
+            <strong>从你所在的位置开始</strong>
+            <p id="atlas-hint">点击附近的圆点，标记出生位置、据点或敌人。</p>
+          </div>
+          <div class="atlas-controls">
+            <button type="button" class="secondary" id="atlas-undo" disabled>
+              撤销</button
+            ><button
+              type="button"
+              class="secondary"
+              id="atlas-out"
+              aria-label="缩小地图"
+            >
+              −</button
+            ><button
+              type="button"
+              class="secondary"
+              id="atlas-in"
+              aria-label="放大地图"
+            >
+              ＋</button
+            ><button type="button" class="secondary" id="atlas-fit">
+              全图
+            </button>
+          </div>
+        </div>
+        <div id="atlas-facets"></div>
+        <div class="atlas-body">
+          <div
+            id="atlas-viewport"
+            tabindex="0"
+            role="region"
+            aria-label="可拖动和缩放的地图；方向键移动，加减键缩放，点位可通过制表键选择"
+          >
+            <div id="atlas-tiles" aria-hidden="true"></div>
+            <div id="atlas-points"></div>
+            <p id="atlas-loading" role="status">正在载入地图…</p>
+          </div>
+          <section
+            id="atlas-editor"
+            aria-labelledby="atlas-point-title"
+            hidden
+          ></section>
+        </div>
+        <div class="atlas-legend">
+          <span><i class="observed"></i>你已确认</span
+          ><span><i class="inferred"></i>候选共同推测</span
+          ><span><i></i>待观察</span
+          ><strong id="atlas-count" role="status"></strong>
+        </div>
+        <p id="atlas-status" role="status" class="input-help">
+          拖动平移，滚轮或按钮缩放。空白处不会自动标记。
+        </p>
+      </section>
       <section
         class="map-workbench"
         aria-label="地图筛选工作台"
@@ -46,45 +102,48 @@
       >
         <div class="map-input-column">
           <form id="map-form" aria-busy="true">
-            <section class="clue-builder" aria-labelledby="clue-title">
-              <h2 id="clue-title">搜索你看到的内容</h2>
-              <label
-                ><span>搜索敌人或据点</span
-                ><input
-                  id="clue-search"
-                  type="search"
-                  placeholder="例如：魔像、教堂、失乡骑士"
-                  autocomplete="off"
-              /></label>
-              <div
-                id="quick-clues"
-                class="quick-searches"
-                aria-label="常用搜索"
-              ></div>
-              <details id="location-details">
-                <summary>指定地点类型或位置（可选）</summary>
-                <div class="clue-filters">
-                  <label
-                    ><span>地点类型（可选）</span
-                    ><select id="clue-category">
-                      <option value="">全部类型</option>
-                    </select></label
-                  ><label
-                    ><span>具体位置（可选）</span
-                    ><select id="clue-location">
-                      <option value="">不知道位置</option>
-                    </select></label
-                  >
-                </div>
-              </details>
-              <p id="clue-count" role="status"></p>
-              <div id="clue-results" class="clue-results"></div>
-              <button id="more-clues" type="button" class="secondary" hidden>
-                显示更多线索
-              </button>
-            </section>
+            <details id="text-search" class="clue-builder">
+              <summary>文字检索辅助 · 不确定地图位置时使用</summary>
+              <section aria-labelledby="clue-title">
+                <h2 id="clue-title">搜索你看到的内容</h2>
+                <label
+                  ><span>搜索敌人或据点</span
+                  ><input
+                    id="clue-search"
+                    type="search"
+                    placeholder="例如：魔像、教堂、失乡骑士"
+                    autocomplete="off"
+                /></label>
+                <div
+                  id="quick-clues"
+                  class="quick-searches"
+                  aria-label="常用搜索"
+                ></div>
+                <details id="location-details">
+                  <summary>指定地点类型或位置（可选）</summary>
+                  <div class="clue-filters">
+                    <label
+                      ><span>地点类型（可选）</span
+                      ><select id="clue-category">
+                        <option value="">全部类型</option>
+                      </select></label
+                    ><label
+                      ><span>具体位置（可选）</span
+                      ><select id="clue-location">
+                        <option value="">不知道位置</option>
+                      </select></label
+                    >
+                  </div>
+                </details>
+                <p id="clue-count" role="status"></p>
+                <div id="clue-results" class="clue-results"></div>
+                <button id="more-clues" type="button" class="secondary" hidden>
+                  显示更多线索
+                </button>
+              </section>
+            </details>
             <details class="base-filters" id="base-filters">
-              <summary>已知夜王、地形或出生点？（可选）</summary>
+              <summary>按名称选择出生点（可选）</summary>
               <div class="base-filter-fields">
                 <label
                   ><span>目标夜王</span
@@ -110,7 +169,7 @@
               <h3>已选条件</h3>
               <div id="filter-chips"></div>
               <p id="filter-empty" class="input-help">
-                还没有条件。可以只选夜王，也可以直接添加线索。
+                还没有标记。点击地图上的位置即可开始。
               </p>
             </section>
             <div class="form-actions">

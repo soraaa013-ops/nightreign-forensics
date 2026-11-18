@@ -1,3 +1,4 @@
+import { matchesObservation } from "./map-query.js";
 // URL and session drafts use the original stable keys; display labels stay localized.
 export function validateMapState(value, data) {
   if (!value || typeof value !== "object" || Array.isArray(value)) return null;
@@ -22,26 +23,22 @@ export function validateMapState(value, data) {
       typeof item.value !== "string"
     )
       return null;
-    if (
-      !data.records.some((record) =>
-        record.slots.some(
-          (slot) =>
-            (!item.key || slot.key === item.key) &&
-            (!item.category || slot.category === item.category) &&
-            (slot.value || "empty") === item.value,
-        ),
-      )
-    )
+    if (item.match !== undefined && !["exact", "type"].includes(item.match))
+      return null;
+    if (item.match === "type" && (!item.key || item.value === "empty"))
+      return null;
+    if (!data.records.some((record) => matchesObservation(record, item)))
       return null;
   }
   return {
     nightlord: value.nightlord,
     mapType: value.mapType,
     spawn: value.spawn,
-    observations: value.observations.map(({ key, category, value }) => ({
+    observations: value.observations.map(({ key, category, value, match }) => ({
       key,
       category,
       value,
+      ...(match ? { match } : {}),
     })),
   };
 }

@@ -1,0 +1,1667 @@
+{
+  "metadata": {
+    "source": "NikVince/nightreign-map-router",
+    "commit": "268bca49a963d9d8fab31ea169db9097019e3174",
+    "transform": {
+      "left": 507,
+      "size": 1690
+    },
+    "assets": [
+      {
+        "path": "assets/maps/default/0-0.webp",
+        "sha256": "ce4d76bb75e323a2ee293afb43bbe49a74c156eb31c28a81e7693afbffd7ddbe"
+      },
+      {
+        "path": "assets/maps/default/0-1.webp",
+        "sha256": "f19e89ff6fa9caa5303444d27e0af2982f283f55a053bc819d14d4886aec1710"
+      },
+      {
+        "path": "assets/maps/default/0-2.webp",
+        "sha256": "5ebc913931481ff1563b79409c5fc2c518b33e919edf077e6cec87baad22900e"
+      },
+      {
+        "path": "assets/maps/default/0-3.webp",
+        "sha256": "a6276f884badd0e8838b6294f56534daad5d307d34250e1464bdcfc43cb03fc4"
+      },
+      {
+        "path": "assets/maps/default/0-4.webp",
+        "sha256": "b90667baf94728037f499311246e1ca73f059c97ffb4ca31bfac22b9960e1e1c"
+      },
+      {
+        "path": "assets/maps/default/0-5.webp",
+        "sha256": "102b4eeb305583bf4c28f37c0ade4804a3efd7721d6ff90b4f0d6dfec862f248"
+      },
+      {
+        "path": "assets/maps/default/1-0.webp",
+        "sha256": "ad9ff0144135f24dee2bb4f698d41775459ae0af8684dcccede3ca2a1f7f0c02"
+      },
+      {
+        "path": "assets/maps/default/1-1.webp",
+        "sha256": "f5b5ec0cd57a13c1cc66a0b4d0912790d993f98f728598e07235518732d6e6bf"
+      },
+      {
+        "path": "assets/maps/default/1-2.webp",
+        "sha256": "9922ca2424c553514140633f17e1daccd8b0959d244b9d56ef22897c2fdda1ca"
+      },
+      {
+        "path": "assets/maps/default/1-3.webp",
+        "sha256": "35cb5c051136c6fffd313fa3078dd82efef2e2909b6528d1c638e1dc684e60a2"
+      },
+      {
+        "path": "assets/maps/default/1-4.webp",
+        "sha256": "9e1b722bbe9bc4779400885f402485b9399af0c44807f2000e94738673d47635"
+      },
+      {
+        "path": "assets/maps/default/1-5.webp",
+        "sha256": "695cad98bbaa4949245bdbda26e1c5132a9bd08a1555635900152d8183f34677"
+      },
+      {
+        "path": "assets/maps/default/2-0.webp",
+        "sha256": "a508c4ba2468bd758fcae29fb8e346d6cfc64bf3b79a739a0d9dfc7c8d809d81"
+      },
+      {
+        "path": "assets/maps/default/2-1.webp",
+        "sha256": "f9a5974404bbae3018bf6edc9cf4adcdb552059fcb7d10576e6ded32b4c74361"
+      },
+      {
+        "path": "assets/maps/default/2-2.webp",
+        "sha256": "b235674f3f64d2904c8cefe09373e5ec198b883b7a7acfda1cc7fc490a28c650"
+      },
+      {
+        "path": "assets/maps/default/2-3.webp",
+        "sha256": "a9509d1e19041f557de9306f9076bb5015c9a7847f019aba6f7ba00d35d44591"
+      },
+      {
+        "path": "assets/maps/default/2-4.webp",
+        "sha256": "604edb05239e54f74ba2537bce108a6badef8c3a6bfd690ba5af5251d5a189c3"
+      },
+      {
+        "path": "assets/maps/default/2-5.webp",
+        "sha256": "ed578022edd925610c41dfcc95ae3d02def7317e8e84b0e1043e4d8be52c6c87"
+      },
+      {
+        "path": "assets/maps/default/3-0.webp",
+        "sha256": "19c87100445fe730f6c8603e5d4a47560594e6d8a2dc9e274d308d3a96782163"
+      },
+      {
+        "path": "assets/maps/default/3-1.webp",
+        "sha256": "4937ecec271624f386961b1d140d6ca2b870c2e58579eff23360b807ffb58fbb"
+      },
+      {
+        "path": "assets/maps/default/3-2.webp",
+        "sha256": "632ebf424ac691307db0e6d040312f25b704209bf4a220f8d80425e4eaebc474"
+      },
+      {
+        "path": "assets/maps/default/3-3.webp",
+        "sha256": "a59d4339b141c24e03af1db7cad7a61ac0654233723af9f982b135b2f2becaaa"
+      },
+      {
+        "path": "assets/maps/default/3-4.webp",
+        "sha256": "271b0f0922e0797c9d837ede1f3d9963bfdf6ce92f8e614468f083fe74e983b1"
+      },
+      {
+        "path": "assets/maps/default/3-5.webp",
+        "sha256": "4f84a21506987564e53f3eecb59c9e30c9e244ec21d7a7f6379e1dac448026e8"
+      },
+      {
+        "path": "assets/maps/default/4-0.webp",
+        "sha256": "5cdb75e467c03f89825b0ab2378ff1e57c8f0e984847bde96aed4fceb4fa1fb3"
+      },
+      {
+        "path": "assets/maps/default/4-1.webp",
+        "sha256": "cd0022334f734fc28af6b60fa15c94ea8e52f9bd91dc67d7ae0b93e901cfa394"
+      },
+      {
+        "path": "assets/maps/default/4-2.webp",
+        "sha256": "a4af3fb8ec6d284b69f6ef274d2fb23ae86bfa23422c6eeafc34566e8f2abac7"
+      },
+      {
+        "path": "assets/maps/default/4-3.webp",
+        "sha256": "cf4df46c96924333519c6427f55b730aaad8fb3f870171ebfe2c5c3b94cba9c0"
+      },
+      {
+        "path": "assets/maps/default/4-4.webp",
+        "sha256": "9eb11dd0f9328282ad5b7b259921aecc8bc2ca55106efcd86a086d4473947a33"
+      },
+      {
+        "path": "assets/maps/default/4-5.webp",
+        "sha256": "3ece55ba52f096fec37e208a00bb75d7e6d61bba59d865ac5a005fa6851cfec7"
+      },
+      {
+        "path": "assets/maps/default/5-0.webp",
+        "sha256": "f780b42d01c2ba852e59f6697b9112fd8e5ee1877080f0aebbbdaf48e70aef45"
+      },
+      {
+        "path": "assets/maps/default/5-1.webp",
+        "sha256": "769a8c91014d2e268fedeeaab90f269ccce74b02fb1b5b032a0d2ec9abbcf359"
+      },
+      {
+        "path": "assets/maps/default/5-2.webp",
+        "sha256": "d68bea29c39e65c81c70d9c9553e3412a9293362b976bc936e3398cafd82f74d"
+      },
+      {
+        "path": "assets/maps/default/5-3.webp",
+        "sha256": "a00c80dd8f4a35e6608056b7c198350cc347d6176d6b4f479ef81011925479af"
+      },
+      {
+        "path": "assets/maps/default/5-4.webp",
+        "sha256": "1ad28216e54a16515c914eecd43907f30317cb40d8e8cba3a183de5ba8d811ff"
+      },
+      {
+        "path": "assets/maps/default/5-5.webp",
+        "sha256": "080465c00def359f016e37ceada42ed4500133883bf16d8bc23db14a1a108a5d"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/0-0.webp",
+        "sha256": "ce4d76bb75e323a2ee293afb43bbe49a74c156eb31c28a81e7693afbffd7ddbe"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/0-1.webp",
+        "sha256": "f19e89ff6fa9caa5303444d27e0af2982f283f55a053bc819d14d4886aec1710"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/0-2.webp",
+        "sha256": "5ebc913931481ff1563b79409c5fc2c518b33e919edf077e6cec87baad22900e"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/0-3.webp",
+        "sha256": "a6276f884badd0e8838b6294f56534daad5d307d34250e1464bdcfc43cb03fc4"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/0-4.webp",
+        "sha256": "b90667baf94728037f499311246e1ca73f059c97ffb4ca31bfac22b9960e1e1c"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/0-5.webp",
+        "sha256": "102b4eeb305583bf4c28f37c0ade4804a3efd7721d6ff90b4f0d6dfec862f248"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/1-0.webp",
+        "sha256": "ad9ff0144135f24dee2bb4f698d41775459ae0af8684dcccede3ca2a1f7f0c02"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/1-1.webp",
+        "sha256": "167c74eacc14b5e4fa20610eae76463753fa16591b621cd936f24ae36b4a43c8"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/1-2.webp",
+        "sha256": "9922ca2424c553514140633f17e1daccd8b0959d244b9d56ef22897c2fdda1ca"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/1-3.webp",
+        "sha256": "e2c490bd190671cbac4adb41addc6e817167f196632f01af7568cdbc1eae279a"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/1-4.webp",
+        "sha256": "923f4a941e7b9a0881223cd5d0dd537b740d6b023646cc04bc01cab4833abe0b"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/1-5.webp",
+        "sha256": "fa7df50f4f0590cc739e3b368e6982745a05fef454c9798a81de232fefa8ce11"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/2-0.webp",
+        "sha256": "a508c4ba2468bd758fcae29fb8e346d6cfc64bf3b79a739a0d9dfc7c8d809d81"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/2-1.webp",
+        "sha256": "e5f450ba994a14e8be8e435d555f6427feb31b9a9adb45e5a211d42517e5e5e8"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/2-2.webp",
+        "sha256": "3eab1e972367217b35289ce94c38d76a7db4bb40b650d588b2ec45f4bd70fdc4"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/2-3.webp",
+        "sha256": "a5157d70315fcc5ff8d3c69ab44ba22c94841f83b4189cd28a50316b0f3bea75"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/2-4.webp",
+        "sha256": "90365c4a6e539c73f73c0218703008fceaabbdb49ec2ed41a8f5800bee903823"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/2-5.webp",
+        "sha256": "1aafad7e20a769fdb155ff69157f1e6423569b8181822d7a025d29af65187dc4"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/3-0.webp",
+        "sha256": "19c87100445fe730f6c8603e5d4a47560594e6d8a2dc9e274d308d3a96782163"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/3-1.webp",
+        "sha256": "17ce302168c795e896b2f4ee6815d26f9a473170ab309982fe44caf736a7345d"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/3-2.webp",
+        "sha256": "73b8f31c5528bf212f5962168b9c4704270680ce031082111c1db57346f9f555"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/3-3.webp",
+        "sha256": "1fbd0e8f7b42622facb7d91c56d9f00b7595d25f2f11e905fd00bfd4e3268580"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/3-4.webp",
+        "sha256": "66420ff4fff53c34c37cb849e64225848a12c0032abe88a20f35c0deb134e64f"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/3-5.webp",
+        "sha256": "4133f2a7c9932ee81d7d32f6a8f311f370723550350175626c04eaff218756a2"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/4-0.webp",
+        "sha256": "5cdb75e467c03f89825b0ab2378ff1e57c8f0e984847bde96aed4fceb4fa1fb3"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/4-1.webp",
+        "sha256": "cd0022334f734fc28af6b60fa15c94ea8e52f9bd91dc67d7ae0b93e901cfa394"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/4-2.webp",
+        "sha256": "a1b8a852af64d2ea0aa4f2a3df7c8492e0f48d25b65451b4444d614e7ce3fba0"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/4-3.webp",
+        "sha256": "cf4df46c96924333519c6427f55b730aaad8fb3f870171ebfe2c5c3b94cba9c0"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/4-4.webp",
+        "sha256": "5f0facd38e98529e88a34f115eceb3d29cd50512417ebd8eab3d47922aa44c63"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/4-5.webp",
+        "sha256": "3ece55ba52f096fec37e208a00bb75d7e6d61bba59d865ac5a005fa6851cfec7"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/5-0.webp",
+        "sha256": "f780b42d01c2ba852e59f6697b9112fd8e5ee1877080f0aebbbdaf48e70aef45"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/5-1.webp",
+        "sha256": "769a8c91014d2e268fedeeaab90f269ccce74b02fb1b5b032a0d2ec9abbcf359"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/5-2.webp",
+        "sha256": "d68bea29c39e65c81c70d9c9553e3412a9293362b976bc936e3398cafd82f74d"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/5-3.webp",
+        "sha256": "a00c80dd8f4a35e6608056b7c198350cc347d6176d6b4f479ef81011925479af"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/5-4.webp",
+        "sha256": "1ad28216e54a16515c914eecd43907f30317cb40d8e8cba3a183de5ba8d811ff"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/5-5.webp",
+        "sha256": "080465c00def359f016e37ceada42ed4500133883bf16d8bc23db14a1a108a5d"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/0-0.webp",
+        "sha256": "ce4d76bb75e323a2ee293afb43bbe49a74c156eb31c28a81e7693afbffd7ddbe"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/0-1.webp",
+        "sha256": "f19e89ff6fa9caa5303444d27e0af2982f283f55a053bc819d14d4886aec1710"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/0-2.webp",
+        "sha256": "21f5eb434eb175423fd9fe5855f0d8ec96f142f2f1d85e5d035c8e319a81a25d"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/0-3.webp",
+        "sha256": "02e3e65b53d2c54d022aa3b9d256095677015b79c94024e9c83b8a4ad3831787"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/0-4.webp",
+        "sha256": "3f871afe06402006e45fbde0c45bb1d08839764149bce70e3eb3b7de8ddad141"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/0-5.webp",
+        "sha256": "785bab6a985ffab31253119e8dafffd3ccc5984b66fdd25b3235b225e439e5a5"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/1-0.webp",
+        "sha256": "ad9ff0144135f24dee2bb4f698d41775459ae0af8684dcccede3ca2a1f7f0c02"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/1-1.webp",
+        "sha256": "00f435268b5f36f8448128bea3279b178f8ea3ed85acb7f8310cee7d6c8b3411"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/1-2.webp",
+        "sha256": "abf89c526e8d7ec0e365d5e0721667ad7c72cc299507c8d416d0583e12929e0d"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/1-3.webp",
+        "sha256": "4089dd52603aa0392dd47c54bf85162d0a2e6c52d24384c634067b87e440638e"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/1-4.webp",
+        "sha256": "16c146acc7cfae4231af44c0ddde7a5c14ce5c8b91677aaa614c814d50b8d0fa"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/1-5.webp",
+        "sha256": "40227190c21c6c8f1d938b115cad83c457429b87454d07de47f342785db67927"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/2-0.webp",
+        "sha256": "a508c4ba2468bd758fcae29fb8e346d6cfc64bf3b79a739a0d9dfc7c8d809d81"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/2-1.webp",
+        "sha256": "ed7a7c65b3b12bc9012f884223767bc35349828e8e9d19ddd3700e17b9f75232"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/2-2.webp",
+        "sha256": "fc7fee005c073c64d2bff175d9c410ace17b3707d5472ebed483e3cadb34da2d"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/2-3.webp",
+        "sha256": "fb4ea89773e2954a006d3c8ac2f853e49757dcbb8787e661bdb4f9f36015ab6d"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/2-4.webp",
+        "sha256": "88429d84af61bb097e30afce3a9361fcbc1ffa4859148fb57b7b8d7534b29ec6"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/2-5.webp",
+        "sha256": "996dfeb9d958c34e6ded8c5aeba97f65f605b60147dd6fba3a5546f14ef09338"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/3-0.webp",
+        "sha256": "19c87100445fe730f6c8603e5d4a47560594e6d8a2dc9e274d308d3a96782163"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/3-1.webp",
+        "sha256": "d7d4f1d5ffb46b4cf7afbfe204ad80b6bd401250ce6a78a38df0cbbf48d1334e"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/3-2.webp",
+        "sha256": "0703f4bfe609f0503dfc50a4bf2a1aea5b653def04b5b728fb14974ffd6372e1"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/3-3.webp",
+        "sha256": "8074c54780f9e59da5eb5a4722f0a295d3a9be0f891f4917d9457c6b2ec07809"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/3-4.webp",
+        "sha256": "20738a9987b1051a791114fd64adf900837617a1a8cf747320e193b3a3021084"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/3-5.webp",
+        "sha256": "c38ecf76a73a345d6fd9de7674803add5ca4d0150f3c40cd51c48eabf63cb4d0"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/4-0.webp",
+        "sha256": "5cdb75e467c03f89825b0ab2378ff1e57c8f0e984847bde96aed4fceb4fa1fb3"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/4-1.webp",
+        "sha256": "7716abc1a12cbce134bd38b84a92d565cd8738ff1da0d5519e984d7a6de13a02"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/4-2.webp",
+        "sha256": "a1b8a852af64d2ea0aa4f2a3df7c8492e0f48d25b65451b4444d614e7ce3fba0"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/4-3.webp",
+        "sha256": "cf4df46c96924333519c6427f55b730aaad8fb3f870171ebfe2c5c3b94cba9c0"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/4-4.webp",
+        "sha256": "4275826f0873df75450d585ce5f04effa200ff6a1b18b110b34c8cd28682214c"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/4-5.webp",
+        "sha256": "3ece55ba52f096fec37e208a00bb75d7e6d61bba59d865ac5a005fa6851cfec7"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/5-0.webp",
+        "sha256": "f780b42d01c2ba852e59f6697b9112fd8e5ee1877080f0aebbbdaf48e70aef45"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/5-1.webp",
+        "sha256": "769a8c91014d2e268fedeeaab90f269ccce74b02fb1b5b032a0d2ec9abbcf359"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/5-2.webp",
+        "sha256": "d68bea29c39e65c81c70d9c9553e3412a9293362b976bc936e3398cafd82f74d"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/5-3.webp",
+        "sha256": "a00c80dd8f4a35e6608056b7c198350cc347d6176d6b4f479ef81011925479af"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/5-4.webp",
+        "sha256": "1ad28216e54a16515c914eecd43907f30317cb40d8e8cba3a183de5ba8d811ff"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/5-5.webp",
+        "sha256": "080465c00def359f016e37ceada42ed4500133883bf16d8bc23db14a1a108a5d"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/0-0.webp",
+        "sha256": "1c25a647ebfec9daad23a85e9d865660ada79a9289601e16912adf0089e0c050"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/0-1.webp",
+        "sha256": "c15ecdaec2c69c2ed272f64ceef6cb9fef36ff8b8cf14fc127cc5f7cc59ab334"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/0-2.webp",
+        "sha256": "d3cf69cf3861c32c232d0205961928a2826208fecde0aa74ce48d910d11a2507"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/0-3.webp",
+        "sha256": "c5af572dc2a878645f44f8d21565b91f5f0895e705fec508822290d62070f501"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/0-4.webp",
+        "sha256": "b90667baf94728037f499311246e1ca73f059c97ffb4ca31bfac22b9960e1e1c"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/0-5.webp",
+        "sha256": "102b4eeb305583bf4c28f37c0ade4804a3efd7721d6ff90b4f0d6dfec862f248"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/1-0.webp",
+        "sha256": "bd219f01d215943b5aa6c05915581a109896a57141316f43ae0d53cba05c7cfc"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/1-1.webp",
+        "sha256": "6ba2cab399682d09d4c63091f2235f1d8ac003fde08707c8e16b6d4a30b7acef"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/1-2.webp",
+        "sha256": "7868854cec5d6a52a90d78d6c069554fad636a481b5648aa5aaeafe059ab0033"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/1-3.webp",
+        "sha256": "c3f757d7c1dceb4ada2a1c074afd69ddad7345089f2a5d5b3252c85234930737"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/1-4.webp",
+        "sha256": "9e1b722bbe9bc4779400885f402485b9399af0c44807f2000e94738673d47635"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/1-5.webp",
+        "sha256": "695cad98bbaa4949245bdbda26e1c5132a9bd08a1555635900152d8183f34677"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/2-0.webp",
+        "sha256": "fa8757c02adc7023d45da4188ab57d741f528de72d7fd06c998c2f4588f1b6b9"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/2-1.webp",
+        "sha256": "d89e57ce388c958189ef3d67c97c40ff1e1bf983aa881c205fe5b06c3293e032"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/2-2.webp",
+        "sha256": "160db731b11ee35da10302715ee6a1c0783c89bcbe33b164740a4f25adad624f"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/2-3.webp",
+        "sha256": "e8c8cd726b884202417987b0c95d0b3914b3b10403d95c7fc8df871f1555aabe"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/2-4.webp",
+        "sha256": "2a44781312fefc91aba0932a0b7cffe56c30560eecc7d7f90b9fb671de3ae37b"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/2-5.webp",
+        "sha256": "ed578022edd925610c41dfcc95ae3d02def7317e8e84b0e1043e4d8be52c6c87"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/3-0.webp",
+        "sha256": "5999a08844a6f305e03487f0e4e1efab681bc41e38303424aeff7c9036b38f65"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/3-1.webp",
+        "sha256": "4eede04ca197b41fb1b81bbd4ac0e173f8ebdde84a6fd2441d66f601c69e60c5"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/3-2.webp",
+        "sha256": "192b57132890f10c64b42ad0f7a4e835b962b55c496c60ac87e5ca81b1255805"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/3-3.webp",
+        "sha256": "bd8d39128b60c2da117e29273925063d0ad3060fae93dfc639fd539b0d7483c4"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/3-4.webp",
+        "sha256": "0cd941cb3fa3d58a711c8fdd38409d1d7da87050bdca168f80a618dce42d27ab"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/3-5.webp",
+        "sha256": "4f84a21506987564e53f3eecb59c9e30c9e244ec21d7a7f6379e1dac448026e8"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/4-0.webp",
+        "sha256": "5cdb75e467c03f89825b0ab2378ff1e57c8f0e984847bde96aed4fceb4fa1fb3"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/4-1.webp",
+        "sha256": "b6ae096673435dd5f72228c7aa95e714fb226ecf5c27e9cc49b922176ca69235"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/4-2.webp",
+        "sha256": "a8c1537c1d75e8e211b281e9c5b3d9eb4ecf28d1f80c33beb3be55c5bf80485e"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/4-3.webp",
+        "sha256": "f8f7391df1cf41c4d71d9bd04c49cbac2e5cdbc357146e8a06986ba50faa957c"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/4-4.webp",
+        "sha256": "1e810b9cfa843e7adb9ef6245cac729ee295ecd5362336d3ce4ed78644a565c5"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/4-5.webp",
+        "sha256": "3ece55ba52f096fec37e208a00bb75d7e6d61bba59d865ac5a005fa6851cfec7"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/5-0.webp",
+        "sha256": "faffd3d94d39064c91c701d8ad3b3c4ac2c1b337fa3669c399ed5323f777bf3e"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/5-1.webp",
+        "sha256": "3706af71aa7ae9d1e156c853693f7662ee0213bfd98440d4cc61c6301e318554"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/5-2.webp",
+        "sha256": "d0bb811c46f052ac89a7346adc4a87d38add8515158acc172f720481a9a7e648"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/5-3.webp",
+        "sha256": "e19c88c1d58d6373b8db98bfca47f8de2ad871667dc7aefff55340fae3d80ec1"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/5-4.webp",
+        "sha256": "066d59d768fd580964079d5629c6411d213e81dee0d2c8cd820290d3fc04e7ce"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/5-5.webp",
+        "sha256": "94587718e8145fce5226c6cceaff9314ab940648f3ae76af3c6132f1a1a2c053"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/0-0.webp",
+        "sha256": "ce4d76bb75e323a2ee293afb43bbe49a74c156eb31c28a81e7693afbffd7ddbe"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/0-1.webp",
+        "sha256": "f19e89ff6fa9caa5303444d27e0af2982f283f55a053bc819d14d4886aec1710"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/0-2.webp",
+        "sha256": "5ebc913931481ff1563b79409c5fc2c518b33e919edf077e6cec87baad22900e"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/0-3.webp",
+        "sha256": "a6276f884badd0e8838b6294f56534daad5d307d34250e1464bdcfc43cb03fc4"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/0-4.webp",
+        "sha256": "b90667baf94728037f499311246e1ca73f059c97ffb4ca31bfac22b9960e1e1c"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/0-5.webp",
+        "sha256": "102b4eeb305583bf4c28f37c0ade4804a3efd7721d6ff90b4f0d6dfec862f248"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/1-0.webp",
+        "sha256": "ad9ff0144135f24dee2bb4f698d41775459ae0af8684dcccede3ca2a1f7f0c02"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/1-1.webp",
+        "sha256": "167c74eacc14b5e4fa20610eae76463753fa16591b621cd936f24ae36b4a43c8"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/1-2.webp",
+        "sha256": "9922ca2424c553514140633f17e1daccd8b0959d244b9d56ef22897c2fdda1ca"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/1-3.webp",
+        "sha256": "35cb5c051136c6fffd313fa3078dd82efef2e2909b6528d1c638e1dc684e60a2"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/1-4.webp",
+        "sha256": "9e1b722bbe9bc4779400885f402485b9399af0c44807f2000e94738673d47635"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/1-5.webp",
+        "sha256": "695cad98bbaa4949245bdbda26e1c5132a9bd08a1555635900152d8183f34677"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/2-0.webp",
+        "sha256": "a508c4ba2468bd758fcae29fb8e346d6cfc64bf3b79a739a0d9dfc7c8d809d81"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/2-1.webp",
+        "sha256": "b71a4e287542edc8685575d30a875e9ce26d837d03ca8c2de35912c62ad0e504"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/2-2.webp",
+        "sha256": "9196159942ec20291e38c759166cb7c4b5bf0ac05c4741cb1245920b088ec076"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/2-3.webp",
+        "sha256": "a9509d1e19041f557de9306f9076bb5015c9a7847f019aba6f7ba00d35d44591"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/2-4.webp",
+        "sha256": "604edb05239e54f74ba2537bce108a6badef8c3a6bfd690ba5af5251d5a189c3"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/2-5.webp",
+        "sha256": "ed578022edd925610c41dfcc95ae3d02def7317e8e84b0e1043e4d8be52c6c87"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/3-0.webp",
+        "sha256": "c09bef69ef0791bf5e17ac2046a2544ca6226279e27c50fe11efec5a07ca2f49"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/3-1.webp",
+        "sha256": "86d1e2f1c214f36627be7adbce80b2fe5a19855d50eb2c618343a1decd95b09f"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/3-2.webp",
+        "sha256": "ce185c25673c701d49e21f0cae8d0b531de8675f2273336509bd3e840f1b8c6d"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/3-3.webp",
+        "sha256": "2d068393fa7b7568e881ea7cd18718e729c473c62d9d7234fa016b2ba75c2539"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/3-4.webp",
+        "sha256": "271b0f0922e0797c9d837ede1f3d9963bfdf6ce92f8e614468f083fe74e983b1"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/3-5.webp",
+        "sha256": "4f84a21506987564e53f3eecb59c9e30c9e244ec21d7a7f6379e1dac448026e8"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/4-0.webp",
+        "sha256": "cacf501dabd0578fc2cc170f4a224b33402f9e97c38147da41390feae1dabb04"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/4-1.webp",
+        "sha256": "285c83b6d6b4a16de3dace629094e85fa2731a74d4e8d36543325a1ed4aeae40"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/4-2.webp",
+        "sha256": "8577d4217a959313a5f753368b92299c454b03456b2e38acfdd9e890be6cb052"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/4-3.webp",
+        "sha256": "86ccf59e2c19e6337f285cb92a7d8499c404de7d014f455dcc977bd52559e285"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/4-4.webp",
+        "sha256": "c1e5ea47cbbac7060e346b12168ef77dbd2643fe47af6becac2aebccf232f5ec"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/4-5.webp",
+        "sha256": "3ece55ba52f096fec37e208a00bb75d7e6d61bba59d865ac5a005fa6851cfec7"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/5-0.webp",
+        "sha256": "57d2a5ee52925dcfcd28796fcee004f0fd8ff313faa79a7cd09bb5e1f8c6d4cc"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/5-1.webp",
+        "sha256": "a66ad17ac7acf4dbe634491a4b78b11acda0104b56d07ad687fd8614787e641c"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/5-2.webp",
+        "sha256": "0a1df431ea8db4272419b2abe95829aa7b07c95e5194910ad89c8ade6c951a6e"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/5-3.webp",
+        "sha256": "a00c80dd8f4a35e6608056b7c198350cc347d6176d6b4f479ef81011925479af"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/5-4.webp",
+        "sha256": "1ad28216e54a16515c914eecd43907f30317cb40d8e8cba3a183de5ba8d811ff"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/5-5.webp",
+        "sha256": "080465c00def359f016e37ceada42ed4500133883bf16d8bc23db14a1a108a5d"
+      }
+    ]
+  },
+  "layouts": {
+    "Default": "default",
+    "Crater": "the_crater_shifted",
+    "Mountaintop": "the_mountaintop_shifted",
+    "Noklateo": "noklateo_shifted",
+    "Rotted Woods": "the_rotten_woods_shifted"
+  },
+  "points": [
+    {
+      "id": "Castle - Castle",
+      "key": "Castle - Castle",
+      "category": "Castle",
+      "location": "Castle",
+      "poiId": 159,
+      "x": 0.43221893491124264,
+      "y": 0.4925207100591716,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Major Base - South Lake",
+      "key": "Major Base - South Lake",
+      "category": "Major Base",
+      "location": "South Lake",
+      "poiId": 93,
+      "x": 0.4003786982248521,
+      "y": 0.7822485207100591,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Major Base - Groveside",
+      "key": "Major Base - Groveside",
+      "category": "Major Base",
+      "location": "Groveside",
+      "poiId": 94,
+      "x": 0.27973372781065087,
+      "y": 0.6534023668639053,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Major Base - Gatefront",
+      "key": "Major Base - Gatefront",
+      "category": "Major Base",
+      "location": "Gatefront",
+      "poiId": 96,
+      "x": 0.3175384615384616,
+      "y": 0.5509408284023669,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Major Base - Stormhill North of Gate",
+      "key": "Major Base - Stormhill North of Gate",
+      "category": "Major Base",
+      "location": "Stormhill North of Gate",
+      "poiId": 95,
+      "x": 0.2822485207100592,
+      "y": 0.4393491124260355,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Major Base - Alexander Spot",
+      "key": "Major Base - Alexander Spot",
+      "category": "Major Base",
+      "location": "Alexander Spot",
+      "poiId": 98,
+      "x": 0.4158284023668639,
+      "y": 0.3007396449704142,
+      "terrains": [
+        "Default",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Major Base - Northwest Stormhill",
+      "key": "Major Base - Northwest Stormhill",
+      "category": "Major Base",
+      "location": "Northwest Stormhill",
+      "poiId": 97,
+      "x": 0.22766272189349113,
+      "y": 0.27514792899408286,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Major Base - Northeast Stormhill",
+      "key": "Major Base - Northeast Stormhill",
+      "category": "Major Base",
+      "location": "Northeast Stormhill",
+      "poiId": 99,
+      "x": 0.40428994082840236,
+      "y": 0.17514792899408285,
+      "terrains": [
+        "Default",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Major Base - South Mistwood",
+      "key": "Major Base - South Mistwood",
+      "category": "Major Base",
+      "location": "South Mistwood",
+      "poiId": 107,
+      "x": 0.7465502958579882,
+      "y": 0.732940828402367,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Noklateo"
+      ]
+    },
+    {
+      "id": "Major Base - Waypoint Ruins",
+      "key": "Major Base - Waypoint Ruins",
+      "category": "Major Base",
+      "location": "Waypoint Ruins",
+      "poiId": 108,
+      "x": 0.6157810650887574,
+      "y": 0.6932958579881657,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Noklateo"
+      ]
+    },
+    {
+      "id": "Major Base - Minor Erdtree",
+      "key": "Major Base - Minor Erdtree",
+      "category": "Major Base",
+      "location": "Minor Erdtree",
+      "poiId": 106,
+      "x": 0.7524674556213018,
+      "y": 0.629189349112426,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Noklateo"
+      ]
+    },
+    {
+      "id": "Major Base - West Mistwood",
+      "key": "Major Base - West Mistwood",
+      "category": "Major Base",
+      "location": "West Mistwood",
+      "poiId": 105,
+      "x": 0.6301775147928994,
+      "y": 0.5925029585798817,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Noklateo"
+      ]
+    },
+    {
+      "id": "Major Base - Northwest Mistwood",
+      "key": "Major Base - Northwest Mistwood",
+      "category": "Major Base",
+      "location": "Northwest Mistwood",
+      "poiId": 103,
+      "x": 0.6661242603550296,
+      "y": 0.46316568047337275,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Major Base - Artist's Shack",
+      "key": "Major Base - Artist's Shack",
+      "category": "Major Base",
+      "location": "Artist's Shack",
+      "poiId": 102,
+      "x": 0.578698224852071,
+      "y": 0.43372781065088756,
+      "terrains": [
+        "Default",
+        "Mountaintop",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Major Base - Northeast Mistwood",
+      "key": "Major Base - Northeast Mistwood",
+      "category": "Major Base",
+      "location": "Northeast Mistwood",
+      "poiId": 104,
+      "x": 0.7689349112426036,
+      "y": 0.4217455621301775,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Major Base - Summonwater Approach",
+      "key": "Major Base - Summonwater Approach",
+      "category": "Major Base",
+      "location": "Summonwater Approach",
+      "poiId": 100,
+      "x": 0.63801775147929,
+      "y": 0.2964497041420118,
+      "terrains": [
+        "Default",
+        "Mountaintop",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Major Base - Summonwater",
+      "key": "Major Base - Summonwater",
+      "category": "Major Base",
+      "location": "Summonwater",
+      "poiId": 101,
+      "x": 0.7088757396449704,
+      "y": 0.210207100591716,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Minor Base - Far Southwest",
+      "key": "Minor Base - Far Southwest",
+      "category": "Minor Base",
+      "location": "Far Southwest",
+      "poiId": 31,
+      "x": 0.19822485207100593,
+      "y": 0.7211065088757397,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Minor Base - Lake",
+      "key": "Minor Base - Lake",
+      "category": "Minor Base",
+      "location": "Lake",
+      "poiId": 30,
+      "x": 0.4597633136094675,
+      "y": 0.7023668639053254,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Minor Base - Stormhill South of Gate",
+      "key": "Minor Base - Stormhill South of Gate",
+      "category": "Minor Base",
+      "location": "Stormhill South of Gate",
+      "poiId": 32,
+      "x": 0.20414201183431951,
+      "y": 0.5680473372781065,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Minor Base - Above Stormhill Tunnel Entrance",
+      "key": "Minor Base - Above Stormhill Tunnel Entrance",
+      "category": "Minor Base",
+      "location": "Above Stormhill Tunnel Entrance",
+      "poiId": 34,
+      "x": 0.36646745562130173,
+      "y": 0.4076923076923077,
+      "terrains": [
+        "Default",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Minor Base - West of Warmaster's Shack",
+      "key": "Minor Base - West of Warmaster's Shack",
+      "category": "Minor Base",
+      "location": "West of Warmaster's Shack",
+      "poiId": 33,
+      "x": 0.22051479289940826,
+      "y": 0.3520710059171598,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Minor Base - Southeast of Lake",
+      "key": "Minor Base - Southeast of Lake",
+      "category": "Minor Base",
+      "location": "Southeast of Lake",
+      "poiId": 28,
+      "x": 0.5672603550295858,
+      "y": 0.8163727810650888,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Noklateo"
+      ]
+    },
+    {
+      "id": "Minor Base - East of Cavalry Bridge",
+      "key": "Minor Base - East of Cavalry Bridge",
+      "category": "Minor Base",
+      "location": "East of Cavalry Bridge",
+      "poiId": 29,
+      "x": 0.5467455621301776,
+      "y": 0.6396449704142012,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Noklateo"
+      ]
+    },
+    {
+      "id": "Minor Base - Minor Erdtree",
+      "key": "Minor Base - Minor Erdtree",
+      "category": "Minor Base",
+      "location": "Minor Erdtree",
+      "poiId": 157,
+      "x": 0.808284023668639,
+      "y": 0.58698224852071,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Noklateo"
+      ]
+    },
+    {
+      "id": "Minor Base - Below Summonwater Hawk",
+      "key": "Minor Base - Below Summonwater Hawk",
+      "category": "Minor Base",
+      "location": "Below Summonwater Hawk",
+      "poiId": 36,
+      "x": 0.6988165680473373,
+      "y": 0.3702662721893491,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Minor Base - Third Church",
+      "key": "Minor Base - Third Church",
+      "category": "Minor Base",
+      "location": "Third Church",
+      "poiId": 37,
+      "x": 0.789792899408284,
+      "y": 0.3624260355029586,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Minor Base - Northeast of Saintsbridge",
+      "key": "Minor Base - Northeast of Saintsbridge",
+      "category": "Minor Base",
+      "location": "Northeast of Saintsbridge",
+      "poiId": 35,
+      "x": 0.5372781065088758,
+      "y": 0.23224852071005916,
+      "terrains": [
+        "Default",
+        "Mountaintop",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Evergaol - Northwest of Lake",
+      "key": "Evergaol - Northwest of Lake",
+      "category": "Evergaol",
+      "location": "Northwest of Lake",
+      "poiId": 82,
+      "x": 0.34866863905325446,
+      "y": 0.6322485207100592,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Evergaol - Murkwater Terminus",
+      "key": "Evergaol - Murkwater Terminus",
+      "category": "Evergaol",
+      "location": "Murkwater Terminus",
+      "poiId": 78,
+      "x": 0.4474970414201183,
+      "y": 0.38214201183431956,
+      "terrains": [
+        "Default",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Evergaol - Stormhill",
+      "key": "Evergaol - Stormhill",
+      "category": "Evergaol",
+      "location": "Stormhill",
+      "poiId": 76,
+      "x": 0.1696094674556213,
+      "y": 0.31759171597633135,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Evergaol - Highroad",
+      "key": "Evergaol - Highroad",
+      "category": "Evergaol",
+      "location": "Highroad",
+      "poiId": 77,
+      "x": 0.4833254437869822,
+      "y": 0.1963431952662722,
+      "terrains": [
+        "Default",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Evergaol - East of Lake",
+      "key": "Evergaol - East of Lake",
+      "category": "Evergaol",
+      "location": "East of Lake",
+      "poiId": 81,
+      "x": 0.6226331360946745,
+      "y": 0.7674556213017751,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Noklateo"
+      ]
+    },
+    {
+      "id": "Evergaol - Mistwood",
+      "key": "Evergaol - Mistwood",
+      "category": "Evergaol",
+      "location": "Mistwood",
+      "poiId": 80,
+      "x": 0.7917869822485206,
+      "y": 0.488094674556213,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Evergaol - Northeast Tunnel Entrance",
+      "key": "Evergaol - Northeast Tunnel Entrance",
+      "category": "Evergaol",
+      "location": "Northeast Tunnel Entrance",
+      "poiId": 79,
+      "x": 0.6332071005917159,
+      "y": 0.36353846153846153,
+      "terrains": [
+        "Default",
+        "Mountaintop",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Arena Boss - Castle Basement",
+      "key": "Arena Boss - Castle Basement",
+      "category": "Arena Boss",
+      "location": "Castle Basement",
+      "poiId": 23,
+      "x": 0.46442603550295863,
+      "y": 0.5419408284023669,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Field Boss - Castle Rooftop",
+      "key": "Field Boss - Castle Rooftop",
+      "category": "Field Boss",
+      "location": "Castle Rooftop",
+      "poiId": 158,
+      "x": 0.43717159763313607,
+      "y": 0.5422248520710059,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Field Boss - Far Southwest of Lake",
+      "key": "Field Boss - Far Southwest of Lake",
+      "category": "Field Boss",
+      "location": "Far Southwest of Lake",
+      "poiId": 85,
+      "x": 0.31223076923076926,
+      "y": 0.8222899408284025,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Field Boss - Lake",
+      "key": "Field Boss - Lake",
+      "category": "Field Boss",
+      "location": "Lake Field Boss",
+      "poiId": 84,
+      "x": 0.4524674556213018,
+      "y": 0.7047337278106509,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Field Boss - North of Stormhill Tunnel Entrance",
+      "key": "Field Boss - North of Stormhill Tunnel Entrance",
+      "category": "Field Boss",
+      "location": "North of Stormhill Tunnel Entrance",
+      "poiId": 86,
+      "x": 0.3203136094674556,
+      "y": 0.3830355029585799,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Field Boss - North of Murkwater Terminus",
+      "key": "Field Boss - North of Murkwater Terminus",
+      "category": "Field Boss",
+      "location": "North of Murkwater Terminus",
+      "poiId": 87,
+      "x": 0.4757396449704142,
+      "y": 0.3524674556213018,
+      "terrains": [
+        "Default",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Field Boss - Stormhill Spectral Hawk",
+      "key": "Field Boss - Stormhill Spectral Hawk",
+      "category": "Field Boss",
+      "location": "Stormhill Spectral Hawk",
+      "poiId": 88,
+      "x": 0.3368816568047337,
+      "y": 0.2532544378698225,
+      "terrains": [
+        "Default",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Field Boss - Northwest Stormhill Cliffside",
+      "key": "Field Boss - Northwest Stormhill Cliffside",
+      "category": "Field Boss",
+      "location": "Northwest Stormhill Cliffside",
+      "poiId": 89,
+      "x": 0.2781065088757396,
+      "y": 0.19309467455621301,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Field Boss - Mistwood Spectral Hawk",
+      "key": "Field Boss - Mistwood Spectral Hawk",
+      "category": "Field Boss",
+      "location": "Mistwood Spectral Hawk",
+      "poiId": 83,
+      "x": 0.6958579881656805,
+      "y": 0.7637100591715976,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Noklateo"
+      ]
+    },
+    {
+      "id": "Field Boss - North Mistwood",
+      "key": "Field Boss - North Mistwood",
+      "category": "Field Boss",
+      "location": "North Mistwood",
+      "poiId": 92,
+      "x": 0.7719940828402367,
+      "y": 0.4887573964497041,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Noklateo"
+      ]
+    },
+    {
+      "id": "Field Boss - East of Murkwater Terminus",
+      "key": "Field Boss - East of Murkwater Terminus",
+      "category": "Field Boss",
+      "location": "East of Murkwater Terminus",
+      "poiId": 90,
+      "x": 0.5451656804733728,
+      "y": 0.384810650887574,
+      "terrains": [
+        "Default",
+        "Mountaintop",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Field Boss - Northwest of Summonwater",
+      "key": "Field Boss - Northwest of Summonwater",
+      "category": "Field Boss",
+      "location": "Northwest of Summonwater",
+      "poiId": 91,
+      "x": 0.6471420118343195,
+      "y": 0.2161715976331361,
+      "terrains": [
+        "Default",
+        "Mountaintop",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Rotted Woods - Southwest",
+      "key": "Rotted Woods - Southwest",
+      "category": "Rotted Woods",
+      "location": "Southwest",
+      "poiId": 154,
+      "x": 0.6510828402366864,
+      "y": 0.74398224852071,
+      "terrains": [
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Rotted Woods - Southeast",
+      "key": "Rotted Woods - Southeast",
+      "category": "Rotted Woods",
+      "location": "Southeast",
+      "poiId": 155,
+      "x": 0.7875739644970414,
+      "y": 0.6915207100591716,
+      "terrains": [
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Rotted Woods - Center West",
+      "key": "Rotted Woods - Center West",
+      "category": "Rotted Woods",
+      "location": "Center West",
+      "poiId": 151,
+      "x": 0.6092721893491124,
+      "y": 0.6240650887573965,
+      "terrains": [
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Rotted Woods - Center East",
+      "key": "Rotted Woods - Center East",
+      "category": "Rotted Woods",
+      "location": "Center East",
+      "poiId": 153,
+      "x": 0.7268224852071006,
+      "y": 0.6386568047337278,
+      "terrains": [
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Rotted Woods - Far Northwest",
+      "key": "Rotted Woods - Far Northwest",
+      "category": "Rotted Woods",
+      "location": "Far Northwest",
+      "poiId": 150,
+      "x": 0.5777100591715976,
+      "y": 0.5672603550295858,
+      "terrains": [
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Rotted Woods - Northwest",
+      "key": "Rotted Woods - Northwest",
+      "category": "Rotted Woods",
+      "location": "Northwest",
+      "poiId": 167,
+      "x": 0.6366863905325444,
+      "y": 0.5585798816568047,
+      "terrains": [
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Rotted Woods - Northeast",
+      "key": "Rotted Woods - Northeast",
+      "category": "Rotted Woods",
+      "location": "Northeast",
+      "poiId": 152,
+      "x": 0.7698224852071006,
+      "y": 0.6023668639053255,
+      "terrains": [
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "Rotted Woods - Far Northeast",
+      "key": "Rotted Woods - Far Northeast",
+      "category": "Rotted Woods",
+      "location": "Far Northeast",
+      "poiId": 168,
+      "x": 0.7894970414201183,
+      "y": 0.5497041420118344,
+      "terrains": [
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "spawn:Above Stormhill Tunnel Entrance",
+      "spawn": "Above Stormhill Tunnel Entrance",
+      "location": "Above Stormhill Tunnel Entrance",
+      "poiId": 202,
+      "x": 0.3633136094674556,
+      "y": 0.40473372781065087,
+      "terrains": [
+        "Default",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "spawn:Below Summonwater Hawk",
+      "spawn": "Below Summonwater Hawk",
+      "location": "Below Summonwater Hawk",
+      "poiId": 204,
+      "x": 0.6899408284023668,
+      "y": 0.3656804733727811,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "spawn:East of Cavalry Bridge",
+      "spawn": "East of Cavalry Bridge",
+      "location": "East of Cavalry Bridge",
+      "poiId": 201,
+      "x": 0.5562130177514792,
+      "y": 0.6289940828402367,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Noklateo"
+      ]
+    },
+    {
+      "id": "spawn:Far Southwest",
+      "spawn": "Far Southwest",
+      "location": "Far Southwest",
+      "poiId": 207,
+      "x": 0.21005917159763313,
+      "y": 0.691715976331361,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "spawn:Minor Erdtree",
+      "spawn": "Minor Erdtree",
+      "location": "Minor Erdtree",
+      "poiId": 206,
+      "x": 0.8094674556213017,
+      "y": 0.5591715976331361,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Noklateo"
+      ]
+    },
+    {
+      "id": "spawn:Northeast of Saintsbridge",
+      "spawn": "Northeast of Saintsbridge",
+      "location": "Northeast of Saintsbridge",
+      "poiId": 208,
+      "x": 0.5402366863905326,
+      "y": 0.2076923076923077,
+      "terrains": [
+        "Default",
+        "Mountaintop",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "spawn:Southeast of Lake",
+      "spawn": "Southeast of Lake",
+      "location": "Southeast of Lake",
+      "poiId": 205,
+      "x": 0.5739644970414202,
+      "y": 0.8088757396449704,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Noklateo"
+      ]
+    },
+    {
+      "id": "spawn:Stormhill South of Gate",
+      "spawn": "Stormhill South of Gate",
+      "location": "Stormhill South of Gate",
+      "poiId": 203,
+      "x": 0.2106508875739645,
+      "y": 0.557396449704142,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Mountaintop",
+        "Rotted Woods"
+      ]
+    },
+    {
+      "id": "spawn:West of Warmaster's Shack",
+      "spawn": "West of Warmaster's Shack",
+      "location": "West of Warmaster's Shack",
+      "poiId": 209,
+      "x": 0.21420118343195266,
+      "y": 0.3485207100591716,
+      "terrains": [
+        "Default",
+        "Crater",
+        "Noklateo",
+        "Rotted Woods"
+      ]
+    }
+  ]
+}

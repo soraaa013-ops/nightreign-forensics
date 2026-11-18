@@ -15,6 +15,7 @@ def choose(page,index,id):
  page.locator('.slot-tab').nth(index).click();page.locator('#reset-effect-filters').click();page.locator('#effect-query').fill(str(id));page.locator(f'[data-effect-id="{id}"]').click()
 def open_details(page,id):page.locator('#'+id).evaluate('(el)=>el.open=true')
 def add_clue(page,slot):
+ open_details(page,'text-search')
  open_details(page,'location-details');page.locator('#clue-category').select_option(slot['category']);page.locator('#clue-location').select_option(slot['key'])
  text=locale['map'][slot['value']] if slot['value'] else '此处为空';page.locator('#clue-search').fill(text)
  page.locator('.clue-option').filter(has=page.get_by_text(text,exact=True)).click()
@@ -65,16 +66,16 @@ with sync_playwright() as p:
  ready(page,'/?template=oops&effects=1,2,3');expect(page.locator('#action-status')).to_contain_text('报告链接不完整')
  ready(page);page.locator('#include-unsupported').check();page.locator('#effect-query').fill('10000');page.locator('.effect-option').filter(has_text='当前模板无法抽取').first.click();expect(page.locator('#report-title')).to_have_text('已选 1 / 3 条')
  passed('Clipboard fallback, malformed links and unsupported effect selection')
- ready(page,'/map.html');expect(page.locator('#candidate-count')).to_have_text('320');assert page.locator('#clue-search').bounding_box()['y']<400
+ ready(page,'/map.html');expect(page.locator('#candidate-count')).to_have_text('320');assert page.locator('#atlas-viewport').bounding_box()['y']<450
  page.screenshot(path=str(OUT/'map-desktop.png'),full_page=True)
- page.locator('#quick-clues').get_by_role('button',name='魔像',exact=True).click();expect(page.locator('#clue-search')).to_have_value('魔像');expect(page.locator('.clue-option')).to_have_count(2)
+ open_details(page,'text-search');page.locator('#quick-clues').get_by_role('button',name='魔像',exact=True).click();expect(page.locator('#clue-search')).to_have_value('魔像');expect(page.locator('.clue-option')).to_have_count(2)
  count=int(re.search(r'\d+',page.locator('.clue-option small').first.inner_text()).group());page.locator('.clue-option').first.click();expect(page.locator('#candidate-count')).to_have_text(str(count));expect(page.locator('#map-feedback')).to_contain_text('已添加')
  mapshare=page.url;page.reload();page.wait_for_load_state('networkidle');expect(page.locator('#candidate-count')).to_have_text(str(count))
  ready(page,'/',fresh=False);ready(page,'/map.html',fresh=False);expect(page.locator('#candidate-count')).to_have_text(str(count))
  # Independently restore the shared link in a fresh tab.
  other=browser.new_page();ready(other,mapshare.removeprefix(BASE));expect(other.locator('#candidate-count')).to_have_text(str(count));other.close()
  ready(page,mapshare.removeprefix(BASE));page.locator('.filter-chip').click();expect(page.locator('#candidate-count')).to_have_text('320');page.locator('#undo-map').click();expect(page.locator('#candidate-count')).to_have_text(str(count))
- passed('Map first-screen search, shortcut, predicted counts, URL restore in fresh tab and undo condition removal')
+ passed('Map first-screen atlas, shortcut, predicted counts, URL restore in fresh tab and undo condition removal')
  page.get_by_role('button',name='清空全部条件').click();expect(page.locator('#candidate-count')).to_have_text('320');page.locator('#undo-map').click();expect(page.locator('#candidate-count')).to_have_text(str(count))
  page.evaluate("() => {navigator.clipboard.writeText=async text=>{window.copied=text;};}");page.locator('#share-map').click();assert page.evaluate('window.copied')==page.url
  page.evaluate("() => {navigator.clipboard.writeText=async()=>{throw Error('denied');};}");page.locator('#share-map').click();expect(page.get_by_role('textbox',name='地图筛选链接')).to_have_value(page.url)
@@ -82,7 +83,7 @@ with sync_playwright() as p:
  passed('Map undo reset, share clipboard paths and invalid query recovery')
  ready(page,'/map.html');open_details(page,'base-filters');page.locator('#nightlord').select_option('Gladius');expect(page.locator('#candidate-count')).to_have_text('40')
  page.locator('.candidate-card').first.click();expect(page.locator('#map-result')).to_contain_text('候选地图预览');page.get_by_role('button',name='关闭预览').click();expect(page.locator('#map-result')).to_be_hidden()
- page.locator('#use-clue').click();assert page.locator('#clue-location').input_value();assert page.locator('.clue-option:not([disabled])').count()>1
+ page.locator('#use-clue').click();expect(page.locator('#atlas-editor')).to_be_visible();assert page.locator('.atlas-option').count()>1;page.locator('#atlas-editor').get_by_role('button',name='关闭',exact=True).click()
  page.get_by_role('button',name='清空全部条件').click();expect(page.locator('#candidate-count')).to_have_text('320')
  sample=maps['records'][0]
  for slot in sample['slots'][:4]:add_clue(page,slot)
@@ -110,7 +111,8 @@ with sync_playwright() as p:
  for width in [320,390,768,1440]:
   page.set_viewport_size({'width':width,'height':844})
   for path,search,name in [('/','#effect-query','relic'),('/map.html','#clue-search','map')]:
-   ready(page,path);no_overflow(page);assert page.locator(search).bounding_box()['y']<450
+   ready(page,path);no_overflow(page);assert page.locator(search if path=='/' else '#atlas-viewport').bounding_box()['y']<450
+   if path!='/':open_details(page,'text-search')
    page.locator(search).fill('回血' if path=='/' else '魔像')
    page.locator('.effect-option' if path=='/' else '.clue-option').first.click();no_overflow(page)
    if width<801:
@@ -118,7 +120,7 @@ with sync_playwright() as p:
     target_selector='#selected-panel' if path=='/' else '#map-output';page.wait_for_function('(selector)=>document.querySelector(selector).getBoundingClientRect().top<300',arg=target_selector)
     page.locator(search).scroll_into_view_if_needed()
    if width==390:page.screenshot(path=str(OUT/f'{name}-mobile.png'),full_page=True)
- passed('320/390/768/1440px: first-screen search, primary flow, fixed result links and no overflow')
+ passed('320/390/768/1440px: first-screen input, primary flow, fixed result links and no overflow')
  # Storage access may fail on privacy-restricted browsers.
  restricted=browser.new_page();restricted.add_init_script("Storage.prototype.setItem=()=>{throw Error('blocked')};Storage.prototype.getItem=()=>{throw Error('blocked')}")
  ready(restricted);restricted.get_by_role('button',name='填入示例').click();expect(restricted.locator('#report')).to_have_class('report valid');ready(restricted,'/map.html');expect(restricted.locator('#candidate-count')).to_have_text('320');restricted.close()
