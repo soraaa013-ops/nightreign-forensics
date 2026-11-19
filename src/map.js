@@ -1,4 +1,4 @@
-import { createAtlas } from "./map-atlas.js?v=compact-1";
+import { createAtlas } from "./map-atlas.js?v=content-1";
 import { recommendObservation } from "./map-filter.js";
 import { queryMaps, matchesObservation, facetCounts } from "./map-query.js";
 import { matchesSearch } from "./search.js";
@@ -60,7 +60,6 @@ function renderRecord(record) {
   for (const [label, value] of [
     ["档案编号", `#${record.id}`],
     ["夜王 / 地形", `${zh(record.nightlord)} · ${zh(record.mapType)}`],
-    ["出生点", zh(record.spawn)],
   ]) {
     const item = node("div");
     item.append(node("span", label), node("strong", value));
@@ -69,8 +68,8 @@ function renderRecord(record) {
   const events = node("div", "", "record-events");
   for (const [label, value] of [
     ["特殊事件", zh(record.specialEvent)],
-    ["第一夜", `${zh(record.night1Boss)} · ${zh(record.night1Circle)}`],
-    ["第二夜", `${zh(record.night2Boss)} · ${zh(record.night2Circle)}`],
+    ["第一夜", zh(record.night1Boss)],
+    ["第二夜", zh(record.night2Boss)],
     ...(record.extraNightBoss
       ? [["额外夜晚首领", zh(record.extraNightBoss)]]
       : []),
@@ -92,10 +91,7 @@ function renderRecord(record) {
     const list = node("div", "", "poi-list");
     for (const slot of slots) {
       const item = node("article");
-      item.append(
-        node("small", zh(slot.location)),
-        node("span", zh(slot.value)),
-      );
+      item.append(node("span", zh(slot.value)));
       if (slot.floors) {
         item.querySelector("span").textContent = "神授塔 · 三层强敌";
         const floors = node("ol", "", "tower-record-floors");
@@ -106,12 +102,26 @@ function renderRecord(record) {
         );
         item.append(floors);
       }
+      const detail = node("details", "", "point-reference");
+      detail.append(
+        node("summary", "详细资料"),
+        node("p", `位置：${zh(slot.location)}`),
+      );
+      item.append(detail);
       list.append(item);
     }
     group.append(list);
     points.append(group);
   }
-  resultPanel.replaceChildren(heading, head, events, points);
+  const locations = node("details", "", "point-reference");
+  locations.append(node("summary", "位置资料"));
+  for (const [label, value] of [
+    ["出生点", record.spawn],
+    ["第一夜区域", record.night1Circle],
+    ["第二夜区域", record.night2Circle],
+  ])
+    locations.append(node("p", `${label}：${zh(value)}`));
+  resultPanel.replaceChildren(heading, head, events, points, locations);
 }
 function refreshLocations() {
   const current = clueLocation.value;
@@ -409,7 +419,11 @@ function update(recordHistory = true) {
     renderRecord(candidates[0]);
   } else {
     nextClue.textContent = recommendation
-      ? zh(recommendation.key)
+      ? zh(
+          candidates
+            .flatMap((r) => r.slots)
+            .find((s) => s.key === recommendation.key)?.category,
+        )
       : "继续添加你看到的线索";
     candidateSummary.textContent = recommendation
       ? `${recommendation.values.length} 种候选内容`

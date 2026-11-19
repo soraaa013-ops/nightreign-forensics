@@ -1,3 +1,4 @@
+import { pointTitle } from "./map-presentation.js?v=content-1";
 import { towerFloors } from "./map-tower.js?v=towers-1";
 import { queryMaps } from "./map-query.js";
 import {
@@ -95,14 +96,15 @@ export async function createAtlas({ data, zh, getState, change }) {
     b.onclick = fn;
     return b;
   };
-  const label = (point) => {
-    const type = point.tower
-        ? "三层强敌"
-        : point.spawn
-          ? "出生位置"
-          : zh(point.category),
-      place = zh(point.location);
-    return type === place ? place : `${type} · ${place}`;
+  const label = (point) => pointTitle(point, records, getState(), zh);
+  const locationDetails = (point) => {
+    const details = el("details", null, "point-reference");
+    details.append(
+      el("summary", "详细资料"),
+      el("p", `位置：${zh(point.location || point.spawn)}`),
+    );
+    if (point.category) details.append(el("p", `类型：${zh(point.category)}`));
+    return details;
   };
   const observed = (point) =>
     point.spawn
@@ -304,7 +306,7 @@ export async function createAtlas({ data, zh, getState, change }) {
           n.style.width = `${box.width}px`;
           n.style.height = `${box.height}px`;
           n.append(
-            el("strong", point.spawn ? zh(point.spawn) : zh(point.location)),
+            el("strong", buttons.find((b) => b.point.id === point.id).headline),
           );
           if (level === 2)
             n.append(
@@ -439,7 +441,7 @@ export async function createAtlas({ data, zh, getState, change }) {
           "point-edit",
         ),
       );
-      editor.replaceChildren(header, facts);
+      editor.replaceChildren(header, facts, locationDetails(point));
       return;
     }
     if (point.tower) content.push(el("p", "第三层强敌", "atlas-current"));
@@ -462,18 +464,7 @@ export async function createAtlas({ data, zh, getState, change }) {
             : "候选档案一致",
           "point-certainty",
         ),
-        el(
-          "h3",
-          known === "spawn"
-            ? "出生位置"
-            : known === "empty"
-              ? "此处为空"
-              : zh(known),
-        ),
       );
-      facts.append(el("p", `位置：${zh(point.location)}`, "point-location"));
-      if (known !== "spawn" && zh(point.category) !== zh(point.location))
-        facts.append(el("p", `类型：${zh(point.category)}`, "point-location"));
       facts.append(
         btn(
           "修改这处信息",
@@ -484,7 +475,7 @@ export async function createAtlas({ data, zh, getState, change }) {
           "point-edit",
         ),
       );
-      editor.replaceChildren(header, facts);
+      editor.replaceChildren(header, facts, locationDetails(point));
       return;
     }
 
@@ -677,6 +668,7 @@ export async function createAtlas({ data, zh, getState, change }) {
     );
     undo.disabled = document.getElementById("undo-map").disabled;
     if (!records.length) content.push(undo);
+    content.push(locationDetails(point));
     editor.replaceChildren(...content);
   }
   function rebuild() {
@@ -778,8 +770,10 @@ export async function createAtlas({ data, zh, getState, change }) {
         "atlas-point",
       );
       b.dataset.point = point.id;
-      b.title = `${label(point)} · ${pointName(point)}`;
+      const headline = label(point);
+      b.title = `${headline} · ${pointName(point)}`;
       b.setAttribute("aria-label", b.title);
+      b.setAttribute("aria-description", zh(point.location || point.spawn));
       b.classList.toggle("observed", observed(point));
       b.classList.toggle(
         "inferred",
@@ -800,14 +794,18 @@ export async function createAtlas({ data, zh, getState, change }) {
               (f) => `${f.floor}层：${f.certain ? zh(f.values[0]) : "待确定"}`,
             )
             .join("；")
-        : observed(point) || common
-          ? pointName(point)
-          : point.spawn
-            ? "候选出生位置"
-            : possibilities.length
-              ? `候选：${possibilities.slice(0, 2).join(" / ")}${possibilities.length > 2 ? "…" : ""}`
-              : "待观察";
-      return { point, b, detail };
+        : observed(point)
+          ? "已标记"
+          : common
+            ? "候选一致"
+            : point.spawn
+              ? "候选出生位置"
+              : possibilities.length === 1
+                ? "内容待确认"
+                : possibilities.length
+                  ? `候选：${possibilities.slice(0, 2).join(" / ")}${possibilities.length > 2 ? "…" : ""}`
+                  : "待观察";
+      return { point, b, detail, headline };
     });
     revision++;
     $("atlas-count").textContent =

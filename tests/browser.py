@@ -112,7 +112,7 @@ with sync_playwright() as p:
   if len(narrowed)<len(remaining):add_clue(page,slot);remaining=narrowed
  results(page);expect(page.locator('#candidate-count')).to_have_text('1');expect(page.locator('#map-result')).to_contain_text('已锁定地图布局')
  expect(page.locator('.poi-list article')).to_have_count(len([s for s in sample['slots'] if s['value']]))
- assert page.locator('.location-group').count()>1;page.locator('.location-group').nth(1).locator('summary').click()
+ assert page.locator('.location-group').count()>1;page.locator('.location-group').nth(1).locator(':scope > summary').click()
  assert not re.search('[A-Za-zＡ-Ｚａ-ｚ]|绝活|对著',page.locator('main').inner_text())
  page.screenshot(path=str(OUT/'map-result-desktop.png'),full_page=True)
  passed('Unique match, grouped complete details, Chinese-only content')

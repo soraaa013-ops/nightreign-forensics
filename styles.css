@@ -2146,3 +2146,30 @@ footer {
 #map-settings .settings-actions[hidden] {
   display: none;
 }
+.point-reference {
+  margin-top: 12px;
+  padding-top: 6px;
+  border-top: 1px solid #cbd0c7;
+  font-size: 12px;
+  color: #526569;
+}
+.point-reference > summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: list-item;
+  padding: 10px 0;
+  font-size: 12px;
+}
+.point-reference > p {
+  margin: 6px 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+#atlas-editor .point-reference {
+  margin-top: 8px;
+}
+
+.map-drawer .record-head > div,
+.map-drawer .record-events p {
+  background: #e3e9e1;
+}
