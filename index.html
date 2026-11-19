@@ -9,7 +9,7 @@
     />
     <meta name="theme-color" content="#090b0e" />
     <title>遗物警察局｜遗物合法检测</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=compact-1" />
   </head>
   <body>
     <a class="skip-link" href="#checker">跳到工具</a>
@@ -43,7 +43,6 @@
           <p class="kicker">黑夜君临 · 遗物工具</p>
           <h1>遗物检测</h1>
         </div>
-        <p>选颜色 → 连续添加三条词条 → 自动出报告</p>
       </div>
       <section class="relic-workspace" id="checker" aria-label="遗物检测工作台">
         <div class="relic-search-column">
@@ -132,9 +131,6 @@
               id="selected-effects"
               aria-label="已选词条"
             ></div>
-            <p class="form-hint" id="effect-hint">
-              点击词条可替换，也可移除或调整顺序。
-            </p>
             <p id="form-error" role="alert"></p>
             <div class="form-actions">
               <button class="secondary" type="button" id="randomize">
@@ -155,12 +151,12 @@
             <div class="report-copy">
               <p class="kicker">检测报告</p>
               <h3 id="report-title">等待检材</h3>
-              <p id="report-summary">点击空位添加词条，选齐三条后自动检测。</p>
+              <p id="report-summary">请选择三条词条。</p>
               <p class="report-probability" id="report-probability" hidden></p>
               <ol id="report-order" hidden></ol>
               <p class="report-meta">
                 规则集：<span id="ruleset-version">载入中</span> ·
-                <span id="report-code">等待检材</span> · 本地检测，不上传输入
+                <span id="report-code">等待检材</span>
               </p>
             </div>
           </section>
@@ -171,9 +167,7 @@
       </section>
       <details class="data-notes">
         <summary>数据范围与检测规则</summary>
-        <p>
-          社区规则快照，非官方服务或最新版本保证。检测词条池、隐藏槽位、互斥组和显示顺序；深夜诅咒配对暂未开放。输入仅用于本地计算。
-        </p>
+        <p>深夜诅咒配对暂未开放。当前数据版本见报告。</p>
       </details>
       <a
         id="relic-result-link"
@@ -185,6 +179,6 @@
     <footer>
       <span>遗物警察局 · 非官方玩家工具</span><span>谨慎截图，理性出警。</span>
     </footer>
-    <script type="module" src="src/app.js"></script>
+    <script type="module" src="src/app.js?v=compact-1"></script>
   </body>
 </html>

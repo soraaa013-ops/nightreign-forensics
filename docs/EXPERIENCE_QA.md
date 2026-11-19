@@ -46,3 +46,5 @@ AXE_CORE_PATH=/path/to/axe.min.js python3 tests/accessibility.py
 新增独立点位防重叠、密集处自动放大、按缩放显示名称与内容，以及显示配置恢复的专项验证，详见 [地图交互设计](MAP_INTERACTION.md)。运行 `python3 tests/map-zoom-browser.py`，通过 `TEST_BROWSER=firefox` 切换浏览器。
 
 神授塔专项：80 份大空洞布局的两座塔各有三层数据，每座塔只有一个地图点位。验证三层顺序、逐层候选、第三层相同但其他层不同的情况、第三层筛选及旧分享恢复、档案详情完整展示。命令：`python3 tests/tower-browser.py`。
+
+手机筛选新增紧凑布局：夜王、特殊地形、出生点和搜索直接展示；固定底部操作、条件／显示切换、结果页直接返回筛选。验证 320×568、390×844、768×900 的首屏操作以及 390×360 小视口、连续搜索、撤销清空、分享回退与配置切换。命令：`python3 tests/compact-filter-browser.py`。产品文案偏好记录在项目 `AGENTS.md`。

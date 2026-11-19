@@ -1939,3 +1939,210 @@ footer {
   top: 8px;
   right: 0;
 }
+
+/* Compact filtering: one scroll area, persistent actions, separate display preferences. */
+#map-settings {
+  padding: 0;
+  height: min(680px, 94svh);
+  max-height: 94svh;
+  overflow: hidden;
+}
+#map-settings[open] {
+  display: flex;
+  flex-direction: column;
+}
+#map-settings .drawer-heading {
+  flex: none;
+  margin: 0;
+  padding: 8px 12px;
+  min-height: 52px;
+  border-bottom: 0;
+}
+#map-settings .drawer-heading h2 {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#settings-count {
+  font: 12px sans-serif;
+  color: #526569;
+}
+.settings-tabs {
+  display: flex;
+  flex: none;
+  gap: 4px;
+  padding: 0 12px 6px;
+  border-bottom: 1px solid #cbd0c7;
+}
+#map-settings .settings-tabs button {
+  min-height: 36px;
+  padding: 4px 18px;
+  border: 0;
+  background: transparent;
+  font-size: 13px;
+}
+#map-settings .settings-tabs [aria-pressed="true"] {
+  background: #dce6de;
+  color: #244e4e;
+  font-weight: 700;
+}
+.settings-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 10px 12px;
+  scroll-padding: 8px;
+}
+#map-settings #atlas-facets {
+  gap: 8px;
+  margin: 0 0 8px;
+}
+#map-settings #atlas-facets label:last-child {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  align-items: center;
+}
+#map-settings label span {
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+#map-settings input,
+#map-settings select {
+  padding: 7px 8px;
+  min-height: 44px;
+  font-size: 16px;
+}
+#map-settings :is(.clue-builder, .active-filters, .map-guide) {
+  padding: 6px 0;
+}
+#map-settings summary {
+  min-height: 32px;
+  line-height: 24px;
+  padding: 4px 0;
+}
+#map-settings #text-search > section {
+  padding: 0;
+  margin: 0;
+}
+#map-settings #clue-search {
+  margin: 0;
+}
+#map-settings .quick-searches {
+  gap: 4px;
+  margin: 4px 0;
+  flex-wrap: nowrap;
+}
+#map-settings .quick-searches button {
+  padding: 4px 8px;
+  font-size: 12px;
+  min-height: 36px;
+}
+#map-settings .clue-filters {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 8px;
+  margin: 4px 0;
+}
+#map-settings #clue-count {
+  margin: 4px 0;
+  font-size: 11px;
+}
+#map-settings .clue-results {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+#map-settings .clue-option {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 6px 8px;
+  min-height: 50px;
+  font-size: 12px;
+  text-align: left;
+}
+#map-settings .clue-option small {
+  font-size: 11px;
+}
+#map-settings #more-clues {
+  width: 100%;
+  margin-top: 6px;
+  padding: 6px;
+}
+#map-settings .settings-actions {
+  flex: none;
+  margin: 0;
+  padding: 8px 12px max(8px, env(safe-area-inset-bottom));
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1.4fr;
+  gap: 5px;
+  background: var(--paper);
+  border-top: 1px solid #cbd0c7;
+}
+#map-settings .settings-actions button {
+  min-width: 0;
+  padding: 6px 4px;
+  font-size: 12px;
+}
+#map-settings #settings-results {
+  background: #284e4c;
+  color: #fffef2;
+  border-color: #284e4c;
+}
+#map-settings .filter-chip {
+  padding: 5px 8px;
+  min-height: 36px;
+  font-size: 11px;
+}
+#map-settings #atlas-display-settings {
+  border: 0;
+}
+#map-settings .atlas-setting-check input {
+  width: 20px;
+  min-height: 20px;
+}
+#settings-filter-pane[hidden],
+#settings-display-pane[hidden],
+#base-filters[hidden] {
+  display: none;
+}
+@media (max-width: 800px) {
+  #map-settings {
+    width: 100%;
+    border-radius: 14px 14px 0 0;
+  }
+}
+#map-settings {
+  height: min(600px, calc(var(--settings-height, 100svh) - 12px));
+  max-height: calc(var(--settings-height, 100svh) - 12px);
+  bottom: var(--settings-bottom, 0px);
+}
+#map-settings .drawer-heading {
+  gap: 6px;
+}
+#map-settings .settings-tabs {
+  padding: 0;
+  border: 0;
+  margin-left: auto;
+  gap: 2px;
+}
+#map-settings .settings-tabs button {
+  padding: 4px 8px;
+}
+#map-settings #text-search > summary {
+  display: none;
+}
+#map-settings .quick-searches {
+  margin: 3px 0;
+}
+#map-settings.display-only {
+  height: auto;
+}
+#map-settings .settings-actions[hidden] {
+  display: none;
+}

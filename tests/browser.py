@@ -17,6 +17,7 @@ def choose(page,index,id):
  page.locator('.slot-tab').nth(index).click();page.locator('#reset-effect-filters').click();page.locator('#effect-query').fill(str(id));page.locator(f'[data-effect-id="{id}"]').click()
 def settings(page):
  if not page.locator('#map-settings').is_visible():page.locator('#open-map-settings').click()
+ page.locator('.active-filters').evaluate('(el)=>el.open=true')
 def results(page):
  if page.locator('#map-settings').is_visible():page.locator('[data-close-drawer="map-settings"]').click()
  if not page.locator('#map-results-dialog').is_visible():page.locator('#open-map-results').click()

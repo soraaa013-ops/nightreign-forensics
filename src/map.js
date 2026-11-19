@@ -1,4 +1,4 @@
-import { createAtlas } from "./map-atlas.js?v=towers-1";
+import { createAtlas } from "./map-atlas.js?v=compact-1";
 import { recommendObservation } from "./map-filter.js";
 import { queryMaps, matchesObservation, facetCounts } from "./map-query.js";
 import { matchesSearch } from "./search.js";
@@ -25,7 +25,7 @@ let mapData,
   recommendation,
   selected = [],
   candidates = [],
-  clueLimit = 6,
+  clueLimit = 4,
   candidateLimit = 6,
   previewId = null,
   previousState = null;
@@ -124,7 +124,7 @@ function refreshLocations() {
     zh(a).localeCompare(zh(b), "zh-CN"),
   );
   clueLocation.replaceChildren(
-    new Option("不知道位置", ""),
+    new Option("不限", ""),
     ...keys.map((key) => new Option(zh(key), key)),
   );
   if (keys.includes(current)) clueLocation.value = current;
@@ -182,8 +182,7 @@ function renderClues() {
         Math.abs(b.count - candidates.length / 2) ||
       zh(a.value).localeCompare(zh(b.value), "zh-CN"),
   );
-  $("#clue-count").textContent =
-    `${options.length} 种观察结果 · 数字表示添加后剩余地图数`;
+  $("#clue-count").textContent = `${options.length} 个匹配`;
   $("#clue-results").replaceChildren(
     ...options.slice(0, clueLimit).map(({ value, count }) => {
       const exists = selected.some(
@@ -199,7 +198,7 @@ function renderClues() {
           clueSearch.value = "";
           clueLocation.value = "";
           refreshLocations();
-          clueLimit = 6;
+          clueLimit = 4;
           update();
           $("#map-feedback").textContent =
             `已添加“${value === "empty" ? "此处为空" : zh(value)}”，剩余 ${candidates.length} 张地图。`;
@@ -217,7 +216,7 @@ function renderClues() {
               ? `不缩小范围 · ${count} 张`
               : count === 0
                 ? "与当前条件冲突"
-                : `缩小至 ${count} 张`,
+                : `剩 ${count} 份`,
           count > 0 && count < candidates.length ? "useful" : "",
         ),
       );
@@ -235,6 +234,7 @@ function renderClues() {
       ),
     );
   $("#more-clues").hidden = options.length <= clueLimit;
+  $("#more-clues").textContent = `更多（${options.length}）`;
 }
 function renderChips() {
   const chips = [];
@@ -270,7 +270,7 @@ function renderChips() {
   $("#filter-chips").replaceChildren(...chips);
   $("#filter-empty").hidden = chips.length > 0;
   $(".active-filters").hidden = chips.length === 0;
-  $("#map-form .form-actions").hidden = chips.length === 0 && !undoStack.length;
+  $("#active-filter-count").textContent = chips.length;
 }
 function refreshFacets() {
   for (const [select, key, values] of [
@@ -281,7 +281,7 @@ function refreshFacets() {
     const current = select.value,
       counts = facetCounts(mapData.records, state(), key, values);
     select.replaceChildren(
-      new Option("不限 / 不知道", ""),
+      new Option("不限", ""),
       ...values
         .filter((value) => counts.get(value) > 0 || value === current)
         .map((value) => {
@@ -386,6 +386,8 @@ function update(recordHistory = true) {
     ...availableCategories.map((value) => new Option(zh(value), value)),
   );
   clueCategory.value = previousCategory;
+  $("#settings-count").textContent = `${candidates.length} 份`;
+  $("#settings-results").textContent = `结果 ${candidates.length}`;
   renderChips();
   refreshLocations();
   renderClues();
@@ -403,15 +405,14 @@ function update(recordHistory = true) {
     resultPanel.hidden = true;
   } else if (candidates.length === 1) {
     nextClue.textContent = `已锁定地图布局 #${candidates[0].id}`;
-    candidateSummary.textContent =
-      "以下展示该档案全部地点。随机事件以实际游戏为准。";
+    candidateSummary.textContent = "";
     renderRecord(candidates[0]);
   } else {
     nextClue.textContent = recommendation
       ? zh(recommendation.key)
       : "继续添加你看到的线索";
     candidateSummary.textContent = recommendation
-      ? `这处位置还有 ${recommendation.values.length} 种结果，观察后更容易分辨地图。也可以直接查看下方候选。`
+      ? `${recommendation.values.length} 种候选内容`
       : `仍有 ${candidates.length} 份候选。`;
     if (previewId && candidates.some((record) => record.id === previewId)) {
       renderRecord(candidates.find((record) => record.id === previewId));
@@ -434,17 +435,17 @@ for (const select of [nightlord, mapType, spawn])
     update();
   });
 clueSearch.addEventListener("input", () => {
-  clueLimit = 6;
+  clueLimit = 4;
   renderClues();
 });
 clueCategory.addEventListener("change", () => {
   clueLocation.value = "";
   refreshLocations();
-  clueLimit = 6;
+  clueLimit = 4;
   renderClues();
 });
 clueLocation.addEventListener("change", () => {
-  clueLimit = 6;
+  clueLimit = 4;
   renderClues();
 });
 $("#more-clues").addEventListener("click", () => {
@@ -456,7 +457,7 @@ form.addEventListener("reset", () =>
     if (!mapData) return;
     selected = [];
     previewId = null;
-    clueLimit = 6;
+    clueLimit = 4;
     candidateLimit = 6;
     refreshLocations();
     update();
@@ -479,7 +480,7 @@ clueButton.addEventListener("click", () => {
   refreshLocations();
   clueLocation.value = slot.key;
   clueSearch.value = "";
-  clueLimit = 6;
+  clueLimit = 4;
   renderClues();
   clueSearch.focus();
 });
@@ -508,7 +509,8 @@ $("#share-map").addEventListener("click", async () => {
     field.readOnly = true;
     field.value = url;
     field.setAttribute("aria-label", "地图筛选链接");
-    $("#map-feedback").textContent = "请手动复制筛选链接。";
+    $("#map-feedback").classList.remove("sr-only");
+    $("#map-feedback").textContent = "复制链接：";
     $("#map-feedback").append(field);
     field.focus();
     field.select();
@@ -526,7 +528,7 @@ for (const term of ["教堂", "魔像", "失乡骑士", "封印监牢"]) {
           $("#location-details").open = true;
           refreshLocations();
         } else clueSearch.value = term;
-        clueLimit = 6;
+        clueLimit = 4;
         renderClues();
         clueSearch.focus();
       },
@@ -535,8 +537,10 @@ for (const term of ["教堂", "魔像", "失乡骑士", "封印监牢"]) {
   );
 }
 async function init() {
-  form
-    .querySelectorAll("select,button,input")
+  document
+    .querySelectorAll(
+      "#map-form select,#map-form button,#map-form input,#atlas-facets select,.settings-actions button",
+    )
     .forEach((element) => (element.disabled = true));
   form.setAttribute("aria-busy", "true");
   retry.hidden = true;
@@ -567,7 +571,7 @@ async function init() {
     $("#base-filters").open = false;
     $("#location-details").open = false;
     $("#map-version").textContent =
-      `本体与“见弃空洞者” · ${mapData.records.length} 份布局，含 200 份扩展布局与大空洞。第一夜缩圈随机；未识别的内部组件不作为筛选线索。`;
+      `本体与“见弃空洞者” · ${mapData.records.length} 份布局。第一夜缩圈随机。`;
     const categories = [
       ...new Set(
         mapData.records.flatMap((record) =>
@@ -580,8 +584,10 @@ async function init() {
       ...categories.map((value) => new Option(zh(value), value)),
     );
     refreshLocations();
-    form
-      .querySelectorAll("select,button,input")
+    document
+      .querySelectorAll(
+        "#map-form select,#map-form button,#map-form input,#atlas-facets select,.settings-actions button",
+      )
       .forEach((element) => (element.disabled = false));
     const params = new URLSearchParams(location.search);
     let saved = null,
@@ -597,7 +603,7 @@ async function init() {
     refreshFacets();
     if (saved) restoreState(saved);
     update(false);
-    for (const select of [nightlord, mapType]) {
+    for (const select of [nightlord, mapType, spawn]) {
       select.setAttribute("form", "map-form");
       $("#atlas-facets").append(select.closest("label"));
       select.disabled = false;
@@ -674,3 +680,54 @@ for (const dialog of document.querySelectorAll(".map-drawer"))
         dialog.close();
     }
   });
+
+function showSettingsPane(display) {
+  document
+    .getElementById("map-settings")
+    .classList.toggle("display-only", display);
+  document.querySelector(".settings-actions").hidden = display;
+  document.getElementById("settings-filter-pane").hidden = display;
+  document.getElementById("settings-display-pane").hidden = !display;
+  document
+    .getElementById("settings-filter-tab")
+    .setAttribute("aria-pressed", String(!display));
+  document
+    .getElementById("settings-display-tab")
+    .setAttribute("aria-pressed", String(display));
+  document.querySelector(".settings-scroll").scrollTop = 0;
+}
+document.getElementById("settings-filter-tab").onclick = () =>
+  showSettingsPane(false);
+document.getElementById("settings-display-tab").onclick = () =>
+  showSettingsPane(true);
+document
+  .getElementById("open-map-settings")
+  .addEventListener("click", () => showSettingsPane(false));
+document.getElementById("settings-results").onclick = () => {
+  document.getElementById("map-settings").close();
+  document.getElementById("map-results-dialog").showModal();
+};
+
+if (window.visualViewport) {
+  const fitSettings = () => {
+    const viewport = window.visualViewport;
+    document.documentElement.style.setProperty(
+      "--settings-height",
+      `${viewport.height}px`,
+    );
+    document.documentElement.style.setProperty(
+      "--settings-bottom",
+      `${Math.max(0, innerHeight - viewport.height - viewport.offsetTop)}px`,
+    );
+    if (document.activeElement === clueSearch)
+      clueSearch.scrollIntoView({ block: "nearest" });
+  };
+  window.visualViewport.addEventListener("resize", fitSettings);
+  fitSettings();
+}
+
+document.getElementById("results-filters").onclick = () => {
+  document.getElementById("map-results-dialog").close();
+  showSettingsPane(false);
+  document.getElementById("map-settings").showModal();
+};

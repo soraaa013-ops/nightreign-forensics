@@ -160,8 +160,7 @@ export async function createAtlas({ data, zh, getState, change }) {
       pan = { x: (0.5 - point.x) * nextSize, y: (0.5 - point.y) * nextSize };
       close(false);
       draw();
-      $("atlas-status").textContent =
-        "已放大目标附近，点位分别显示。点击所需点位查看或标记。";
+      $("atlas-status").textContent = "已放大。";
       groups
         .find((g) => g.points[0].id === point.id)
         ?.button.focus({ preventScroll: true });
@@ -190,11 +189,7 @@ export async function createAtlas({ data, zh, getState, change }) {
     viewport.dataset.detail = String(level);
     viewport.dataset.zoom = String(zoom);
     $("atlas-scale").textContent =
-      level === 2
-        ? "近看 · 内容与状态"
-        : level === 1
-          ? "区域 · 点位名称"
-          : "全图 · 密集处点击放大";
+      level === 2 ? "近看" : level === 1 ? "区域" : "全图";
     const bounds = viewport.getBoundingClientRect();
     const obstacles = [
       document.querySelector(".atlas-controls"),
@@ -411,7 +406,7 @@ export async function createAtlas({ data, zh, getState, change }) {
     const known = pointConsensus(records, point);
     if (point.tower && !editing) {
       const facts = el("div", null, "point-description tower-description");
-      facts.append(el("p", "逐层挑战，三层共用这一个地图点位。"));
+
       for (const floor of towerFloors(records, point.key)) {
         const row = el("section", null, "tower-floor");
         row.append(el("h3", `第${["一", "二", "三"][floor.floor - 1]}层`));
@@ -447,14 +442,7 @@ export async function createAtlas({ data, zh, getState, change }) {
       editor.replaceChildren(header, facts);
       return;
     }
-    if (point.tower)
-      content.push(
-        el(
-          "p",
-          "这里记录第三层强敌；第一、第二层信息会随候选同步更新。",
-          "atlas-current",
-        ),
-      );
+    if (point.tower) content.push(el("p", "第三层强敌", "atlas-current"));
     if (known && !editing) {
       const facts = el("div", null, "point-description");
       facts.append(
@@ -483,16 +471,7 @@ export async function createAtlas({ data, zh, getState, change }) {
               : zh(known),
         ),
       );
-      const description =
-        known === "spawn"
-          ? "当前候选均从这个位置出生。"
-          : known === "empty"
-            ? "当前候选在此处均未记录据点或敌人。"
-            : `当前 ${records.length} 份候选在这个位置的内容一致。`;
-      facts.append(
-        el("p", description),
-        el("p", `位置：${zh(point.location)}`, "point-location"),
-      );
+      facts.append(el("p", `位置：${zh(point.location)}`, "point-location"));
       if (known !== "spawn" && zh(point.category) !== zh(point.location))
         facts.append(el("p", `类型：${zh(point.category)}`, "point-location"));
       facts.append(
@@ -837,10 +816,10 @@ export async function createAtlas({ data, zh, getState, change }) {
         : `${records.length} 份候选`;
     $("atlas-undo").disabled = document.getElementById("undo-map").disabled;
     $("atlas-hint").textContent = state.mapType
-      ? `${zh(state.mapType)} · 点选位置，标记你看到的内容。`
+      ? `${zh(state.mapType)}`
       : inferredTerrains.length === 1
-        ? `由候选推测地形：${zh(displayTerrain)}。仍可继续标记。`
-        : "当前展示普通地形；遇到特异地形，请在上方选择。";
+        ? `由候选推测地形：${zh(displayTerrain)}。`
+        : "普通地形";
     if (active) {
       const found = points.find((p) => p.id === active.id);
       if (found) {
@@ -1029,7 +1008,7 @@ export async function createAtlas({ data, zh, getState, change }) {
         $("atlas-status").textContent =
           mode === "spawn"
             ? "出生模式：点一下位置即标记，可随时撤销。"
-            : "点选位置查看或标记，自动吸附最近点位。";
+            : "选择点位";
       },
       "atlas-layer",
     );

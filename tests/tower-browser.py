@@ -14,7 +14,7 @@ with sync_playwright() as p:
  if os.environ.get('AXE_CORE_PATH'):
   page.add_script_tag(path=os.environ['AXE_CORE_PATH']);violations=page.evaluate('async()=> (await axe.run()).violations');assert not violations,json.dumps(violations,ensure_ascii=False)
  page.locator('.tower-floor summary').first.click();assert page.locator('.tower-floor li:visible').count()>0
- page.locator('.tower-description').get_by_role('button',name='记录第三层强敌').click();expect(page.locator('#atlas-editor')).to_contain_text('这里记录第三层强敌');page.locator('.atlas-option:visible').first.click();expect(page.locator('#atlas-editor')).to_be_hidden();assert int(page.locator('#candidate-count').inner_text())<80
+ page.locator('.tower-description').get_by_role('button',name='记录第三层强敌').click();expect(page.locator('#atlas-editor')).to_contain_text('第三层强敌');page.locator('.atlas-option:visible').first.click();expect(page.locator('#atlas-editor')).to_be_hidden();assert int(page.locator('#candidate-count').inner_text())<80
  page.locator('#atlas-toast').get_by_role('button',name='补充详情').click();expect(page.locator('.tower-floor')).to_have_count(3);assert page.locator('.tower-floor').nth(2).locator('small').inner_text()=='当前候选一致'
  sample=next(r for r in data if r['id']==1005);q={k:sample[k] for k in ['nightlord','mapType','spawn']};q['observations']=[{k:s[k] for k in ['key','category','value']} for s in sample['slots'] if s['value']]
  page.goto(BASE+'/map.html?'+urlencode({'q':json.dumps(q)}));expect(page.locator('#atlas-loading')).to_be_hidden();expect(page.locator('#candidate-count')).to_have_text('1')

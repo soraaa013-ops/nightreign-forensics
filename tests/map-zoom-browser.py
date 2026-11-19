@@ -16,7 +16,7 @@ def disjoint(page):
   for b in rects[i+1:]:assert a['x']+a['w']<=b['x']+.2 or b['x']+b['w']<=a['x']+.2 or a['y']+a['h']<=b['y']+.2 or b['y']+b['h']<=a['y']+.2,(a,b)
  assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
 def settings(page):
- page.locator('#open-map-settings').click();page.locator('#atlas-display-settings').evaluate('(el)=>el.open=true')
+ page.locator('#open-map-settings').click();page.locator('#settings-display-tab').click();page.locator('#atlas-display-settings').evaluate('(el)=>el.open=true')
 def back(page):page.locator('[data-close-drawer="map-settings"]').click()
 with sync_playwright() as p:
  browser=getattr(p,os.environ.get('TEST_BROWSER','chromium')).launch();page=browser.new_page(viewport={'width':390,'height':844},has_touch=True);errors=[];page.on('pageerror',lambda e:errors.append(str(e)))

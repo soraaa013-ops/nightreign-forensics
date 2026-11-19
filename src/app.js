@@ -171,7 +171,7 @@ function renderResults() {
           activeSlot = selected.findIndex((id) => !id);
           changed();
           $("#selection-feedback").textContent =
-            `第 ${filledSlot + 1} 条已添加。${activeSlot < 0 ? "已选齐，检测结果已更新。" : `继续选择第 ${activeSlot + 1} 条；筛选条件已保留。`}`;
+            `第 ${filledSlot + 1} 条已添加。${activeSlot < 0 ? "已选齐，检测结果已更新。" : `继续选择第 ${activeSlot + 1} 条。`}`;
           query.focus({ preventScroll: true });
         },
         "effect-option",
@@ -216,7 +216,7 @@ function waiting() {
   $("#report-stamp").textContent = "待检";
   $("#report-title").textContent =
     `已选 ${selected.filter(Boolean).length} / 3 条`;
-  $("#report-summary").textContent = "点击空位添加词条，选齐三条后自动检测。";
+  $("#report-summary").textContent = "请选择三条词条。";
   $("#report-order").hidden = true;
   $("#report-probability").hidden = true;
   $("#report-code").textContent = "等待选择";
