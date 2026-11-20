@@ -1,4 +1,4 @@
-import { createAtlas } from "./map-atlas.js?v=boss-1";
+import { createAtlas } from "./map-atlas.js?v=icons-1";
 import { recommendObservation } from "./map-filter.js";
 import { queryMaps, matchesObservation, facetCounts } from "./map-query.js";
 import { matchesSearch } from "./search.js";

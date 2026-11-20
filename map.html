@@ -9,7 +9,7 @@
     />
     <meta name="theme-color" content="#192226" />
     <title>地图档案科｜遗物警察局</title>
-    <link rel="stylesheet" href="styles.css?v=boss-1" />
+    <link rel="stylesheet" href="styles.css?v=icons-1" />
   </head>
   <body class="map-page">
     <a class="skip-link" href="#atlas-viewport">跳到工具</a>
@@ -74,7 +74,6 @@
             <div id="atlas-tiles" aria-hidden="true"></div>
             <svg id="atlas-leaders" aria-hidden="true"></svg>
             <div id="atlas-points"></div>
-            <div id="atlas-labels" aria-hidden="true"></div>
             <div id="atlas-toast" role="status" hidden></div>
             <p id="atlas-loading" role="status">正在载入地图…</p>
           </div>
@@ -214,13 +213,6 @@
           <section id="settings-display-pane" aria-label="地图显示" hidden>
             <details class="map-guide" id="atlas-display-settings" open>
               <summary class="sr-only">地图显示</summary>
-              <label for="atlas-detail">点位文字</label>
-              <select id="atlas-detail">
-                <option value="auto">自动</option>
-                <option value="none">仅图标</option>
-                <option value="names">已确定首领</option>
-                <option value="details">详细内容</option>
-              </select>
               <label class="atlas-setting-check"
                 ><input
                   id="atlas-autozoom"
@@ -290,6 +282,6 @@
       <span>遗物警察局 · 地图档案科</span
       ><span>本体与见弃空洞者 · 520 份布局。</span>
     </footer>
-    <script type="module" src="src/map.js?v=boss-1"></script>
+    <script type="module" src="src/map.js?v=icons-1"></script>
   </body>
 </html>

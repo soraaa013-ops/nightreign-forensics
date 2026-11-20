@@ -71,3 +71,20 @@ Floor order and example encounters were cross-checked with the
 `floors` preserves all three ordered encounters in each slot. The existing
 observation value still represents the third-floor boss, preserving saved links.
 Each floor's displayed certainty is evaluated separately across the current candidates.
+
+### Game map pictograms
+
+`assets/map-icons/` contains unmodified game pictograms from the pinned
+NightreignApp `nightreign/assets/textures/spots/` directory above, plus the base
+router's `public/POI_icons/Spawn_Location.png`. Exact URLs and SHA-256 hashes
+are stored in `assets/map-icons/provenance.json`; download with
+`tools/import-map-icon-assets.py`. These are game assets owned by FromSoftware
+and Bandai Namco, not original artwork of this project.
+
+`tools/import-map-icons.py` associates the existing pinned parameter facts with
+existing layout slots and writes `data/map-icons.json`. The `boss` and
+`danger_boss` distinctions come from each layout's variation/attachment facts,
+not a difficulty ranking invented from an enemy name. Conflicting or missing
+facts remain neutral. DLC bound encounters use their own explicit icon field.
+The building-symbol vocabulary was cross-checked with the
+[official starter guide](https://media-center.bandainamcoent.eu/games/elden-ring-nightreign/ERN_FuturePress_StarterGuide.pdf).

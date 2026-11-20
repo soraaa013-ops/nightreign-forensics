@@ -1,0 +1,122 @@
+[
+  {
+    "file": "boss.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/boss.png",
+    "sha256": "4ccd7363a122b6d852af8deac54dd1bdc6b7fb90f68ce3be8341b9bb4aeedf60"
+  },
+  {
+    "file": "danger-boss.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/danger%20boss.png",
+    "sha256": "aa951ecf9f71c54ee26580ff01b6b90c38279826b4c84f09d60b6f1d83c01bf0"
+  },
+  {
+    "file": "encampment.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/encampment.png",
+    "sha256": "aa6749c4ba7d5002cbc760cd8a61389a5a6291f54a07797c71cd5cb8f43aca0a"
+  },
+  {
+    "file": "smallcamp.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/smallcamp.png",
+    "sha256": "f023d5036d53b8738fccba8a31c20d636f2a6798fa8a707fc5ff42106145e0e0"
+  },
+  {
+    "file": "ruins.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/ruins.png",
+    "sha256": "6f2e17938ddf6a5d8e9ededa68da6e98ecd7d2f490fb06ae823b343ec6fc86e2"
+  },
+  {
+    "file": "fort.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/fort.png",
+    "sha256": "caaaead5475e464ecf9731c53dd463ce6d06febbb3dec491da7a67b27ba7c03e"
+  },
+  {
+    "file": "temple.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/temple.png",
+    "sha256": "8f98acd91b41d253a0c368bc02c1f3ae66aafbf09e7eafed3b8aa022efeb1171"
+  },
+  {
+    "file": "church.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/church.png",
+    "sha256": "9aaaeaee6c8fa90ecab451e616a0ebda06a7473b6980bec51af2a7a8e4800411"
+  },
+  {
+    "file": "castle.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/castle.png",
+    "sha256": "8ee904e46e90870e94f9e5e10bdda776f9d1da8b143ac118959c00e0c6d9f732"
+  },
+  {
+    "file": "cave.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/cave.png",
+    "sha256": "43687648b248c98aac2bb452af07724a7c236c13459fd2565ed25d6ce0dd3267"
+  },
+  {
+    "file": "township.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/township.png",
+    "sha256": "cd3dde4e4ffc914049f71ee71d08f0f70f03b846a8f48a415b8eb6f39f76eca6"
+  },
+  {
+    "file": "sorcerers-rise.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/sorcerer%27s%20rise.png",
+    "sha256": "ddd1475e14fe45ed746b58f8abbca36f5d988221acad19580c199a0b7943a230"
+  },
+  {
+    "file": "rare-sorcerers-rise.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/rare%20sorcerer%27s%20rise.png",
+    "sha256": "3f9b31a6b70053c7aef4d349838f8823197adb9df2628469a02de7aa819e927a"
+  },
+  {
+    "file": "village.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/village.png",
+    "sha256": "b84b075cc751148b4196c57f71f2780348ff996d5cedb4fb268fcfc32544572d"
+  },
+  {
+    "file": "city1.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/city1.png",
+    "sha256": "d5351f58920b75c19e8befb14537a7381be91011d824fa392d8dc1b180ddb6b2"
+  },
+  {
+    "file": "city2.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/city2.png",
+    "sha256": "a0610cddcfccc2964e1881f69af821e88d0b9c0662988ed09dda578863386f19"
+  },
+  {
+    "file": "tower.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/tower.png",
+    "sha256": "851f52969452087cf933f839d897215d945efca3ad03e8b220b337b04625bbd5"
+  },
+  {
+    "file": "evergaol.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/evergaol.png",
+    "sha256": "4c277dd8406250eb358986cf5689770bef36d1f71e702e6c2d343f922bb2da4d"
+  },
+  {
+    "file": "cart.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/cart.png",
+    "sha256": "8510cfab1599b41f29370ab5c3b5ec69a2ff163146a4974702141d7ad6510a6c"
+  },
+  {
+    "file": "cabin.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/cabin.png",
+    "sha256": "ae9a51094fc15ff3529667c3ab72adc93c2dfc82e1a68a106e5625fcc0f6780f"
+  },
+  {
+    "file": "mark.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/mark.png",
+    "sha256": "f40a53c9e429c75aa21748f1ee069f9a39dd152f3260d9c365a00bee457a7f60"
+  },
+  {
+    "file": "scale-bearing-merchant.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/scale-bearing%20merchant.png",
+    "sha256": "86abcab6a78f5b068a76d44dbac67db237adbaeb8e5f59e3b7adb7195879d31d"
+  },
+  {
+    "file": "star-merchant.png",
+    "url": "https://raw.githubusercontent.com/xqfinxd/NightreignApp/80ea5b3d7492acb15512cac05d6c91dba9f6c82a/nightreign/assets/textures/spots/star%20merchant.png",
+    "sha256": "d7b2170d52c062516b6231a1fe3063a97955d6842cfd4558e70e68cad8853f08"
+  },
+  {
+    "file": "spawn.png",
+    "url": "https://raw.githubusercontent.com/NikVince/nightreign-map-router/268bca49a963d9d8fab31ea169db9097019e3174/public/POI_icons/Spawn_Location.png",
+    "sha256": "82036878259901c312fe85f282d1b3c4ec7c3b3bc87bc5f998e00d85d62d339d"
+  }
+]

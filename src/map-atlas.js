@@ -1,3 +1,9 @@
+import {
+  pointIcon,
+  typeIcon,
+  iconPath,
+  iconLabel,
+} from "./map-icons.js?v=icons-1";
 import { pointTitle } from "./map-presentation.js?v=boss-1";
 import { towerFloors } from "./map-tower.js?v=towers-1";
 import { queryMaps } from "./map-query.js";
@@ -9,7 +15,6 @@ import {
 import {
   detailLevel,
   layoutMarkers,
-  layoutLabels,
   focusZoom,
 } from "./map-layout.js?v=spatial-2";
 import { readDraft, writeDraft } from "./draft.js";
@@ -21,7 +26,8 @@ export async function createAtlas({ data, zh, getState, change }) {
     tiles = $("atlas-tiles"),
     layer = $("atlas-points"),
     editor = $("atlas-editor");
-  const [geometry, extension] = await Promise.all([
+  const [iconData, geometry, extension] = await Promise.all([
+    loadJson("data/map-icons.json?v=icons-1"),
     loadJson("data/map-geometry.json"),
     loadJson("data/map-dlc-geometry.json?v=towers-1"),
   ]);
@@ -35,24 +41,16 @@ export async function createAtlas({ data, zh, getState, change }) {
     rebuild();
   });
   const preferences = readDraft("nightreign-atlas-view-v1") || {};
-  const detailControl = $("atlas-detail"),
-    autozoomControl = $("atlas-autozoom");
-  detailControl.value = ["auto", "none", "names", "details"].includes(
-    preferences.detail,
-  )
-    ? preferences.detail
-    : "auto";
+  const autozoomControl = $("atlas-autozoom");
   autozoomControl.checked = preferences.autozoom !== false;
   const cameraHistory = [],
     focused = new Set();
   const savePreferences = () => {
     writeDraft("nightreign-atlas-view-v1", {
-      detail: detailControl.value,
       autozoom: autozoomControl.checked,
     });
     draw();
   };
-  detailControl.addEventListener("change", savePreferences);
   autozoomControl.addEventListener("change", savePreferences);
   $("atlas-layer-menu").addEventListener("toggle", () => draw());
   $("atlas-back").addEventListener("click", () => {
@@ -188,9 +186,9 @@ export async function createAtlas({ data, zh, getState, change }) {
     $("atlas-back").hidden = !cameraHistory.length;
     const width = viewport.clientWidth,
       height = viewport.clientHeight;
-    const level = detailLevel(size, detailControl.value);
+    const level = detailLevel(size);
     const diameter =
-      size >= 800 ? (width < 760 ? 44 : 32) : width < 760 ? 24 : 28;
+      size >= 800 ? (width < 760 ? 44 : 36) : width < 760 ? 24 : 28;
     viewport.dataset.detail = String(level);
     viewport.dataset.zoom = String(zoom);
     $("atlas-scale").textContent =
@@ -223,6 +221,7 @@ export async function createAtlas({ data, zh, getState, change }) {
       layerMode,
       revision,
       level,
+      diameter,
       obstacles,
     ]);
     if (layoutKey !== key) {
@@ -284,42 +283,6 @@ export async function createAtlas({ data, zh, getState, change }) {
       }
       layer.replaceChildren(...groups.map((g) => g.button));
       $("atlas-leaders").replaceChildren(...leaders);
-      const labelWidth = width < 760 ? 140 : 168;
-      const labels = level
-        ? layoutLabels(
-            placements.filter(
-              (p) => buttons.find((b) => b.point.id === p.id)?.headline,
-            ),
-            width,
-            height,
-            new Map(
-              placements.map((p) => [
-                p.id,
-                { width: labelWidth, height: level === 2 ? 68 : 38 },
-              ]),
-            ),
-            obstacles,
-          )
-        : [];
-      $("atlas-labels").replaceChildren(
-        ...labels.map((box) => {
-          const point = points.find((p) => p.id === box.id),
-            n = el("div", null, "atlas-map-label");
-          n.dataset.for = point.id;
-          n.style.left = `${box.x}px`;
-          n.style.top = `${box.y}px`;
-          n.style.width = `${box.width}px`;
-          n.style.height = `${box.height}px`;
-          n.append(
-            el("strong", buttons.find((b) => b.point.id === point.id).headline),
-          );
-          if (level === 2)
-            n.append(
-              el("span", buttons.find((b) => b.point.id === point.id).detail),
-            );
-          return n;
-        }),
-      );
     }
     for (const group of groups) {
       group.button.classList.toggle("hovered", hover?.id === group.id);
@@ -558,10 +521,19 @@ export async function createAtlas({ data, zh, getState, change }) {
           () => apply(next, `已标记“${title}”`),
           "atlas-option",
         );
-        b.append(
-          el("span", title),
-          el("small", count ? `${count} 份候选` : "无匹配"),
-        );
+        const path = match === "type" && iconPath(typeIcon(value));
+        if (path) {
+          const img = el("img");
+          img.src = path;
+          img.alt = "";
+          b.append(img);
+          b.classList.add("atlas-icon-option");
+          b.setAttribute("aria-label", title);
+        } else
+          b.append(
+            el("span", title),
+            el("small", count ? `${count} 份候选` : "无匹配"),
+          );
         b.dataset.value = value;
         b.dataset.match = match;
         const selected = getState().observations.find(
@@ -742,50 +714,31 @@ export async function createAtlas({ data, zh, getState, change }) {
               ))),
     );
     buttons = points.map((point) => {
-      const common = pointConsensus(records, point);
-      const content =
-        getState().observations.find((o) => o.key === point.key)?.value ||
-        common;
-      const glyph = {
-        Camp: "营",
-        "Small Camp": "营",
-        Church: "教",
-        "Great Church": "教",
-        Ruins: "遗",
-        Fort: "堡",
-        "Sorcerer's Rise": "塔",
-        "Difficult Sorcerer's Rise": "塔",
-        Township: "镇",
-        empty: "空",
-      }[content?.split(" - ")[0]];
+      const icon = pointIcon(point, records, getState(), iconData.records);
       const b = btn(
-        point.tower
-          ? "塔"
-          : point.spawn
-            ? "出"
-            : glyph ||
-              (point.category === "Evergaol"
-                ? "牢"
-                : point.category.includes("Boss")
-                  ? "敌"
-                  : point.category === "Castle"
-                    ? "城"
-                    : "点"),
+        "",
         () => activateGroup({ x: point.x, y: point.y, points: [point] }, true),
         "atlas-point",
       );
       b.dataset.point = point.id;
+      b.dataset.icon = icon;
+      const path = iconPath(icon);
+      if (path) {
+        const img = el("img");
+        img.src = path;
+        img.alt = "";
+        img.draggable = false;
+        b.append(img);
+      } else b.classList.add("atlas-unknown");
       const headline = label(point);
-      b.title = headline || "记录点位";
-      b.setAttribute("aria-label", b.title);
+      b.setAttribute("aria-label", headline || iconLabel(icon));
       b.setAttribute("aria-description", zh(point.location || point.spawn));
       b.classList.toggle("observed", observed(point));
       b.classList.toggle(
         "inferred",
         !observed(point) && !!pointConsensus(records, point),
       );
-      const detail = observed(point) ? "已确认" : "候选一致";
-      return { point, b, detail, headline };
+      return { point, b };
     });
     revision++;
     $("atlas-count").textContent =

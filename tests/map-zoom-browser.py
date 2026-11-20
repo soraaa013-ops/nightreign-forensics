@@ -36,9 +36,9 @@ with sync_playwright() as p:
  tap(page,target);expect(page.locator('#atlas-editor')).to_be_visible();page.locator('#atlas-editor').get_by_role('button',name='关闭',exact=True).click()
  page.locator('#atlas-back').click();assert page.locator('#atlas-viewport').get_attribute('data-zoom')=='1';expect(page.locator('#atlas-back')).to_be_hidden()
  page.locator('[data-point="Castle - Castle"]').focus();page.keyboard.press('Enter');expect(page.locator('#atlas-editor')).to_be_visible();assert page.locator('#atlas-viewport').get_attribute('data-zoom')=='1';page.locator('#atlas-editor').get_by_role('button',name='关闭',exact=True).click()
- settings(page);page.locator('#atlas-detail').select_option('details');page.locator('#atlas-autozoom').uncheck();back(page);assert page.locator('#atlas-viewport').get_attribute('data-detail')=='2';disjoint(page)
+ settings(page);page.locator('#atlas-autozoom').uncheck();back(page);disjoint(page)
  tap(page,page.locator('[data-point="Castle - Castle"]'));expect(page.locator('#atlas-editor')).to_be_visible();assert page.locator('#atlas-viewport').get_attribute('data-zoom')=='1';page.locator('#atlas-editor').get_by_role('button',name='关闭',exact=True).click()
- page.reload();expect(page.locator('#atlas-loading')).to_be_hidden();assert page.locator('#atlas-viewport').get_attribute('data-detail')=='2';settings(page);assert not page.locator('#atlas-autozoom').is_checked();page.locator('#atlas-detail').select_option('none');back(page);expect(page.locator('.atlas-map-label')).to_have_count(0)
+ page.reload();expect(page.locator('#atlas-loading')).to_be_hidden();settings(page);assert not page.locator('#atlas-autozoom').is_checked();back(page);expect(page.locator('.atlas-map-label')).to_have_count(0)
  print('PASS dense-area auto focus, second-tap access, back, explicit display settings and persistence',flush=True)
  # A determined point still opens its description directly, even when zooming for context.
  sample=json.loads((ROOT/'data/map-data.json').read_text())['records'][0]
