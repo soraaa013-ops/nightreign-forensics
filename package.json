@@ -22,6 +22,7 @@
     "test:icons": "python3 tests/icons-browser.py",
     "test:content": "python3 tests/content-priority-browser.py",
     "test:filters": "python3 tests/compact-filter-browser.py",
-    "test:performance": "python3 tests/map-performance.py"
+    "test:performance": "python3 tests/map-performance.py",
+    "test:search": "python3 tests/search-browser.py"
   }
 }

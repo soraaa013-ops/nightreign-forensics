@@ -1,13 +1,13 @@
 const compareChinese = new Intl.Collator("zh-CN").compare;
 import { decodeMapRuntime } from "./map-runtime.js?v=perf-1";
-import { createAtlas } from "./map-atlas.js?v=perf-1";
+import { createAtlas } from "./map-atlas.js?v=search-1";
 import { recommendObservation } from "./map-filter.js";
 import {
   queryMaps,
   facetCounts,
   countObservationValues,
 } from "./map-query.js?v=perf-1";
-import { matchesSearch } from "./search.js";
+import { matchesSearch } from "./search.js?v=search-1";
 import { readDraft, writeDraft } from "./draft.js";
 import { validateMapState } from "./map-state.js?v=perf-1";
 import { loadJson } from "./locale.js";

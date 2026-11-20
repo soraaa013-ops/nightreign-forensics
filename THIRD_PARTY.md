@@ -101,3 +101,7 @@ with the ownership and sources documented above.
 ## 浏览器图片派生资源
 
 `assets/maps/hd/` 由原有每图 36 张切片按原方向拼合，保留 1536×1536 分辨率，使用 WebP 质量 88。`assets/map-icons/ui/` 由原有 PNG 图标生成，最长边 128 像素、保留透明度，使用 WebP 质量 85。各目录的 `provenance.json` 记录来源与校验和；原文件保留，授权及归属沿用上述来源。
+
+## 拼音搜索字典
+
+`src/search-initials.js` 使用 pypinyin 0.55.0 为项目现有中文内容生成首字母表，包含多音字读音。pypinyin 采用 MIT 许可证，版权及许可全文见 [licenses/pypinyin-MIT.txt](licenses/pypinyin-MIT.txt)。浏览器无需加载完整拼音库或调用外部服务。

@@ -66,3 +66,5 @@ python3 tools/build-map-hd.py
 ```
 
 图片生成需要 Pillow。性能对比与复测方法见 [性能记录](docs/PERFORMANCE.md)。
+
+搜索支持中文片段及拼音首字母，如 `lsz` 搜索“老狮子”、`黑刺客` 搜索“黑刀刺客”；多个关键词以空格分隔。地图、点位详情与遗物搜索共用匹配规则。更新中文内容后，用 `pypinyin==0.55.0` 运行 `python3 tools/build-search-initials.py` 更新字典。

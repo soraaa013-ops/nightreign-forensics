@@ -1,3 +1,4 @@
+import { matchesSearch } from "./search.js?v=search-1";
 const compareChinese = new Intl.Collator("zh-CN").compare;
 import {
   previewMap,
@@ -674,7 +675,9 @@ export async function createAtlas({ data, zh, getState, change }) {
               selected.match !== "type" ||
               v.split(" - ")[0] === selected.value,
           )
-          .filter((v) => (v === "empty" ? "确认此处为空" : zh(v)).includes(q));
+          .filter((v) =>
+            matchesSearch(v === "empty" ? "确认此处为空" : zh(v), q),
+          );
         list.replaceChildren(
           ...filtered
             .sort(

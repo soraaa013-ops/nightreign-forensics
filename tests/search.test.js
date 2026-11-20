@@ -114,3 +114,33 @@ test("natural Chinese role and action queries do not require manually inserted s
   );
   assert.ok(!matchesSearch("【女爵】提升攻击力", "守护者回血"));
 });
+
+test("initials cover names, fullwidth input, aliases and polyphonic characters", () => {
+  for (const q of ["lsz", "LSZ", "ｌｓｚ", "营地 lsz"])
+    assert.ok(matchesSearch("营地 · 老狮子", q), q);
+  assert.ok(matchesSearch("黑刀刺客", "hdck"));
+  assert.ok(matchesSearch("【追踪者】发动绝招时恢复血量", "zzz dz"));
+  assert.ok(!matchesSearch("恢复血量", "hps"));
+  assert.ok(matchesSearch("狮子混种", "szhz"));
+  assert.ok(!matchesSearch("老狮子", "lzs"));
+  assert.ok(!matchesSearch("老狮子", "lsz 不存在"));
+});
+test("Chinese fragments may omit intervening words but retain order", () => {
+  assert.ok(matchesSearch("黑刀刺客", "黑刺客"));
+  assert.ok(matchesSearch("老狮子", "老狮"));
+  assert.ok(matchesSearch("恢复血量", "恢复量"));
+  assert.ok(!matchesSearch("黑刀刺客", "客黑"));
+  assert.ok(!matchesSearch("黑刀刺客", "黑狗"));
+  assert.ok(matchesSearch("老狮子", ""));
+});
+test("relic initials preserve character/category constraints and numeric IDs", () => {
+  const result = searchEffects(effects, {
+    query: "hf xl",
+    character: "守护者",
+    category: "恢复与续航",
+  });
+  assert.ok(result.length > 0);
+  assert.ok(result.every((e) => e.name.includes("【守护者】")));
+  assert.ok(matchesSearch("老狮子 1234", "1234"));
+  assert.ok(!matchesSearch("老狮子 1234", "134"));
+});
