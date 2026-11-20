@@ -18,7 +18,7 @@ with sync_playwright() as p:
  target=page.locator('[data-point="Major Base - South Lake"]');target.focus();page.keyboard.press('Enter')
  choice=page.locator('.atlas-type-options .atlas-option[data-value="Ruins"]');expect(choice).to_be_visible();assert choice.inner_text()=='';expect(choice.locator('img')).to_have_attribute('src','assets/map-icons/ruins.png');choice.click()
  expect(target).to_have_attribute('data-icon','ruins');assert int(page.locator('#candidate-count').inner_text())>1
- no_generic_text(page);expect(page.locator('#atlas-editor')).to_be_hidden();page.screenshot(path='/tmp/icons-type-mobile.png')
+ no_generic_text(page);expect(page.locator('#atlas-editor')).to_be_visible();page.locator('#atlas-editor').get_by_role('button',name='关闭',exact=True).click();page.screenshot(path='/tmp/icons-type-mobile.png')
  q={k:sample[k] for k in ['nightlord','mapType','spawn']};q['observations']=[{k:s[k] for k in ['key','category','value']} for s in sample['slots'] if s['value']]
  ready(page,'/map.html?'+urlencode({'q':json.dumps(q)}));no_generic_text(page)
  expect(page.locator('[data-point="Field Boss - Northwest Stormhill Cliffside"]')).to_have_attribute('data-icon','boss')

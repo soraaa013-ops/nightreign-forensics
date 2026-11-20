@@ -8,7 +8,7 @@ expect.set_options(timeout=15000)
 def tap(page,locator):
  r=locator.bounding_box();assert r;page.touchscreen.tap(r['x']+r['width']/2,r['y']+r['height']/2)
 def clean(page):
- page.goto(BASE+'/map.html');page.evaluate('sessionStorage.clear()');page.reload();expect(page.locator('#atlas-loading')).to_be_hidden()
+ page.goto(BASE+'/map.html');page.evaluate('sessionStorage.clear()');page.reload();expect(page.locator('#atlas-loading')).to_be_hidden();expect(page.locator('.atlas-point').first).to_be_visible()
 def disjoint(page):
  assert page.locator('.atlas-cluster').count()==0
  rects=page.locator('.atlas-point:visible, .atlas-map-label').evaluate_all('(els)=>els.map(e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height}})')
@@ -30,6 +30,9 @@ with sync_playwright() as p:
  page.set_viewport_size({'width':390,'height':844});clean(page)
  # The castle and its courtyard/roof/basement are a known dense region.
  target=page.locator('[data-point="Castle - Castle"]');tap(page,target)
+ expect(page.locator('#atlas-editor')).to_be_visible();assert page.locator('#atlas-viewport').get_attribute('data-zoom')=='1';page.locator('#atlas-editor').get_by_role('button',name='关闭',exact=True).click()
+ near=target.evaluate("""el=>{const r=el.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2;const points=[...document.querySelectorAll('.atlas-point:not([hidden])')].map(e=>{let b=e.getBoundingClientRect();return {el:e,x:b.x+b.width/2,y:b.y+b.height/2}});for(let d=r.width/2+4;d<35;d+=3)for(let a=0;a<360;a+=20){let p={x:x+d*Math.cos(a*Math.PI/180),y:y+d*Math.sin(a*Math.PI/180)};let hit=document.elementFromPoint(p.x,p.y);if(hit?.id==='atlas-viewport'&&points.every(q=>q.el===el||Math.hypot(q.x-p.x,q.y-p.y)>d))return p;}throw Error('No nearby empty target');}""")
+ page.touchscreen.tap(near['x'],near['y'])
  assert float(page.locator('#atlas-viewport').get_attribute('data-zoom'))>1
  expect(page.locator('#atlas-editor')).to_be_hidden();expect(page.locator('#candidate-count')).to_have_text('520');expect(page.locator('#atlas-back')).to_be_visible();disjoint(page)
  page.screenshot(path='/tmp/zoom-mobile-focus.png')

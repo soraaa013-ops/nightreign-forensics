@@ -43,11 +43,11 @@ with sync_playwright() as p:
  passed('First-screen map, default all-points layer, correct tiles, individual markers without aggregation')
  choose(page,'Major Base - South Lake');expect(page.locator('#atlas-editor')).to_be_visible();expect(page.locator('.atlas-exact')).not_to_have_attribute('open','');types=page.locator('.atlas-type-options .atlas-option');assert types.count()>1;assert all('无匹配' not in t for t in page.locator('.atlas-option').all_text_contents())
  scroll=page.evaluate('scrollY');transform=page.locator('#atlas-tiles').get_attribute('style')
- page.locator('.atlas-type-options [data-value=Camp]').click();expect(page.locator('#atlas-editor')).to_be_hidden();assert state(page)['observations'][0]['match']=='type';coarse=int(page.locator('#candidate-count').inner_text());assert 0<coarse<320
+ page.locator('.atlas-type-options [data-value=Camp]').click();expect(page.locator('#atlas-editor')).to_be_visible();assert state(page)['observations'][0]['match']=='type';coarse=int(page.locator('#candidate-count').inner_text());assert 0<coarse<320
  assert abs(page.evaluate('scrollY')-scroll)<2;assert page.locator('#atlas-tiles').get_attribute('style')==transform
- page.locator('#atlas-toast').get_by_role('button',name='补充详情').click();expect(page.locator('.atlas-quick-exact')).to_be_visible();page.locator('.atlas-quick-exact .atlas-option').first.click();expect(page.locator('#atlas-editor')).to_be_hidden();assert 'match' not in state(page)['observations'][0];assert len(state(page)['observations'])==1
+ expect(page.locator('.atlas-quick-exact')).to_be_visible();page.locator('.atlas-quick-exact .atlas-option').first.click();expect(page.locator('#atlas-editor')).to_be_hidden();assert 'match' not in state(page)['observations'][0];assert len(state(page)['observations'])==1
  page.locator('#atlas-toast').get_by_role('button',name='撤销',exact=True).click();assert state(page)['observations'][0]['match']=='type';page.reload();page.wait_for_load_state('networkidle');assert state(page)['observations'][0]['match']=='type'
- passed('Two-tap building mark, automatic close, stable viewport, immediate refinement and undo')
+ passed('Two-tap building mark, continuous boss selection, stable viewport, immediate refinement and undo')
  ready(page);layer(page,'spawn');single=page.locator('.atlas-point:not(.atlas-cluster):visible').first;key=json.loads(single.get_attribute('data-members'))[0];single.click();expect(page.locator('#atlas-editor')).to_be_hidden();assert state(page)['spawn']==key.removeprefix('spawn:');expect(page.locator('.atlas-point')).to_have_count(1)
  choose(page,'Minor Base - East of Cavalry Bridge');page.locator('.atlas-option:visible').first.click();assert state(page)['spawn']==key.removeprefix('spawn:');assert len(state(page)['observations'])==1
  shared=page.url;other=browser.new_page();other.goto(shared);other.wait_for_load_state('networkidle');assert state(other)==state(page);other.close()
@@ -89,7 +89,7 @@ with sync_playwright() as p:
   for option in options.all():
    rect=option.bounding_box();assert rect['y']>=pane['y'] and rect['y']+rect['height']<=pane['y']+pane['height']+1
   if width==390:page.screenshot(path=str(OUT/'mobile-quick-actions.png'))
-  options.first.click();expect(page.locator('#atlas-editor')).to_be_hidden();assert state(page)['observations'];assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
+  options.first.click();expect(page.locator('#atlas-editor')).to_be_visible();close(page);assert state(page)['observations'];assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
   # Continue marking a second location without a manual close.
   choose(page,'Major Base - Groveside');page.locator('.atlas-option:visible').first.click();assert len(state(page)['observations'])==2
  passed('320/390/768px: no aggregation, first-screen quick actions and consecutive marks without closing')

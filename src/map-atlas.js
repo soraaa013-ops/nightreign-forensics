@@ -140,7 +140,7 @@ export async function createAtlas({ data, zh, getState, change }) {
       y: (viewport.clientHeight - size) / 2 + pan.y,
     };
   }
-  function activateGroup(group, keyboard = false) {
+  function activateGroup(group, direct = false) {
     if (mapPending) return;
     const point = group.points[0];
     const neighbors = groups.filter(
@@ -150,7 +150,7 @@ export async function createAtlas({ data, zh, getState, change }) {
           (viewport.clientWidth < 760 ? 60 : 42),
     );
     if (
-      !keyboard &&
+      !direct &&
       autozoomControl.checked &&
       neighbors.length &&
       !focused.has(point.id) &&
@@ -362,7 +362,7 @@ export async function createAtlas({ data, zh, getState, change }) {
         preventScroll: true,
       });
   }
-  function apply(next, message) {
+  function apply(next, message, continueSelection = false) {
     const marked = active;
     active = null;
     change(next);
@@ -371,6 +371,19 @@ export async function createAtlas({ data, zh, getState, change }) {
       : "没有匹配档案，请修改本次标记或撤销。";
     $("atlas-status").textContent = text;
     if (records.length) {
+      if (continueSelection && marked) {
+        active = points.find((p) => p.id === marked.id) || marked;
+        editing = false;
+        $("atlas-toast").hidden = true;
+        renderEditor();
+        editor.scrollTop = 0;
+        draw();
+        (
+          editor.querySelector(".atlas-quick-exact button") ||
+          editor.querySelector("button")
+        )?.focus({ preventScroll: true });
+        return;
+      }
       close(false);
       const toast = $("atlas-toast");
       toast.hidden = false;
@@ -573,10 +586,20 @@ export async function createAtlas({ data, zh, getState, change }) {
         const next = pointObservations(getState(), point, observation);
         const count =
           (match === "type" ? typeCounts : exactCounts).get(value) || 0;
-        const title = value === "empty" ? "确认此处为空" : zh(value);
+        const localized = zh(value);
+        const title =
+          value === "empty"
+            ? "确认此处为空"
+            : match === "exact" &&
+                selected?.match === "type" &&
+                value.startsWith(`${selected.value} - `)
+              ? localized.split(" · ").slice(1).join(" · ") ||
+                localized.split(" - ").slice(1).join(" - ") ||
+                localized
+              : localized;
         const b = btn(
           "",
-          () => apply(next, `已标记“${title}”`),
+          () => apply(next, `已标记“${title}”`, match === "type"),
           "atlas-option",
         );
         const path = match === "type" && iconPath(typeIcon(value));
@@ -594,9 +617,6 @@ export async function createAtlas({ data, zh, getState, change }) {
           );
         b.dataset.value = value;
         b.dataset.match = match;
-        const selected = getState().observations.find(
-          (o) => o.key === point.key,
-        );
         b.setAttribute(
           "aria-pressed",
           String(
@@ -874,12 +894,24 @@ export async function createAtlas({ data, zh, getState, change }) {
       .sort((a, b) => a.distance - b.distance)
       .map((g) => g.group);
   }
-  // Pointer-up handles mouse and touch selection once. Mobile browsers also emit
-  // a synthetic click, which must not reopen the marker after a quick mark.
-  viewport.addEventListener(
+  // Opening a panel on pointer-up can move a form button under the finger.
+  // Consume only that gesture's compatibility click; a new pointer-down resets it.
+  let suppressMapClick = false;
+  document.addEventListener(
+    "pointerdown",
+    () => {
+      suppressMapClick = false;
+    },
+    true,
+  );
+  document.addEventListener(
     "click",
     (event) => {
-      if (event.detail > 0 && event.target.closest(".atlas-point")) {
+      if (
+        event.detail > 0 &&
+        (suppressMapClick || event.target.closest(".atlas-point"))
+      ) {
+        suppressMapClick = false;
         event.preventDefault();
         event.stopImmediatePropagation();
       }
@@ -895,7 +927,7 @@ export async function createAtlas({ data, zh, getState, change }) {
       start: p,
       pan: { ...pan },
       moved: false,
-      startGroup: event.target.closest(".atlas-point")?.dataset.group,
+      startPoint: event.target.closest(".atlas-point")?.dataset.point,
     };
     if (pointers.size === 2) {
       const [a, b] = [...pointers.values()];
@@ -949,8 +981,17 @@ export async function createAtlas({ data, zh, getState, change }) {
     const click = gesture && !gesture.moved;
     pointers.delete(event.pointerId);
     if (click) {
+      suppressMapClick = true;
+      const hit = document
+        .elementFromPoint(event.clientX, event.clientY)
+        ?.closest(".atlas-point");
+      const direct =
+        hit && hit.dataset.point === gesture.startPoint
+          ? groups.find((g) => g.id === hit.dataset.point)
+          : null;
       const near = nearEvent(event);
-      if (near.length) activateGroup(near[0]);
+      if (direct) activateGroup(direct, true);
+      else if (near.length) activateGroup(near[0]);
       else
         $("atlas-status").textContent =
           "附近没有可标记点位。请放大地图，点击圆点附近。";
