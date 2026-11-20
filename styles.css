@@ -2216,3 +2216,18 @@ footer {
   height: 100%;
   object-fit: contain;
 }
+
+#atlas-tiles .atlas-preview {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+}
+#atlas-viewport[data-map-pending] #atlas-points,
+#atlas-viewport[data-map-pending] #atlas-leaders {
+  visibility: hidden;
+}
+#atlas-loading {
+  top: auto;
+  bottom: 48px;
+  font-size: 12px;
+  padding: 8px 12px;
+}

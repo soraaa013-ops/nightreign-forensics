@@ -1,4 +1,9 @@
 import {
+  previewMap,
+  prepareMap,
+  warmMapPreviews,
+} from "./map-tiles.js?v=preload-1";
+import {
   pointIcon,
   typeIcon,
   iconPath,
@@ -31,6 +36,7 @@ export async function createAtlas({ data, zh, getState, change }) {
     loadJson("data/map-geometry.json"),
     loadJson("data/map-dlc-geometry.json?v=towers-1"),
   ]);
+  tiles.dataset.managed = "true";
   geometry.points.push(...extension.points);
   Object.assign(geometry.layouts, extension.layouts);
   let underground = false;
@@ -78,7 +84,9 @@ export async function createAtlas({ data, zh, getState, change }) {
   let size = 1,
     origin = { x: 0, y: 0 },
     buttons = [],
-    imageGeneration = 0;
+    imageGeneration = 0,
+    mapPending = false,
+    loadingTimer;
   const pointers = new Map();
   let gesture = null,
     hover = null;
@@ -132,6 +140,7 @@ export async function createAtlas({ data, zh, getState, change }) {
     };
   }
   function activateGroup(group, keyboard = false) {
+    if (mapPending) return;
     const point = group.points[0];
     const neighbors = groups.filter(
       (g) =>
@@ -648,6 +657,67 @@ export async function createAtlas({ data, zh, getState, change }) {
     content.push(locationDetails(point));
     editor.replaceChildren(...content);
   }
+  function showMap(layout) {
+    const generation = ++imageGeneration;
+    clearTimeout(loadingTimer);
+    const status = $("atlas-loading");
+    if (tiles.dataset.map || status.querySelector("button"))
+      status.hidden = true;
+    let fullShown = false,
+      failed = false;
+    close(false);
+    pointers.clear();
+    gesture = null;
+    const pending = (value) => {
+      mapPending = value;
+      viewport.toggleAttribute("data-map-pending", value);
+      viewport.setAttribute("aria-busy", String(value));
+      layer.inert = value;
+    };
+    const commit = (images, quality) => {
+      if (generation !== imageGeneration) return;
+      if (quality === "preview" && fullShown) return;
+      if (quality === "full") fullShown = true;
+      tiles.replaceChildren(...images);
+      tiles.dataset.map = layout;
+      tiles.dataset.quality = quality;
+      pending(false);
+      clearTimeout(loadingTimer);
+      if (!failed) status.hidden = true;
+    };
+    // Keep the previous picture until the target overview is decoded. No mismatched pins.
+    pending(tiles.dataset.map !== layout);
+    const full = prepareMap(layout);
+    if (full.ready) commit(full.images, "full");
+    else {
+      const preview = previewMap(layout, "high");
+      const showPreview = (image) => {
+        image.className = "atlas-preview";
+        commit([image], "preview");
+      };
+      if (preview.ready) showPreview(preview.image);
+      else preview.promise.then(showPreview).catch(() => {});
+      if (mapPending)
+        loadingTimer = setTimeout(() => {
+          if (generation !== imageGeneration || !mapPending || failed) return;
+          status.textContent = "正在载入地图…";
+          status.hidden = false;
+        }, 250);
+      full.promise
+        .then((images) => commit(images, "full"))
+        .catch(() => {
+          if (generation !== imageGeneration) return;
+          failed = true;
+          clearTimeout(loadingTimer);
+          status.replaceChildren(
+            el("span", "部分底图未能载入。"),
+            btn("重试底图", () => showMap(layout)),
+          );
+          status.hidden = false;
+        });
+    }
+    full.promise.then(warmMapPreviews).catch(() => {});
+  }
   function rebuild() {
     $("atlas-toast").hidden = true;
     const state = getState();
@@ -667,37 +737,11 @@ export async function createAtlas({ data, zh, getState, change }) {
       pan = { x: 0, y: 0 };
       cameraHistory.length = 0;
       focused.clear();
-      const generation = ++imageGeneration;
-      $("atlas-loading").hidden = false;
-      $("atlas-loading").textContent = "正在载入底图…";
-      let loaded = 0,
-        failed = false;
-      const images = [];
-      for (let row = 0; row < 6; row++)
-        for (let col = 0; col < 6; col++) {
-          const img = el("img");
-          img.alt = "";
-          img.draggable = false;
-          img.onload = () => {
-            if (generation !== imageGeneration) return;
-            if (++loaded === 36 && !failed) $("atlas-loading").hidden = true;
-          };
-          img.onerror = () => {
-            if (generation !== imageGeneration) return;
-            failed = true;
-            $("atlas-loading").hidden = false;
-            $("atlas-loading").replaceChildren(
-              el("span", "部分底图未能载入。"),
-              btn("重试底图", () => {
-                terrain = "";
-                rebuild();
-              }),
-            );
-          };
-          img.src = `assets/maps/${terrain === "Great Hollow" && underground ? "great_hollow_under" : geometry.layouts[terrain]}/${col}-${5 - row}.webp`;
-          images.push(img);
-        }
-      tiles.replaceChildren(...images);
+      showMap(
+        terrain === "Great Hollow" && underground
+          ? "great_hollow_under"
+          : geometry.layouts[terrain],
+      );
     }
     points = geometry.points.filter(
       (p) =>
@@ -768,6 +812,7 @@ export async function createAtlas({ data, zh, getState, change }) {
     return { x: event.clientX - r.left, y: event.clientY - r.top };
   }
   function nearEvent(event) {
+    if (mapPending) return [];
     measure();
     const p = local(event);
     return groups

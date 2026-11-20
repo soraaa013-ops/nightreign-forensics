@@ -1,0 +1,1059 @@
+[
+  {
+    "path": "assets/maps/previews/default.webp",
+    "bytes": 28334,
+    "sha256": "d20272c2974ece768bd7b9785f8447a2b79adc21136db37a0c8ad197631ea503",
+    "sources": [
+      {
+        "path": "assets/maps/default/0-5.webp",
+        "sha256": "102b4eeb305583bf4c28f37c0ade4804a3efd7721d6ff90b4f0d6dfec862f248"
+      },
+      {
+        "path": "assets/maps/default/1-5.webp",
+        "sha256": "695cad98bbaa4949245bdbda26e1c5132a9bd08a1555635900152d8183f34677"
+      },
+      {
+        "path": "assets/maps/default/2-5.webp",
+        "sha256": "ed578022edd925610c41dfcc95ae3d02def7317e8e84b0e1043e4d8be52c6c87"
+      },
+      {
+        "path": "assets/maps/default/3-5.webp",
+        "sha256": "4f84a21506987564e53f3eecb59c9e30c9e244ec21d7a7f6379e1dac448026e8"
+      },
+      {
+        "path": "assets/maps/default/4-5.webp",
+        "sha256": "3ece55ba52f096fec37e208a00bb75d7e6d61bba59d865ac5a005fa6851cfec7"
+      },
+      {
+        "path": "assets/maps/default/5-5.webp",
+        "sha256": "080465c00def359f016e37ceada42ed4500133883bf16d8bc23db14a1a108a5d"
+      },
+      {
+        "path": "assets/maps/default/0-4.webp",
+        "sha256": "b90667baf94728037f499311246e1ca73f059c97ffb4ca31bfac22b9960e1e1c"
+      },
+      {
+        "path": "assets/maps/default/1-4.webp",
+        "sha256": "9e1b722bbe9bc4779400885f402485b9399af0c44807f2000e94738673d47635"
+      },
+      {
+        "path": "assets/maps/default/2-4.webp",
+        "sha256": "604edb05239e54f74ba2537bce108a6badef8c3a6bfd690ba5af5251d5a189c3"
+      },
+      {
+        "path": "assets/maps/default/3-4.webp",
+        "sha256": "271b0f0922e0797c9d837ede1f3d9963bfdf6ce92f8e614468f083fe74e983b1"
+      },
+      {
+        "path": "assets/maps/default/4-4.webp",
+        "sha256": "9eb11dd0f9328282ad5b7b259921aecc8bc2ca55106efcd86a086d4473947a33"
+      },
+      {
+        "path": "assets/maps/default/5-4.webp",
+        "sha256": "1ad28216e54a16515c914eecd43907f30317cb40d8e8cba3a183de5ba8d811ff"
+      },
+      {
+        "path": "assets/maps/default/0-3.webp",
+        "sha256": "a6276f884badd0e8838b6294f56534daad5d307d34250e1464bdcfc43cb03fc4"
+      },
+      {
+        "path": "assets/maps/default/1-3.webp",
+        "sha256": "35cb5c051136c6fffd313fa3078dd82efef2e2909b6528d1c638e1dc684e60a2"
+      },
+      {
+        "path": "assets/maps/default/2-3.webp",
+        "sha256": "a9509d1e19041f557de9306f9076bb5015c9a7847f019aba6f7ba00d35d44591"
+      },
+      {
+        "path": "assets/maps/default/3-3.webp",
+        "sha256": "a59d4339b141c24e03af1db7cad7a61ac0654233723af9f982b135b2f2becaaa"
+      },
+      {
+        "path": "assets/maps/default/4-3.webp",
+        "sha256": "cf4df46c96924333519c6427f55b730aaad8fb3f870171ebfe2c5c3b94cba9c0"
+      },
+      {
+        "path": "assets/maps/default/5-3.webp",
+        "sha256": "a00c80dd8f4a35e6608056b7c198350cc347d6176d6b4f479ef81011925479af"
+      },
+      {
+        "path": "assets/maps/default/0-2.webp",
+        "sha256": "5ebc913931481ff1563b79409c5fc2c518b33e919edf077e6cec87baad22900e"
+      },
+      {
+        "path": "assets/maps/default/1-2.webp",
+        "sha256": "9922ca2424c553514140633f17e1daccd8b0959d244b9d56ef22897c2fdda1ca"
+      },
+      {
+        "path": "assets/maps/default/2-2.webp",
+        "sha256": "b235674f3f64d2904c8cefe09373e5ec198b883b7a7acfda1cc7fc490a28c650"
+      },
+      {
+        "path": "assets/maps/default/3-2.webp",
+        "sha256": "632ebf424ac691307db0e6d040312f25b704209bf4a220f8d80425e4eaebc474"
+      },
+      {
+        "path": "assets/maps/default/4-2.webp",
+        "sha256": "a4af3fb8ec6d284b69f6ef274d2fb23ae86bfa23422c6eeafc34566e8f2abac7"
+      },
+      {
+        "path": "assets/maps/default/5-2.webp",
+        "sha256": "d68bea29c39e65c81c70d9c9553e3412a9293362b976bc936e3398cafd82f74d"
+      },
+      {
+        "path": "assets/maps/default/0-1.webp",
+        "sha256": "f19e89ff6fa9caa5303444d27e0af2982f283f55a053bc819d14d4886aec1710"
+      },
+      {
+        "path": "assets/maps/default/1-1.webp",
+        "sha256": "f5b5ec0cd57a13c1cc66a0b4d0912790d993f98f728598e07235518732d6e6bf"
+      },
+      {
+        "path": "assets/maps/default/2-1.webp",
+        "sha256": "f9a5974404bbae3018bf6edc9cf4adcdb552059fcb7d10576e6ded32b4c74361"
+      },
+      {
+        "path": "assets/maps/default/3-1.webp",
+        "sha256": "4937ecec271624f386961b1d140d6ca2b870c2e58579eff23360b807ffb58fbb"
+      },
+      {
+        "path": "assets/maps/default/4-1.webp",
+        "sha256": "cd0022334f734fc28af6b60fa15c94ea8e52f9bd91dc67d7ae0b93e901cfa394"
+      },
+      {
+        "path": "assets/maps/default/5-1.webp",
+        "sha256": "769a8c91014d2e268fedeeaab90f269ccce74b02fb1b5b032a0d2ec9abbcf359"
+      },
+      {
+        "path": "assets/maps/default/0-0.webp",
+        "sha256": "ce4d76bb75e323a2ee293afb43bbe49a74c156eb31c28a81e7693afbffd7ddbe"
+      },
+      {
+        "path": "assets/maps/default/1-0.webp",
+        "sha256": "ad9ff0144135f24dee2bb4f698d41775459ae0af8684dcccede3ca2a1f7f0c02"
+      },
+      {
+        "path": "assets/maps/default/2-0.webp",
+        "sha256": "a508c4ba2468bd758fcae29fb8e346d6cfc64bf3b79a739a0d9dfc7c8d809d81"
+      },
+      {
+        "path": "assets/maps/default/3-0.webp",
+        "sha256": "19c87100445fe730f6c8603e5d4a47560594e6d8a2dc9e274d308d3a96782163"
+      },
+      {
+        "path": "assets/maps/default/4-0.webp",
+        "sha256": "5cdb75e467c03f89825b0ab2378ff1e57c8f0e984847bde96aed4fceb4fa1fb3"
+      },
+      {
+        "path": "assets/maps/default/5-0.webp",
+        "sha256": "f780b42d01c2ba852e59f6697b9112fd8e5ee1877080f0aebbbdaf48e70aef45"
+      }
+    ]
+  },
+  {
+    "path": "assets/maps/previews/the_crater_shifted.webp",
+    "bytes": 27664,
+    "sha256": "86b29183b7175be75e318369c60cfe9e40a6078506c3b5ffcee9f16efafc8688",
+    "sources": [
+      {
+        "path": "assets/maps/the_crater_shifted/0-5.webp",
+        "sha256": "102b4eeb305583bf4c28f37c0ade4804a3efd7721d6ff90b4f0d6dfec862f248"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/1-5.webp",
+        "sha256": "fa7df50f4f0590cc739e3b368e6982745a05fef454c9798a81de232fefa8ce11"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/2-5.webp",
+        "sha256": "1aafad7e20a769fdb155ff69157f1e6423569b8181822d7a025d29af65187dc4"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/3-5.webp",
+        "sha256": "4133f2a7c9932ee81d7d32f6a8f311f370723550350175626c04eaff218756a2"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/4-5.webp",
+        "sha256": "3ece55ba52f096fec37e208a00bb75d7e6d61bba59d865ac5a005fa6851cfec7"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/5-5.webp",
+        "sha256": "080465c00def359f016e37ceada42ed4500133883bf16d8bc23db14a1a108a5d"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/0-4.webp",
+        "sha256": "b90667baf94728037f499311246e1ca73f059c97ffb4ca31bfac22b9960e1e1c"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/1-4.webp",
+        "sha256": "923f4a941e7b9a0881223cd5d0dd537b740d6b023646cc04bc01cab4833abe0b"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/2-4.webp",
+        "sha256": "90365c4a6e539c73f73c0218703008fceaabbdb49ec2ed41a8f5800bee903823"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/3-4.webp",
+        "sha256": "66420ff4fff53c34c37cb849e64225848a12c0032abe88a20f35c0deb134e64f"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/4-4.webp",
+        "sha256": "5f0facd38e98529e88a34f115eceb3d29cd50512417ebd8eab3d47922aa44c63"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/5-4.webp",
+        "sha256": "1ad28216e54a16515c914eecd43907f30317cb40d8e8cba3a183de5ba8d811ff"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/0-3.webp",
+        "sha256": "a6276f884badd0e8838b6294f56534daad5d307d34250e1464bdcfc43cb03fc4"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/1-3.webp",
+        "sha256": "e2c490bd190671cbac4adb41addc6e817167f196632f01af7568cdbc1eae279a"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/2-3.webp",
+        "sha256": "a5157d70315fcc5ff8d3c69ab44ba22c94841f83b4189cd28a50316b0f3bea75"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/3-3.webp",
+        "sha256": "1fbd0e8f7b42622facb7d91c56d9f00b7595d25f2f11e905fd00bfd4e3268580"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/4-3.webp",
+        "sha256": "cf4df46c96924333519c6427f55b730aaad8fb3f870171ebfe2c5c3b94cba9c0"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/5-3.webp",
+        "sha256": "a00c80dd8f4a35e6608056b7c198350cc347d6176d6b4f479ef81011925479af"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/0-2.webp",
+        "sha256": "5ebc913931481ff1563b79409c5fc2c518b33e919edf077e6cec87baad22900e"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/1-2.webp",
+        "sha256": "9922ca2424c553514140633f17e1daccd8b0959d244b9d56ef22897c2fdda1ca"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/2-2.webp",
+        "sha256": "3eab1e972367217b35289ce94c38d76a7db4bb40b650d588b2ec45f4bd70fdc4"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/3-2.webp",
+        "sha256": "73b8f31c5528bf212f5962168b9c4704270680ce031082111c1db57346f9f555"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/4-2.webp",
+        "sha256": "a1b8a852af64d2ea0aa4f2a3df7c8492e0f48d25b65451b4444d614e7ce3fba0"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/5-2.webp",
+        "sha256": "d68bea29c39e65c81c70d9c9553e3412a9293362b976bc936e3398cafd82f74d"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/0-1.webp",
+        "sha256": "f19e89ff6fa9caa5303444d27e0af2982f283f55a053bc819d14d4886aec1710"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/1-1.webp",
+        "sha256": "167c74eacc14b5e4fa20610eae76463753fa16591b621cd936f24ae36b4a43c8"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/2-1.webp",
+        "sha256": "e5f450ba994a14e8be8e435d555f6427feb31b9a9adb45e5a211d42517e5e5e8"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/3-1.webp",
+        "sha256": "17ce302168c795e896b2f4ee6815d26f9a473170ab309982fe44caf736a7345d"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/4-1.webp",
+        "sha256": "cd0022334f734fc28af6b60fa15c94ea8e52f9bd91dc67d7ae0b93e901cfa394"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/5-1.webp",
+        "sha256": "769a8c91014d2e268fedeeaab90f269ccce74b02fb1b5b032a0d2ec9abbcf359"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/0-0.webp",
+        "sha256": "ce4d76bb75e323a2ee293afb43bbe49a74c156eb31c28a81e7693afbffd7ddbe"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/1-0.webp",
+        "sha256": "ad9ff0144135f24dee2bb4f698d41775459ae0af8684dcccede3ca2a1f7f0c02"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/2-0.webp",
+        "sha256": "a508c4ba2468bd758fcae29fb8e346d6cfc64bf3b79a739a0d9dfc7c8d809d81"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/3-0.webp",
+        "sha256": "19c87100445fe730f6c8603e5d4a47560594e6d8a2dc9e274d308d3a96782163"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/4-0.webp",
+        "sha256": "5cdb75e467c03f89825b0ab2378ff1e57c8f0e984847bde96aed4fceb4fa1fb3"
+      },
+      {
+        "path": "assets/maps/the_crater_shifted/5-0.webp",
+        "sha256": "f780b42d01c2ba852e59f6697b9112fd8e5ee1877080f0aebbbdaf48e70aef45"
+      }
+    ]
+  },
+  {
+    "path": "assets/maps/previews/the_mountaintop_shifted.webp",
+    "bytes": 28976,
+    "sha256": "fbce7f49cd6b414c020b78fb7b7205ddfa8fa02dd39ca2b5ca2bcbdd402c2673",
+    "sources": [
+      {
+        "path": "assets/maps/the_mountaintop_shifted/0-5.webp",
+        "sha256": "785bab6a985ffab31253119e8dafffd3ccc5984b66fdd25b3235b225e439e5a5"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/1-5.webp",
+        "sha256": "40227190c21c6c8f1d938b115cad83c457429b87454d07de47f342785db67927"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/2-5.webp",
+        "sha256": "996dfeb9d958c34e6ded8c5aeba97f65f605b60147dd6fba3a5546f14ef09338"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/3-5.webp",
+        "sha256": "c38ecf76a73a345d6fd9de7674803add5ca4d0150f3c40cd51c48eabf63cb4d0"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/4-5.webp",
+        "sha256": "3ece55ba52f096fec37e208a00bb75d7e6d61bba59d865ac5a005fa6851cfec7"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/5-5.webp",
+        "sha256": "080465c00def359f016e37ceada42ed4500133883bf16d8bc23db14a1a108a5d"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/0-4.webp",
+        "sha256": "3f871afe06402006e45fbde0c45bb1d08839764149bce70e3eb3b7de8ddad141"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/1-4.webp",
+        "sha256": "16c146acc7cfae4231af44c0ddde7a5c14ce5c8b91677aaa614c814d50b8d0fa"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/2-4.webp",
+        "sha256": "88429d84af61bb097e30afce3a9361fcbc1ffa4859148fb57b7b8d7534b29ec6"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/3-4.webp",
+        "sha256": "20738a9987b1051a791114fd64adf900837617a1a8cf747320e193b3a3021084"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/4-4.webp",
+        "sha256": "4275826f0873df75450d585ce5f04effa200ff6a1b18b110b34c8cd28682214c"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/5-4.webp",
+        "sha256": "1ad28216e54a16515c914eecd43907f30317cb40d8e8cba3a183de5ba8d811ff"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/0-3.webp",
+        "sha256": "02e3e65b53d2c54d022aa3b9d256095677015b79c94024e9c83b8a4ad3831787"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/1-3.webp",
+        "sha256": "4089dd52603aa0392dd47c54bf85162d0a2e6c52d24384c634067b87e440638e"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/2-3.webp",
+        "sha256": "fb4ea89773e2954a006d3c8ac2f853e49757dcbb8787e661bdb4f9f36015ab6d"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/3-3.webp",
+        "sha256": "8074c54780f9e59da5eb5a4722f0a295d3a9be0f891f4917d9457c6b2ec07809"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/4-3.webp",
+        "sha256": "cf4df46c96924333519c6427f55b730aaad8fb3f870171ebfe2c5c3b94cba9c0"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/5-3.webp",
+        "sha256": "a00c80dd8f4a35e6608056b7c198350cc347d6176d6b4f479ef81011925479af"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/0-2.webp",
+        "sha256": "21f5eb434eb175423fd9fe5855f0d8ec96f142f2f1d85e5d035c8e319a81a25d"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/1-2.webp",
+        "sha256": "abf89c526e8d7ec0e365d5e0721667ad7c72cc299507c8d416d0583e12929e0d"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/2-2.webp",
+        "sha256": "fc7fee005c073c64d2bff175d9c410ace17b3707d5472ebed483e3cadb34da2d"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/3-2.webp",
+        "sha256": "0703f4bfe609f0503dfc50a4bf2a1aea5b653def04b5b728fb14974ffd6372e1"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/4-2.webp",
+        "sha256": "a1b8a852af64d2ea0aa4f2a3df7c8492e0f48d25b65451b4444d614e7ce3fba0"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/5-2.webp",
+        "sha256": "d68bea29c39e65c81c70d9c9553e3412a9293362b976bc936e3398cafd82f74d"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/0-1.webp",
+        "sha256": "f19e89ff6fa9caa5303444d27e0af2982f283f55a053bc819d14d4886aec1710"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/1-1.webp",
+        "sha256": "00f435268b5f36f8448128bea3279b178f8ea3ed85acb7f8310cee7d6c8b3411"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/2-1.webp",
+        "sha256": "ed7a7c65b3b12bc9012f884223767bc35349828e8e9d19ddd3700e17b9f75232"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/3-1.webp",
+        "sha256": "d7d4f1d5ffb46b4cf7afbfe204ad80b6bd401250ce6a78a38df0cbbf48d1334e"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/4-1.webp",
+        "sha256": "7716abc1a12cbce134bd38b84a92d565cd8738ff1da0d5519e984d7a6de13a02"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/5-1.webp",
+        "sha256": "769a8c91014d2e268fedeeaab90f269ccce74b02fb1b5b032a0d2ec9abbcf359"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/0-0.webp",
+        "sha256": "ce4d76bb75e323a2ee293afb43bbe49a74c156eb31c28a81e7693afbffd7ddbe"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/1-0.webp",
+        "sha256": "ad9ff0144135f24dee2bb4f698d41775459ae0af8684dcccede3ca2a1f7f0c02"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/2-0.webp",
+        "sha256": "a508c4ba2468bd758fcae29fb8e346d6cfc64bf3b79a739a0d9dfc7c8d809d81"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/3-0.webp",
+        "sha256": "19c87100445fe730f6c8603e5d4a47560594e6d8a2dc9e274d308d3a96782163"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/4-0.webp",
+        "sha256": "5cdb75e467c03f89825b0ab2378ff1e57c8f0e984847bde96aed4fceb4fa1fb3"
+      },
+      {
+        "path": "assets/maps/the_mountaintop_shifted/5-0.webp",
+        "sha256": "f780b42d01c2ba852e59f6697b9112fd8e5ee1877080f0aebbbdaf48e70aef45"
+      }
+    ]
+  },
+  {
+    "path": "assets/maps/previews/noklateo_shifted.webp",
+    "bytes": 29142,
+    "sha256": "86b49314af1870de243ad6ea1422a5f4ce505d595b1f8b69750e361060f91ee0",
+    "sources": [
+      {
+        "path": "assets/maps/noklateo_shifted/0-5.webp",
+        "sha256": "102b4eeb305583bf4c28f37c0ade4804a3efd7721d6ff90b4f0d6dfec862f248"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/1-5.webp",
+        "sha256": "695cad98bbaa4949245bdbda26e1c5132a9bd08a1555635900152d8183f34677"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/2-5.webp",
+        "sha256": "ed578022edd925610c41dfcc95ae3d02def7317e8e84b0e1043e4d8be52c6c87"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/3-5.webp",
+        "sha256": "4f84a21506987564e53f3eecb59c9e30c9e244ec21d7a7f6379e1dac448026e8"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/4-5.webp",
+        "sha256": "3ece55ba52f096fec37e208a00bb75d7e6d61bba59d865ac5a005fa6851cfec7"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/5-5.webp",
+        "sha256": "94587718e8145fce5226c6cceaff9314ab940648f3ae76af3c6132f1a1a2c053"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/0-4.webp",
+        "sha256": "b90667baf94728037f499311246e1ca73f059c97ffb4ca31bfac22b9960e1e1c"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/1-4.webp",
+        "sha256": "9e1b722bbe9bc4779400885f402485b9399af0c44807f2000e94738673d47635"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/2-4.webp",
+        "sha256": "2a44781312fefc91aba0932a0b7cffe56c30560eecc7d7f90b9fb671de3ae37b"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/3-4.webp",
+        "sha256": "0cd941cb3fa3d58a711c8fdd38409d1d7da87050bdca168f80a618dce42d27ab"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/4-4.webp",
+        "sha256": "1e810b9cfa843e7adb9ef6245cac729ee295ecd5362336d3ce4ed78644a565c5"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/5-4.webp",
+        "sha256": "066d59d768fd580964079d5629c6411d213e81dee0d2c8cd820290d3fc04e7ce"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/0-3.webp",
+        "sha256": "c5af572dc2a878645f44f8d21565b91f5f0895e705fec508822290d62070f501"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/1-3.webp",
+        "sha256": "c3f757d7c1dceb4ada2a1c074afd69ddad7345089f2a5d5b3252c85234930737"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/2-3.webp",
+        "sha256": "e8c8cd726b884202417987b0c95d0b3914b3b10403d95c7fc8df871f1555aabe"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/3-3.webp",
+        "sha256": "bd8d39128b60c2da117e29273925063d0ad3060fae93dfc639fd539b0d7483c4"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/4-3.webp",
+        "sha256": "f8f7391df1cf41c4d71d9bd04c49cbac2e5cdbc357146e8a06986ba50faa957c"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/5-3.webp",
+        "sha256": "e19c88c1d58d6373b8db98bfca47f8de2ad871667dc7aefff55340fae3d80ec1"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/0-2.webp",
+        "sha256": "d3cf69cf3861c32c232d0205961928a2826208fecde0aa74ce48d910d11a2507"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/1-2.webp",
+        "sha256": "7868854cec5d6a52a90d78d6c069554fad636a481b5648aa5aaeafe059ab0033"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/2-2.webp",
+        "sha256": "160db731b11ee35da10302715ee6a1c0783c89bcbe33b164740a4f25adad624f"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/3-2.webp",
+        "sha256": "192b57132890f10c64b42ad0f7a4e835b962b55c496c60ac87e5ca81b1255805"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/4-2.webp",
+        "sha256": "a8c1537c1d75e8e211b281e9c5b3d9eb4ecf28d1f80c33beb3be55c5bf80485e"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/5-2.webp",
+        "sha256": "d0bb811c46f052ac89a7346adc4a87d38add8515158acc172f720481a9a7e648"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/0-1.webp",
+        "sha256": "c15ecdaec2c69c2ed272f64ceef6cb9fef36ff8b8cf14fc127cc5f7cc59ab334"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/1-1.webp",
+        "sha256": "6ba2cab399682d09d4c63091f2235f1d8ac003fde08707c8e16b6d4a30b7acef"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/2-1.webp",
+        "sha256": "d89e57ce388c958189ef3d67c97c40ff1e1bf983aa881c205fe5b06c3293e032"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/3-1.webp",
+        "sha256": "4eede04ca197b41fb1b81bbd4ac0e173f8ebdde84a6fd2441d66f601c69e60c5"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/4-1.webp",
+        "sha256": "b6ae096673435dd5f72228c7aa95e714fb226ecf5c27e9cc49b922176ca69235"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/5-1.webp",
+        "sha256": "3706af71aa7ae9d1e156c853693f7662ee0213bfd98440d4cc61c6301e318554"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/0-0.webp",
+        "sha256": "1c25a647ebfec9daad23a85e9d865660ada79a9289601e16912adf0089e0c050"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/1-0.webp",
+        "sha256": "bd219f01d215943b5aa6c05915581a109896a57141316f43ae0d53cba05c7cfc"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/2-0.webp",
+        "sha256": "fa8757c02adc7023d45da4188ab57d741f528de72d7fd06c998c2f4588f1b6b9"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/3-0.webp",
+        "sha256": "5999a08844a6f305e03487f0e4e1efab681bc41e38303424aeff7c9036b38f65"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/4-0.webp",
+        "sha256": "5cdb75e467c03f89825b0ab2378ff1e57c8f0e984847bde96aed4fceb4fa1fb3"
+      },
+      {
+        "path": "assets/maps/noklateo_shifted/5-0.webp",
+        "sha256": "faffd3d94d39064c91c701d8ad3b3c4ac2c1b337fa3669c399ed5323f777bf3e"
+      }
+    ]
+  },
+  {
+    "path": "assets/maps/previews/the_rotten_woods_shifted.webp",
+    "bytes": 29020,
+    "sha256": "5a8f8e5f0d4293dbfe21df2824d1d5e3687079835232f8ae975c2bc1077860cf",
+    "sources": [
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/0-5.webp",
+        "sha256": "102b4eeb305583bf4c28f37c0ade4804a3efd7721d6ff90b4f0d6dfec862f248"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/1-5.webp",
+        "sha256": "695cad98bbaa4949245bdbda26e1c5132a9bd08a1555635900152d8183f34677"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/2-5.webp",
+        "sha256": "ed578022edd925610c41dfcc95ae3d02def7317e8e84b0e1043e4d8be52c6c87"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/3-5.webp",
+        "sha256": "4f84a21506987564e53f3eecb59c9e30c9e244ec21d7a7f6379e1dac448026e8"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/4-5.webp",
+        "sha256": "3ece55ba52f096fec37e208a00bb75d7e6d61bba59d865ac5a005fa6851cfec7"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/5-5.webp",
+        "sha256": "080465c00def359f016e37ceada42ed4500133883bf16d8bc23db14a1a108a5d"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/0-4.webp",
+        "sha256": "b90667baf94728037f499311246e1ca73f059c97ffb4ca31bfac22b9960e1e1c"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/1-4.webp",
+        "sha256": "9e1b722bbe9bc4779400885f402485b9399af0c44807f2000e94738673d47635"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/2-4.webp",
+        "sha256": "604edb05239e54f74ba2537bce108a6badef8c3a6bfd690ba5af5251d5a189c3"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/3-4.webp",
+        "sha256": "271b0f0922e0797c9d837ede1f3d9963bfdf6ce92f8e614468f083fe74e983b1"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/4-4.webp",
+        "sha256": "c1e5ea47cbbac7060e346b12168ef77dbd2643fe47af6becac2aebccf232f5ec"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/5-4.webp",
+        "sha256": "1ad28216e54a16515c914eecd43907f30317cb40d8e8cba3a183de5ba8d811ff"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/0-3.webp",
+        "sha256": "a6276f884badd0e8838b6294f56534daad5d307d34250e1464bdcfc43cb03fc4"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/1-3.webp",
+        "sha256": "35cb5c051136c6fffd313fa3078dd82efef2e2909b6528d1c638e1dc684e60a2"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/2-3.webp",
+        "sha256": "a9509d1e19041f557de9306f9076bb5015c9a7847f019aba6f7ba00d35d44591"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/3-3.webp",
+        "sha256": "2d068393fa7b7568e881ea7cd18718e729c473c62d9d7234fa016b2ba75c2539"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/4-3.webp",
+        "sha256": "86ccf59e2c19e6337f285cb92a7d8499c404de7d014f455dcc977bd52559e285"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/5-3.webp",
+        "sha256": "a00c80dd8f4a35e6608056b7c198350cc347d6176d6b4f479ef81011925479af"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/0-2.webp",
+        "sha256": "5ebc913931481ff1563b79409c5fc2c518b33e919edf077e6cec87baad22900e"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/1-2.webp",
+        "sha256": "9922ca2424c553514140633f17e1daccd8b0959d244b9d56ef22897c2fdda1ca"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/2-2.webp",
+        "sha256": "9196159942ec20291e38c759166cb7c4b5bf0ac05c4741cb1245920b088ec076"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/3-2.webp",
+        "sha256": "ce185c25673c701d49e21f0cae8d0b531de8675f2273336509bd3e840f1b8c6d"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/4-2.webp",
+        "sha256": "8577d4217a959313a5f753368b92299c454b03456b2e38acfdd9e890be6cb052"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/5-2.webp",
+        "sha256": "0a1df431ea8db4272419b2abe95829aa7b07c95e5194910ad89c8ade6c951a6e"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/0-1.webp",
+        "sha256": "f19e89ff6fa9caa5303444d27e0af2982f283f55a053bc819d14d4886aec1710"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/1-1.webp",
+        "sha256": "167c74eacc14b5e4fa20610eae76463753fa16591b621cd936f24ae36b4a43c8"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/2-1.webp",
+        "sha256": "b71a4e287542edc8685575d30a875e9ce26d837d03ca8c2de35912c62ad0e504"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/3-1.webp",
+        "sha256": "86d1e2f1c214f36627be7adbce80b2fe5a19855d50eb2c618343a1decd95b09f"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/4-1.webp",
+        "sha256": "285c83b6d6b4a16de3dace629094e85fa2731a74d4e8d36543325a1ed4aeae40"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/5-1.webp",
+        "sha256": "a66ad17ac7acf4dbe634491a4b78b11acda0104b56d07ad687fd8614787e641c"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/0-0.webp",
+        "sha256": "ce4d76bb75e323a2ee293afb43bbe49a74c156eb31c28a81e7693afbffd7ddbe"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/1-0.webp",
+        "sha256": "ad9ff0144135f24dee2bb4f698d41775459ae0af8684dcccede3ca2a1f7f0c02"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/2-0.webp",
+        "sha256": "a508c4ba2468bd758fcae29fb8e346d6cfc64bf3b79a739a0d9dfc7c8d809d81"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/3-0.webp",
+        "sha256": "c09bef69ef0791bf5e17ac2046a2544ca6226279e27c50fe11efec5a07ca2f49"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/4-0.webp",
+        "sha256": "cacf501dabd0578fc2cc170f4a224b33402f9e97c38147da41390feae1dabb04"
+      },
+      {
+        "path": "assets/maps/the_rotten_woods_shifted/5-0.webp",
+        "sha256": "57d2a5ee52925dcfcd28796fcee004f0fd8ff313faa79a7cd09bb5e1f8c6d4cc"
+      }
+    ]
+  },
+  {
+    "path": "assets/maps/previews/great_hollow.webp",
+    "bytes": 17510,
+    "sha256": "4f162cc4eb7467a6c56381fd539fefff0a071ef127eff7052e8ef88f40c9a712",
+    "sources": [
+      {
+        "path": "assets/maps/great_hollow/0-5.webp",
+        "sha256": "8fff75670dd0dc6dfb5055bec46ecce114612fde9bb8a8ffa94792e947272b1d"
+      },
+      {
+        "path": "assets/maps/great_hollow/1-5.webp",
+        "sha256": "7a84cdf7ba6e203cc47eaf42340ea179f7ba9219082975f9db3566880fb69b21"
+      },
+      {
+        "path": "assets/maps/great_hollow/2-5.webp",
+        "sha256": "c77a923326f3844c0529bf60f1f1e367d30004c81e0d60f9be09ba5db978cf30"
+      },
+      {
+        "path": "assets/maps/great_hollow/3-5.webp",
+        "sha256": "9ba7a7611418bcd39df5ffb5010b5de6d28099bddf2134ec2f9bb8add65126d9"
+      },
+      {
+        "path": "assets/maps/great_hollow/4-5.webp",
+        "sha256": "e48f2eaada1a9aa3b3f0f79dd5f554210deb079938e6af9563bf3487254c740c"
+      },
+      {
+        "path": "assets/maps/great_hollow/5-5.webp",
+        "sha256": "73e78007117f45be61fb75229057d25f11f33a4ed3116513badb2f0471f04457"
+      },
+      {
+        "path": "assets/maps/great_hollow/0-4.webp",
+        "sha256": "caad2924e79623eed3fe29f84f9025be17ef825c8a44ad6c2618d1e2c4bd57ba"
+      },
+      {
+        "path": "assets/maps/great_hollow/1-4.webp",
+        "sha256": "21ed97a6ddd1e4956c4df70c79a43ca99f02da29fa9e9345019ac60d51762715"
+      },
+      {
+        "path": "assets/maps/great_hollow/2-4.webp",
+        "sha256": "d47d899114e35ac50259164b446bac2fb42ea14ba17585b6df9af8bb878b632d"
+      },
+      {
+        "path": "assets/maps/great_hollow/3-4.webp",
+        "sha256": "18951534e59c9d610b662ac6e883268afc6d436c45269327b3125f94ef10a642"
+      },
+      {
+        "path": "assets/maps/great_hollow/4-4.webp",
+        "sha256": "6d077d71248190f914ec0bbea3704db5595145c016a0c8d1870d5e800a6e89b3"
+      },
+      {
+        "path": "assets/maps/great_hollow/5-4.webp",
+        "sha256": "d7548ea8a9d12877b3f45755de2dc2215ab904879cee167b88ec6fb084ae9c39"
+      },
+      {
+        "path": "assets/maps/great_hollow/0-3.webp",
+        "sha256": "2abc04a324e5678dddaefbf8a8a6d99528d6f71a102399abbc82e460195f31fc"
+      },
+      {
+        "path": "assets/maps/great_hollow/1-3.webp",
+        "sha256": "ef9c17010fadec82f99a218e1ac895b9ecd1b61d397302e1b6131f3d95c23bf2"
+      },
+      {
+        "path": "assets/maps/great_hollow/2-3.webp",
+        "sha256": "cfeb756ec23f49daea28667ebedd683ca0c570ee40be2f11bcab6647ad28f07a"
+      },
+      {
+        "path": "assets/maps/great_hollow/3-3.webp",
+        "sha256": "1c5acc7f6b794144c88c5ca32c809c81229a3d000c52ddcc524d8ef784899443"
+      },
+      {
+        "path": "assets/maps/great_hollow/4-3.webp",
+        "sha256": "258a072ccdb4fc212119f0ae4c7ebb8dae722b1e36e0374035dd143ed1eab2cf"
+      },
+      {
+        "path": "assets/maps/great_hollow/5-3.webp",
+        "sha256": "276eb37e0716928d75f0310d33fc61b7f233cf5f01ce500d4eb1d6deae8583fc"
+      },
+      {
+        "path": "assets/maps/great_hollow/0-2.webp",
+        "sha256": "512235c856308b85ec9fbd82dc5557b1aa323b0771135f63004c2c959b17d559"
+      },
+      {
+        "path": "assets/maps/great_hollow/1-2.webp",
+        "sha256": "459235d6a16ddfbdd2d1fd2967dfd4c84f14c71e86e782247a2eee9482812770"
+      },
+      {
+        "path": "assets/maps/great_hollow/2-2.webp",
+        "sha256": "58be60ae45561eb7cc5274866c59e620d71788a41046f86509b238394f366811"
+      },
+      {
+        "path": "assets/maps/great_hollow/3-2.webp",
+        "sha256": "fb3f673687cd117095677f9dfefdc10fc5fdfae1b2b1452cfb4ab1ea915961b9"
+      },
+      {
+        "path": "assets/maps/great_hollow/4-2.webp",
+        "sha256": "c3c002e7234f989f4b90b17d24b0df0250727378983ba3a5be1d543b02f2c275"
+      },
+      {
+        "path": "assets/maps/great_hollow/5-2.webp",
+        "sha256": "2b4fb30a011edd02b7e38c45651a4f0a9658a1acf20bb457fdf33dcd05fdda6e"
+      },
+      {
+        "path": "assets/maps/great_hollow/0-1.webp",
+        "sha256": "d663bcf621b8b673f6b47d66d7049e27c233224ca98e37e2240ea1783a9e6c7a"
+      },
+      {
+        "path": "assets/maps/great_hollow/1-1.webp",
+        "sha256": "18fe8ae89fe20df112c93bbe393f936c2359243a2e6197a99a63c7e75e37ceef"
+      },
+      {
+        "path": "assets/maps/great_hollow/2-1.webp",
+        "sha256": "df404a16dd88ae2e9558991379d8c6fe6133a5b0585d0bcc68bf7e43788a8507"
+      },
+      {
+        "path": "assets/maps/great_hollow/3-1.webp",
+        "sha256": "f12d02b06142c86d3105a69914b370e980d0c19caf20025915bdfccf9619f595"
+      },
+      {
+        "path": "assets/maps/great_hollow/4-1.webp",
+        "sha256": "122993c2b1213d3326326d66f2e4488b5b1a0d89c2f15dafc039803c09c9cb80"
+      },
+      {
+        "path": "assets/maps/great_hollow/5-1.webp",
+        "sha256": "0c5dc9e61533bb96b14f7de8cd45ac50b15f0f47a70b8147b785dba98e1de8dd"
+      },
+      {
+        "path": "assets/maps/great_hollow/0-0.webp",
+        "sha256": "f4dc7223b6e219f9ac61839802e876c98ad7f1728a93c6f8cfe17633f508dece"
+      },
+      {
+        "path": "assets/maps/great_hollow/1-0.webp",
+        "sha256": "de2778054365aed1f4442fa2ca1ef48fdc4ff15886c442dcb66175947867dca7"
+      },
+      {
+        "path": "assets/maps/great_hollow/2-0.webp",
+        "sha256": "3e7bcee5a5a33c3b5c1ace26a70c2db80728a3a4abb9f6b20bd71405fa6cb661"
+      },
+      {
+        "path": "assets/maps/great_hollow/3-0.webp",
+        "sha256": "60997b7cd1597b470e275acf0fd7db70aae6e8c58834c23d222e91c5856f7785"
+      },
+      {
+        "path": "assets/maps/great_hollow/4-0.webp",
+        "sha256": "24a6db7a3a026f5a6a9c3738327510517b193381e1c29ba6c1fcfcbcb07e3060"
+      },
+      {
+        "path": "assets/maps/great_hollow/5-0.webp",
+        "sha256": "e4da70fbb65543fd85b6e957fabae959a6e1ffc5d7fd39f5f85c072d230a7eb0"
+      }
+    ]
+  },
+  {
+    "path": "assets/maps/previews/great_hollow_under.webp",
+    "bytes": 17402,
+    "sha256": "5035b3ce8e66d564cee72ed5d1927458c11afedef120dff528dc2217d456312b",
+    "sources": [
+      {
+        "path": "assets/maps/great_hollow_under/0-5.webp",
+        "sha256": "8fff75670dd0dc6dfb5055bec46ecce114612fde9bb8a8ffa94792e947272b1d"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/1-5.webp",
+        "sha256": "7a84cdf7ba6e203cc47eaf42340ea179f7ba9219082975f9db3566880fb69b21"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/2-5.webp",
+        "sha256": "c77a923326f3844c0529bf60f1f1e367d30004c81e0d60f9be09ba5db978cf30"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/3-5.webp",
+        "sha256": "9ba7a7611418bcd39df5ffb5010b5de6d28099bddf2134ec2f9bb8add65126d9"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/4-5.webp",
+        "sha256": "e48f2eaada1a9aa3b3f0f79dd5f554210deb079938e6af9563bf3487254c740c"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/5-5.webp",
+        "sha256": "73e78007117f45be61fb75229057d25f11f33a4ed3116513badb2f0471f04457"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/0-4.webp",
+        "sha256": "caad2924e79623eed3fe29f84f9025be17ef825c8a44ad6c2618d1e2c4bd57ba"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/1-4.webp",
+        "sha256": "fc222df4bc600befd22e4f917f7a81535b6fd64492f0adaf998fa4627ab5992e"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/2-4.webp",
+        "sha256": "5bc54f151a43ad4b4ba8d4f4ffbe6fd4da9bf7ea13c9911be543fa50ca74eedc"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/3-4.webp",
+        "sha256": "18951534e59c9d610b662ac6e883268afc6d436c45269327b3125f94ef10a642"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/4-4.webp",
+        "sha256": "6d077d71248190f914ec0bbea3704db5595145c016a0c8d1870d5e800a6e89b3"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/5-4.webp",
+        "sha256": "d7548ea8a9d12877b3f45755de2dc2215ab904879cee167b88ec6fb084ae9c39"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/0-3.webp",
+        "sha256": "2abc04a324e5678dddaefbf8a8a6d99528d6f71a102399abbc82e460195f31fc"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/1-3.webp",
+        "sha256": "1ec733410eaaaa23091dba4ee581b31c3c55c4252dba87be10121fa2e0ca5e4c"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/2-3.webp",
+        "sha256": "636ac89fbfa71afec824de747b24042486d929c9c3d2c174656f6be62b7472e8"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/3-3.webp",
+        "sha256": "6f65617e468088d4c67c31f909195a9c590c54040bccef16bf706af74a48a5d5"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/4-3.webp",
+        "sha256": "dddf337c920a53fcd08aaf7adf2fa12e8a32bbb2c6dadd7906406597bced3321"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/5-3.webp",
+        "sha256": "276eb37e0716928d75f0310d33fc61b7f233cf5f01ce500d4eb1d6deae8583fc"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/0-2.webp",
+        "sha256": "512235c856308b85ec9fbd82dc5557b1aa323b0771135f63004c2c959b17d559"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/1-2.webp",
+        "sha256": "459235d6a16ddfbdd2d1fd2967dfd4c84f14c71e86e782247a2eee9482812770"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/2-2.webp",
+        "sha256": "92937e0b51fe9cdc36d47d34b4e6194be145c00bfc6c49b79af578f698c28f8d"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/3-2.webp",
+        "sha256": "b93fd6492e53da05713a344466c63b89f6c8293b0d16c4a73930c2ceb064799f"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/4-2.webp",
+        "sha256": "142eb7b9fc4a9decf6d0fb365e03c3cf0a448b440818b55363728d7350f154ac"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/5-2.webp",
+        "sha256": "2b4fb30a011edd02b7e38c45651a4f0a9658a1acf20bb457fdf33dcd05fdda6e"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/0-1.webp",
+        "sha256": "d663bcf621b8b673f6b47d66d7049e27c233224ca98e37e2240ea1783a9e6c7a"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/1-1.webp",
+        "sha256": "18fe8ae89fe20df112c93bbe393f936c2359243a2e6197a99a63c7e75e37ceef"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/2-1.webp",
+        "sha256": "97fd10f1a543f2aec5f800dc76e201aa5cc1007b24c4593266b88ce6e7ae19f2"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/3-1.webp",
+        "sha256": "6f9f544b8dc7ed455690be0b8e169b6fe90cb304730ac80b2f6b41841577e7dc"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/4-1.webp",
+        "sha256": "258bb4b2bf9155f119d1fcd1c92d5bc7577bb25ab068008858217936eeafd65b"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/5-1.webp",
+        "sha256": "0c5dc9e61533bb96b14f7de8cd45ac50b15f0f47a70b8147b785dba98e1de8dd"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/0-0.webp",
+        "sha256": "f4dc7223b6e219f9ac61839802e876c98ad7f1728a93c6f8cfe17633f508dece"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/1-0.webp",
+        "sha256": "de2778054365aed1f4442fa2ca1ef48fdc4ff15886c442dcb66175947867dca7"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/2-0.webp",
+        "sha256": "3e7bcee5a5a33c3b5c1ace26a70c2db80728a3a4abb9f6b20bd71405fa6cb661"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/3-0.webp",
+        "sha256": "60997b7cd1597b470e275acf0fd7db70aae6e8c58834c23d222e91c5856f7785"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/4-0.webp",
+        "sha256": "24a6db7a3a026f5a6a9c3738327510517b193381e1c29ba6c1fcfcbcb07e3060"
+      },
+      {
+        "path": "assets/maps/great_hollow_under/5-0.webp",
+        "sha256": "e4da70fbb65543fd85b6e957fabae959a6e1ffc5d7fd39f5f85c072d230a7eb0"
+      }
+    ]
+  }
+]

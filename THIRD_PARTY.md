@@ -88,3 +88,12 @@ not a difficulty ranking invented from an enemy name. Conflicting or missing
 facts remain neutral. DLC bound encounters use their own explicit icon field.
 The building-symbol vocabulary was cross-checked with the
 [official starter guide](https://media-center.bandainamcoent.eu/games/elden-ring-nightreign/ERN_FuturePress_StarterGuide.pdf).
+
+### Lightweight map previews
+
+`assets/maps/previews/` is generated from the existing map tiles by
+`tools/build-map-previews.py`, preserving the same `(column, 5 - row)` ordering.
+The 512-pixel previews composite transparency onto the viewer's `#252c2a`
+background before WebP encoding. Source/output hashes are recorded in
+`assets/maps/previews/provenance.json`. These remain derived game map imagery,
+with the ownership and sources documented above.
