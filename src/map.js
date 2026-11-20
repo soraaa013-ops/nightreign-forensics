@@ -1,9 +1,15 @@
-import { createAtlas } from "./map-atlas.js?v=flow-1";
+const compareChinese = new Intl.Collator("zh-CN").compare;
+import { decodeMapRuntime } from "./map-runtime.js?v=perf-1";
+import { createAtlas } from "./map-atlas.js?v=perf-1";
 import { recommendObservation } from "./map-filter.js";
-import { queryMaps, matchesObservation, facetCounts } from "./map-query.js";
+import {
+  queryMaps,
+  facetCounts,
+  countObservationValues,
+} from "./map-query.js?v=perf-1";
 import { matchesSearch } from "./search.js";
 import { readDraft, writeDraft } from "./draft.js";
-import { validateMapState } from "./map-state.js";
+import { validateMapState } from "./map-state.js?v=perf-1";
 import { loadJson } from "./locale.js";
 const $ = (selector) => document.querySelector(selector);
 const form = $("#map-form"),
@@ -131,7 +137,7 @@ function refreshLocations() {
       (slot) => !clueCategory.value || slot.category === clueCategory.value,
     );
   const keys = [...new Set(slots.map((slot) => slot.key))].sort((a, b) =>
-    zh(a).localeCompare(zh(b), "zh-CN"),
+    compareChinese(zh(a), zh(b)),
   );
   clueLocation.replaceChildren(
     new Option("不限", ""),
@@ -142,32 +148,16 @@ function refreshLocations() {
 function renderClues() {
   const category = clueCategory.value,
     key = clueLocation.value;
-  const all = new Set(
-    mapData.records.flatMap((record) =>
-      record.slots
-        .filter(
-          (slot) =>
-            (!category || slot.category === category) &&
-            (!key || slot.key === key),
-        )
-        .map((slot) => slot.value || "empty"),
-    ),
-  );
-  // An empty location is only meaningful after choosing an exact position.
-  if (!key) all.delete("empty");
-  const options = [...all]
-    .filter((value) =>
+  const counts = countObservationValues(candidates, { key, category });
+  if (!key) counts.delete("empty");
+  const options = [...counts]
+    .filter(([value]) =>
       matchesSearch(
         value === "empty" ? "此处为空" : zh(value),
         clueSearch.value,
       ),
     )
-    .map((value) => ({
-      value,
-      count: candidates.filter((record) =>
-        matchesObservation(record, { key, category, value }),
-      ).length,
-    }))
+    .map(([value, count]) => ({ value, count }))
     .filter(
       (option) =>
         option.count > 0 &&
@@ -190,7 +180,7 @@ function renderClues() {
       usefulness(a) - usefulness(b) ||
       Math.abs(a.count - candidates.length / 2) -
         Math.abs(b.count - candidates.length / 2) ||
-      zh(a.value).localeCompare(zh(b.value), "zh-CN"),
+      compareChinese(zh(a.value), zh(b.value)),
   );
   $("#clue-count").textContent = `${options.length} 个匹配`;
   $("#clue-results").replaceChildren(
@@ -560,26 +550,7 @@ async function init() {
   retry.hidden = true;
   try {
     [mapData, dictionary] = await Promise.all([
-      Promise.all([
-        loadJson("data/map-data.json"),
-        loadJson("data/map-dlc.json?v=towers-1"),
-      ]).then(([base, dlc]) => {
-        const records = [...base.records, ...dlc.records];
-        return {
-          ...base,
-          records,
-          facets: Object.fromEntries(
-            [
-              ["nightlords", "nightlord"],
-              ["mapTypes", "mapType"],
-              ["spawns", "spawn"],
-            ].map(([plural, key]) => [
-              plural,
-              [...new Set(records.map((r) => r[key]))],
-            ]),
-          ),
-        };
-      }),
+      loadJson("data/map-runtime.json?v=perf-1").then(decodeMapRuntime),
       loadJson("data/zh-CN.json?v=towers-1"),
     ]);
     $("#base-filters").open = false;

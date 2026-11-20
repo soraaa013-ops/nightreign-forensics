@@ -1,4 +1,4 @@
-import { matchesObservation } from "./map-query.js";
+import { matchesObservation } from "./map-query.js?v=perf-1";
 // URL and session drafts use the original stable keys; display labels stay localized.
 export function validateMapState(value, data) {
   if (!value || typeof value !== "object" || Array.isArray(value)) return null;

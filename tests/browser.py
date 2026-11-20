@@ -116,7 +116,7 @@ with sync_playwright() as p:
  assert not re.search('[A-Za-zＡ-Ｚａ-ｚ]|绝活|对著',page.locator('main').inner_text())
  page.screenshot(path=str(OUT/'map-result-desktop.png'),full_page=True)
  passed('Unique match, grouped complete details, Chinese-only content')
- for filename,path,retry in [('game-data.json','/','重新加载规则'),('map-data.json','/map.html','重新加载地图'),('zh-CN.json','/','重新加载规则')]:
+ for filename,path,retry in [('game-data.json','/','重新加载规则'),('map-runtime.json*','/map.html','重新加载地图'),('zh-CN.json','/','重新加载规则')]:
   pattern='**/data/'+filename;page.route(pattern,lambda route:route.fulfill(status=503,body='unavailable'));ready(page,path);expect(page.get_by_role('button',name=retry)).to_be_visible()
   expect(page.locator('#effect-query' if path=='/' else '#clue-search')).to_be_disabled();page.unroute(pattern);page.get_by_role('button',name=retry).click();expect(page.get_by_role('button',name=retry)).to_be_hidden()
  passed('Rule/map/locale loading failure and retry')

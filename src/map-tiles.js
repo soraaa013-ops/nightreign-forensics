@@ -53,14 +53,10 @@ export function prepareMap(layout) {
     maps.set(layout, entry);
     return entry;
   }
-  const resources = [];
-  for (let row = 0; row < 6; row++)
-    for (let col = 0; col < 6; col++)
-      resources.push(
-        imageResource(`assets/maps/${layout}/${col}-${5 - row}.webp`),
-      );
-  const entry = { ready: false, images: resources.map((r) => r.image) };
-  entry.promise = Promise.all(resources.map((r) => r.promise))
+  const resource = imageResource(`assets/maps/hd/${layout}.webp`, "low");
+  resource.image.className = "atlas-overview";
+  const entry = { ready: false, images: [resource.image] };
+  entry.promise = resource.promise
     .then(() => {
       entry.ready = true;
       // Pending entries and the active request remain intact, older decoded maps are released.

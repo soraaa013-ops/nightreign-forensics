@@ -32,19 +32,21 @@ export function pointIcon(point, records, state, facts) {
   const marked = state.observations.find((o) => o.key === point.key);
   // A building observation is enough to identify its icon; its boss may still vary.
   if (marked && typeIcon(marked.value)) return typeIcon(marked.value);
-  const icons = records.map((record) => {
+  let common;
+  for (const record of records) {
     const slot = record.slots.find((s) => s.key === point.key);
     if (!slot?.value) return "unknown";
-    return (
-      facts[String(record.id)]?.[point.key] || typeIcon(slot.value) || "unknown"
-    );
-  });
-  return icons.length && icons[0] && icons.every((icon) => icon === icons[0])
-    ? icons[0]
-    : "unknown";
+    const icon =
+      facts[String(record.id)]?.[point.key] ||
+      typeIcon(slot.value) ||
+      "unknown";
+    if (icon === "unknown" || (common && common !== icon)) return "unknown";
+    common = icon;
+  }
+  return common || "unknown";
 }
 export function iconPath(icon) {
-  return icon && icon !== "unknown" ? `assets/map-icons/${icon}.png` : null;
+  return icon && icon !== "unknown" ? `assets/map-icons/ui/${icon}.webp` : null;
 }
 
 // Accessible names are not rendered as map text or hover tooltips.

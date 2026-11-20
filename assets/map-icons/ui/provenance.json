@@ -1,0 +1,170 @@
+[
+  {
+    "source": "assets/map-icons/boss.png",
+    "sourceSha256": "4ccd7363a122b6d852af8deac54dd1bdc6b7fb90f68ce3be8341b9bb4aeedf60",
+    "path": "assets/map-icons/ui/boss.webp",
+    "sha256": "7a3b768c3b9d7924f712dfd8dcf42c96dc6d737ac3a659defc7e678b00b59db0",
+    "bytes": 7002
+  },
+  {
+    "source": "assets/map-icons/cabin.png",
+    "sourceSha256": "ae9a51094fc15ff3529667c3ab72adc93c2dfc82e1a68a106e5625fcc0f6780f",
+    "path": "assets/map-icons/ui/cabin.webp",
+    "sha256": "8348f32b8ceedce53218d54ddbea094209db487cb6688b7c1ec55c501da88174",
+    "bytes": 6486
+  },
+  {
+    "source": "assets/map-icons/cart.png",
+    "sourceSha256": "8510cfab1599b41f29370ab5c3b5ec69a2ff163146a4974702141d7ad6510a6c",
+    "path": "assets/map-icons/ui/cart.webp",
+    "sha256": "3d7df205550e3b112038106a499b2255c3d88724171615ece53e915175c6a25b",
+    "bytes": 6868
+  },
+  {
+    "source": "assets/map-icons/castle.png",
+    "sourceSha256": "8ee904e46e90870e94f9e5e10bdda776f9d1da8b143ac118959c00e0c6d9f732",
+    "path": "assets/map-icons/ui/castle.webp",
+    "sha256": "708761e9fa01cd8addd728578774b683995c079c935822b55e83b08f68c5d052",
+    "bytes": 10030
+  },
+  {
+    "source": "assets/map-icons/cave.png",
+    "sourceSha256": "43687648b248c98aac2bb452af07724a7c236c13459fd2565ed25d6ce0dd3267",
+    "path": "assets/map-icons/ui/cave.webp",
+    "sha256": "1562ebd70698e0f647c67ecf3e0475c8e4f38405ac1a68431dca07cd54bcb8d1",
+    "bytes": 7290
+  },
+  {
+    "source": "assets/map-icons/church.png",
+    "sourceSha256": "9aaaeaee6c8fa90ecab451e616a0ebda06a7473b6980bec51af2a7a8e4800411",
+    "path": "assets/map-icons/ui/church.webp",
+    "sha256": "42c6fd65c2802858e108b03ff2beeca8eb22631b25639d930a6f8cbf33220530",
+    "bytes": 7408
+  },
+  {
+    "source": "assets/map-icons/city1.png",
+    "sourceSha256": "d5351f58920b75c19e8befb14537a7381be91011d824fa392d8dc1b180ddb6b2",
+    "path": "assets/map-icons/ui/city1.webp",
+    "sha256": "3f1274526d1b00ce462580ded983b79812ccbc615d3f8e81a33a2e0b38ef2aa2",
+    "bytes": 6002
+  },
+  {
+    "source": "assets/map-icons/city2.png",
+    "sourceSha256": "a0610cddcfccc2964e1881f69af821e88d0b9c0662988ed09dda578863386f19",
+    "path": "assets/map-icons/ui/city2.webp",
+    "sha256": "108a06b1d7a91c17b9016ace64a8d3288fb88c5223ce9591b17349f91ee9d13e",
+    "bytes": 6802
+  },
+  {
+    "source": "assets/map-icons/danger-boss.png",
+    "sourceSha256": "aa951ecf9f71c54ee26580ff01b6b90c38279826b4c84f09d60b6f1d83c01bf0",
+    "path": "assets/map-icons/ui/danger-boss.webp",
+    "sha256": "fcf64d24e8c431b1fbad873e910eb4d334ecc9830d2e4dc9201b91e39633f355",
+    "bytes": 10224
+  },
+  {
+    "source": "assets/map-icons/encampment.png",
+    "sourceSha256": "aa6749c4ba7d5002cbc760cd8a61389a5a6291f54a07797c71cd5cb8f43aca0a",
+    "path": "assets/map-icons/ui/encampment.webp",
+    "sha256": "44b127f0502b91979d5028e02c399150e009e5d8dbca33beec9e95376c550657",
+    "bytes": 6262
+  },
+  {
+    "source": "assets/map-icons/evergaol.png",
+    "sourceSha256": "4c277dd8406250eb358986cf5689770bef36d1f71e702e6c2d343f922bb2da4d",
+    "path": "assets/map-icons/ui/evergaol.webp",
+    "sha256": "b9f9e75a9445ee7d0f0330aeca71c405ae28d8ef11da4c88519c14402fd34112",
+    "bytes": 7086
+  },
+  {
+    "source": "assets/map-icons/fort.png",
+    "sourceSha256": "caaaead5475e464ecf9731c53dd463ce6d06febbb3dec491da7a67b27ba7c03e",
+    "path": "assets/map-icons/ui/fort.webp",
+    "sha256": "649d5f15c44c1406e4d79a45e034d4a179cc6cb959719a855dadba26469d6bf1",
+    "bytes": 8332
+  },
+  {
+    "source": "assets/map-icons/mark.png",
+    "sourceSha256": "f40a53c9e429c75aa21748f1ee069f9a39dd152f3260d9c365a00bee457a7f60",
+    "path": "assets/map-icons/ui/mark.webp",
+    "sha256": "20ef875d44306623e6815fbb32e905e9386821520bc2b79b2578d92360973630",
+    "bytes": 5234
+  },
+  {
+    "source": "assets/map-icons/rare-sorcerers-rise.png",
+    "sourceSha256": "3f9b31a6b70053c7aef4d349838f8823197adb9df2628469a02de7aa819e927a",
+    "path": "assets/map-icons/ui/rare-sorcerers-rise.webp",
+    "sha256": "b66049bf884ba6234c86f2d6e85575d3ad5f4e016e950ab9f974cf62c71ebf76",
+    "bytes": 6026
+  },
+  {
+    "source": "assets/map-icons/ruins.png",
+    "sourceSha256": "6f2e17938ddf6a5d8e9ededa68da6e98ecd7d2f490fb06ae823b343ec6fc86e2",
+    "path": "assets/map-icons/ui/ruins.webp",
+    "sha256": "ff2b21d508915e2a089cc7e1056894f172e5f8a7f27034ce35bfa16926cb1e14",
+    "bytes": 5874
+  },
+  {
+    "source": "assets/map-icons/scale-bearing-merchant.png",
+    "sourceSha256": "86abcab6a78f5b068a76d44dbac67db237adbaeb8e5f59e3b7adb7195879d31d",
+    "path": "assets/map-icons/ui/scale-bearing-merchant.webp",
+    "sha256": "b90a3051fa83864e575ae1150a64a8e5f6d89cca7384ac2be35b37f5aab728c3",
+    "bytes": 4502
+  },
+  {
+    "source": "assets/map-icons/smallcamp.png",
+    "sourceSha256": "f023d5036d53b8738fccba8a31c20d636f2a6798fa8a707fc5ff42106145e0e0",
+    "path": "assets/map-icons/ui/smallcamp.webp",
+    "sha256": "f502a177d09380d3e5e0d0bf37deed921f08f623db35b175c6ed0ab5db3b2dac",
+    "bytes": 6814
+  },
+  {
+    "source": "assets/map-icons/sorcerers-rise.png",
+    "sourceSha256": "ddd1475e14fe45ed746b58f8abbca36f5d988221acad19580c199a0b7943a230",
+    "path": "assets/map-icons/ui/sorcerers-rise.webp",
+    "sha256": "f151a899007a6b3a5552cfa33783d391c4029de5c2f8356950a391667a455260",
+    "bytes": 5702
+  },
+  {
+    "source": "assets/map-icons/spawn.png",
+    "sourceSha256": "82036878259901c312fe85f282d1b3c4ec7c3b3bc87bc5f998e00d85d62d339d",
+    "path": "assets/map-icons/ui/spawn.webp",
+    "sha256": "506bc1769b33ce86c488f1101565a6406a7f753cbbd5a94bc79be30bda43994a",
+    "bytes": 12872
+  },
+  {
+    "source": "assets/map-icons/star-merchant.png",
+    "sourceSha256": "d7b2170d52c062516b6231a1fe3063a97955d6842cfd4558e70e68cad8853f08",
+    "path": "assets/map-icons/ui/star-merchant.webp",
+    "sha256": "0f49fe397ce636fdcee64857db0ba7a31c6b25bac31d3e86ec7bcca56b800763",
+    "bytes": 3966
+  },
+  {
+    "source": "assets/map-icons/temple.png",
+    "sourceSha256": "8f98acd91b41d253a0c368bc02c1f3ae66aafbf09e7eafed3b8aa022efeb1171",
+    "path": "assets/map-icons/ui/temple.webp",
+    "sha256": "f05c6df89562d8c90f7b6d411540357c58dcdb5a7b5846bae162ff0935163552",
+    "bytes": 7432
+  },
+  {
+    "source": "assets/map-icons/tower.png",
+    "sourceSha256": "851f52969452087cf933f839d897215d945efca3ad03e8b220b337b04625bbd5",
+    "path": "assets/map-icons/ui/tower.webp",
+    "sha256": "8c8b21f3694877a7f1cf15360e634b907fe2ebdbbcbaaf1afbd5b02a2874822e",
+    "bytes": 8294
+  },
+  {
+    "source": "assets/map-icons/township.png",
+    "sourceSha256": "cd3dde4e4ffc914049f71ee71d08f0f70f03b846a8f48a415b8eb6f39f76eca6",
+    "path": "assets/map-icons/ui/township.webp",
+    "sha256": "9fa6a48fc15686175d3f8b2e263a6123c029f4670eb25c5d0b388869312d3325",
+    "bytes": 4806
+  },
+  {
+    "source": "assets/map-icons/village.png",
+    "sourceSha256": "b84b075cc751148b4196c57f71f2780348ff996d5cedb4fb268fcfc32544572d",
+    "path": "assets/map-icons/ui/village.webp",
+    "sha256": "efb022fae41923f76be1c4ea82cab24085b7b8727acd74620ec3b56a3b6b8556",
+    "bytes": 6766
+  }
+]

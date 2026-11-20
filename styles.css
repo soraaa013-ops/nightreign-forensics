@@ -2217,7 +2217,8 @@ footer {
   object-fit: contain;
 }
 
-#atlas-tiles .atlas-preview {
+#atlas-tiles .atlas-preview,
+#atlas-tiles .atlas-overview {
   grid-column: 1 / -1;
   grid-row: 1 / -1;
 }

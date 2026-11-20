@@ -97,3 +97,7 @@ The 512-pixel previews composite transparency onto the viewer's `#252c2a`
 background before WebP encoding. Source/output hashes are recorded in
 `assets/maps/previews/provenance.json`. These remain derived game map imagery,
 with the ownership and sources documented above.
+
+## 浏览器图片派生资源
+
+`assets/maps/hd/` 由原有每图 36 张切片按原方向拼合，保留 1536×1536 分辨率，使用 WebP 质量 88。`assets/map-icons/ui/` 由原有 PNG 图标生成，最长边 128 像素、保留透明度，使用 WebP 质量 85。各目录的 `provenance.json` 记录来源与校验和；原文件保留，授权及归属沿用上述来源。

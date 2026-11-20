@@ -20,31 +20,27 @@ export function pointObservations(state, point, observation) {
 }
 export function pointConsensus(records, point) {
   if (!records.length) return null;
-  if (point.tower) {
-    const floors = records.map(
-      (r) => r.slots.find((s) => s.key === point.key)?.floors,
-    );
+  if (point.spawn)
+    return records.every((r) => r.spawn === point.spawn) ? "spawn" : null;
+  const first = records[0].slots.find((s) => s.key === point.key);
+  if (!first) return null;
+  const value = first.value || "empty";
+  if (
+    point.tower &&
+    (first.floors?.length !== 3 || first.floors.some((v) => !v))
+  )
+    return null;
+  for (let i = 1; i < records.length; i++) {
+    const slot = records[i].slots.find((s) => s.key === point.key);
+    if (!slot || (slot.value || "empty") !== value) return null;
     if (
-      !floors[0] ||
-      floors[0].length !== 3 ||
-      !floors.every(
-        (f) => f?.length === 3 && f.every((v, i) => v && v === floors[0][i]),
-      )
+      point.tower &&
+      (slot.floors?.length !== 3 ||
+        slot.floors.some((v, j) => !v || v !== first.floors[j]))
     )
       return null;
   }
-  const values = records.map((record) =>
-    point.spawn
-      ? record.spawn === point.spawn
-        ? "spawn"
-        : null
-      : record.slots.some((slot) => slot.key === point.key)
-        ? record.slots.find((slot) => slot.key === point.key).value || "empty"
-        : null,
-  );
-  return values[0] && values.every((value) => value === values[0])
-    ? values[0]
-    : null;
+  return value;
 }
 
 // Merge overlapping screen hit areas, not geographic locations. Every point stays in a group.

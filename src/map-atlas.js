@@ -1,22 +1,23 @@
+const compareChinese = new Intl.Collator("zh-CN").compare;
 import {
   previewMap,
   prepareMap,
   warmMapPreviews,
-} from "./map-tiles.js?v=preload-1";
+} from "./map-tiles.js?v=perf-1";
 import {
   pointIcon,
   typeIcon,
   iconPath,
   iconLabel,
-} from "./map-icons.js?v=names-1";
-import { pointTitle } from "./map-presentation.js?v=names-1";
+} from "./map-icons.js?v=perf-1";
+import { pointTitle } from "./map-presentation.js?v=perf-1";
 import { towerFloors } from "./map-tower.js?v=towers-1";
-import { queryMaps } from "./map-query.js";
+import { queryMaps } from "./map-query.js?v=perf-1";
 import {
   pointInLayer,
   pointObservations,
   pointConsensus,
-} from "./map-spatial.js?v=towers-1";
+} from "./map-spatial.js?v=perf-1";
 import {
   detailLevel,
   layoutMarkers,
@@ -32,8 +33,7 @@ export async function createAtlas({ data, zh, getState, change }) {
     tiles = $("atlas-tiles"),
     layer = $("atlas-points"),
     editor = $("atlas-editor");
-  const [iconData, geometry, extension] = await Promise.all([
-    loadJson("data/map-icons.json?v=icons-1"),
+  const [geometry, extension] = await Promise.all([
     loadJson("data/map-geometry.json"),
     loadJson("data/map-dlc-geometry.json?v=towers-1"),
   ]);
@@ -188,7 +188,19 @@ export async function createAtlas({ data, zh, getState, change }) {
       apply({ ...getState(), spawn: point.spawn }, "已标记出生位置");
     } else open(point);
   }
+  let drawFrame = 0;
+  function scheduleDraw() {
+    if (!drawFrame)
+      drawFrame = requestAnimationFrame(() => {
+        drawFrame = 0;
+        draw();
+      });
+  }
   function draw() {
+    if (drawFrame) {
+      cancelAnimationFrame(drawFrame);
+      drawFrame = 0;
+    }
     measure();
     tiles.style.width = `${size}px`;
     tiles.style.height = `${size}px`;
@@ -336,6 +348,7 @@ export async function createAtlas({ data, zh, getState, change }) {
     next,
     cx = viewport.clientWidth / 2,
     cy = viewport.clientHeight / 2,
+    deferred = false,
   ) {
     measure();
     const x = (cx - origin.x) / size,
@@ -348,7 +361,8 @@ export async function createAtlas({ data, zh, getState, change }) {
       x: cx - x * newSize - (viewport.clientWidth - newSize) / 2,
       y: cy - y * newSize - (viewport.clientHeight - newSize) / 2,
     };
-    draw();
+    if (deferred) scheduleDraw();
+    else draw();
   }
   function close(restoreFocus = true) {
     editor.hidden = true;
@@ -463,7 +477,7 @@ export async function createAtlas({ data, zh, getState, change }) {
           const list = el("ul");
           floor.values
             .map(zh)
-            .sort((a, b) => a.localeCompare(b, "zh-CN"))
+            .sort((a, b) => compareChinese(a, b))
             .forEach((v) => list.append(el("li", v)));
           choices.append(list);
           row.append(choices);
@@ -666,7 +680,7 @@ export async function createAtlas({ data, zh, getState, change }) {
             .sort(
               (a, b) =>
                 (exactCounts.get(b) || 0) - (exactCounts.get(a) || 0) ||
-                zh(a).localeCompare(zh(b), "zh-CN"),
+                compareChinese(zh(a), zh(b)),
             )
             .map((v) => makeOption(v)),
         );
@@ -826,23 +840,33 @@ export async function createAtlas({ data, zh, getState, change }) {
                 r.slots.some((slot) => slot.key === p.key && slot.value),
               ))),
     );
+    const previousButtons = new Map(
+      buttons.map((item) => [item.point.id, item.b]),
+    );
     buttons = points.map((point) => {
-      const icon = pointIcon(point, records, getState(), iconData.records);
-      const b = btn(
-        "",
-        () => activateGroup({ x: point.x, y: point.y, points: [point] }, true),
-        "atlas-point",
-      );
+      const icon = pointIcon(point, records, getState(), data.iconRecords);
+      const b =
+        previousButtons.get(point.id) ||
+        btn(
+          "",
+          () =>
+            activateGroup({ x: point.x, y: point.y, points: [point] }, true),
+          "atlas-point",
+        );
       b.dataset.point = point.id;
-      b.dataset.icon = icon;
-      const path = iconPath(icon);
-      if (path) {
-        const img = el("img");
-        img.src = path;
-        img.alt = "";
-        img.draggable = false;
-        b.append(img);
-      } else b.classList.add("atlas-unknown");
+      if (b.dataset.icon !== icon) {
+        b.dataset.icon = icon;
+        const path = iconPath(icon);
+        b.classList.toggle("atlas-unknown", !path);
+        b.replaceChildren();
+        if (path) {
+          const img = el("img");
+          img.src = path;
+          img.alt = "";
+          img.draggable = false;
+          b.append(img);
+        }
+      }
       const headline = label(point);
       b.setAttribute("aria-label", headline || iconLabel(icon));
       b.setAttribute("aria-description", zh(point.location || point.spawn));
@@ -944,8 +968,9 @@ export async function createAtlas({ data, zh, getState, change }) {
     if (!pointers.has(event.pointerId)) {
       const near = nearEvent(event);
       if (hover !== near[0]) {
+        hover?.button.classList.remove("hovered");
         hover = near[0] || null;
-        draw();
+        hover?.button.classList.add("hovered");
       }
       return;
     }
@@ -958,6 +983,7 @@ export async function createAtlas({ data, zh, getState, change }) {
           (gesture.zoom * distance) / gesture.distance,
           (a.x + b.x) / 2,
           (a.y + b.y) / 2,
+          true,
         );
       gesture.moved = true;
       return;
@@ -973,13 +999,14 @@ export async function createAtlas({ data, zh, getState, change }) {
         x: Math.max(-bound, Math.min(bound, gesture.pan.x + dx)),
         y: Math.max(-bound, Math.min(bound, gesture.pan.y + dy)),
       };
-      draw();
+      scheduleDraw();
     }
   });
   viewport.addEventListener("pointerup", (event) => {
     if (!pointers.has(event.pointerId)) return;
     const click = gesture && !gesture.moved;
     pointers.delete(event.pointerId);
+    if (!click && drawFrame) draw();
     if (click) {
       suppressMapClick = true;
       const hit = document
@@ -1014,7 +1041,7 @@ export async function createAtlas({ data, zh, getState, change }) {
     (event) => {
       event.preventDefault();
       const p = local(event);
-      zoomTo(zoom * (event.deltaY < 0 ? 1.15 : 1 / 1.15), p.x, p.y);
+      zoomTo(zoom * (event.deltaY < 0 ? 1.15 : 1 / 1.15), p.x, p.y, true);
     },
     { passive: false },
   );

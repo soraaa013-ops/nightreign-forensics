@@ -1,8 +1,4 @@
-import {
-  MAP_LAYOUTS,
-  previewMap,
-  prepareMap,
-} from "./map-tiles.js?v=preload-1";
+import { MAP_LAYOUTS, previewMap } from "./map-tiles.js?v=perf-1";
 import { readDraft } from "./draft.js";
 let state;
 try {
@@ -30,7 +26,6 @@ const waiting = setTimeout(() => {
     document.getElementById("atlas-loading").hidden = false;
 }, 250);
 const preview = previewMap(layout, "high");
-prepareMap(layout);
 preview.promise
   .then((image) => {
     const tiles = document.getElementById("atlas-tiles"),

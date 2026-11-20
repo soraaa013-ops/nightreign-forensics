@@ -34,3 +34,21 @@ export function facetCounts(records, query, key, values) {
     ]),
   );
 }
+
+// Count each matching value once per layout, even when it appears at multiple sites.
+export function countObservationValues(
+  records,
+  { key = "", category = "" } = {},
+) {
+  const counts = new Map();
+  for (const record of records) {
+    const seen = new Set();
+    for (const slot of record.slots) {
+      if ((category && slot.category !== category) || (key && slot.key !== key))
+        continue;
+      seen.add(slot.value || "empty");
+    }
+    for (const value of seen) counts.set(value, (counts.get(value) || 0) + 1);
+  }
+  return counts;
+}

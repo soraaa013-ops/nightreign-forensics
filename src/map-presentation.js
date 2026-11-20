@@ -1,4 +1,4 @@
-import { pointConsensus } from "./map-spatial.js?v=towers-1";
+import { pointConsensus } from "./map-spatial.js?v=perf-1";
 import { towerFloors } from "./map-tower.js?v=towers-1";
 
 // Only resolved enemies earn map labels. Building types are not enemy identities.

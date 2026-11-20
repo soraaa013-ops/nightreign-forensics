@@ -6,6 +6,8 @@
 
 地图档案收录 520 份布局：保留原有 320 份本体档案，新增“见弃空洞者”200 份布局，其中大空洞 80 份。支持安定者们、废弃物之王与新增据点、敌人和出生点。参数来源、固定版本与限制见 THIRD_PARTY.md。
 
+待办见 [TODO.md](TODO.md)。
+
 ## 本地运行
 
 ```bash
@@ -52,3 +54,15 @@ node tools/import-game-data.mjs \
 缩放规则、调研取舍与验证范围见 [地图交互设计](docs/MAP_INTERACTION.md)。
 
 底图在档案数据完成前预加载，先显示轻量总览，再整体替换为高清切片。空闲时预载其他地形总览，省流量／2G 模式不预载其他地图；缓存最近两张高清地图。运行 `python3 tools/build-map-previews.py` 重建总览，`npm run test:preload` 验证慢网、切换竞态和缓存。
+
+## 地图资源优化
+
+原始档案、图标和地图切片保留。更新来源数据后重新生成浏览器资源：
+
+```bash
+python3 tools/build-map-runtime.py
+python3 tools/build-map-icon-webp.py
+python3 tools/build-map-hd.py
+```
+
+图片生成需要 Pillow。性能对比与复测方法见 [性能记录](docs/PERFORMANCE.md)。

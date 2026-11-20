@@ -25,11 +25,11 @@ test("pending work is deduplicated and only becomes ready after image decoding",
   assert.equal(prepareMap("pending"), first);
   await Promise.resolve();
   assert.equal(first.ready, false);
-  assert.equal(requests.length, 36);
+  assert.equal(requests.length, 1);
   release();
   await first.promise;
   assert.equal(first.ready, true);
-  assert.equal(first.images.length, 36);
+  assert.equal(first.images.length, 1);
   decodeGate = Promise.resolve();
 });
 test("two recent decoded maps are retained and repeated visits do not request tiles again", async () => {
@@ -45,7 +45,7 @@ test("two recent decoded maps are retained and repeated visits do not request ti
   assert.notEqual(prepareMap("b"), b);
 });
 test("a failed map or overview can be requested again instead of caching rejection", async () => {
-  failures.add("assets/maps/failure/0-5.webp");
+  failures.add("assets/maps/hd/failure.webp");
   const broken = prepareMap("failure");
   await assert.rejects(broken.promise);
   failures.clear();
