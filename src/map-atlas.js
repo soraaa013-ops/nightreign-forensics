@@ -1,4 +1,4 @@
-import { pointTitle } from "./map-presentation.js?v=content-1";
+import { pointTitle } from "./map-presentation.js?v=boss-1";
 import { towerFloors } from "./map-tower.js?v=towers-1";
 import { queryMaps } from "./map-query.js";
 import {
@@ -103,7 +103,10 @@ export async function createAtlas({ data, zh, getState, change }) {
       el("summary", "详细资料"),
       el("p", `位置：${zh(point.location || point.spawn)}`),
     );
-    if (point.category) details.append(el("p", `类型：${zh(point.category)}`));
+
+    const known = pointConsensus(records, point);
+    if (known && known !== "spawn")
+      details.append(el("p", known === "empty" ? "此处为空" : zh(known)));
     return details;
   };
   const observed = (point) =>
@@ -284,7 +287,9 @@ export async function createAtlas({ data, zh, getState, change }) {
       const labelWidth = width < 760 ? 140 : 168;
       const labels = level
         ? layoutLabels(
-            placements,
+            placements.filter(
+              (p) => buttons.find((b) => b.point.id === p.id)?.headline,
+            ),
             width,
             height,
             new Map(
@@ -401,7 +406,7 @@ export async function createAtlas({ data, zh, getState, change }) {
     const point = active;
     editor.hidden = false;
     const header = el("div", null, "atlas-editor-head");
-    header.append(el("h2", label(point)));
+    header.append(el("h2", label(point) || "点位记录"));
     header.firstChild.id = "atlas-point-title";
     header.append(btn("关闭", close));
     const content = [header];
@@ -771,7 +776,7 @@ export async function createAtlas({ data, zh, getState, change }) {
       );
       b.dataset.point = point.id;
       const headline = label(point);
-      b.title = `${headline} · ${pointName(point)}`;
+      b.title = headline || "记录点位";
       b.setAttribute("aria-label", b.title);
       b.setAttribute("aria-description", zh(point.location || point.spawn));
       b.classList.toggle("observed", observed(point));
@@ -779,32 +784,7 @@ export async function createAtlas({ data, zh, getState, change }) {
         "inferred",
         !observed(point) && !!pointConsensus(records, point),
       );
-      const possibilities = [
-        ...new Set(
-          records.flatMap((r) =>
-            r.slots
-              .filter((s) => s.key === point.key && s.value)
-              .map((s) => zh(s.value.split(" - ")[0])),
-          ),
-        ),
-      ];
-      const detail = point.tower
-        ? towerFloors(records, point.key)
-            .map(
-              (f) => `${f.floor}层：${f.certain ? zh(f.values[0]) : "待确定"}`,
-            )
-            .join("；")
-        : observed(point)
-          ? "已标记"
-          : common
-            ? "候选一致"
-            : point.spawn
-              ? "候选出生位置"
-              : possibilities.length === 1
-                ? "内容待确认"
-                : possibilities.length
-                  ? `候选：${possibilities.slice(0, 2).join(" / ")}${possibilities.length > 2 ? "…" : ""}`
-                  : "待观察";
+      const detail = observed(point) ? "已确认" : "候选一致";
       return { point, b, detail, headline };
     });
     revision++;

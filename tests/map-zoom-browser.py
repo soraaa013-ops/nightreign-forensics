@@ -24,7 +24,7 @@ with sync_playwright() as p:
   page.set_viewport_size({'width':width,'height':height});clean(page);disjoint(page)
   for _ in range(5):page.locator('#atlas-in').click();disjoint(page)
   assert page.locator('#atlas-viewport').get_attribute('data-detail')=='2'
-  assert page.locator('.atlas-map-label span').count()>0
+  assert all('据点' not in text for text in page.locator('.atlas-map-label').all_text_contents())
   page.locator('#atlas-fit').click();disjoint(page)
  print('PASS independent pins and label avoidance at five screen sizes and six zoom scales',flush=True)
  page.set_viewport_size({'width':390,'height':844});clean(page)

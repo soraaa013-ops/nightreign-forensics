@@ -1,49 +1,46 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { pointTitle } from "../src/map-presentation.js";
-const p = { key: "site", category: "据点", location: "圣人桥西侧" },
-  state = { observations: [] },
+const p = { key: "site", category: "Major Base", location: "圣人桥西侧" };
+const state = { observations: [] },
   zh = (v) => v;
-test("point headline prioritizes content and never falls back to geographic description", () => {
+const records = (...values) =>
+  values.map((value) => ({ slots: [{ key: "site", value }] }));
+test("only resolved enemies receive a headline, without building or location text", () => {
+  assert.equal(pointTitle(p, records("遗迹 - 卢恩熊"), state, zh), "卢恩熊");
   assert.equal(
-    pointTitle(
-      p,
-      [{ slots: [{ key: "site", value: "营地 - 骑士" }] }],
-      state,
-      zh,
-    ),
-    "营地 - 骑士",
+    pointTitle(p, records("遗迹 - 卢恩熊", "遗迹 - 魔像"), state, zh),
+    "",
   );
   assert.equal(
     pointTitle(
       p,
-      [
-        { slots: [{ key: "site", value: "营地 - 骑士" }] },
-        { slots: [{ key: "site", value: "营地 - 士兵" }] },
-      ],
-      state,
+      [],
+      { observations: [{ key: "site", value: "Ruins", match: "type" }] },
       zh,
     ),
-    "营地",
+    "",
+  );
+  assert.equal(pointTitle(p, records("遗迹 - 睡眠"), state, zh), "");
+  assert.equal(
+    pointTitle(p, records("Map Event - West Mistwood"), state, zh),
+    "",
   );
   assert.equal(
     pointTitle(
-      p,
-      [
-        { slots: [{ key: "site", value: "营地 - 骑士" }] },
-        { slots: [{ key: "site", value: "遗迹 - 魔像" }] },
-      ],
+      { ...p, category: "Minor Base" },
+      records("教堂 - 老鼠"),
       state,
       zh,
     ),
-    "据点",
+    "",
   );
-  assert.equal(
-    pointTitle({ ...p, tower: true }, [], state, zh),
-    "神授塔 · 三层强敌",
-  );
-  assert.equal(
-    pointTitle({ ...p, spawn: "圣人桥西侧" }, [], state, zh),
-    "出生点",
-  );
+  assert.equal(pointTitle({ ...p, spawn: "圣人桥" }, [], state, zh), "");
+  assert.equal(pointTitle(p, records(null), state, zh), "");
+  assert.equal(pointTitle({ ...p, tower: true }, [], state, zh), "");
+  const towers = [
+    { slots: [{ key: "site", floors: ["甲", "乙", "丙"] }] },
+    { slots: [{ key: "site", floors: ["甲", "丁", "戊"] }] },
+  ];
+  assert.equal(pointTitle({ ...p, tower: true }, towers, state, zh), "1层：甲");
 });
