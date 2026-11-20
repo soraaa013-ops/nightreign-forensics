@@ -13,7 +13,7 @@ with sync_playwright() as p:
  assert all(word not in ' '.join(page.locator('.atlas-map-label').all_text_contents()) for word in ['小型据点','大型据点','待观察','候选：'])
  page.goto(BASE+'/map.html?'+urlencode({'q':json.dumps(q)}));expect(page.locator('#atlas-loading')).to_be_hidden()
  page.locator('#open-map-settings').click();page.locator('#settings-display-tab').click();page.locator('[data-close-drawer="map-settings"]').click()
- expect(page.locator('.atlas-map-label')).to_have_count(0);assert all(not t.strip() for t in page.locator('.atlas-point').all_text_contents())
+ expect(page.locator('.atlas-map-label').first).to_be_visible();assert all(not t.strip() for t in page.locator('.atlas-point').all_text_contents())
  target=page.locator('[data-point="'+slot['key']+'"]');assert zh[slot['location']] not in target.get_attribute('aria-label');target.focus();page.keyboard.press('Enter');expect(page.locator('#atlas-point-title')).to_have_text(zh[slot['value']].split(' · ')[-1].split(' - ')[-1]);expect(page.locator('#atlas-editor .point-reference p').first).to_be_hidden();assert zh[slot['location']] not in page.locator('#atlas-editor').inner_text()
  page.screenshot(path='/tmp/content-priority-mobile.png');page.locator('#atlas-editor .point-reference summary').click();expect(page.locator('#atlas-editor .point-reference')).to_contain_text(zh[slot['location']]);expect(page.locator('#atlas-editor .point-reference p').first).to_be_visible()
  page.locator('#atlas-editor').get_by_role('button',name='关闭',exact=True).click();target.focus();page.keyboard.press('Enter');expect(page.locator('#atlas-editor .point-reference p').first).to_be_hidden()

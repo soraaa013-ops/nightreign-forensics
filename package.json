@@ -17,6 +17,7 @@
     "test:zoom": "python3 tests/map-zoom-browser.py",
     "test:towers": "python3 tests/tower-browser.py",
     "test:preload": "python3 tests/map-preload-browser.py",
+    "test:labels": "python3 tests/confirmed-labels-browser.py",
     "test:icons": "python3 tests/icons-browser.py",
     "test:content": "python3 tests/content-priority-browser.py",
     "test:filters": "python3 tests/compact-filter-browser.py"

@@ -6,6 +6,8 @@ const TYPES = {
   Fort: "fort",
   "Great Church": "temple",
   Church: "church",
+  教堂: "church",
+  普通教堂: "church",
   "Sorcerer's Rise": "sorcerers-rise",
   "Difficult Sorcerer's Rise": "rare-sorcerers-rise",
   Township: "township",

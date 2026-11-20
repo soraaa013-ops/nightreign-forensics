@@ -8,8 +8,8 @@ expect.set_options(timeout=15000)
 with sync_playwright() as p:
  b=getattr(p,os.environ.get('TEST_BROWSER','chromium')).launch();page=b.new_page(viewport={'width':390,'height':844});errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
  q={'nightlord':'','mapType':'Great Hollow','spawn':'','observations':[]};page.goto(BASE+'/map.html?'+urlencode({'q':json.dumps(q)}));expect(page.locator('#atlas-loading')).to_be_hidden()
- for tower in towers:assert page.locator('[data-point="'+tower['id']+'"]').count()==1
- target=page.locator('[data-point="'+towers[0]['id']+'"]').first;target.focus();page.keyboard.press('Enter');expect(page.locator('.tower-floor')).to_have_count(3);assert page.locator('.tower-floor details').count()>0;assert page.locator('.atlas-option').count()==0
+ for tower in towers:expect(page.locator('[data-point="'+tower['id']+'"]')).to_have_count(1)
+ target=page.locator('[data-point="'+towers[0]['id']+'"]').first;expect(target).to_be_visible();target.focus();page.keyboard.press('Enter');expect(page.locator('.tower-floor')).to_have_count(3);assert page.locator('.tower-floor details').count()>0;assert page.locator('.atlas-option').count()==0
  
  if os.environ.get('AXE_CORE_PATH'):
   page.add_script_tag(path=os.environ['AXE_CORE_PATH']);violations=page.evaluate('async()=> (await axe.run()).violations');assert not violations,json.dumps(violations,ensure_ascii=False)
@@ -20,7 +20,7 @@ with sync_playwright() as p:
  page.goto(BASE+'/map.html?'+urlencode({'q':json.dumps(q)}));expect(page.locator('#atlas-loading')).to_be_hidden();expect(page.locator('#candidate-count')).to_have_text('1')
  page.set_viewport_size({'width':320,'height':568})
  for tower in towers:
-  page.locator('[data-point="'+tower['id']+'"]').focus();page.keyboard.press('Enter');expect(page.locator('.tower-floor')).to_have_count(3)
+  expect(page.locator('[data-point="'+tower['id']+'"]')).to_be_visible();page.locator('[data-point="'+tower['id']+'"]').focus();page.keyboard.press('Enter');expect(page.locator('.tower-floor')).to_have_count(3)
   slot=next(s for s in sample['slots'] if s['key']==tower['key']);assert page.locator('.tower-floor p').all_text_contents()==[zh[v] for v in slot['floors']]
   assert page.locator('.tower-floor details').count()==0;pane=page.locator('#atlas-editor').bounding_box();last=page.locator('.tower-floor p').last.bounding_box();assert last['y']+last['height']<=pane['y']+pane['height'];page.screenshot(path='/tmp/tower-'+('nw' if tower['location']=='西北神授塔' else 'se')+'.png');page.locator('#atlas-editor').get_by_role('button',name='关闭',exact=True).click()
  page.locator('#open-map-results').click();expect(page.locator('.tower-record-floors')).to_have_count(2);assert page.locator('.tower-record-floors li').count()==6

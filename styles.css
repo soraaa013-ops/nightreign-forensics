@@ -2231,3 +2231,12 @@ footer {
   font-size: 12px;
   padding: 8px 12px;
 }
+
+.atlas-map-label {
+  padding: 3px 6px;
+  line-height: 16px;
+  overflow-wrap: anywhere;
+}
+#atlas-viewport[data-map-pending] #atlas-labels {
+  visibility: hidden;
+}

@@ -8,8 +8,8 @@ import {
   typeIcon,
   iconPath,
   iconLabel,
-} from "./map-icons.js?v=icons-1";
-import { pointTitle } from "./map-presentation.js?v=boss-1";
+} from "./map-icons.js?v=names-1";
+import { pointTitle } from "./map-presentation.js?v=names-1";
 import { towerFloors } from "./map-tower.js?v=towers-1";
 import { queryMaps } from "./map-query.js";
 import {
@@ -20,6 +20,7 @@ import {
 import {
   detailLevel,
   layoutMarkers,
+  layoutLabels,
   focusZoom,
 } from "./map-layout.js?v=spatial-2";
 import { readDraft, writeDraft } from "./draft.js";
@@ -292,6 +293,37 @@ export async function createAtlas({ data, zh, getState, change }) {
       }
       layer.replaceChildren(...groups.map((g) => g.button));
       $("atlas-leaders").replaceChildren(...leaders);
+      const entries = new Map(buttons.map((item) => [item.point.id, item]));
+      const observations = getState().observations;
+      const rank = (id) => observations.findLastIndex((o) => o.key === id);
+      const ordered = [...placements].sort((a, b) => rank(b.id) - rank(a.id));
+      const sizes = new Map();
+      for (const marker of ordered) {
+        const headline = entries.get(marker.id)?.headline;
+        if (!headline) continue;
+        const labelWidth = Math.min(
+          156,
+          Math.max(48, [...headline].length * 12 + 14),
+        );
+        const lines = Math.ceil(
+          ([...headline].length * 12) / (labelWidth - 14),
+        );
+        sizes.set(marker.id, { width: labelWidth, height: lines * 16 + 8 });
+      }
+      const labels = layoutLabels(ordered, width, height, sizes, obstacles);
+      $("atlas-labels").replaceChildren(
+        ...labels.map((box) => {
+          const n = el("div", entries.get(box.id).headline, "atlas-map-label");
+          n.dataset.for = box.id;
+          Object.assign(n.style, {
+            left: `${box.x}px`,
+            top: `${box.y}px`,
+            width: `${box.width}px`,
+            height: `${box.height}px`,
+          });
+          return n;
+        }),
+      );
     }
     for (const group of groups) {
       group.button.classList.toggle("hovered", hover?.id === group.id);
@@ -356,6 +388,23 @@ export async function createAtlas({ data, zh, getState, change }) {
             open(marked);
           }),
         );
+      if (
+        marked &&
+        label(marked) &&
+        ![...$("atlas-labels").children].some(
+          (n) => n.dataset.for === marked.id,
+        )
+      ) {
+        cameraHistory.push({ zoom, pan: { ...pan } });
+        const baseSize = Math.min(viewport.clientWidth, viewport.clientHeight);
+        zoom = focusZoom(marked, points, baseSize, zoom, 72);
+        pan = {
+          x: (0.5 - marked.x) * baseSize * zoom,
+          y: (0.5 - marked.y) * baseSize * zoom,
+        };
+        focused.add(marked.id);
+        draw();
+      }
       viewport.focus({ preventScroll: true });
     } else {
       active = marked;
@@ -782,7 +831,7 @@ export async function createAtlas({ data, zh, getState, change }) {
         "inferred",
         !observed(point) && !!pointConsensus(records, point),
       );
-      return { point, b };
+      return { point, b, headline };
     });
     revision++;
     $("atlas-count").textContent =

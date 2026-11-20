@@ -14,11 +14,18 @@ export function pointTitle(point, records, state, zh) {
     (o) => o.key === point.key && o.match !== "type",
   )?.value;
   const value = known || marked;
-  if (!value || value === "empty" || point.category === "Minor Base") return "";
+  if (!value || value === "empty") return "";
   if (value.startsWith("Map Event - ")) return "";
   const parts = value.split(" - ");
   if (point.category === "Major Base" && parts.length < 2) return "";
   const enemy = parts.at(-1);
+  if (
+    point.category === "Minor Base" &&
+    (!["Church", "教堂", "普通教堂"].includes(parts[0]) ||
+      parts.length < 2 ||
+      ["Normal", "Rats", "普通", "老鼠"].includes(enemy))
+  )
+    return "";
   if (["冻伤", "圣", "睡眠", "雷", "出血", "毒", "魔法"].includes(enemy))
     return "";
   return zh(value).split(" · ").at(-1).split(" - ").at(-1);
