@@ -62,7 +62,7 @@ export function iconLabel(icon) {
       church: "教堂",
       castle: "城堡",
       cave: "洞窟",
-      township: "城镇",
+      township: "大商店",
       village: "村落",
       city1: "城寨",
       city2: "城寨",
@@ -76,7 +76,15 @@ export function iconLabel(icon) {
       cabin: "小屋",
       mark: "特殊事件",
       "scale-bearing-merchant": "鳞片商人",
-      "star-merchant": "商人",
+      "star-merchant": "传奇商店",
     }[icon] || "记录点位"
   );
+}
+
+export function merchantEmphasis(icon) {
+  return icon === "township"
+    ? "large"
+    : icon === "star-merchant"
+      ? "legendary"
+      : "";
 }

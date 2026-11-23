@@ -1,4 +1,4 @@
-import { matchesSearch } from "./search.js?v=search-1";
+import { matchesSearch } from "./search.js?v=merchant-1";
 const compareChinese = new Intl.Collator("zh-CN").compare;
 import {
   previewMap,
@@ -6,11 +6,12 @@ import {
   warmMapPreviews,
 } from "./map-tiles.js?v=perf-1";
 import {
+  merchantEmphasis,
   pointIcon,
   typeIcon,
   iconPath,
   iconLabel,
-} from "./map-icons.js?v=perf-1";
+} from "./map-icons.js?v=merchant-1";
 import { pointTitle } from "./map-presentation.js?v=perf-1";
 import { towerFloors } from "./map-tower.js?v=towers-1";
 import { queryMaps } from "./map-query.js?v=perf-1";
@@ -258,6 +259,11 @@ export async function createAtlas({ data, zh, getState, change }) {
           points: [point],
           button: buttons.find((x) => x.point.id === point.id).b,
         }));
+      groups.sort(
+        (a, b) =>
+          Number(!!b.button.dataset.merchant) -
+          Number(!!a.button.dataset.merchant),
+      );
       const placements = layoutMarkers(
         groups.map((g) => ({
           id: g.id,
@@ -455,10 +461,27 @@ export async function createAtlas({ data, zh, getState, change }) {
     const point = active;
     editor.hidden = false;
     const header = el("div", null, "atlas-editor-head");
-    header.append(el("h2", label(point) || "点位记录"));
+    const merchantKind = merchantEmphasis(
+      pointIcon(point, records, getState(), data.iconRecords),
+    );
+    header.append(
+      el(
+        "h2",
+        merchantKind === "large"
+          ? "大商店"
+          : merchantKind === "legendary"
+            ? "传奇商店"
+            : label(point) || "点位记录",
+      ),
+    );
     header.firstChild.id = "atlas-point-title";
     header.append(btn("关闭", close));
     const content = [header];
+    if (merchantKind) {
+      const link = el("a", "检索商人货物", "merchant-map-link");
+      link.href = `merchant.html?shop=${merchantKind}`;
+      content.push(link);
+    }
     const known = pointConsensus(records, point);
     if (point.tower && !editing) {
       const facts = el("div", null, "point-description tower-description");
@@ -495,7 +518,7 @@ export async function createAtlas({ data, zh, getState, change }) {
           "point-edit",
         ),
       );
-      editor.replaceChildren(header, facts, locationDetails(point));
+      editor.replaceChildren(...content, facts, locationDetails(point));
       return;
     }
     if (point.tower) content.push(el("p", "第三层强敌", "atlas-current"));
@@ -529,7 +552,7 @@ export async function createAtlas({ data, zh, getState, change }) {
           "point-edit",
         ),
       );
-      editor.replaceChildren(header, facts, locationDetails(point));
+      editor.replaceChildren(...content, facts, locationDetails(point));
       return;
     }
 
@@ -857,6 +880,7 @@ export async function createAtlas({ data, zh, getState, change }) {
           "atlas-point",
         );
       b.dataset.point = point.id;
+      b.dataset.merchant = merchantEmphasis(icon);
       if (b.dataset.icon !== icon) {
         b.dataset.icon = icon;
         const path = iconPath(icon);

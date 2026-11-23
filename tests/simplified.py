@@ -12,8 +12,10 @@ class Text(HTMLParser):
   self.parts.extend(value for key,value in attrs if key in ['placeholder','aria-label','title','alt'] and value)
 strings=[]
 for group in json.loads((root/'data/zh-CN.json').read_text()).values():strings.extend(group.values())
-for path in ['index.html','map.html']:
+for path in ['index.html','map.html','merchant.html']:
  parser=Text();parser.feed((root/path).read_text());strings.extend(parser.parts)
+for item in json.loads((root/'data/merchants.json').read_text())['items'].values():
+ strings.extend([item['name'],item['skill'],*item['effects']['normal'],*item['effects']['deep']])
 for text in strings:
  assert cc.convert(text)==text, f'Traditional text: {text}'
  assert not re.search(r'[ＨＦＰＡ-Ｚａ-ｚ]|\b(?:HP|FP)\b|绝活',text),f'Unlocalized abbreviation: {text}'

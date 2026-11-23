@@ -1,7 +1,7 @@
 import { inspectRelic, listTemplateEffects } from "./check.js";
 import { readDraft, writeDraft } from "./draft.js";
 import { loadJson, localizeRelics } from "./locale.js";
-import { searchEffects, effectCategories } from "./search.js?v=search-1";
+import { searchEffects, effectCategories } from "./search.js?v=merchant-1";
 const $ = (selector) => document.querySelector(selector);
 const form = $("#relic-form"),
   templateSelect = $("#template"),

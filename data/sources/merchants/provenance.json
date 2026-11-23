@@ -1,0 +1,17 @@
+{
+  "retrieved": "2026-11-23",
+  "stockSource": "https://nightreign-seed-finder.com/merchant-patterns",
+  "sourceVersion": "1.6.15",
+  "method": "公开页面发布的商品事实与游戏中文名称；未复制页面代码、样式或图片。",
+  "sourceBundle": "page-ec7a8d66f7318ef6.js",
+  "sourceBundleSha256": "a0ce8632bd906ba3345e74e25049e0cb09ebeca196cf4e5ab747439718c2c050",
+  "crossReference": "https://github.com/Hushade/nightreign-merchants-master/tree/53e0413027f8c06f6383605a68a2efa26f8ac11e",
+  "crossReferenceNote": "旧表按零起始编号且只收录普通商店末件武器；部分对应关系与当前目录不同，不混用编号。",
+  "sha256": {
+    "GoldenMerchants.csv": "c93fcf9ee0616784ccc7a14fdc1ad985c6e3174871bbf0fefe467153075eec3c",
+    "NormalMerchants.csv": "185b745b42e256e175bef80d7745a6ad4ade5f58b99cf73b31a08ff943f6ffdd",
+    "VillageMerchants.csv": "378c99ee40164e7ba6fa4aac48a200a2c8730a07549905fbb1cb77799e8d4b79",
+    "catalog.json": "b12c3014ad3bdd9f8d7a25fbb388139d250a18c370ba59ba7d23eefa03a3f1e2"
+  },
+  "chineseNamesSha256": "18d08c44caddfc307295ba321b864002195ff4ce12754d9cf7b14102ff5ec277"
+}

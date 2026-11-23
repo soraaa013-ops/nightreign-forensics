@@ -105,3 +105,11 @@ with the ownership and sources documented above.
 ## 拼音搜索字典
 
 `src/search-initials.js` 使用 pypinyin 0.55.0 为项目现有中文内容生成首字母表，包含多音字读音。pypinyin 采用 MIT 许可证，版权及许可全文见 [licenses/pypinyin-MIT.txt](licenses/pypinyin-MIT.txt)。浏览器无需加载完整拼音库或调用外部服务。
+
+## 商人货物组合
+
+商品事实、价格、战技、普通出击／深夜效果与游戏中文名称取自 [Nightreign Seed Finder 商人目录](https://nightreign-seed-finder.com/merchant-patterns)，页面版本 1.6.15，读取日期 2026-11-23。原站说明其资料由 Marco1522_、ababab777 分享，Artimuz 整理、修正及补全。仅保存商品事实与游戏名称，未复用其页面代码、样式或图片；游戏内容归 FromSoftware／Bandai Namco 所有。
+
+`data/sources/merchants/catalog.json` 与 `data/merchant-zh.json` 是事实及中文名称快照；`provenance.json` 记录公开页面资源标识与校验和。来源编号 1–21 是商人货物组合编号，不是地图编号。目录只列随组合变化的商品，不代表固定补给品的完整库存。
+
+交叉参考 [Hushade/nightreign-merchants-master](https://github.com/Hushade/nightreign-merchants-master/tree/53e0413027f8c06f6383605a68a2efa26f8ac11e) 的三份 CSV，按其 MIT 许可证保存于来源目录，许可全文为同目录 `LICENSE`。该表使用零起始编号，且部分对应关系与当前目录不同，因此不混合两套编号或用其缺失项推断无货。旧表只用于交叉核对，不作为网页运行数据。

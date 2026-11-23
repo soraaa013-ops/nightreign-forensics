@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>商人种子 · 黑夜君临</title>
+    <meta
+      name="description"
+      content="根据已见商品筛选商人货物组合，查看普通商店、大商店和大空洞传奇商店的武器、战技与附加效果。"
+    />
+    <link rel="stylesheet" href="styles.css?v=merchant-1" />
+    <link rel="stylesheet" href="merchant.css?v=merchant-1" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html"
+        ><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span
+        ><span
+          ><strong>遗物警察局</strong><small>黑夜君临 · 玩家工具</small></span
+        ></a
+      >
+      <nav class="tool-nav" aria-label="工具导航">
+        <a href="index.html#checker">遗物检测</a><a href="map.html">地图档案</a
+        ><a href="merchant.html" aria-current="page">商人种子</a>
+      </nav>
+    </header>
+    <main class="merchant-main">
+      <div class="merchant-heading">
+        <h1>商人种子</h1>
+        <strong id="merchant-count" role="status">正在载入</strong>
+      </div>
+      <div id="merchant-error" role="alert" hidden>
+        商品数据加载失败。<button id="merchant-retry" type="button">
+          重新加载
+        </button>
+      </div>
+      <div class="merchant-workspace" id="merchant-workspace" hidden>
+        <section class="merchant-evidence" aria-labelledby="evidence-title">
+          <div class="merchant-section-heading">
+            <h2 id="evidence-title">已看到什么？</h2>
+            <label class="mode-label"
+              >出击<select id="merchant-mode">
+                <option value="normal">普通出击</option>
+                <option value="deep">深夜</option>
+              </select></label
+            >
+          </div>
+          <div class="merchant-inputs">
+            <label
+              >商店<select id="observation-shop">
+                <option value="normal">普通商店</option>
+                <option value="large">大商店</option>
+                <option value="legendary">传奇商店</option>
+              </select></label
+            ><label
+              >商品、战技或效果<input
+                type="search"
+                id="merchant-search"
+                placeholder="搜索名称或首字母"
+                autocomplete="off"
+            /></label>
+          </div>
+          <div
+            id="merchant-observations"
+            class="merchant-chips"
+            role="group"
+            aria-label="已选信息"
+          ></div>
+          <div class="merchant-actions">
+            <button id="merchant-undo" type="button">撤销</button
+            ><button id="merchant-clear" type="button">清空</button
+            ><button id="merchant-share" type="button">分享</button>
+          </div>
+          <p id="merchant-feedback" role="status" class="merchant-feedback"></p>
+          <div
+            id="merchant-suggestions"
+            class="merchant-suggestions"
+            role="group"
+            aria-label="可选商品"
+          ></div>
+          <button
+            id="suggestions-more"
+            class="merchant-more"
+            type="button"
+            hidden
+          >
+            更多商品
+          </button>
+        </section>
+        <section class="merchant-inventory" aria-labelledby="inventory-title">
+          <div class="merchant-section-heading">
+            <h2 id="inventory-title">可变货物</h2>
+            <label
+              >组合<select
+                id="pattern-preview"
+                aria-label="查看候选组合"
+              ></select
+            ></label>
+          </div>
+          <div
+            class="merchant-shop-tabs"
+            role="group"
+            aria-label="查看哪家商店"
+          >
+            <button data-shop="normal" aria-pressed="true">普通商店</button
+            ><button data-shop="large" aria-pressed="false">大商店</button
+            ><button data-shop="legendary" aria-pressed="false">
+              传奇商店
+            </button>
+          </div>
+          <p id="inventory-status" role="status"></p>
+          <div id="merchant-stock"></div>
+          <button id="stock-more" class="merchant-more" type="button" hidden>
+            更多货物
+          </button>
+        </section>
+      </div>
+      <details class="merchant-source">
+        <summary>收录范围与来源</summary>
+        <p>
+          收录随组合变化的武器、盾牌、法杖、圣印记、香药和露滴；不含每局固定的补给品与护符。价格和附加效果区分普通出击与深夜。商人货物组合独立于地图种子。传奇商店位于大空洞，第2天出现。
+        </p>
+        <p>
+          商品事实与游戏中文名称来自
+          <a
+            href="https://nightreign-seed-finder.com/merchant-patterns"
+            target="_blank"
+            rel="noreferrer"
+            >商人目录</a
+          >，版本 1.6.15，快照日期：2026-11-23。组合编号沿用该来源。
+        </p>
+      </details>
+    </main>
+    <script type="module" src="src/merchant.js?v=merchant-1"></script>
+  </body>
+</html>

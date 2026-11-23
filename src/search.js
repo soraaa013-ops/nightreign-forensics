@@ -1,4 +1,4 @@
-import { initials } from "./search-initials.js?v=search-1";
+import { initials } from "./search-initials.js?v=merchant-1";
 
 const aliases = [
   ["血量", "生命值", "hp"],
@@ -51,7 +51,7 @@ function matchesInitials(letters, token) {
   return false;
 }
 function matchesChineseFragment(target, token) {
-  if (!/^[\p{Script=Han}]{2,}$/u.test(token)) return false;
+  if (!/^[\p{Script=Han}]{3,}$/u.test(token)) return false;
   let position = 0;
   for (const char of token) {
     const found = target.indexOf(char, position);

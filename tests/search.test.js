@@ -144,3 +144,9 @@ test("relic initials preserve character/category constraints and numeric IDs", (
   assert.ok(matchesSearch("老狮子 1234", "1234"));
   assert.ok(!matchesSearch("老狮子 1234", "134"));
 });
+
+test("short Chinese names do not match scattered characters in unrelated locations", () => {
+  assert.ok(!matchesSearch("魔法师塔 · 小恶魔雕像", "魔像"));
+  assert.ok(matchesSearch("大教堂 · 魔像守卫", "魔像"));
+  assert.ok(matchesSearch("黑刀刺客", "黑刺客"));
+});

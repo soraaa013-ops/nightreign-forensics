@@ -1,13 +1,13 @@
 const compareChinese = new Intl.Collator("zh-CN").compare;
 import { decodeMapRuntime } from "./map-runtime.js?v=perf-1";
-import { createAtlas } from "./map-atlas.js?v=search-1";
+import { createAtlas } from "./map-atlas.js?v=merchant-1";
 import { recommendObservation } from "./map-filter.js";
 import {
   queryMaps,
   facetCounts,
   countObservationValues,
 } from "./map-query.js?v=perf-1";
-import { matchesSearch } from "./search.js?v=search-1";
+import { matchesSearch } from "./search.js?v=merchant-1";
 import { readDraft, writeDraft } from "./draft.js";
 import { validateMapState } from "./map-state.js?v=perf-1";
 import { loadJson } from "./locale.js";
@@ -551,7 +551,7 @@ async function init() {
   try {
     [mapData, dictionary] = await Promise.all([
       loadJson("data/map-runtime.json?v=perf-1").then(decodeMapRuntime),
-      loadJson("data/zh-CN.json?v=towers-1"),
+      loadJson("data/zh-CN.json?v=merchant-1"),
     ]);
     $("#base-filters").open = false;
     $("#location-details").open = false;
