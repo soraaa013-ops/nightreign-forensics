@@ -177,11 +177,42 @@
   flex: 1;
   font-weight: 600;
 }
-.merchant-stock-row[data-rarity="rare"] .merchant-stock-name {
-  color: #dab7f0;
+.merchant-stock-row {
+  --quality-color: #edf0ef;
 }
-.merchant-stock-row[data-rarity="legendary"] .merchant-stock-name {
-  color: var(--accent);
+.merchant-stock-row[data-rarity="uncommon"] {
+  --quality-color: #91caff;
+}
+.merchant-stock-row[data-rarity="rare"] {
+  --quality-color: #dab7f0;
+}
+.merchant-stock-row[data-rarity="unique"] {
+  --quality-color: #ff9a9f;
+}
+.merchant-stock-row[data-rarity="legendary"] {
+  --quality-color: #e9c36c;
+}
+.merchant-stock-row .merchant-stock-name,
+.merchant-quality {
+  color: var(--quality-color);
+}
+.merchant-stock-identity {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 2px 6px;
+  min-width: 0;
+}
+.merchant-stock-identity .merchant-stock-name {
+  flex: initial;
+}
+.merchant-quality {
+  font-size: 10px;
+  line-height: 1.4;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  padding: 0 3px;
+  white-space: nowrap;
 }
 .merchant-price {
   font-size: 12px;

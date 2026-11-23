@@ -14,7 +14,7 @@ function panelState(open) {
 }
 async function populate() {
   try {
-    const response = await fetch("merchant.html?v=stock-2");
+    const response = await fetch("merchant.html?v=quality-1");
     if (!response.ok) throw Error("template");
     const documentFragment = new DOMParser().parseFromString(
       await response.text(),
@@ -27,7 +27,7 @@ async function populate() {
     section.append(...main.childNodes);
     section.querySelector("h1")?.remove();
     body.replaceChildren(section);
-    api = await import("./merchant.js?v=stock-2");
+    api = await import("./merchant.js?v=quality-1");
     await api.ready;
     if (selectedShop) api.selectShop(selectedShop);
   } catch {

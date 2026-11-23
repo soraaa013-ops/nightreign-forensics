@@ -5,6 +5,13 @@ import {
   queryMerchants,
   validMerchantState,
 } from "./merchant-query.js?v=stock-2";
+const RARITY_LABELS = {
+  common: "白色",
+  uncommon: "蓝色",
+  rare: "紫色",
+  unique: "红色",
+  legendary: "金色",
+};
 const $ = (id) => document.getElementById(id);
 const el = (tag, text, cls) => {
   const n = document.createElement(tag);
@@ -177,6 +184,7 @@ function inventory() {
           item.effects[state.mode],
           item.affinities,
           item.prices[state.mode],
+          item.rarities[state.mode],
         ]);
         if (seen.has(key)) continue;
         seen.add(key);
@@ -184,8 +192,19 @@ function inventory() {
         row.dataset.item = item.id;
         row.dataset.rarity = item.rarities[state.mode];
         const head = el("div", undefined, "merchant-stock-head");
-        head.append(
+        const identity = el("div", undefined, "merchant-stock-identity");
+        const quality = el(
+          "span",
+          RARITY_LABELS[item.rarities[state.mode]] || "品质未知",
+          "merchant-quality",
+        );
+        quality.setAttribute("aria-label", "品质：" + quality.textContent);
+        identity.append(
           el("strong", item.name, "merchant-stock-name"),
+          quality,
+        );
+        head.append(
+          identity,
           el(
             "span",
             item.prices[state.mode].toLocaleString("zh-CN") + " 卢恩",
