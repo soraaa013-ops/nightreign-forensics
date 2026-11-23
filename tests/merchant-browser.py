@@ -24,18 +24,28 @@ with sync_playwright() as p:
   page.locator('#merchant-search').fill('搏击手套')
   page.locator('.merchant-suggestion').filter(has_text='搏击手套').click()
   expect(page.locator('#merchant-count')).to_have_text('已确定 #1')
-  page.locator('[data-shop="normal"]').click()
-  expect(page.locator('.merchant-stock-row')).to_have_count(11)
-  row=page.locator('.merchant-stock-row').filter(has=page.locator('summary',has_text='王室巨剑'))
-  row.locator('summary').click();expect(row.locator('.merchant-variant')).to_be_visible()
-  if row.locator('.effect-confirm').count():row.locator('.effect-confirm').first.click()
-  assert any(o.get('effect') for o in getstate(page)['observations'])
+  expect(page.locator('#merchant-mode')).to_have_value('deep')
+  expect(page.locator('#merchant-evidence-body')).to_be_hidden()
+  expect(page.locator('.merchant-shop-tabs')).to_be_hidden()
+  expect(page.locator('#stock-more')).to_be_hidden()
+  for shop in ['normal','large','legendary']:
+   group=page.locator('[data-stock-shop="'+shop+'"]')
+   expect(group.locator('.merchant-stock-row')).to_have_count(len(data['patterns'][0][shop]))
+   for item_id in data['patterns'][0][shop]:
+    item=data['items'][item_id];row=group.locator('[data-item="'+item_id+'"]')
+    expect(row.locator('.merchant-stock-name')).to_have_text(item['name'])
+    expect(row.locator('.merchant-price')).to_have_text(format(item['prices']['deep'],',')+' 卢恩')
+    assert row.locator('.merchant-effects li').all_text_contents()==item['effects']['deep']
+    assert row.locator('.merchant-stock-name').evaluate('(e)=>!e.closest("details")')
+    assert row.locator('.merchant-effects').evaluate('(e)=>!e.closest("details")')
+  page.locator('#merchant-mode').select_option('normal')
+  for item_id in data['patterns'][0]['large']:
+   row=page.locator('[data-stock-shop="large"] [data-item="'+item_id+'"]');item=data['items'][item_id]
+   expect(row.locator('.merchant-price')).to_have_text(format(item['prices']['normal'],',')+' 卢恩')
+   assert row.locator('.merchant-effects li').all_text_contents()==item['effects']['normal']
   page.locator('#merchant-mode').select_option('deep')
-  assert not any(o.get('effect') for o in getstate(page)['observations'])
-  expect(page.locator('#merchant-feedback')).to_contain_text('重新确认')
   page.reload();expect(page.locator('#merchant-mode')).to_have_value('deep');expect(page.locator('#merchant-count')).to_have_text('已确定 #1')
-  page.locator('[data-shop="legendary"]').click();expect(page.locator('.merchant-stock-row')).to_have_count(4)
-  expect(page.locator('#merchant-stock')).to_contain_text('剑骸大剑')
+  expect(page.locator('[data-stock-shop="legendary"]')).to_contain_text('剑骸大剑')
   page.screenshot(path=f'/tmp/merchant-{width}.png',full_page=True)
   page.locator('#merchant-clear').click();expect(page.locator('#merchant-count')).to_have_text('21 组候选')
   page.locator('#merchant-undo').click();expect(page.locator('#merchant-count')).to_have_text('已确定 #1')
@@ -44,6 +54,18 @@ with sync_playwright() as p:
   shared=browser.new_page();shared.goto(page.url);expect(shared.locator('#merchant-count')).to_have_text('已确定 #1');shared.close()
   page.locator('#merchant-clear').click();page.locator('#merchant-search').fill('不存在的商品');expect(page.locator('.merchant-suggestion')).to_have_count(0)
   assert not errors,errors;page.close()
+ # Legacy observations migrate to deep; explicit normal choices and shared states survive.
+ page=browser.new_page()
+ legacy={'mode':'normal','observations':[{'shop':'normal','name':'王室巨剑','effect':'旧模式效果'}]}
+ page.add_init_script('localStorage.setItem("merchant-state-v1", '+json.dumps(json.dumps(legacy))+')')
+ page.goto(BASE+'/merchant.html');expect(page.locator('#merchant-mode')).to_have_value('deep')
+ expect(page.locator('#merchant-count')).to_have_text('2 组候选')
+ page.locator('#merchant-share').click()
+ assert all('effect' not in o for o in getstate(page)['observations'])
+ page.locator('#merchant-mode').select_option('normal');page.goto(BASE+'/map.html?panel=merchant')
+ expect(page.locator('#merchant-mode')).to_have_value('normal');page.close()
+ page=browser.new_page();page.goto(BASE+'/merchant.html?'+urlencode({'q':json.dumps({'mode':'normal','observations':[]})}))
+ expect(page.locator('#merchant-mode')).to_have_value('normal');page.close()
  # Data failure has a retry and recovers.
  page=browser.new_page();page.route('**/data/merchants.json*',lambda r:r.abort());page.goto(BASE+'/merchant.html');expect(page.locator('#merchant-error')).to_be_visible();page.unroute('**/data/merchants.json*');page.locator('#merchant-retry').click();expect(page.locator('#merchant-count')).to_have_text('21 组候选');page.close()
  # Valid but conflicting evidence returns zero rather than displaying unrelated stock.

@@ -370,3 +370,152 @@
     max-height: 150px;
   }
 }
+/* Equipment, effects and cost are visible without opening a row. */
+.merchant-stock-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.merchant-stock-row {
+  padding: 7px 0;
+}
+.merchant-stock-name {
+  font-size: 13px;
+  line-height: 1.4;
+}
+.merchant-price {
+  white-space: nowrap;
+  font-size: 11px;
+}
+.merchant-effects {
+  list-style: none;
+  padding: 0;
+  margin: 3px 0 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.merchant-effects li {
+  display: inline;
+}
+.merchant-effects li:not(:last-child)::after {
+  content: "；";
+  color: var(--muted);
+}
+.merchant-effects:empty {
+  display: none;
+}
+.merchant-stock-group {
+  min-width: 0;
+}
+.merchant-stock-group h3 {
+  font-size: 14px;
+  color: var(--accent);
+  margin: 10px 0 4px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--line);
+}
+.merchant-stock-row .merchant-item-extra summary {
+  display: block;
+  min-height: 24px;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 24px;
+}
+.merchant-stock-row .merchant-item-extra summary::after {
+  content: none;
+}
+.merchant-stock-row .merchant-variant {
+  margin: 3px 0 6px;
+}
+.merchant-availability {
+  font-size: 11px;
+  color: var(--muted);
+}
+.merchant-shop-tabs[hidden],
+.merchant-section-heading label[hidden] {
+  display: none;
+}
+.merchant-panel.merchant-overview {
+  width: min(1240px, 88vw);
+}
+.merchant-overview .merchant-stock-overview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.merchant-overview .merchant-evidence {
+  padding: 8px 10px;
+}
+.merchant-overview .merchant-actions {
+  margin-top: 6px;
+}
+.merchant-overview .merchant-actions button {
+  min-height: 32px;
+  padding: 3px 10px;
+  font-size: 12px;
+}
+.merchant-overview .merchant-heading {
+  display: none;
+}
+.merchant-overview .merchant-inventory {
+  padding: 8px 12px;
+}
+.merchant-overview #inventory-status {
+  margin: 4px 0;
+}
+.merchant-overview .merchant-section-heading {
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.merchant-overview .merchant-section-heading h2 {
+  font-size: 15px;
+}
+.merchant-overview .mode-label {
+  margin-left: auto;
+}
+.merchant-overview #edit-merchant-evidence {
+  min-height: 32px;
+  padding: 3px 8px;
+  font-size: 12px;
+}
+@media (max-width: 800px) {
+  .merchant-panel.merchant-overview {
+    width: 100%;
+    height: 92dvh;
+    max-height: 92dvh;
+  }
+  .merchant-overview .merchant-stock-overview {
+    display: block;
+  }
+  .merchant-overview .merchant-main {
+    padding: 6px 10px 12px;
+  }
+  .merchant-overview .merchant-workspace {
+    gap: 6px;
+  }
+  .merchant-overview .merchant-stock-group + .merchant-stock-group {
+    margin-top: 14px;
+  }
+}
+
+.merchant-equipment-meta {
+  display: none;
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.4;
+}
+.show-extra .merchant-equipment-meta {
+  display: block;
+}
+.merchant-main .merchant-extra-switch input {
+  width: 15px;
+  min-height: 15px;
+  height: 15px;
+  margin: 0;
+}
+.merchant-extra-switch {
+  margin-left: auto;
+}

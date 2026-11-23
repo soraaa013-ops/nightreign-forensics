@@ -4,7 +4,7 @@ import {
   stockOptions,
   queryMerchants,
   validMerchantState,
-} from "./merchant-query.js?v=merchant-1";
+} from "./merchant-query.js?v=stock-2";
 const $ = (id) => document.getElementById(id);
 const el = (tag, text, cls) => {
   const n = document.createElement(tag);
@@ -23,7 +23,7 @@ const stateParam = embedded ? "merchant" : "q";
 let requestedShop = new URL(location.href).searchParams.get("shop");
 const compare = new Intl.Collator("zh-CN").compare;
 let data,
-  state = { mode: "normal", observations: [] },
+  state = { mode: "deep", observations: [] },
   history = [],
   candidates = [],
   viewShop = "normal",
@@ -37,7 +37,7 @@ function save() {
   url.searchParams.set("shop", viewShop);
   window.history.replaceState(null, "", url);
   try {
-    localStorage.setItem("merchant-state-v1", JSON.stringify(state));
+    localStorage.setItem("merchant-state-v2", JSON.stringify(state));
   } catch {}
 }
 function change(next) {
@@ -62,7 +62,8 @@ function add(observation) {
   change({ ...state, observations: [...others, observation] });
   $("merchant-search").value = "";
   suggestions();
-  $("merchant-feedback").textContent = `已添加 ${observation.name}`;
+  $("merchant-feedback").textContent =
+    candidates.length === 1 ? "" : `已添加 ${observation.name}`;
 }
 function candidatesFor(shop) {
   return stockOptions(data, candidates, shop);
@@ -141,52 +142,36 @@ function inventory() {
     preview !== ""
       ? candidates.filter((p) => String(p.id) === preview)
       : candidates;
-  const options = stockOptions(data, chosen, viewShop).sort(
-    (a, b) => b.patterns.size - a.patterns.size || compare(a.name, b.name),
-  );
-  const unknown = chosen.filter((p) => p[viewShop] === null).length;
+  const allShops = chosen.length === 1;
+  $("merchant-panel")?.classList.toggle("merchant-overview", allShops);
+  document.querySelector(".merchant-shop-tabs").hidden = allShops;
+  $("pattern-preview").closest("label").hidden = candidates.length === 1;
   $("inventory-status").textContent = !candidates.length
     ? "没有匹配组合"
-    : (preview !== "" && candidates.length > 1
-        ? `预览组合 #${preview} · 尚有 ${candidates.length} 组候选`
-        : candidates.length === 1
-          ? `已确定组合 #${candidates[0].id}`
-          : `${candidates.length} 组候选`) +
-      (viewShop === "legendary"
-        ? ` · 大空洞${unknown ? " · " + unknown + " 组货物未记录" : ""}`
-        : "") +
-      " · 可变货物";
-  $("merchant-stock").replaceChildren(
-    ...options.slice(0, stockLimit).map((option) => {
-      const row = el("details", undefined, "merchant-stock-row");
-      const variants = [...option.items.values()];
-      row.dataset.rarity = variants[0].rarities[state.mode];
-      const summary = el("summary");
-      summary.append(el("span", option.name, "merchant-stock-name"));
-      const prices = [
-        ...new Set(variants.map((i) => i.prices[state.mode])),
-      ].sort((a, b) => a - b);
-      summary.append(
-        el(
-          "span",
-          prices.map((p) => p.toLocaleString("zh-CN")).join("／") + " 卢恩",
-          "merchant-price",
-        ),
-      );
-      row.append(summary);
-      if (chosen.length > 1)
-        row.append(
-          el(
-            "p",
-            option.patterns.size === chosen.length
-              ? "所有候选均有"
-              : `${option.patterns.size} / ${chosen.length} 组候选有售`,
-            "merchant-feedback",
-          ),
-        );
-      // Collapse duplicate mode-specific variants in the display, keeping data intact.
+    : preview !== "" && candidates.length > 1
+      ? `预览组合 #${preview} · 尚有 ${candidates.length} 组候选`
+      : candidates.length === 1
+        ? `已确定组合 #${candidates[0].id}`
+        : `${candidates.length} 组候选`;
+  const groups = [];
+  let hasMore = false;
+  for (const shop of allShops ? Object.keys(SHOPS) : [viewShop]) {
+    const options = stockOptions(data, chosen, shop).sort(
+      (a, b) =>
+        Number([...a.items.values()][0].kind === "consumable") -
+          Number([...b.items.values()][0].kind === "consumable") ||
+        b.patterns.size - a.patterns.size ||
+        compare(a.name, b.name),
+    );
+    const section = el("section", undefined, "merchant-stock-group");
+    section.dataset.stockShop = shop;
+    section.append(
+      el("h3", SHOPS[shop] + (shop === "legendary" ? " · 大空洞" : "")),
+    );
+    if (!allShops && options.length > stockLimit) hasMore = true;
+    for (const option of allShops ? options : options.slice(0, stockLimit)) {
       const seen = new Set();
-      for (const item of variants) {
+      for (const item of option.items.values()) {
         const key = JSON.stringify([
           item.skill,
           item.effects[state.mode],
@@ -195,51 +180,85 @@ function inventory() {
         ]);
         if (seen.has(key)) continue;
         seen.add(key);
-        const part = el("div", undefined, "merchant-variant");
-        if (item.skill) part.append(el("p", `战技／法术：${item.skill}`));
-        if (item.affinities.length)
-          part.append(el("p", `属性：${item.affinities.join("／")}`));
-        const effects = item.effects[state.mode];
-        if (effects.length) {
-          const list = el("ul");
-          for (const effect of effects) list.append(el("li", effect));
-          part.append(list);
-        } else if (item.kind !== "consumable") {
-          part.append(el("p", "来源未记录附加效果", "merchant-feedback"));
-        }
-        part.append(
-          button("确认看到这件商品", () =>
-            add({ shop: viewShop, name: item.name, skill: item.skill }),
+        const row = el("article", undefined, "merchant-stock-row");
+        row.dataset.item = item.id;
+        row.dataset.rarity = item.rarities[state.mode];
+        const head = el("div", undefined, "merchant-stock-head");
+        head.append(
+          el("strong", item.name, "merchant-stock-name"),
+          el(
+            "span",
+            item.prices[state.mode].toLocaleString("zh-CN") + " 卢恩",
+            "merchant-price",
           ),
         );
-        for (const effect of effects)
-          part.append(
-            button(
-              "确认效果：" + effect,
-              () =>
-                add({
-                  shop: viewShop,
-                  name: item.name,
-                  skill: item.skill,
-                  effect,
-                }),
-              "effect-confirm",
+        row.append(head);
+        const effects = el("ul", undefined, "merchant-effects");
+        for (const effect of item.effects[state.mode])
+          effects.append(el("li", effect));
+        if (!effects.childElementCount && item.kind !== "consumable")
+          effects.append(el("li", "来源未记录附加效果"));
+        row.append(effects);
+        if (chosen.length > 1)
+          row.append(
+            el(
+              "small",
+              `${option.patterns.size} / ${chosen.length} 组候选有售`,
+              "merchant-availability",
             ),
           );
-        row.append(part);
+        if (allShops && item.skill)
+          row.append(
+            el(
+              "p",
+              [item.skill, ...item.affinities].join(" · "),
+              "merchant-equipment-meta",
+            ),
+          );
+        if (!allShops) {
+          const details = el("details", undefined, "merchant-item-extra");
+          details.append(el("summary", allShops ? "战技／属性" : "记录商品"));
+          const part = el("div", undefined, "merchant-variant");
+          if (item.skill) part.append(el("p", item.skill));
+          if (item.affinities.length)
+            part.append(el("p", item.affinities.join("／")));
+          if (!allShops) {
+            part.append(
+              button("确认看到这件商品", () =>
+                add({ shop, name: item.name, skill: item.skill }),
+              ),
+            );
+            for (const effect of item.effects[state.mode])
+              part.append(
+                button(
+                  "确认效果：" + effect,
+                  () =>
+                    add({ shop, name: item.name, skill: item.skill, effect }),
+                  "effect-confirm",
+                ),
+              );
+          }
+          details.append(part);
+          row.append(details);
+        }
+        section.append(row);
       }
-      return row;
-    }),
-  );
-  if (!options.length)
-    $("merchant-stock").append(
-      el(
-        "p",
-        unknown ? "该组合的传奇商店货物尚未记录" : "暂无货物",
-        "merchant-empty",
-      ),
-    );
-  $("stock-more").hidden = options.length <= stockLimit;
+    }
+    if (!options.length)
+      section.append(
+        el(
+          "p",
+          chosen.some((p) => p[shop] === null)
+            ? "该组合货物尚未记录"
+            : "暂无货物",
+          "merchant-empty",
+        ),
+      );
+    groups.push(section);
+  }
+  $("merchant-stock").classList.toggle("merchant-stock-overview", allShops);
+  $("merchant-stock").replaceChildren(...groups);
+  $("stock-more").hidden = !hasMore;
 }
 function render() {
   candidates = queryMerchants(data, state.observations, state.mode);
@@ -256,6 +275,11 @@ function render() {
   );
   if (!candidates.some((p) => String(p.id) === preview)) preview = "";
   $("pattern-preview").value = preview;
+  const resolved = candidates.length === 1;
+  $("merchant-evidence-body").hidden = resolved;
+  $("edit-merchant-evidence").hidden = !resolved;
+  $("edit-merchant-evidence").setAttribute("aria-expanded", String(!resolved));
+  $("evidence-title").textContent = resolved ? "商店装备" : "已看到什么？";
   observations();
   suggestions();
   inventory();
@@ -267,12 +291,31 @@ async function load() {
     if (!response.ok) throw Error("load");
     data = await response.json();
     let initial;
+    let migratedEffects = false;
     try {
-      initial = JSON.parse(
-        new URL(location.href).searchParams.get(stateParam) ||
-          localStorage.getItem("merchant-state-v1") ||
-          "null",
-      );
+      const shared = new URL(location.href).searchParams.get(stateParam);
+      const saved = shared ? null : localStorage.getItem("merchant-state-v2");
+      if (shared || saved) initial = JSON.parse(shared || saved);
+      else {
+        const legacy = JSON.parse(
+          localStorage.getItem("merchant-state-v1") || "null",
+        );
+        if (legacy) {
+          const observations = Array.isArray(legacy.observations)
+            ? legacy.observations
+            : [];
+          migratedEffects =
+            legacy.mode !== "deep" && observations.some((o) => o?.effect);
+          initial = {
+            ...legacy,
+            mode: "deep",
+            observations:
+              legacy.mode === "deep"
+                ? observations
+                : observations.map(({ effect, ...rest }) => rest),
+          };
+        }
+      }
     } catch {}
     state = validMerchantState(data, initial);
     const shop = requestedShop;
@@ -284,6 +327,8 @@ async function load() {
     }
     $("merchant-workspace").hidden = false;
     render();
+    if (migratedEffects)
+      $("merchant-feedback").textContent = "已切换深夜，请重新确认附加效果";
   } catch {
     $("merchant-error").hidden = false;
     $("merchant-count").textContent = "加载失败";
@@ -353,6 +398,16 @@ $("stock-more").onclick = () => {
   inventory();
 };
 $("merchant-retry").onclick = load;
+$("merchant-show-skills").onchange = () =>
+  $("merchant-stock").classList.toggle(
+    "show-extra",
+    $("merchant-show-skills").checked,
+  );
+$("edit-merchant-evidence").onclick = () => {
+  const hidden = !$("merchant-evidence-body").hidden;
+  $("merchant-evidence-body").hidden = hidden;
+  $("edit-merchant-evidence").setAttribute("aria-expanded", String(!hidden));
+};
 export function selectShop(shop) {
   if (!Object.hasOwn(SHOPS, shop)) return;
   requestedShop = shop;

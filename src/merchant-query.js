@@ -13,7 +13,7 @@ export function matchesObservation(item, observation, mode) {
     (!observation.effect || item.effects[mode].includes(observation.effect))
   );
 }
-export function queryMerchants(data, observations, mode = "normal") {
+export function queryMerchants(data, observations, mode = "deep") {
   return data.patterns.filter((pattern) =>
     observations.every((observation) =>
       stock(data, pattern, observation.shop).some((item) =>
@@ -23,7 +23,7 @@ export function queryMerchants(data, observations, mode = "normal") {
   );
 }
 export function validMerchantState(data, input) {
-  const mode = input?.mode === "deep" ? "deep" : "normal";
+  const mode = input?.mode === "normal" ? "normal" : "deep";
   const observations = (
     Array.isArray(input?.observations) ? input.observations : []
   )

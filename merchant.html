@@ -38,58 +38,75 @@
         <section class="merchant-evidence" aria-labelledby="evidence-title">
           <div class="merchant-section-heading">
             <h2 id="evidence-title">已看到什么？</h2>
+            <button
+              type="button"
+              id="edit-merchant-evidence"
+              aria-controls="merchant-evidence-body"
+              aria-expanded="true"
+              hidden
+            >
+              修改线索
+            </button>
             <label class="mode-label"
               >出击<select id="merchant-mode">
                 <option value="normal">普通出击</option>
-                <option value="deep">深夜</option>
+                <option value="deep" selected>深夜</option>
               </select></label
             >
           </div>
-          <div class="merchant-inputs">
-            <label
-              >商店<select id="observation-shop">
-                <option value="normal">普通商店</option>
-                <option value="large">大商店</option>
-                <option value="legendary">传奇商店</option>
-              </select></label
-            ><label
-              >商品、战技或效果<input
-                type="search"
-                id="merchant-search"
-                placeholder="搜索名称或首字母"
-                autocomplete="off"
-            /></label>
+          <div id="merchant-evidence-body">
+            <div class="merchant-inputs">
+              <label
+                >商店<select id="observation-shop">
+                  <option value="normal">普通商店</option>
+                  <option value="large">大商店</option>
+                  <option value="legendary">传奇商店</option>
+                </select></label
+              ><label
+                >商品、战技或效果<input
+                  type="search"
+                  id="merchant-search"
+                  placeholder="搜索名称或首字母"
+                  autocomplete="off"
+              /></label>
+            </div>
+            <div
+              id="merchant-observations"
+              class="merchant-chips"
+              role="group"
+              aria-label="已选信息"
+            ></div>
+            <div
+              id="merchant-suggestions"
+              class="merchant-suggestions"
+              role="group"
+              aria-label="可选商品"
+            ></div>
+            <button
+              id="suggestions-more"
+              class="merchant-more"
+              type="button"
+              hidden
+            >
+              更多商品
+            </button>
           </div>
-          <div
-            id="merchant-observations"
-            class="merchant-chips"
-            role="group"
-            aria-label="已选信息"
-          ></div>
           <div class="merchant-actions">
             <button id="merchant-undo" type="button">撤销</button
             ><button id="merchant-clear" type="button">清空</button
             ><button id="merchant-share" type="button">分享</button>
           </div>
           <p id="merchant-feedback" role="status" class="merchant-feedback"></p>
-          <div
-            id="merchant-suggestions"
-            class="merchant-suggestions"
-            role="group"
-            aria-label="可选商品"
-          ></div>
-          <button
-            id="suggestions-more"
-            class="merchant-more"
-            type="button"
-            hidden
-          >
-            更多商品
-          </button>
         </section>
         <section class="merchant-inventory" aria-labelledby="inventory-title">
           <div class="merchant-section-heading">
             <h2 id="inventory-title">可变货物</h2>
+            <label class="merchant-extra-switch"
+              ><input
+                type="checkbox"
+                id="merchant-show-skills"
+              />战技／属性</label
+            >
             <label
               >组合<select
                 id="pattern-preview"
@@ -131,6 +148,9 @@
         </p>
       </details>
     </main>
-    <script type="module" src="src/merchant-redirect.js?v=integrated-1"></script>
+    <script
+      type="module"
+      src="src/merchant-redirect.js?v=integrated-1"
+    ></script>
   </body>
 </html>

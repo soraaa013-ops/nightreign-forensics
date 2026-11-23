@@ -11,13 +11,16 @@ with sync_playwright() as p:
  for path in ['','map.html','merchant.html']:
   page.goto(BASE+'/'+path);page.wait_for_load_state('networkidle')
   if path=='merchant.html':page.wait_for_selector('#merchant-workspace:not([hidden])')
-  for state in ['initial','active']:
+  for state in (['initial','active','resolved'] if path=='merchant.html' else ['initial','active']):
    if state=='active':
     if not path:
      page.get_by_role('button',name='填入示例').click();page.locator('.slot-tab').first.click();page.locator('#effect-query').fill('回血')
     elif path=='map.html':page.locator('#open-map-results').click();page.locator('#use-clue').click()
     else:
      page.locator('#merchant-search').fill('wsjj');page.locator('.merchant-suggestion').first.click();page.locator('[data-shop=large]').click();page.locator('.merchant-stock-row summary').first.click()
+   if state=='resolved':
+    page.locator('#merchant-search').fill('搏击手套');page.locator('.merchant-suggestion').filter(has_text='搏击手套').click()
+    page.wait_for_selector('.merchant-stock-overview')
    page.add_script_tag(path=AXE)
    result=page.evaluate("async () => (await axe.run(document, {runOnly: {type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}})).violations")
    results.append({'page':path,'state':state,'violations':result})

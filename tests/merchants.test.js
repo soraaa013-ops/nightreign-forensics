@@ -90,7 +90,7 @@ test("shared state validates untrusted input and merchant names support initials
       mode: "bad",
       observations: [null, {}, { shop: "__proto__", name: "x" }],
     }),
-    { mode: "normal", observations: [] },
+    { mode: "deep", observations: [] },
   );
   assert.ok(matchesSearch("志留亚的树矛", "zlydsm"));
   assert.ok(matchesSearch("夜与火之剑", "yyhzj"));
@@ -165,4 +165,9 @@ test("all source prices, stock slots and passive/curse counts survive import in 
         .length,
     );
   }
+});
+
+test("merchant default is deep while explicit normal-mode shares remain normal", () => {
+  assert.equal(validMerchantState(data, null).mode, "deep");
+  assert.equal(validMerchantState(data, { mode: "normal" }).mode, "normal");
 });
