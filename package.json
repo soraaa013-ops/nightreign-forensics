@@ -24,6 +24,7 @@
     "test:filters": "python3 tests/compact-filter-browser.py",
     "test:performance": "python3 tests/map-performance.py",
     "test:search": "python3 tests/search-browser.py",
-    "test:merchant": "python3 tests/merchant-browser.py"
+    "test:merchant": "python3 tests/merchant-browser.py",
+    "test:map-merchant": "python3 tests/map-merchant-browser.py"
   }
 }

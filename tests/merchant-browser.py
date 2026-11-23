@@ -5,7 +5,7 @@ from urllib.parse import urlencode, urlparse, parse_qs
 from playwright.sync_api import sync_playwright, expect
 BASE=os.environ.get('TEST_BASE_URL','http://localhost:4180')
 data=json.loads(Path('data/merchants.json').read_text())
-def getstate(page):return json.loads(parse_qs(urlparse(page.url).query)['q'][0])
+def getstate(page):return json.loads(parse_qs(urlparse(page.url).query).get('merchant',parse_qs(urlparse(page.url).query).get('q'))[0])
 with sync_playwright() as p:
  browser=p.chromium.launch()
  for width,height in [(320,568),(390,844),(1440,900)]:

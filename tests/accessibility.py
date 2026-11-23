@@ -10,6 +10,7 @@ with sync_playwright() as p:
  results=[]
  for path in ['','map.html','merchant.html']:
   page.goto(BASE+'/'+path);page.wait_for_load_state('networkidle')
+  if path=='merchant.html':page.wait_for_selector('#merchant-workspace:not([hidden])')
   for state in ['initial','active']:
    if state=='active':
     if not path:

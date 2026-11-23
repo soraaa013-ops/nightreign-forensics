@@ -12,6 +12,7 @@
     <script type="module" src="src/map-preload.js?v=perf-1"></script>
     <title>地图档案科｜遗物警察局</title>
     <link rel="stylesheet" href="styles.css?v=merchant-2" />
+    <link rel="stylesheet" href="merchant.css?v=integrated-1" />
   </head>
   <body class="map-page">
     <a class="skip-link" href="#atlas-viewport">跳到工具</a>
@@ -31,7 +32,13 @@
       <nav class="tool-nav" aria-label="工具导航">
         <a href="index.html#checker">遗物检测</a
         ><a aria-current="page" href="map.html">地图档案</a>
-        <a href="merchant.html">商人种子</a>
+        <a
+          href="#merchant-panel"
+          id="open-merchant"
+          aria-controls="merchant-panel"
+          aria-expanded="false"
+          >商人种子</a
+        >
       </nav>
     </header>
     <main class="tool-main map-main">
@@ -286,6 +293,20 @@
       <span>遗物警察局 · 地图档案科</span
       ><span>本体与见弃空洞者 · 520 份布局。</span>
     </footer>
-    <script type="module" src="src/map.js?v=merchant-1"></script>
+    <dialog
+      id="merchant-panel"
+      class="merchant-panel"
+      aria-labelledby="merchant-panel-title"
+    >
+      <div class="merchant-panel-bar">
+        <h2 id="merchant-panel-title">商人种子</h2>
+        <button id="close-merchant" type="button" aria-label="关闭商人面板">
+          收起
+        </button>
+      </div>
+      <div id="merchant-panel-body"><p role="status">正在载入商品</p></div>
+    </dialog>
+    <script type="module" src="src/map-merchant.js?v=integrated-1"></script>
+    <script type="module" src="src/map.js?v=integrated-1"></script>
   </body>
 </html>

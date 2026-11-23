@@ -18,6 +18,9 @@ const button = (text, handler, cls) => {
   n.onclick = handler;
   return n;
 };
+const embedded = document.body.classList.contains("map-page");
+const stateParam = embedded ? "merchant" : "q";
+let requestedShop = new URL(location.href).searchParams.get("shop");
 const compare = new Intl.Collator("zh-CN").compare;
 let data,
   state = { mode: "normal", observations: [] },
@@ -29,7 +32,9 @@ let data,
   stockLimit = 20;
 function save() {
   const url = new URL(location.href);
-  url.searchParams.set("q", JSON.stringify(state));
+  url.searchParams.set(stateParam, JSON.stringify(state));
+  if (embedded) url.searchParams.set("panel", "merchant");
+  url.searchParams.set("shop", viewShop);
   window.history.replaceState(null, "", url);
   try {
     localStorage.setItem("merchant-state-v1", JSON.stringify(state));
@@ -264,13 +269,13 @@ async function load() {
     let initial;
     try {
       initial = JSON.parse(
-        new URL(location.href).searchParams.get("q") ||
+        new URL(location.href).searchParams.get(stateParam) ||
           localStorage.getItem("merchant-state-v1") ||
           "null",
       );
     } catch {}
     state = validMerchantState(data, initial);
-    const shop = new URL(location.href).searchParams.get("shop");
+    const shop = requestedShop;
     if (Object.hasOwn(SHOPS, shop)) {
       viewShop = shop;
       $("observation-shop").value = shop;
@@ -348,4 +353,17 @@ $("stock-more").onclick = () => {
   inventory();
 };
 $("merchant-retry").onclick = load;
-load();
+export function selectShop(shop) {
+  if (!Object.hasOwn(SHOPS, shop)) return;
+  requestedShop = shop;
+  if (!data) return;
+  viewShop = shop;
+  $("observation-shop").value = shop;
+  for (const tab of document.querySelectorAll("[data-shop]"))
+    tab.setAttribute("aria-pressed", String(tab.dataset.shop === shop));
+  suggestionLimit = 10;
+  stockLimit = 20;
+  suggestions();
+  inventory();
+}
+export const ready = load();

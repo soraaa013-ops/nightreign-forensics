@@ -349,14 +349,10 @@ function update(recordHistory = true) {
     current.mapType ||
     current.spawn ||
     current.observations.length;
-  history.replaceState(
-    null,
-    "",
-    location.pathname +
-      (hasConditions
-        ? "?" + new URLSearchParams({ q: JSON.stringify(current) })
-        : ""),
-  );
+  const url = new URL(location.href);
+  if (hasConditions) url.searchParams.set("q", JSON.stringify(current));
+  else url.searchParams.delete("q");
+  history.replaceState(null, "", url);
   candidates = queryMaps(mapData.records, state());
   candidateCount.textContent = candidates.length;
   const conditionCount =
