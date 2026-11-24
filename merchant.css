@@ -181,10 +181,10 @@
   --quality-color: #edf0ef;
 }
 .merchant-stock-row[data-rarity="uncommon"] {
-  --quality-color: #91caff;
+  --quality-color: #a4eeff;
 }
 .merchant-stock-row[data-rarity="rare"] {
-  --quality-color: #dab7f0;
+  --quality-color: #cd85e8;
 }
 .merchant-stock-row[data-rarity="unique"] {
   --quality-color: #ff9a9f;
@@ -192,8 +192,7 @@
 .merchant-stock-row[data-rarity="legendary"] {
   --quality-color: #e9c36c;
 }
-.merchant-stock-row .merchant-stock-name,
-.merchant-quality {
+.merchant-stock-row .merchant-stock-name {
   color: var(--quality-color);
 }
 .merchant-stock-identity {
@@ -205,14 +204,6 @@
 }
 .merchant-stock-identity .merchant-stock-name {
   flex: initial;
-}
-.merchant-quality {
-  font-size: 10px;
-  line-height: 1.4;
-  border: 1px solid currentColor;
-  border-radius: 3px;
-  padding: 0 3px;
-  white-space: nowrap;
 }
 .merchant-price {
   font-size: 12px;

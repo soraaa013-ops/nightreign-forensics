@@ -193,16 +193,11 @@ function inventory() {
         row.dataset.rarity = item.rarities[state.mode];
         const head = el("div", undefined, "merchant-stock-head");
         const identity = el("div", undefined, "merchant-stock-identity");
-        const quality = el(
-          "span",
-          RARITY_LABELS[item.rarities[state.mode]] || "品质未知",
-          "merchant-quality",
-        );
-        quality.setAttribute("aria-label", "品质：" + quality.textContent);
-        identity.append(
-          el("strong", item.name, "merchant-stock-name"),
-          quality,
-        );
+        const name = el("strong", item.name, "merchant-stock-name");
+        const quality = RARITY_LABELS[item.rarities[state.mode]] || "品质未知";
+        name.setAttribute("aria-label", item.name + "，品质：" + quality);
+        name.title = quality;
+        identity.append(name);
         head.append(
           identity,
           el(

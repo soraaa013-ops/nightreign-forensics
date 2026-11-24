@@ -35,7 +35,8 @@ with sync_playwright() as p:
    for item_id in data['patterns'][0][shop]:
     item=data['items'][item_id];row=group.locator('[data-item="'+item_id+'"]')
     expect(row.locator('.merchant-stock-name')).to_have_text(item['name'])
-    expect(row.locator('.merchant-quality')).to_have_text(rarities[item['rarities']['deep']])
+    expect(row.locator('.merchant-quality')).to_have_count(0)
+    expect(row.locator('.merchant-stock-name')).to_have_attribute('aria-label',item['name']+'，品质：'+rarities[item['rarities']['deep']])
     expect(row.locator('.merchant-price')).to_have_text(format(item['prices']['deep'],',')+' 卢恩')
     assert row.locator('.merchant-effects li').all_text_contents()==item['effects']['deep']
     assert row.locator('.merchant-stock-name').evaluate('(e)=>!e.closest("details")')
@@ -45,7 +46,7 @@ with sync_playwright() as p:
    row=page.locator('[data-stock-shop="large"] [data-item="'+item_id+'"]');item=data['items'][item_id]
    expect(row.locator('.merchant-price')).to_have_text(format(item['prices']['normal'],',')+' 卢恩')
    assert row.locator('.merchant-effects li').all_text_contents()==item['effects']['normal']
-   expect(row.locator('.merchant-quality')).to_have_text(rarities[item['rarities']['normal']])
+   expect(row.locator('.merchant-stock-name')).to_have_attribute('aria-label',item['name']+'，品质：'+rarities[item['rarities']['normal']])
   page.locator('#merchant-mode').select_option('deep')
   page.reload();expect(page.locator('#merchant-mode')).to_have_value('deep');expect(page.locator('#merchant-count')).to_have_text('已确定 #1')
   expect(page.locator('[data-stock-shop="legendary"]')).to_contain_text('剑骸大剑')
