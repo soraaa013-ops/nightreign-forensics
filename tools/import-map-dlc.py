@@ -101,7 +101,11 @@ for r in patterns[320:]:
    if b['binding'] not in active:continue
    p=point({**b,'attachId':f'关联{index+1}'},'Field Boss',terrain)
    slots[p['key']]=dict(key=p['key'],category=p['category'],location=p['location'],value=term(b['label']))
- record=dict(id=int(r['id']),nightlord=lords[int(r['boss'])],mapType=terrain,spawn=spawns[r['starter']],specialEvent=events.get(r['id'],term('无特殊事件')),night1Boss=bosses.get(r['bossId1'],term('未记录')),night2Boss=bosses.get(r['bossId2'],term('未记录')),extraNightBoss='、'.join(zh.get(bosses.get(r[f'extraBossId{i}'],''),bosses.get(r[f'extraBossId{i}'],'')) for i in [1,2] if r[f'extraBossId{i}']!='-1') or None,night1Circle=term('第一夜缩圈随机'),night2Circle=term(('西' if int(r['playArea2_gridXNo'])<44 else '东')+('北' if int(r['playArea2_gridZNo'])>=38 else '南')+'区域'),slots=list(slots.values()))
+ def circle_region(day):
+  prefix = f'playArea{day}_'
+  return term(('西' if int(r[prefix+'gridXNo']) < 44 else '东') +
+              ('北' if int(r[prefix+'gridZNo']) >= 38 else '南') + '区域')
+ record=dict(id=int(r['id']),nightlord=lords[int(r['boss'])],mapType=terrain,spawn=spawns[r['starter']],specialEvent=events.get(r['id'],term('无特殊事件')),night1Boss=bosses.get(r['bossId1'],term('未记录')),night2Boss=bosses.get(r['bossId2'],term('未记录')),extraNightBoss='、'.join(zh.get(bosses.get(r[f'extraBossId{i}'],''),bosses.get(r[f'extraBossId{i}'],'')) for i in [1,2] if r[f'extraBossId{i}']!='-1') or None,night1Circle=circle_region(1),night2Circle=circle_region(2),slots=list(slots.values()))
  if record['extraNightBoss']:term(record['extraNightBoss'])
  records.append(record)
 for record in records:
@@ -117,6 +121,6 @@ for r in records:
 geo['points']+=list(newpoints.values());geo['layouts']['Great Hollow']='great_hollow'
 # Make importer idempotent: extension geometry lives separately.
 extra=dict(layouts={'Great Hollow':'great_hollow'},points=[p for p in geo['points'] if p not in json.loads((ROOT/'data/map-geometry.json').read_text())['points']])
-meta=dict(source='https://github.com/xqfinxd/NightreignApp',commit='80ea5b3d7492acb15512cac05d6c91dba9f6c82a',records=200,notes='参数快照；未识别的内部组件不作为可选线索。第一夜缩圈随机。点位名称含方位描述，并非官方地名。')
+meta=dict(source='https://github.com/xqfinxd/NightreignApp',commit='80ea5b3d7492acb15512cac05d6c91dba9f6c82a',records=200,notes='参数快照；未识别的内部组件不作为可选线索。每天的外圈随机，最终圈心由布局决定。点位名称含方位描述，并非官方地名。')
 save('data/map-dlc.json',dict(metadata=meta,records=records));save('data/map-dlc-geometry.json',extra);save('data/zh-CN.json',dictionary)
 print('Imported',len(records),'records;',len(newpoints),'new sites;',len(mapping),'shared value IDs. Skipped internal/event components:',dict(unmapped))

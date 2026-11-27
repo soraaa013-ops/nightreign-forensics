@@ -41,6 +41,17 @@ with sync_playwright() as p:
  ready(page);expect(page.locator('#map-settings')).to_be_hidden();expect(page.locator('#map-results-dialog')).to_be_hidden();expect(page.locator('[data-layer=all]')).to_have_attribute('aria-pressed','true');expect(page.locator('#atlas-loading')).to_be_hidden();assert page.locator('#atlas-tiles img').evaluate_all('(els)=>els.length===1&&els.every(e=>e.complete&&e.naturalWidth>0)');assert page.locator('#atlas-tiles img').first.get_attribute('src').endswith('/hd/default.webp');no_overlap(page)
  page.screenshot(path=str(OUT/'desktop.png'))
  passed('First-screen map, default all-points layer, correct tiles, individual markers without aggregation')
+ for day in (1,2):
+  layer(page,f'day{day}')
+  expect(page.locator('#atlas-circles span').first).to_be_visible()
+  expect(page.locator('.atlas-point')).to_have_count(0)
+  page.locator('#atlas-in').click()
+  assert page.locator('#atlas-tiles').bounding_box()==page.locator('#atlas-circles').bounding_box()
+  page.locator('#atlas-fit').click()
+ layer(page,'all')
+ for symbol in ['1','2','event']:
+  expect(page.locator(f'#atlas-circles [data-symbol="{symbol}"]').first).to_be_visible()
+ passed('Both final-circle layers follow map zoom and appear together with invasion marks on return to all points')
  choose(page,'Major Base - South Lake');expect(page.locator('#atlas-editor')).to_be_visible();expect(page.locator('.atlas-exact')).not_to_have_attribute('open','');types=page.locator('.atlas-type-options .atlas-option');assert types.count()>1;assert all('无匹配' not in t for t in page.locator('.atlas-option').all_text_contents())
  scroll=page.evaluate('scrollY');transform=page.locator('#atlas-tiles').get_attribute('style')
  page.locator('.atlas-type-options [data-value=Camp]').click();expect(page.locator('#atlas-editor')).to_be_visible();assert state(page)['observations'][0]['match']=='type';coarse=int(page.locator('#candidate-count').inner_text());assert 0<coarse<320
@@ -79,7 +90,7 @@ with sync_playwright() as p:
  page.locator('#open-map-results').click();expect(page.locator('#map-results-dialog')).to_be_visible();page.keyboard.press('Escape');expect(page.locator('#map-results-dialog')).to_be_hidden();assert state(page)==before
  passed('Determined points show descriptions, explicit editing, inferred facts and no redundant candidates')
  for width,height in [(320,568),(320,844),(390,844),(768,844)]:
-  page.set_viewport_size({'width':width,'height':height});ready(page);assert page.locator('#atlas-viewport').bounding_box()['y']<=110;assert page.locator('#atlas-viewport').bounding_box()['height']>=height-112;expect(page.locator('#map-settings')).to_be_hidden();expect(page.locator('#map-results-dialog')).to_be_hidden();assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
+  page.set_viewport_size({'width':width,'height':height});ready(page);assert page.locator('#atlas-viewport').bounding_box()['y']<=240;assert page.locator('#atlas-viewport').bounding_box()['height']>=height-240;expect(page.locator('#map-settings')).to_be_hidden();expect(page.locator('#map-results-dialog')).to_be_hidden();assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
   for mode in ['base','spawn','boss','gaol','all']:
    layer(page,mode);no_overlap(page);page.locator('#atlas-in').click();no_overlap(page);page.locator('#atlas-fit').click()
   layer(page,'base')
@@ -98,7 +109,7 @@ with sync_playwright() as p:
   session=touch.context.new_cdp_session(touch);before=touch.locator('#atlas-tiles').bounding_box()['width'];session.send('Input.dispatchTouchEvent',{'type':'touchStart','touchPoints':[{'x':cx-35,'y':cy,'id':1},{'x':cx+35,'y':cy,'id':2}]});session.send('Input.dispatchTouchEvent',{'type':'touchMove','touchPoints':[{'x':cx-85,'y':cy,'id':1},{'x':cx+85,'y':cy,'id':2}]});session.send('Input.dispatchTouchEvent',{'type':'touchEnd','touchPoints':[]});assert touch.locator('#atlas-tiles').bounding_box()['width']>before;expect(touch.locator('#atlas-editor')).to_be_hidden();no_overlap(touch)
   touch.locator('#atlas-fit').click();layer(touch,'spawn');box=touch.locator('.atlas-point:not(.atlas-cluster):visible').first.bounding_box();touch.touchscreen.tap(box['x']+box['width']/2,box['y']+box['height']/2);assert state(touch)['spawn'];expect(touch.locator('#atlas-editor')).to_be_hidden();touch.close()
   passed('Real browser touch dispatch: pinch, individual marker layout, one-tap spawn and no accidental marking')
- page.route('**/data/map-geometry.json',lambda route:route.fulfill(status=503,body='unavailable'));ready(page);expect(page.get_by_role('button',name='重试交互地图')).to_be_visible();expect(page.locator('#clue-search')).to_be_visible();page.unroute('**/data/map-geometry.json');dismiss_settings(page);page.get_by_role('button',name='重试交互地图').click();expect(page.locator('#atlas-layers button')).to_have_count(5)
+ page.route('**/data/map-geometry.json',lambda route:route.fulfill(status=503,body='unavailable'));ready(page);expect(page.get_by_role('button',name='重试交互地图')).to_be_visible();expect(page.locator('#clue-search')).to_be_visible();page.unroute('**/data/map-geometry.json');dismiss_settings(page);page.get_by_role('button',name='重试交互地图').click();expect(page.locator('#atlas-layers button')).to_have_count(7)
  page.route('**/assets/maps/hd/default.webp',lambda route:route.fulfill(status=503,body='unavailable'));ready(page);expect(page.get_by_role('button',name='重试底图')).to_be_visible();page.unroute('**/assets/maps/hd/default.webp');page.get_by_role('button',name='重试底图').click();expect(page.locator('#atlas-loading')).to_be_hidden();assert not errors,errors
  passed('Asset failures, retry, text fallback and no uncaught errors')
  browser.close();print(f'{len(checks)} atlas browser groups passed ({name}).')

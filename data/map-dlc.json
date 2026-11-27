@@ -3,7 +3,7 @@
     "source": "https://github.com/xqfinxd/NightreignApp",
     "commit": "80ea5b3d7492acb15512cac05d6c91dba9f6c82a",
     "records": 200,
-    "notes": "参数快照；未识别的内部组件不作为可选线索。第一夜缩圈随机。点位名称含方位描述，并非官方地名。"
+    "notes": "参数快照；未识别的内部组件不作为可选线索。每天的外圈随机，最终圈心由布局决定。点位名称含方位描述，并非官方地名。"
   },
   "records": [
     {
@@ -15,7 +15,7 @@
       "night1Boss": "Demi-Human Queen and Swordmaster",
       "night2Boss": "Morgott",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -365,7 +365,7 @@
       "night1Boss": "Demi-Human Queen and Swordmaster",
       "night2Boss": "Morgott",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -715,7 +715,7 @@
       "night1Boss": "Bell Bearing Hunter",
       "night2Boss": "Tree Sentinel and Royal Cavalrymen",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -1065,7 +1065,7 @@
       "night1Boss": "Demi-Human Queen and Swordmaster",
       "night2Boss": "Tree Sentinel and Royal Cavalrymen",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -1415,7 +1415,7 @@
       "night1Boss": "Bell Bearing Hunter",
       "night2Boss": "Morgott",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -1765,7 +1765,7 @@
       "night1Boss": "Bell Bearing Hunter",
       "night2Boss": "Morgott",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -2053,7 +2053,7 @@
       "night1Boss": "Demi-Human Queen and Swordmaster",
       "night2Boss": "Morgott",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -2341,7 +2341,7 @@
       "night1Boss": "Bell Bearing Hunter",
       "night2Boss": "Morgott",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -2629,7 +2629,7 @@
       "night1Boss": "Bell Bearing Hunter",
       "night2Boss": "Tree Sentinel and Royal Cavalrymen",
       "extraNightBoss": "接肢君王",
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -2917,7 +2917,7 @@
       "night1Boss": "Demi-Human Queen and Swordmaster",
       "night2Boss": "Tree Sentinel and Royal Cavalrymen",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -3205,7 +3205,7 @@
       "night1Boss": "Valiant Gargoyle",
       "night2Boss": "Ancient Dragon",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -3555,7 +3555,7 @@
       "night1Boss": "Night's Cavalry Duo",
       "night2Boss": "Crucible Knight and Golden Hippopotamus",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -3905,7 +3905,7 @@
       "night1Boss": "Night's Cavalry Duo",
       "night2Boss": "Crucible Knight and Golden Hippopotamus",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -4255,7 +4255,7 @@
       "night1Boss": "Valiant Gargoyle",
       "night2Boss": "Crucible Knight and Golden Hippopotamus",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -4605,7 +4605,7 @@
       "night1Boss": "Valiant Gargoyle",
       "night2Boss": "Ancient Dragon",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -4955,7 +4955,7 @@
       "night1Boss": "Night's Cavalry Duo",
       "night2Boss": "Ancient Dragon",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -5243,7 +5243,7 @@
       "night1Boss": "Wormface",
       "night2Boss": "Crucible Knight and Golden Hippopotamus",
       "extraNightBoss": "战场老将",
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -5531,7 +5531,7 @@
       "night1Boss": "Night's Cavalry Duo",
       "night2Boss": "Outland Commander",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -5819,7 +5819,7 @@
       "night1Boss": "Valiant Gargoyle",
       "night2Boss": "Outland Commander",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -6107,7 +6107,7 @@
       "night1Boss": "Valiant Gargoyle",
       "night2Boss": "Ancient Dragon",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -6395,7 +6395,7 @@
       "night1Boss": "Ulcerated Tree Spirit",
       "night2Boss": "Draconic Tree Sentinel and Royal Cavalrymen",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -6745,7 +6745,7 @@
       "night1Boss": "Ulcerated Tree Spirit",
       "night2Boss": "Great Wyrm",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -7095,7 +7095,7 @@
       "night1Boss": "Ulcerated Tree Spirit",
       "night2Boss": "Great Wyrm",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -7445,7 +7445,7 @@
       "night1Boss": "Battlefield Commander",
       "night2Boss": "Draconic Tree Sentinel and Royal Cavalrymen",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -7795,7 +7795,7 @@
       "night1Boss": "Battlefield Commander",
       "night2Boss": "Draconic Tree Sentinel and Royal Cavalrymen",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -8145,7 +8145,7 @@
       "night1Boss": "Smelter Demon",
       "night2Boss": "Draconic Tree Sentinel and Royal Cavalrymen",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -8433,7 +8433,7 @@
       "night1Boss": "Tibia Mariner",
       "night2Boss": "Great Wyrm",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -8721,7 +8721,7 @@
       "night1Boss": "Ulcerated Tree Spirit",
       "night2Boss": "Dragonkin Soldier",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -9009,7 +9009,7 @@
       "night1Boss": "Battlefield Commander",
       "night2Boss": "Dragonkin Soldier",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -9297,7 +9297,7 @@
       "night1Boss": "Centipede Demon",
       "night2Boss": "Great Wyrm",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -9585,7 +9585,7 @@
       "night1Boss": "Valiant Gargoyle",
       "night2Boss": "Godskin Duo",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -9935,7 +9935,7 @@
       "night1Boss": "Grafted Monarch",
       "night2Boss": "Fallingstar Beast",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -10285,7 +10285,7 @@
       "night1Boss": "Grafted Monarch",
       "night2Boss": "Godskin Duo",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -10635,7 +10635,7 @@
       "night1Boss": "Valiant Gargoyle",
       "night2Boss": "Godskin Duo",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -10985,7 +10985,7 @@
       "night1Boss": "Grafted Monarch",
       "night2Boss": "Fallingstar Beast",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -11335,7 +11335,7 @@
       "night1Boss": "Wormface",
       "night2Boss": "Godskin Duo",
       "extraNightBoss": "龙装大树守卫与王城骑兵",
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -11623,7 +11623,7 @@
       "night1Boss": "Valiant Gargoyle",
       "night2Boss": "Fallingstar Beast",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -11911,7 +11911,7 @@
       "night1Boss": "Gaping Dragon",
       "night2Boss": "Tree Sentinel and Royal Cavalrymen",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -12199,7 +12199,7 @@
       "night1Boss": "Grafted Monarch",
       "night2Boss": "Fallingstar Beast",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -12487,7 +12487,7 @@
       "night1Boss": "Smelter Demon",
       "night2Boss": "Godskin Duo",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -12775,7 +12775,7 @@
       "night1Boss": "Royal Revenant",
       "night2Boss": "Death Rite Bird",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -13125,7 +13125,7 @@
       "night1Boss": "Royal Revenant",
       "night2Boss": "Crucible Knight and Golden Hippopotamus",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -13475,7 +13475,7 @@
       "night1Boss": "Royal Revenant",
       "night2Boss": "Crucible Knight and Golden Hippopotamus",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -13825,7 +13825,7 @@
       "night1Boss": "Battlefield Commander",
       "night2Boss": "Crucible Knight and Golden Hippopotamus",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -14175,7 +14175,7 @@
       "night1Boss": "Battlefield Commander",
       "night2Boss": "Death Rite Bird",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -14525,7 +14525,7 @@
       "night1Boss": "Centipede Demon",
       "night2Boss": "Death Rite Bird",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -14813,7 +14813,7 @@
       "night1Boss": "Battlefield Commander",
       "night2Boss": "Crucible Knight and Golden Hippopotamus",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -15101,7 +15101,7 @@
       "night1Boss": "Royal Revenant",
       "night2Boss": "Godskin Duo",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -15389,7 +15389,7 @@
       "night1Boss": "Tibia Mariner",
       "night2Boss": "Death Rite Bird",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -15677,7 +15677,7 @@
       "night1Boss": "The Duke's Dear Freja",
       "night2Boss": "Crucible Knight and Golden Hippopotamus",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -15965,7 +15965,7 @@
       "night1Boss": "Royal Revenant",
       "night2Boss": "Outland Commander",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -16315,7 +16315,7 @@
       "night1Boss": "Night's Cavalry Duo",
       "night2Boss": "Outland Commander",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -16665,7 +16665,7 @@
       "night1Boss": "Royal Revenant",
       "night2Boss": "Nameless King",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -17015,7 +17015,7 @@
       "night1Boss": "Night's Cavalry Duo",
       "night2Boss": "Outland Commander",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -17365,7 +17365,7 @@
       "night1Boss": "Royal Revenant",
       "night2Boss": "Nameless King",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -17715,7 +17715,7 @@
       "night1Boss": "Night's Cavalry Duo",
       "night2Boss": "Dragonkin Soldier",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -18003,7 +18003,7 @@
       "night1Boss": "Wormface",
       "night2Boss": "Nameless King",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -18291,7 +18291,7 @@
       "night1Boss": "Gaping Dragon",
       "night2Boss": "Nameless King",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -18579,7 +18579,7 @@
       "night1Boss": "Royal Revenant",
       "night2Boss": "Outland Commander",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -18867,7 +18867,7 @@
       "night1Boss": "Centipede Demon",
       "night2Boss": "Dragonkin Soldier",
       "extraNightBoss": "蒙葛特",
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -19155,7 +19155,7 @@
       "night1Boss": "Grafted Monarch",
       "night2Boss": "Draconic Tree Sentinel and Royal Cavalrymen",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -19505,7 +19505,7 @@
       "night1Boss": "Grafted Monarch",
       "night2Boss": "Draconic Tree Sentinel and Royal Cavalrymen",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -19855,7 +19855,7 @@
       "night1Boss": "Ulcerated Tree Spirit",
       "night2Boss": "Dancer of the Boreal Valley",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -20205,7 +20205,7 @@
       "night1Boss": "Ulcerated Tree Spirit",
       "night2Boss": "Dancer of the Boreal Valley",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -20555,7 +20555,7 @@
       "night1Boss": "Grafted Monarch",
       "night2Boss": "Draconic Tree Sentinel and Royal Cavalrymen",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -20905,7 +20905,7 @@
       "night1Boss": "Ulcerated Tree Spirit",
       "night2Boss": "Dancer of the Boreal Valley",
       "extraNightBoss": "无名王者",
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -21193,7 +21193,7 @@
       "night1Boss": "Tibia Mariner",
       "night2Boss": "Godskin Duo",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -21481,7 +21481,7 @@
       "night1Boss": "Grafted Monarch",
       "night2Boss": "Draconic Tree Sentinel and Royal Cavalrymen",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -21769,7 +21769,7 @@
       "night1Boss": "Smelter Demon",
       "night2Boss": "Draconic Tree Sentinel and Royal Cavalrymen",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -22057,7 +22057,7 @@
       "night1Boss": "The Duke's Dear Freja",
       "night2Boss": "Dancer of the Boreal Valley",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -22345,7 +22345,7 @@
       "night1Boss": "Battlefield Commander",
       "night2Boss": "Tree Sentinel and Royal Cavalrymen",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -22695,7 +22695,7 @@
       "night1Boss": "Night's Cavalry Duo",
       "night2Boss": "Crucible Knight and Golden Hippopotamus",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -23045,7 +23045,7 @@
       "night1Boss": "Night's Cavalry Duo",
       "night2Boss": "Tree Sentinel and Royal Cavalrymen",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -23395,7 +23395,7 @@
       "night1Boss": "Valiant Gargoyle",
       "night2Boss": "Draconic Tree Sentinel and Royal Cavalrymen",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -23745,7 +23745,7 @@
       "night1Boss": "Valiant Gargoyle",
       "night2Boss": "Crucible Knight and Golden Hippopotamus",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -24095,7 +24095,7 @@
       "night1Boss": "Wormface",
       "night2Boss": "Draconic Tree Sentinel and Royal Cavalrymen",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -24383,7 +24383,7 @@
       "night1Boss": "Battlefield Commander",
       "night2Boss": "Crucible Knight and Golden Hippopotamus",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -24671,7 +24671,7 @@
       "night1Boss": "Night's Cavalry Duo",
       "night2Boss": "Godskin Duo",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -24959,7 +24959,7 @@
       "night1Boss": "Tibia Mariner",
       "night2Boss": "Dragonkin Soldier",
       "extraNightBoss": "古龙",
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -25247,7 +25247,7 @@
       "night1Boss": "Gaping Dragon",
       "night2Boss": "Outland Commander",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -25535,7 +25535,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -25885,7 +25885,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -26235,7 +26235,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -26585,7 +26585,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -26935,7 +26935,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -27285,7 +27285,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -27635,7 +27635,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -27985,7 +27985,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": "坠星兽物",
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -28335,7 +28335,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -28685,7 +28685,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -29035,7 +29035,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -29385,7 +29385,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -29735,7 +29735,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -30085,7 +30085,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -30435,7 +30435,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -30785,7 +30785,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -31135,7 +31135,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -31485,7 +31485,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -31835,7 +31835,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -32185,7 +32185,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -32535,7 +32535,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -32783,7 +32783,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -33031,7 +33031,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": "接肢君王",
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -33279,7 +33279,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -33527,7 +33527,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -33775,7 +33775,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -34017,7 +34017,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -34259,7 +34259,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -34501,7 +34501,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -34743,7 +34743,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -34985,7 +34985,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -35335,7 +35335,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -35685,7 +35685,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -36035,7 +36035,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -36385,7 +36385,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -36735,7 +36735,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -37023,7 +37023,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -37311,7 +37311,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -37599,7 +37599,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": "熔炉骑士与黄金河马",
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -37887,7 +37887,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -38175,7 +38175,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": "亚人女王与亚人剑圣",
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -38463,7 +38463,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -38751,7 +38751,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -39039,7 +39039,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -39327,7 +39327,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -39615,7 +39615,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -39903,7 +39903,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -40191,7 +40191,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -40479,7 +40479,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -40767,7 +40767,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -41055,7 +41055,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -41343,7 +41343,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -41631,7 +41631,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -41919,7 +41919,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -42207,7 +42207,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -42495,7 +42495,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -42737,7 +42737,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -42979,7 +42979,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -43221,7 +43221,7 @@
       "night1Boss": "咒剑士和神兽战士",
       "night2Boss": "蒙格",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -43463,7 +43463,7 @@
       "night1Boss": "洞底恶魔和负伤恶魔",
       "night2Boss": "恶魔王子",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -43705,7 +43705,7 @@
       "night1Boss": "红熊",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -44055,7 +44055,7 @@
       "night1Boss": "红熊",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -44405,7 +44405,7 @@
       "night1Boss": "红熊",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -44755,7 +44755,7 @@
       "night1Boss": "红熊",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -45105,7 +45105,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -45455,7 +45455,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -45805,7 +45805,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -46155,7 +46155,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -46505,7 +46505,7 @@
       "night1Boss": "红熊",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -46855,7 +46855,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -47205,7 +47205,7 @@
       "night1Boss": "红熊",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -47555,7 +47555,7 @@
       "night1Boss": "红熊",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -47905,7 +47905,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -48255,7 +48255,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -48605,7 +48605,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -48955,7 +48955,7 @@
       "night1Boss": "红熊",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -49305,7 +49305,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -49655,7 +49655,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -50005,7 +50005,7 @@
       "night1Boss": "红熊",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -50355,7 +50355,7 @@
       "night1Boss": "红熊",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -50705,7 +50705,7 @@
       "night1Boss": "红熊",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -50953,7 +50953,7 @@
       "night1Boss": "红熊",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -51201,7 +51201,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -51449,7 +51449,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -51697,7 +51697,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -51945,7 +51945,7 @@
       "night1Boss": "红熊",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -52187,7 +52187,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -52429,7 +52429,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -52671,7 +52671,7 @@
       "night1Boss": "红熊",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -52913,7 +52913,7 @@
       "night1Boss": "红熊",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "西北区域",
       "slots": [
         {
@@ -53155,7 +53155,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -53505,7 +53505,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -53855,7 +53855,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -54205,7 +54205,7 @@
       "night1Boss": "红熊",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东北区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -54555,7 +54555,7 @@
       "night1Boss": "红熊",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东南区域",
       "slots": [
         {
@@ -54905,7 +54905,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -55193,7 +55193,7 @@
       "night1Boss": "红熊",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -55481,7 +55481,7 @@
       "night1Boss": "红熊",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -55769,7 +55769,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -56057,7 +56057,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -56345,7 +56345,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -56633,7 +56633,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -56921,7 +56921,7 @@
       "night1Boss": "红熊",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": "铃珠猎人",
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -57209,7 +57209,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -57497,7 +57497,7 @@
       "night1Boss": "红熊",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -57785,7 +57785,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": "接肢君王",
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -58073,7 +58073,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -58361,7 +58361,7 @@
       "night1Boss": "红熊",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -58649,7 +58649,7 @@
       "night1Boss": "红熊",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -58937,7 +58937,7 @@
       "night1Boss": "红熊",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -59225,7 +59225,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": "龙人士兵",
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -59513,7 +59513,7 @@
       "night1Boss": "红熊",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -59801,7 +59801,7 @@
       "night1Boss": "红熊",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -60089,7 +60089,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -60377,7 +60377,7 @@
       "night1Boss": "红熊",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "东南区域",
       "night2Circle": "东北区域",
       "slots": [
         {
@@ -60665,7 +60665,7 @@
       "night1Boss": "红熊",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -60907,7 +60907,7 @@
       "night1Boss": "红熊",
       "night2Boss": "亚尔特留斯",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -61149,7 +61149,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -61391,7 +61391,7 @@
       "night1Boss": "红熊",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "西南区域",
       "slots": [
         {
@@ -61633,7 +61633,7 @@
       "night1Boss": "死骑士",
       "night2Boss": "神兽舞狮",
       "extraNightBoss": null,
-      "night1Circle": "第一夜缩圈随机",
+      "night1Circle": "西北区域",
       "night2Circle": "西南区域",
       "slots": [
         {

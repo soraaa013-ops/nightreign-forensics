@@ -13,6 +13,9 @@ export function decodeMapRuntime(bundle) {
   });
   return {
     metadata: bundle.metadata,
+    circleCenters: bundle.circleCenters,
+    eventPoints: bundle.eventPoints,
+    eventSites: bundle.eventSites,
     records,
     iconRecords,
     facets: Object.fromEntries(

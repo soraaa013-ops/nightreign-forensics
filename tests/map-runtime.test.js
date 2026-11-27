@@ -15,6 +15,34 @@ test("compact runtime restores every original layout, slot, tower floor and icon
   assert.equal(decoded.records.length, 520);
   assert.ok(fs.statSync("data/map-runtime.json").size < 700000);
 });
+test("both daily final centers use the matching base or expansion layout ID", () => {
+  for (const { id } of original) {
+    const pair = decoded.circleCenters[id];
+    assert.equal(pair.length, 2);
+    for (const point of pair) {
+      assert.equal(point.length, 2);
+      assert.ok(point.every((v) => Number.isFinite(v) && v >= 0 && v <= 1));
+    }
+  }
+  // Parameter pattern 0 is catalogue layout 1. DLC keeps pattern ID 1005.
+  assert.deepEqual(decoded.circleCenters[1], [[0.214844, 0.402995], [0.803385, 0.238281]]);
+  assert.deepEqual(decoded.circleCenters[1005], [[0.61959, 0.560521], [0.583333, 0.32487]]);
+});
+test("invasion sites follow the catalogued event and preserve unknown locations", () => {
+  for (const [id, indices] of Object.entries(decoded.eventSites)) {
+    assert.ok(original.some(record => record.id === Number(id) && record.specialEvent));
+    assert.equal(new Set(indices).size, indices.length);
+    for (const index of indices) {
+      const point = decoded.eventPoints[index];
+      assert.equal(point.length, 2);
+      assert.ok(point.every(v => Number.isFinite(v) && v >= 0 && v <= 1));
+    }
+  }
+  assert.equal(decoded.eventSites[1000].length, 10); // Caligo
+  assert.equal(decoded.eventSites[122].length, 8); // Gnoster
+  assert.equal(decoded.eventSites[1006], undefined); // Great Hollow, no attachment
+  assert.equal(decoded.eventSites[1005], undefined); // No event
+});
 test("single-pass counts preserve the same matching semantics and do not double-count repeats", () => {
   for (const scope of [
     {},

@@ -54,7 +54,7 @@ onto the corresponding surface tile. They are game imagery owned by FromSoftware
 and Bandai Namco, not project-created artwork or covered by the base router's MIT notice.
 Source and generated asset hashes are retained in `data/map-dlc-provenance.json`.
 
-Catalogue counts and random first-circle behavior were cross-checked against
+The two daily final centers use the playArea1 and playArea2 grid positions from the pinned pattern CSV. Invasion candidate sites join the catalogued event to matching variation and attachment coordinates in the same terrain and DLC set. Unmatched events have no location marker. Catalogue counts and random outer-circle behavior were cross-checked against
 [thefifthmatt's layout catalogue](https://thefifthmatt.github.io/nightreign/).
 New Nightlord labels follow the simplified Chinese names “安定者们” and “废弃物之王”
 ([Chinese guide](https://www.gamersky.com/handbook/202512/2054550.shtml)).

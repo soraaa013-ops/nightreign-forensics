@@ -1,6 +1,6 @@
 const compareChinese = new Intl.Collator("zh-CN").compare;
-import { decodeMapRuntime } from "./map-runtime.js?v=perf-1";
-import { createAtlas } from "./map-atlas.js?v=merchant-1";
+import { decodeMapRuntime } from "./map-runtime.js?v=encounters-1";
+import { createAtlas } from "./map-atlas.js?v=encounters-1";
 import { recommendObservation } from "./map-filter.js";
 import {
   queryMaps,
@@ -123,8 +123,8 @@ function renderRecord(record) {
   locations.append(node("summary", "位置资料"));
   for (const [label, value] of [
     ["出生点", record.spawn],
-    ["第一夜区域", record.night1Circle],
-    ["第二夜区域", record.night2Circle],
+    ["第一天最终圈心", record.night1Circle],
+    ["第二天最终圈心", record.night2Circle],
   ])
     locations.append(node("p", `${label}：${zh(value)}`));
   resultPanel.replaceChildren(heading, head, events, points, locations);
@@ -546,13 +546,13 @@ async function init() {
   retry.hidden = true;
   try {
     [mapData, dictionary] = await Promise.all([
-      loadJson("data/map-runtime.json?v=perf-1").then(decodeMapRuntime),
+      loadJson("data/map-runtime.json?v=encounters-1").then(decodeMapRuntime),
       loadJson("data/zh-CN.json?v=merchant-1"),
     ]);
     $("#base-filters").open = false;
     $("#location-details").open = false;
     $("#map-version").textContent =
-      `本体与“见弃空洞者” · ${mapData.records.length} 份布局。第一夜缩圈随机。`;
+      `本体与“见弃空洞者” · ${mapData.records.length} 份布局。每天的外圈随机。`;
     const categories = [
       ...new Set(
         mapData.records.flatMap((record) =>
