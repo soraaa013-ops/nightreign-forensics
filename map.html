@@ -11,7 +11,7 @@
     <link rel="modulepreload" href="src/map-tiles.js?v=perf-1" />
     <script type="module" src="src/map-preload.js?v=perf-1"></script>
     <title>地图档案科｜遗物警察局</title>
-    <link rel="stylesheet" href="styles.css?v=encounters-1" />
+    <link rel="stylesheet" href="styles.css?v=encounters-2" />
     <link rel="stylesheet" href="merchant.css?v=quality-2" />
   </head>
   <body class="map-page">
@@ -54,12 +54,10 @@
             ><button id="open-map-results" type="button">查看档案</button>
           </div>
         </div>
-        <section class="encounters" aria-label="本局战斗">
+        <section class="encounters" hidden aria-label="本局战斗">
           <div id="atlas-bosses"></div>
           <div class="invasion-row">
-            <label for="atlas-event">✦ 特殊事件</label>
-            <select id="atlas-event" aria-label="查看事件候选位置"></select>
-            <span id="atlas-event-status" role="status"></span>
+            <span id="atlas-event"></span>
             <span class="circle-key">①② 最终圈心</span>
           </div>
         </section>
@@ -289,7 +287,6 @@
             </div>
           </section>
           <section id="map-result" class="map-result" hidden></section>
-          <section id="candidate-list" aria-label="候选地图"></section>
           <details class="data-notes">
             <summary>数据范围</summary>
             <p id="map-version"></p>
@@ -317,6 +314,6 @@
       <div id="merchant-panel-body"><p role="status">正在载入商品</p></div>
     </dialog>
     <script type="module" src="src/map-merchant.js?v=quality-2"></script>
-    <script type="module" src="src/map.js?v=encounters-1"></script>
+    <script type="module" src="src/map.js?v=encounters-2"></script>
   </body>
 </html>

@@ -25,7 +25,7 @@ import {
   layoutMarkers,
   layoutLabels,
   focusZoom,
-} from "./map-layout.js?v=spatial-2";
+} from "./map-layout.js?v=labels-3";
 import { readDraft, writeDraft } from "./draft.js";
 import { loadJson } from "./locale.js";
 
@@ -284,7 +284,7 @@ export async function createAtlas({ data, zh, getState, change }) {
         width,
         height,
         diameter,
-        Math.min(width, height) < 500 ? obstacles : mapObstacles,
+        mapObstacles,
       );
       const byId = new Map(placements.map((p) => [p.id, p]));
       const leaders = [];
@@ -322,29 +322,41 @@ export async function createAtlas({ data, zh, getState, change }) {
         }
       }
       layer.replaceChildren(...groups.map((g) => g.button));
-      $("atlas-leaders").replaceChildren(...leaders);
       const entries = new Map(buttons.map((item) => [item.point.id, item]));
       const observations = getState().observations;
-      const rank = (id) => observations.findLastIndex((o) => o.key === id);
-      const ordered = [...placements].sort((a, b) => rank(b.id) - rank(a.id));
-      const sizes = new Map();
-      for (const marker of ordered) {
-        const headline = entries.get(marker.id)?.headline;
+      const ranks = new Map(observations.map((o, index) => [o.key, index]));
+      const priority = (id) => entries.get(id).point.category === "Field Boss" ? 1 : 0;
+      const ordered = [...placements].sort((a, b) =>
+        priority(b.id) - priority(a.id) || (ranks.get(b.id) ?? -1) - (ranks.get(a.id) ?? -1),
+      );
+      const labelLayer = $("atlas-labels");
+      const labelNodes = new Map();
+      for (const { id } of ordered) {
+        const { headline } = entries.get(id);
         if (!headline) continue;
-        const labelWidth = Math.min(
-          156,
-          Math.max(48, [...headline].length * 12 + 14),
-        );
-        const lines = Math.ceil(
-          ([...headline].length * 12) / (labelWidth - 14),
-        );
-        sizes.set(marker.id, { width: labelWidth, height: lines * 16 + 8 });
+        const node = el("div", headline, "atlas-map-label");
+        node.dataset.for = id;
+        labelNodes.set(id, node);
+      }
+      labelLayer.replaceChildren(...labelNodes.values());
+      const sizes = new Map();
+      for (const [id, node] of labelNodes) {
+        const rect = node.getBoundingClientRect();
+        sizes.set(id, { width: rect.width, height: rect.height });
       }
       const labels = layoutLabels(ordered, width, height, sizes, mapObstacles);
-      $("atlas-labels").replaceChildren(
+      for (const box of labels.filter(box => box.displaced)) {
+        const { screenX, screenY } = byId.get(box.id);
+        const x = Math.max(box.x, Math.min(screenX, box.x + box.width));
+        const y = Math.max(box.y, Math.min(screenY, box.y + box.height));
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        line.setAttribute("d", `M${screenX},${screenY}L${x},${y}`);
+        leaders.push(line);
+      }
+      $("atlas-leaders").replaceChildren(...leaders);
+      labelLayer.replaceChildren(
         ...labels.map((box) => {
-          const n = el("div", entries.get(box.id).headline, "atlas-map-label");
-          n.dataset.for = box.id;
+          const n = labelNodes.get(box.id);
           Object.assign(n.style, {
             left: `${box.x}px`,
             top: `${box.y}px`,
@@ -841,8 +853,6 @@ export async function createAtlas({ data, zh, getState, change }) {
   function circleDay() {
     return layerMode === "day1" ? 1 : layerMode === "day2" ? 2 : 0;
   }
-  const eventSelect = $("atlas-event");
-  let terrainRecords = [];
   let overlayPins = [];
   function eventName(record) {
     if (!record.specialEvent || record.specialEvent === "无特殊事件") return "";
@@ -855,76 +865,50 @@ export async function createAtlas({ data, zh, getState, change }) {
       .replace("格诺斯塔瘟疫", "慧心虫·格诺斯塔瘟疫");
   }
   function updateEncounters() {
+    const record = records.length === 1 ? records[0] : null;
+    document.querySelector(".encounters").hidden = !record;
     const rows = [];
-    for (const [key, title] of [
-      ["night1Boss", "① 第一夜"], ["night2Boss", "② 第二夜"],
-      ["nightlord", "夜王"], ["extraNightBoss", "额外首领"],
-    ]) {
-      const names = [...new Set(records.filter(r => r[key]).map(r => zh(r[key])))];
-      if (!names.length && key === "extraNightBoss") continue;
-      const row = el("div");
-      const uncertain = names.length > 1 ||
-        (key === "extraNightBoss" && records.some(r => !r[key]));
-      const label = el("b", title + (uncertain ? "候选" : ""));
-      const value = el("span", names.join("、") || "—");
-      if (uncertain) value.tabIndex = 0;
-      row.append(label, value);
-      rows.push(row);
+    if (record) {
+      for (const [key, title] of [
+        ["night1Boss", "① 第一夜"], ["night2Boss", "② 第二夜"],
+        ["nightlord", "夜王"], ["extraNightBoss", "额外首领"],
+      ]) {
+        if (!record[key]) continue;
+        const row = el("div");
+        row.append(el("b", title), el("span", zh(record[key])));
+        rows.push(row);
+      }
     }
     $("atlas-bosses").replaceChildren(...rows);
-    const events = [...new Set(terrainRecords.map(eventName))];
-    const choices = events.filter(Boolean).sort(compareChinese);
-    const previous = eventSelect.value;
-    eventSelect.replaceChildren(
-      new Option(!terrainRecords.length ? "无候选布局" : choices.length ? "全部候选事件" : "无特殊事件", ""),
-      ...choices.map(name => new Option(name, name)),
-    );
-    eventSelect.value = choices.includes(previous) ? previous :
-      events.length === 1 && choices.length ? choices[0] : "";
-    eventSelect.disabled = choices.length === 0;
+    $("atlas-event").textContent = record ? eventName(record) : "";
   }
   function updateCircles() {
     const day = circleDay();
     const pins = new Map();
-    function add(point, symbol) {
-      const key = point.join(",");
-      if (!pins.has(key)) pins.set(key, {point, symbols: new Set()});
-      pins.get(key).symbols.add(symbol);
-    }
-    const sites = new Set();
-    for (const record of terrainRecords) {
-      data.circleCenters[record.id].forEach((center, index) => {
-        if (!day || day === index + 1) add(center, index + 1);
+    if (records.length === 1) {
+      data.circleCenters[records[0].id].forEach((point, index) => {
+        if (day && day !== index + 1) return;
+        const key = point.join(",");
+        if (!pins.has(key)) pins.set(key, { point, symbols: new Set() });
+        pins.get(key).symbols.add(index + 1);
       });
-      if (!eventSelect.value || eventName(record) === eventSelect.value) {
-        for (const site of data.eventSites[record.id] || []) sites.add(site);
-      }
     }
-    for (const site of sites) add(data.eventPoints[site], "event");
     overlayPins = [...pins.values()];
     circles.replaceChildren(...overlayPins.map(({point: [x, y], symbols}) => {
       const pin = el("div", "", "encounter-pin");
       pin.style.left = `${x * 100}%`;
       pin.style.top = `${y * 100}%`;
-      for (const symbol of [1, 2, "event"]) {
-        if (!symbols.has(symbol)) continue;
-        const badge = el("span", symbol === "event" ? "✦" : String(symbol));
+      for (const symbol of symbols) {
+        const badge = el("span", String(symbol));
         badge.dataset.symbol = symbol;
         pin.append(badge);
       }
       return pin;
     }));
-    $("atlas-event-status").textContent = sites.size ? `✦ ${sites.size} 处候选` :
-      eventSelect.disabled ? "" : "位置未收录";
     $("atlas-count").textContent = records.length === 1
       ? `已确定 · #${records[0].id}`
       : `${records.length} 份候选`;
   }
-  eventSelect.addEventListener("change", () => {
-    updateCircles();
-    revision++;
-    draw();
-  });
   function rebuild() {
     $("atlas-toast").hidden = true;
     const state = getState();
@@ -950,7 +934,7 @@ export async function createAtlas({ data, zh, getState, change }) {
           : geometry.layouts[terrain],
       );
     }
-    terrainRecords = records.filter(r => r.mapType === displayTerrain);
+    if (records.length !== 1 && circleDay()) layerMode = "all";
     updateEncounters();
     points = geometry.points.filter(
       (p) =>
@@ -1005,7 +989,7 @@ export async function createAtlas({ data, zh, getState, change }) {
       return { point, b, headline };
     });
     revision++;
-    updateCircles();
+    updateLayers();
     $("atlas-undo").disabled = document.getElementById("undo-map").disabled;
     $("atlas-hint").textContent = state.mapType
       ? `${zh(state.mapType)}`
@@ -1245,6 +1229,8 @@ export async function createAtlas({ data, zh, getState, change }) {
       day1: "第一天最终圈心",
       day2: "第二天最终圈心",
     };
+    for (const button of $("atlas-layers").children)
+      button.hidden = button.dataset.layer.startsWith("day") && records.length !== 1;
     $("atlas-layer-name").textContent = names[layerMode];
     for (const b of $("atlas-layers").children)
       b.setAttribute("aria-pressed", String(b.dataset.layer === layerMode));

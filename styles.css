@@ -726,45 +726,6 @@ summary {
   min-height: 36px;
   padding: 6px 10px;
 }
-.candidate-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-  margin-bottom: 12px;
-}
-.candidate-card {
-  padding: 12px;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  color: var(--ink);
-  text-align: left;
-}
-.candidate-card:hover {
-  border-color: var(--accent);
-}
-.candidate-card strong,
-.candidate-card span,
-.candidate-card small {
-  display: block;
-}
-.candidate-card strong {
-  font-size: 13px;
-}
-.candidate-card span,
-.candidate-card small {
-  font-size: 11px;
-  color: var(--muted);
-  margin-top: 6px;
-}
-#candidate-list h3 {
-  font: 500 18px var(--serif);
-  margin: 0 0 14px;
-}
-#candidate-list > .secondary {
-  width: 100%;
-  font-size: 12px;
-}
 .map-result {
   border: 1px solid var(--accent);
   border-radius: 10px;
@@ -947,9 +908,6 @@ footer {
   .clue-filters {
     grid-template-columns: 1fr;
     gap: 10px;
-  }
-  .candidate-grid {
-    grid-template-columns: 1fr 1fr;
   }
   .mobile-result-link {
     display: block;
@@ -1158,17 +1116,6 @@ footer {
   margin-top: 2px;
   color: #d1dedb;
 }
-.invasion-row label { color: #ffc9bd; }
-#atlas-event {
-  width: auto;
-  max-width: 55%;
-  color: #f1efe5;
-  background: #182529;
-  border: 1px solid #637c7d;
-  min-height: 26px;
-  padding: 1px 4px;
-  font: inherit;
-}
 .circle-key { margin-left: auto; }
 .encounter-pin {
   position: absolute;
@@ -1179,16 +1126,15 @@ footer {
 .encounter-pin span {
   width: 14px;
   height: 16px;
-  border: 1px solid #fff4d0;
+  border: 1px solid #fff;
   border-radius: 8px;
-  background: #604720;
-  color: #fff4d0;
-  box-shadow: 0 1px 3px #000;
+  background: #ffd34f;
+  color: #191b20;
+  box-shadow: 0 0 0 1px #152023, 0 1px 4px #000;
   font: bold 12px/14px system-ui, sans-serif;
   text-align: center;
 }
-.encounter-pin [data-symbol="2"] { background: #164f67; color: white; border-radius: 3px; }
-.encounter-pin [data-symbol="event"] { background: #772c28; color: white; border-color: #ffc2ab; }
+.encounter-pin [data-symbol="2"] { background: #64e4ff; border-radius: 3px; }
 @media (max-width: 650px) {
   #atlas-bosses { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .encounters { font-size: 11px; }
@@ -1649,7 +1595,6 @@ footer {
   :is(
     .candidate-panel,
     .map-result,
-    .candidate-card,
     .record-head,
     .record-events,
     .location-group,
@@ -1668,16 +1613,6 @@ footer {
 }
 .map-drawer .candidate-count strong {
   color: #315c5e;
-}
-.map-drawer .candidate-grid {
-  grid-template-columns: 1fr;
-  gap: 8px;
-}
-.map-drawer .candidate-card {
-  text-align: left;
-}
-.map-drawer .candidate-card :is(span, small) {
-  color: #526569;
 }
 .map-drawer .clue-option {
   background: #e3e9e1;
@@ -2311,6 +2246,8 @@ footer {
 }
 
 .atlas-map-label {
+  width: max-content;
+  max-width: 156px;
   padding: 3px 6px;
   line-height: 16px;
   overflow-wrap: anywhere;

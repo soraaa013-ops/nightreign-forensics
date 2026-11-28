@@ -1,6 +1,6 @@
 const compareChinese = new Intl.Collator("zh-CN").compare;
 import { decodeMapRuntime } from "./map-runtime.js?v=encounters-1";
-import { createAtlas } from "./map-atlas.js?v=encounters-1";
+import { createAtlas } from "./map-atlas.js?v=encounters-2";
 import { recommendObservation } from "./map-filter.js";
 import {
   queryMaps,
@@ -32,8 +32,6 @@ let mapData,
   selected = [],
   candidates = [],
   clueLimit = 4,
-  candidateLimit = 6,
-  previewId = null,
   previousState = null;
 const undoStack = [];
 const zh = (value) => (value ? (dictionary.map[value] ?? value) : "未记录");
@@ -59,7 +57,7 @@ function renderRecord(record) {
   resultPanel.hidden = false;
   const heading = node(
     "p",
-    candidates.length === 1 ? "已锁定地图布局" : "候选地图预览",
+    "已锁定地图布局",
     "kicker",
   );
   const head = node("div", "", "record-head");
@@ -293,45 +291,6 @@ function refreshFacets() {
     select.value = current;
   }
 }
-function renderCandidates() {
-  const container = $("#candidate-list");
-  container.replaceChildren();
-  if (candidates.length > 1) {
-    container.append(node("h3", `候选地图（${candidates.length}）`));
-    const grid = node("div", "", "candidate-grid");
-    for (const record of candidates.slice(0, candidateLimit)) {
-      const b = button(
-        "",
-        () => {
-          previewId = record.id;
-          renderRecord(record);
-          resultPanel.prepend(
-            button("关闭预览", () => {
-              previewId = null;
-              resultPanel.hidden = true;
-            }),
-          );
-          resultPanel.scrollIntoView({ behavior: "auto", block: "start" });
-        },
-        "candidate-card",
-      );
-      b.append(
-        node("strong", `#${record.id} · ${zh(record.nightlord)}`),
-        node("span", `${zh(record.mapType)} · ${zh(record.spawn)}`),
-        node("small", `第一夜：${zh(record.night1Boss)}`),
-      );
-      grid.append(b);
-    }
-    container.append(grid);
-    if (candidates.length > candidateLimit)
-      container.append(
-        button("显示更多候选地图", () => {
-          candidateLimit += 6;
-          renderCandidates();
-        }),
-      );
-  }
-}
 function update(recordHistory = true) {
   const current = state();
   if (
@@ -387,7 +346,6 @@ function update(recordHistory = true) {
   renderChips();
   refreshLocations();
   renderClues();
-  renderCandidates();
   atlas?.refresh();
   recommendation = recommendObservation(
     candidates,
@@ -414,24 +372,12 @@ function update(recordHistory = true) {
     candidateSummary.textContent = recommendation
       ? `${recommendation.values.length} 种候选内容`
       : `仍有 ${candidates.length} 份候选。`;
-    if (previewId && candidates.some((record) => record.id === previewId)) {
-      renderRecord(candidates.find((record) => record.id === previewId));
-      resultPanel.prepend(
-        button("关闭预览", () => {
-          previewId = null;
-          resultPanel.hidden = true;
-        }),
-      );
-    } else {
-      previewId = null;
-      resultPanel.hidden = true;
-    }
+    resultPanel.hidden = true;
   }
 }
 form.addEventListener("submit", (event) => event.preventDefault());
 for (const select of [nightlord, mapType, spawn])
   select.addEventListener("change", () => {
-    candidateLimit = 6;
     update();
   });
 clueSearch.addEventListener("input", () => {
@@ -456,9 +402,7 @@ form.addEventListener("reset", () =>
   setTimeout(() => {
     if (!mapData) return;
     selected = [];
-    previewId = null;
     clueLimit = 4;
-    candidateLimit = 6;
     refreshLocations();
     update();
   }, 0),
@@ -489,7 +433,6 @@ function restoreState(saved) {
   mapType.value = saved.mapType;
   spawn.value = saved.spawn;
   selected = structuredClone(saved.observations);
-  previewId = null;
 }
 $("#undo-map").addEventListener("click", () => {
   const previous = undoStack.pop();

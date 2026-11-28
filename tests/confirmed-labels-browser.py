@@ -22,8 +22,11 @@ with sync_playwright() as p:
  page.locator('#atlas-undo').click();page.locator('[data-point="'+key+'"]').focus();page.keyboard.press('Enter');page.locator('.atlas-type-options [data-value="Great Church"]').click();expect(label).to_have_count(0);expect(page.locator('[data-point="'+key+'"]')).to_have_attribute('data-icon','temple')
  # A uniquely inferred layout has enemy names too; ensure dense labels never overlap pins.
  sample=json.loads((ROOT/'data/map-data.json').read_text())['records'][0];q={k:sample[k] for k in ['nightlord','mapType','spawn']};q['observations']=[{k:s[k] for k in ['key','category','value']} for s in sample['slots'] if s['value']]
- for width,height in [(320,568),(390,844),(1440,900)]:
+ for width,height in [(320,568),(390,844),(1280,720),(1440,900)]:
   page.set_viewport_size({'width':width,'height':height});page.goto(BASE+'/map.html?'+urlencode({'q':json.dumps(q)}));expect(page.locator('.atlas-map-label').first).to_be_visible()
+  for slot in sample['slots']:
+   if slot['category']=='Field Boss' and slot['value']:
+    expect(page.locator('.atlas-map-label[data-for="'+slot['key']+'"]')).to_be_visible()
   for _ in range(4):disjoint(page);page.locator('#atlas-in').click()
   disjoint(page)
   assert all(not any(t in text for t in ['小型据点','大型据点','圣人桥','候选：']) for text in page.locator('.atlas-map-label').all_text_contents())

@@ -74,16 +74,39 @@ export function layoutLabels(markers, width, height, sizes, obstacles = []) {
       { x: marker.screenX - w / 2, y: b.y - h - 7 },
       { x: marker.screenX - w / 2, y: b.y + b.height + 7 },
     ];
-    const box = anchors
-      .map((p) => ({ ...p, width: w, height: h }))
-      .find(
-        (box) =>
-          box.x >= 4 &&
-          box.y >= 4 &&
-          box.x + w <= width - 4 &&
-          box.y + h <= height - 4 &&
-          !occupied.some((other) => overlaps(box, other)),
-      );
+    const fits = (box) =>
+      box.x >= 4 && box.y >= 4 &&
+      box.x + w <= width - 4 && box.y + h <= height - 4 &&
+      !occupied.some((other) => overlaps(box, other));
+    let box = anchors.map((p) => ({ ...p, width: w, height: h })).find(fits);
+    if (!box) {
+      // A nearest free rectangle either aligns with the pin or touches an obstacle or viewport edge.
+      const nearestEdges = (axis, extent, target, limit) => {
+        const edges = new Set([4, limit - extent - 4, target]);
+        for (const item of occupied) {
+          edges.add(item[axis] - extent - 3);
+          edges.add(item[axis] + item[axis === "x" ? "width" : "height"] + 3);
+        }
+        return [...edges].filter(v => v >= 4 && v + extent <= limit - 4)
+          .sort((a, b) => Math.abs(a - target) - Math.abs(b - target));
+      };
+      const cx = marker.screenX - w / 2, cy = marker.screenY - h / 2;
+      const xs = nearestEdges("x", w, cx, width);
+      const ys = nearestEdges("y", h, cy, height);
+      let best = Infinity;
+      for (const y of ys) {
+        if ((y - cy) ** 2 >= best) break;
+        const blockers = occupied.filter(r => y < r.y + r.height + 3 && y + h + 3 > r.y);
+        for (const x of xs) {
+          const distance = (x - cx) ** 2 + (y - cy) ** 2;
+          if (distance >= best) break;
+          if (blockers.some(r => x < r.x + r.width + 3 && x + w + 3 > r.x)) continue;
+          box = { x, y, width: w, height: h, displaced: true };
+          best = distance;
+          break;
+        }
+      }
+    }
     if (box) {
       occupied.push(box);
       result.push({ id: marker.id, ...box });

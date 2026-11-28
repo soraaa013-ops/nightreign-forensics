@@ -92,7 +92,7 @@ with sync_playwright() as p:
  ready(page,'/map.html?q=bad');expect(page.locator('#candidate-count')).to_have_text('520');expect(page.locator('#map-feedback')).to_contain_text('筛选链接无效')
  passed('Map undo reset, share clipboard paths and invalid query recovery')
  ready(page,'/map.html');open_details(page,'base-filters');page.locator('#nightlord').select_option('Gladius');expect(page.locator('#candidate-count')).to_have_text('50')
- results(page);page.locator('.candidate-card').first.click();expect(page.locator('#map-result')).to_contain_text('候选地图预览');page.get_by_role('button',name='关闭预览').click();expect(page.locator('#map-result')).to_be_hidden()
+ results(page);expect(page.locator('#map-result')).to_be_hidden();expect(page.locator('.candidate-card, .encounter-pin, #atlas-bosses > div')).to_have_count(0)
  page.locator('#use-clue').click();expect(page.locator('#atlas-editor')).to_be_visible();assert page.locator('.atlas-option').count()>1;page.locator('#atlas-editor').get_by_role('button',name='关闭',exact=True).click()
  settings(page);page.get_by_role('button',name='清空全部条件').click();expect(page.locator('#candidate-count')).to_have_text('520')
  sample=maps['records'][0]
@@ -102,7 +102,7 @@ with sync_playwright() as p:
  ready(page,'/map.html?'+urlencode({'q':json.dumps(saved)}));settings(page);expect(page.locator('.filter-chip')).to_have_count(4)
  expected=[r for r in maps['records'] if all(any(s['key']==slot['key'] and s['value']==slot['value'] for s in r['slots']) for slot in sample['slots'][:4])]
  expect(page.locator('#candidate-count')).to_have_text(str(len(expected)));page.locator('.filter-chip').nth(1).click();expect(page.locator('.filter-chip')).to_have_count(3)
- passed('Facets, preview, recommendation, redundant options hidden, multi-observation restoration and removal')
+ passed('Facets, hidden candidates, recommendation, redundant options hidden, multi-observation restoration and removal')
  settings(page);page.get_by_role('button',name='清空全部条件').click();open_details(page,'base-filters')
  for field,key in [('nightlord','nightlord'),('map-type','mapType'),('spawn','spawn')]:page.locator('#'+field).select_option(sample[key])
  remaining=[r for r in maps['records'] if all(r[k]==sample[k] for k in ['nightlord','mapType','spawn'])]

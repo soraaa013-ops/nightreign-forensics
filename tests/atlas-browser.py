@@ -41,17 +41,7 @@ with sync_playwright() as p:
  ready(page);expect(page.locator('#map-settings')).to_be_hidden();expect(page.locator('#map-results-dialog')).to_be_hidden();expect(page.locator('[data-layer=all]')).to_have_attribute('aria-pressed','true');expect(page.locator('#atlas-loading')).to_be_hidden();assert page.locator('#atlas-tiles img').evaluate_all('(els)=>els.length===1&&els.every(e=>e.complete&&e.naturalWidth>0)');assert page.locator('#atlas-tiles img').first.get_attribute('src').endswith('/hd/default.webp');no_overlap(page)
  page.screenshot(path=str(OUT/'desktop.png'))
  passed('First-screen map, default all-points layer, correct tiles, individual markers without aggregation')
- for day in (1,2):
-  layer(page,f'day{day}')
-  expect(page.locator('#atlas-circles span').first).to_be_visible()
-  expect(page.locator('.atlas-point')).to_have_count(0)
-  page.locator('#atlas-in').click()
-  assert page.locator('#atlas-tiles').bounding_box()==page.locator('#atlas-circles').bounding_box()
-  page.locator('#atlas-fit').click()
- layer(page,'all')
- for symbol in ['1','2','event']:
-  expect(page.locator(f'#atlas-circles [data-symbol="{symbol}"]').first).to_be_visible()
- passed('Both final-circle layers follow map zoom and appear together with invasion marks on return to all points')
+ expect(page.locator('#atlas-circles span, #atlas-bosses > div')).to_have_count(0)
  choose(page,'Major Base - South Lake');expect(page.locator('#atlas-editor')).to_be_visible();expect(page.locator('.atlas-exact')).not_to_have_attribute('open','');types=page.locator('.atlas-type-options .atlas-option');assert types.count()>1;assert all('无匹配' not in t for t in page.locator('.atlas-option').all_text_contents())
  scroll=page.evaluate('scrollY');transform=page.locator('#atlas-tiles').get_attribute('style')
  page.locator('.atlas-type-options [data-value=Camp]').click();expect(page.locator('#atlas-editor')).to_be_visible();assert state(page)['observations'][0]['match']=='type';coarse=int(page.locator('#candidate-count').inner_text());assert 0<coarse<320
@@ -88,6 +78,23 @@ with sync_playwright() as p:
  page.goto(BASE+'/map.html?'+urlencode({'q':json.dumps(q)}));page.wait_for_load_state('networkidle');before=state(page);choose(page,'Castle - Castle');expect(page.locator('.point-description')).to_be_visible();expect(page.locator('.point-certainty')).to_have_text('候选档案一致');expect(page.locator('.atlas-option')).to_have_count(0);assert state(page)==before;close(page)
  settings(page);page.locator('#text-search').evaluate('(el)=>el.open=true');expect(page.locator('.clue-option')).to_have_count(0);assert not page.locator('#nightlord option[disabled]').count();dismiss_settings(page)
  page.locator('#open-map-results').click();expect(page.locator('#map-results-dialog')).to_be_visible();page.keyboard.press('Escape');expect(page.locator('#map-results-dialog')).to_be_hidden();assert state(page)==before
+ expect(page.locator('#atlas-bosses')).to_contain_text(zh[sample['night1Boss']])
+ expect(page.locator('#atlas-bosses')).to_contain_text(zh[sample['night2Boss']])
+ for day in (1,2):
+  layer(page,f'day{day}')
+  expect(page.locator('#atlas-circles span').first).to_be_visible()
+  expect(page.locator('.atlas-point')).to_have_count(0)
+  page.locator('#atlas-in').click()
+  assert page.locator('#atlas-tiles').bounding_box()==page.locator('#atlas-circles').bounding_box()
+  page.locator('#atlas-fit').click()
+ layer(page,'all')
+ for symbol in ['1','2']:
+  expect(page.locator(f'#atlas-circles [data-symbol="{symbol}"]').first).to_be_visible()
+ layer(page,'day1');settings(page);page.get_by_role('button',name='清空全部条件').click();dismiss_settings(page)
+ expect(page.locator('#atlas-circles span, #atlas-bosses > div')).to_have_count(0)
+ expect(page.locator('[data-layer=all]')).to_have_attribute('aria-pressed','true')
+ page.locator('#atlas-undo').click();expect(page.locator('#atlas-circles span')).to_have_count(2)
+ passed('Both final-circle layers follow map zoom and appear together on return to all points')
  passed('Determined points show descriptions, explicit editing, inferred facts and no redundant candidates')
  for width,height in [(320,568),(320,844),(390,844),(768,844)]:
   page.set_viewport_size({'width':width,'height':height});ready(page);assert page.locator('#atlas-viewport').bounding_box()['y']<=240;assert page.locator('#atlas-viewport').bounding_box()['height']>=height-240;expect(page.locator('#map-settings')).to_be_hidden();expect(page.locator('#map-results-dialog')).to_be_hidden();assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
